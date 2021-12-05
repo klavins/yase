@@ -1,0 +1,65 @@
+#!/usr/bin/python
+
+import sys
+import os.path
+
+name = sys.argv[1]
+
+header = """#ifndef YASE_%s_H
+#define YASE_%s_H
+
+#include "yase.hh"
+
+namespace yase {
+
+    class %s : public Module {
+
+    public:
+
+      %s();
+      void init();
+      void update();
+
+    private:
+
+    };
+
+}
+
+#endif
+""" % (name.upper(), name.upper(), name, name)
+
+source = """#include "%s.hh"
+#include "yase.hh"
+
+namespace yase {
+
+  %s::%s() {
+
+  }
+
+  void %s::init() {
+
+  }
+
+  void %s::update() {
+
+  }    
+
+}
+
+""" % (name.lower(),name,name,name,name)
+
+if not os.path.exists("include/%s.hh" % name.lower()):
+    header_file = open("include/%s.hh" % name.lower(), "w")
+    header_file.write(header)
+    header_file.close()
+else:
+  print("Header file already exists ... skipping")
+
+if not os.path.exists("src/%s.cc" % name.lower()):
+    source_file = open("src/%s.cc" % name.lower(), "w")
+    source_file.write(source)
+    source_file.close()
+else:
+  print("Source file already exists ... skipping")    
