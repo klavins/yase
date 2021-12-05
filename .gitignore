@@ -10,3 +10,4 @@ tmp/
 .DS_Store
 *.o
 course/
+.vs_code/
