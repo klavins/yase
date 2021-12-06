@@ -13,7 +13,6 @@
 
 // Events
 #include "event.hh"
-#include "midi_event.hh"
 
 // Audio
 #include "audio.hh"

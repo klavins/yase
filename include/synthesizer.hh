@@ -27,12 +27,10 @@ namespace yase {
 
       Synthesizer();
       Synthesizer &add(Module &module);
-      Synthesizer &listen(const string &event_type_name, function<void(Event *)> handler);
+      Synthesizer &listen(int event_type, function<void(const Event &)> handler);
       Synthesizer &connect(Module &source, string output, Module &dest, string input);
       Synthesizer &disconnect(Module &source, string output, Module &dest, string input);
 
-      void update();
-      void run();
       void run(int num_steps);
 
     private:
@@ -41,10 +39,9 @@ namespace yase {
       vector<Wire> wires;
       int sample_rate; 
 
-      map<string,vector<function<void(Event *)>>> listeners;
+      map<int,vector<function<void(const Event&)>>> listeners;
 
     };
-
 }
 
 #endif

@@ -38,7 +38,7 @@ namespace yase {
     double get_output(string name) const; // simular to inputs
     double get_output(int index) const;
 
-    void emit(Event * e);
+    void emit(Event e);
 
     protected:
 
@@ -48,7 +48,7 @@ namespace yase {
     vector<double> inputs,   // values of the inputs
                     outputs; // values of the outputs
 
-    vector<Event *> events;
+    vector<Event> events;
 
     };
 

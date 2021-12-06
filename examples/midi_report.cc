@@ -9,11 +9,10 @@ int main(int argc, char * argv[]) {
     Midi midi;
 
     synth.add(midi)
-         .listen("midi_event", [](Event * event) {
-             MidiEvent * me = (MidiEvent *) event;
-             std::cout << me->code << ", " 
-                       << me->id << ", "
-                       << me->value << "\n";
+         .listen(MIDI_ANY, [](const Event &e) {
+             std::cout << e.code << ", " 
+                       << e.id << ", "
+                       << e.value << "\n";
          });
     synth.run(-1);
 

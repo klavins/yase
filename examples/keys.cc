@@ -25,14 +25,12 @@ int main(int argc, char * argv[]) {
          .connect(gain,"signal_out",audio, "left")
          .connect(gain,"signal_out",audio, "right");
 
-    synth.listen("keydown", [&sine, &gain, &num_keys] (Event * event) {
-            MidiEvent * me = (MidiEvent *) event;
-            sine.set_input("frequency", me->frequency());
-            gain.set_input("amplitude", me->value / 127.0);  
+    synth.listen(MIDI_KEYDOWN, [&sine, &gain, &num_keys] (const Event &e) {
+            sine.set_input("frequency", e.frequency());
+            gain.set_input("amplitude", e.value / 127.0);  
             num_keys++;           
          })
-         .listen("keyup", [&sine, &gain, &num_keys] (Event * event) {
-            MidiEvent * me = (MidiEvent *) event;
+         .listen(MIDI_KEYUP, [&sine, &gain, &num_keys] (const Event &e) {
             num_keys--;
             if ( num_keys == 0 ) {
               gain.set_input("amplitude", 0);             

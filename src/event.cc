@@ -1,9 +1,9 @@
 #include <math.h>
-#include "midi_event.hh"
+#include "event.hh"
 
 namespace yase {
 
-  double MidiEvent::frequency() {
+  double Event::frequency() const {
       return (440.0 / 32) * pow(2, ((id - 9) / 12.0));
   }
 

@@ -38,16 +38,8 @@ namespace yase {
 
   }
 
-  void Synthesizer::update() {
-    // TODO
-  }
-
-  void Synthesizer::run() {
-    // call all init methods
-    // loop
-  }
-
   void Synthesizer::run(int num_steps) {
+
     // call all init methods
     for(Module * m : modules) {
       m->init();
@@ -67,20 +59,23 @@ namespace yase {
 
       // EVENTS
       for(Module * m : modules ) {
-        for(Event * event : m->events) {
-          for(auto handler : listeners[event->name]) {
-            handler(event);
-            delete event;
-          }
+        for(Event &event : m->events) {
+            for(auto handler : listeners[event.code]) {
+              handler(event);
+            }
+            for(auto handler : listeners[MIDI_ANY]) {
+              handler(event);
+            }            
         }
         m->events.clear();
       }
 
     }
+    
   } 
 
-  Synthesizer &Synthesizer::listen(const string &event_type_name, std::function<void(Event *)> handler) {
-    listeners[event_type_name].push_back(handler);
+  Synthesizer &Synthesizer::listen(int event_type, std::function<void(const Event &)> handler) {
+    listeners[event_type].push_back(handler);
     return *this;
   }
 
