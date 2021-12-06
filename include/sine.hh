@@ -10,6 +10,7 @@ namespace yase {
     public:
 
       void update();
+      void change_frequency(double f);
 
     };
 

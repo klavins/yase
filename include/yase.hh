@@ -22,6 +22,7 @@
 #include "sine.hh"
 
 // Envelopes
+#include "envelope.hh"
 
 // Filters
 

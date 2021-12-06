@@ -1,6 +1,8 @@
 #ifndef YASE_GLOBALS_H
 #define YASE_GLOBALS_H
 
+#define FOREVER -1
+
 #define SAMPLE_RATE         44100
 #define TS      (1.0/SAMPLE_RATE)
 #define FRAMES_PER_BUFFER     512
@@ -14,5 +16,9 @@
 #define MIDI_AFTER_TOUCH 208
 
 #define DEBUG std::cout << __FILE__ << ", " << __LINE__ << "\n";
+
+#define CALL_MEMBER_FN(object,ptrToMember)  ((object)->*(ptrToMember))()
+
+#define ENV_EPS             0.001
 
 #endif
