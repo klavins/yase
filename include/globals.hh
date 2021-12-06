@@ -6,6 +6,11 @@
 #define FRAMES_PER_BUFFER     512
 #define PA_SAMPLE_TYPE  paFloat32
 
+#define MIDI_KEYDOWN 144
+#define MIDI_KEYUP 128
+#define MIDI_BENDER 224
+#define MIDI_MOD 176
+
 #define DEBUG std::cout << __FILE__ << ", " << __LINE__ << "\n";
 
 #endif

@@ -11,9 +11,9 @@ SRCEXT      := cc
 
 #Flags, Libraries and Includes
 CFLAGS      := -ggdb
-LIB         := -lpthread -lyase -lportaudio
+LIB         := -lpthread -lyase -lportaudio -lrtmidi
 INCLUDE		:= -I../include
-LIBDIR		:= -L../lib
+LIBDIR		:= -L../lib -L../../rtmidi
 ELMALIB		:= ../lib/libyase.a
 
 #Files

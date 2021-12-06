@@ -62,4 +62,8 @@ namespace yase {
         return outputs[index];
     }   
 
+    void Module::emit(Event * e) {
+        events.push_back(e);
+    }
+
 }

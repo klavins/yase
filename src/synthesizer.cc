@@ -1,4 +1,5 @@
-#include "synthesizer.hh"
+#include <iostream>
+#include "yase.hh"
 
 #define SOURCE(__wire__) std::get<0>(__wire__)
 #define OUTPUT(__wire__) std::get<1>(__wire__)
@@ -7,7 +8,7 @@
 
 namespace yase {
 
-  Synthesizer::Synthesizer(int rate) : sample_rate(rate) {
+  Synthesizer::Synthesizer() {
 
   }
 
@@ -47,20 +48,41 @@ namespace yase {
   }
 
   void Synthesizer::run(int num_steps) {
-    // call all initi methods
+    // call all init methods
     for(Module * m : modules) {
       m->init();
     }
     // loop
-    for(int i =0; i< num_steps; i++) {
+    for(int i=0; num_steps < 0 || i<num_steps; i++) {
+
+      // WIRES
       for(Wire & w : wires) {
         DEST(w).set_input(INPUT(w), SOURCE(w).get_output(OUTPUT(w)));
       }
+
+      // MODULES
       for(Module * m : modules) {
         m->update();
       }
+
+      // EVENTS
+      for(Module * m : modules ) {
+        for(Event * event : m->events) {
+          for(auto handler : listeners[event->name]) {
+            handler(event);
+            delete event;
+          }
+        }
+        m->events.clear();
+      }
+
     }
   } 
+
+  Synthesizer &Synthesizer::listen(const string &event_type_name, std::function<void(Event *)> handler) {
+    listeners[event_type_name].push_back(handler);
+    return *this;
+  }
 
 }
 

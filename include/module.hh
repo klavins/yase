@@ -5,6 +5,8 @@
 #include <map>
 #include <vector>
 
+#include "event.hh"
+
 namespace yase {
 
     using std::string;
@@ -12,6 +14,8 @@ namespace yase {
     using std::vector;
 
     class Module {
+
+    friend class Synthesizer;
 
     public:
 
@@ -34,6 +38,8 @@ namespace yase {
     double get_output(string name) const; // simular to inputs
     double get_output(int index) const;
 
+    void emit(Event * e);
+
     protected:
 
     map<string,int> input_map,  // relates input names to their indices
@@ -41,6 +47,8 @@ namespace yase {
 
     vector<double> inputs,   // values of the inputs
                     outputs; // values of the outputs
+
+    vector<Event *> events;
 
     };
 

@@ -6,6 +6,14 @@
 #include "exception.hh"
 #include "module.hh"
 #include "synthesizer.hh"
+#include "midi.hh"
+
+// Connectivity
+#include "gain.hh"
+
+// Events
+#include "event.hh"
+#include "midi_event.hh"
 
 // Audio
 #include "audio.hh"

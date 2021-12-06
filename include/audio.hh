@@ -2,7 +2,8 @@
 #define YASE_AUDIO_H
 
 #include "portaudio.h"
-#include "yase.hh"
+#include "globals.hh"
+#include "module.hh"
 
 namespace yase {
 
@@ -17,7 +18,7 @@ namespace yase {
     private:
 
       PaStreamParameters outputParameters;
-      PaStream *stream = NULL;
+      PaStream *stream;
       PaError err;    
 
       float buffer[FRAMES_PER_BUFFER][2]; /* stereo output buffer */
