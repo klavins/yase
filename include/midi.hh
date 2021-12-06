@@ -17,7 +17,7 @@ namespace yase {
 
     private:
 
-      RtMidiIn * midiin;
+      vector<RtMidiIn *> midi_inputs;
       std::vector<unsigned char> message;
 
     };
