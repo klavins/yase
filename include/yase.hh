@@ -6,7 +6,10 @@
 #include "exception.hh"
 #include "module.hh"
 #include "synthesizer.hh"
+
+// Controllers
 #include "midi.hh"
+#include "fader.hh"
 
 // Connectivity
 #include "gain.hh"
@@ -20,6 +23,7 @@
 // Oscillators
 #include "oscillator.hh"
 #include "sine.hh"
+#include "dirtytriangle.hh"
 
 // Envelopes
 #include "envelope.hh"

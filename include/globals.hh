@@ -2,6 +2,7 @@
 #define YASE_GLOBALS_H
 
 #define FOREVER -1
+#define FADER_GAIN 20
 
 #define SAMPLE_RATE         44100
 #define TS      (1.0/SAMPLE_RATE)

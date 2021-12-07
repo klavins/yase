@@ -46,7 +46,7 @@ namespace yase {
                     output_map; // relates output names to their indices
 
     vector<double> inputs,   // values of the inputs
-                    outputs; // values of the outputs
+                   outputs;  // values of the outputs
 
     vector<Event> events;
 

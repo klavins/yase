@@ -1,5 +1,4 @@
-#include "oscillator.hh"
-#include "module.hh"
+#include "yase.hh"
 
 namespace yase {
 
@@ -9,7 +8,14 @@ namespace yase {
   }
 
   void Oscillator::init() {
-      n = 0;
+      accumulator = 0;
+  }
+
+  void Oscillator::update() {
+      accumulator += TS * inputs[frequency];
+      if ( accumulator > 1 ) {
+        accumulator -= 1;
+      }     
   }
 
 }

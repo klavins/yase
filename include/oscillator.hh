@@ -11,11 +11,11 @@ namespace yase {
 
       Oscillator();
       void init();
-      virtual void update() = 0;
+      virtual void update();
 
     protected:
 
-      long int n;
+      double accumulator;
       int frequency, signal; // local names for I/O indices
                              // These need to be protected instead of private
                              // so that derived classes can use them    

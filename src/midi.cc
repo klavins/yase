@@ -28,6 +28,8 @@ namespace yase {
 
       std::cout << "Midi ready\n";
 
+      count = 0;
+
   }
 
   void Midi::update() {

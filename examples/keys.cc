@@ -5,7 +5,7 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Sine sine;
+    DirtyTriangle sine;
     Audio audio;
     Midi midi;
     Envelope env;
@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
          .connect(env,"signal_out",audio, "right");
 
     synth.listen(MIDI_KEYDOWN, [&sine, &env, &num_keys] (const Event &e) {
-            sine.change_frequency(e.frequency());
+            sine.set_input("frequency", e.frequency());
             env.set_input("velocity", e.value / 127.0);
             env.trigger();
             num_keys++;           

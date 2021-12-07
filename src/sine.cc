@@ -5,14 +5,9 @@
 namespace yase {
 
   void Sine::update() {
-      outputs[signal] = sin(1 * 2 * M_PI * inputs[frequency] * n * TS);
-      n++;
+      Oscillator::update();
+      outputs[signal] = sin(2 * M_PI * accumulator);
   }    
-
-  void Sine::change_frequency(double f) {
-    n = (inputs[frequency] / f) * n;
-    inputs[frequency] = f;
-  }
 
 }
 
