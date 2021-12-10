@@ -25,10 +25,7 @@ namespace yase {
       }
       
       delete temp;
-
       std::cout << "Midi ready\n";
-
-      count = 0;
 
   }
 

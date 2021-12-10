@@ -19,7 +19,6 @@ namespace yase {
 
       vector<RtMidiIn *> midi_inputs;
       std::vector<unsigned char> message;
-      int count;
 
     };
 

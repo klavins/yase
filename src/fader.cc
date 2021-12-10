@@ -20,9 +20,8 @@ namespace yase {
 
   void Fader::update() {
 
-    outputs[value] = outputs[value] - TS * FADER_GAIN * (outputs[value] - adjusted_target());
+    outputs[value] -= TS * FADER_GAIN * (outputs[value] - adjusted_target());
 
   }    
 
 }
-

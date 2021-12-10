@@ -29,5 +29,7 @@
 #include "envelope.hh"
 
 // Filters
+#include "filter.hh"
+#include "biquad_lpf.hh"
 
 #endif
