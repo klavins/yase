@@ -30,6 +30,7 @@ namespace yase {
       Synthesizer &listen(int event_type, function<void(const Event &)> handler);
       Synthesizer &connect(Module &source, string output, Module &dest, string input);
       Synthesizer &disconnect(Module &source, string output, Module &dest, string input);
+      Synthesizer &control(Module &fader, string input_name, int midi_id);
 
       void run(int num_steps);
 

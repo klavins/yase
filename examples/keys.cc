@@ -10,7 +10,7 @@ int main(int argc, char * argv[]) {
     Midi midi;
     Envelope env;
     BiquadLPF filter;
-    Fader cutoff(200,16000), res(1,20);
+    Fader cutoff(200,16000), res(0.1,20);
     Synthesizer synth;
 
     int num_keys = 0;
@@ -51,15 +51,10 @@ int main(int argc, char * argv[]) {
             if ( num_keys == 0 ) {
               env.release();             
             }
-         })
-         .listen(MIDI_MOD, [&cutoff, &res] (Event e) {
-            if ( e.id == 19 ) {
-                cutoff.set_input("target", e.value);
-            }
-            if ( e.id == 23 ) {
-                res.set_input("target", e.value);
-            }
          });
+
+     synth.control(cutoff, "target", 19)
+          .control(res, "target", 23);
 
     synth.run(FOREVER);
 

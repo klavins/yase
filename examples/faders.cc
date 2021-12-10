@@ -27,15 +27,8 @@ int main(int argc, char * argv[]) {
          .connect(osc1,"signal",audio,"left")
          .connect(osc2,"signal",audio,"right");
 
-    synth.listen(MIDI_MOD, [&fader1, &fader2] (Event e) {
-        if ( e.id == 19 ) {
-            fader1.set_input("target", e.value);
-        }
-        if ( e.id == 23 ) {
-            fader2.set_input("target", e.value);
-        }
-
-    });
+    synth.control(fader1, "target", 19)
+         .control(fader2, "target", 23);
 
     synth.run(FOREVER);
 

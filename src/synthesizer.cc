@@ -79,5 +79,15 @@ namespace yase {
     return *this;
   }
 
+  Synthesizer &Synthesizer::control(Module &fader, string input_name, int midi_id) {
+    int i = fader.get_input_index(input_name);
+    listeners[MIDI_MOD].push_back([&fader, i, midi_id] (Event e) {
+      if ( e.id == midi_id ) {
+        fader.set_input(i, e.value);
+      }
+    });
+    return *this;
+  }
+
 }
 
