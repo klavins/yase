@@ -16,9 +16,10 @@ namespace yase {
     protected:
 
       double accumulator;
-      int frequency, signal; // local names for I/O indices
-                             // These need to be protected instead of private
-                             // so that derived classes can use them    
+      
+      int frequency,       // local names for I/O indices
+          signal,          // These need to be protected instead of private
+          amplitude;       // so that derived classes can use them    
 
     };
 

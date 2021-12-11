@@ -11,3 +11,4 @@ tmp/
 *.o
 course/
 .vs_code/
+todo.txt

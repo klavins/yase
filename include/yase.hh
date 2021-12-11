@@ -13,6 +13,7 @@
 
 // Connectivity
 #include "gain.hh"
+#include "summer.hh"
 
 // Events
 #include "event.hh"
@@ -24,6 +25,8 @@
 #include "oscillator.hh"
 #include "sine.hh"
 #include "dirtytriangle.hh"
+#include "dirtysaw.hh" 
+#include "vanderpol.hh"
 
 // Envelopes
 #include "envelope.hh"

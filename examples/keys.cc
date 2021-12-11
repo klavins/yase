@@ -5,27 +5,26 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    DirtyTriangle sine;
+    DirtySaw osc;
     Audio audio;
     Midi midi;
     Envelope env;
     BiquadLPF filter;
-    Fader cutoff(200,16000), res(0.1,20);
+    Fader cutoff(1000,12000), res(0.1,20);
     Synthesizer synth;
 
     int num_keys = 0;
 
-    sine.set_input("frequency", 440);
+    osc.set_input("frequency", 440);
     env.set_input("attack", 100); // Rate of attack in % per sample
     env.set_input("decay", 1);
     env.set_input("sustain", 1);
     env.set_input("release", 30);
     env.set_input("velocity", 0);
-
     filter.set_input("frequency", 1000);
     filter.set_input("resonance", 10);
 
-    synth.add(sine)
+    synth.add(osc)
          .add(audio)
          .add(midi)
          .add(env)
@@ -33,15 +32,15 @@ int main(int argc, char * argv[]) {
          .add(cutoff)
          .add(res);
 
-    synth.connect(sine,"signal",filter,"signal")
+    synth.connect(osc,"signal",filter,"signal")
          .connect(filter,"signal", env, "signal_in")
          .connect(env,"signal_out",audio, "left")
          .connect(env,"signal_out",audio, "right")
          .connect(cutoff, "value", filter, "frequency")
          .connect(res, "value", filter, "resonance");
 
-    synth.listen(MIDI_KEYDOWN, [&sine, &env, &num_keys] (const Event &e) {
-            sine.set_input("frequency", e.frequency());
+    synth.listen(MIDI_KEYDOWN, [&osc, &env, &num_keys] (const Event &e) {
+            osc.set_input("frequency", e.frequency());
             env.set_input("velocity", e.value / 127.0);
             env.trigger();
             num_keys++;           

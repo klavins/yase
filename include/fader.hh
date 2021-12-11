@@ -9,6 +9,7 @@ namespace yase {
 
     public:
 
+      Fader();
       Fader(double min, double max);
       void init();
       void update();

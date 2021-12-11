@@ -10,7 +10,7 @@ int main(int argc, char * argv[]) {
     Synthesizer synth;
 
     sine1.set_input("frequency", 440);
-    sine2.set_input("frequency", 444);
+    sine2.set_input("frequency", 441);
 
     synth.add(sine1)
          .add(sine2)

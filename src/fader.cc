@@ -10,6 +10,11 @@ namespace yase {
     value = add_output("value");
   }
 
+  Fader::Fader() : min_val(0), max_val(1) {
+    target = add_input("target");
+    value = add_output("value");
+  }
+
   void Fader::init() {
     outputs[value] = adjusted_target();
   }
