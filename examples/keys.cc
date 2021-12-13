@@ -5,45 +5,39 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    DirtySaw osc;
+    Synthesizer synth;     
+
+    Saw osc;
     Audio audio;
     Midi midi;
     Envelope env;
     BiquadLPF filter;
-    Fader cutoff(1000,12000), res(0.1,20);
-    Synthesizer synth;
+    Fader cutoff(1000,12000), res(0.1,20), volume(0,1);
+    Gain gain;
+
+    osc.set_type("additive");
+
+    synth.add(osc)     .add(audio)     .add(midi)
+         .add(env)     .add(filter)    .add(cutoff)
+         .add(res)     .add(volume)    .add(gain);
+
+    synth.connect( osc,    "signal", filter, "signal")
+         .connect( filter, "signal", env,    "signal")
+         .connect( env,    "signal", gain,   "signal")
+         .connect( gain,   "signal", audio,  "left")
+         .connect( gain,   "signal", audio,  "right")
+         .connect( cutoff, "value",  filter, "frequency")
+         .connect( res,    "value",  filter, "resonance")
+         .connect( volume, "value",  gain,   "amplitude");
 
     int num_keys = 0;
 
-    osc.set_input("frequency", 440);
-    env.set_input("attack", 100); // Rate of attack in % per sample
-    env.set_input("decay", 1);
-    env.set_input("sustain", 1);
-    env.set_input("release", 30);
-    env.set_input("velocity", 0);
-    filter.set_input("frequency", 1000);
-    filter.set_input("resonance", 10);
-
-    synth.add(osc)
-         .add(audio)
-         .add(midi)
-         .add(env)
-         .add(filter)
-         .add(cutoff)
-         .add(res);
-
-    synth.connect(osc,"signal",filter,"signal")
-         .connect(filter,"signal", env, "signal_in")
-         .connect(env,"signal_out",audio, "left")
-         .connect(env,"signal_out",audio, "right")
-         .connect(cutoff, "value", filter, "frequency")
-         .connect(res, "value", filter, "resonance");
-
-    synth.listen(MIDI_KEYDOWN, [&osc, &env, &num_keys] (const Event &e) {
+    synth.listen(MIDI_KEYDOWN, [&osc, &env, &num_keys,&filter] (const Event &e) {
             osc.set_input("frequency", e.frequency());
+            filter.set_input("offset", e.frequency());
             env.set_input("velocity", e.value / 127.0);
             env.trigger();
-            num_keys++;           
+            num_keys++;     
          })
          .listen(MIDI_KEYUP, [&env, &num_keys] (const Event &e) {
             num_keys--;
@@ -52,8 +46,9 @@ int main(int argc, char * argv[]) {
             }
          });
 
-     synth.control(cutoff, "target", 19)
-          .control(res, "target", 23);
+     synth.control(cutoff, 19)
+          .control(res, 23)
+          .control(volume, 62);
 
     synth.run(FOREVER);
 

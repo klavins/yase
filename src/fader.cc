@@ -16,6 +16,7 @@ namespace yase {
   }
 
   void Fader::init() {
+    set_input(target,64); // Default position for fader or knob is straight up
     outputs[value] = adjusted_target();
   }
 

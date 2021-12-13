@@ -15,8 +15,7 @@ namespace yase {
 
     private:
 
-      int signal_in,
-          signal_out,
+      int signal,
           amplitude;
 
     };

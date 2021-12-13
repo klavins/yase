@@ -9,6 +9,9 @@ namespace yase {
     frequency = add_input("frequency");
     resonance = add_input("resonance");
 
+    set_input(frequency, 1000);
+    set_input(resonance, 10);   
+
   }
 
   void BiquadLPF::init() {
@@ -19,7 +22,7 @@ namespace yase {
   void BiquadLPF::update() {
 
     if ( prev_freq != inputs[frequency] || prev_res != inputs[resonance]) {
-      double f0 = inputs[frequency],
+      double f0 = inputs[frequency] + inputs[offset],
              Q = inputs[resonance],
              w0 = 2 * M_PI * f0 / SAMPLE_RATE,
              cosw = cos(w0),

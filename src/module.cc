@@ -1,3 +1,4 @@
+#include <iostream>
 #include "exception.hh" 
 #include "module.hh"
 
@@ -42,7 +43,7 @@ namespace yase {
         if ( input_map.count(name) > 0 ) {
           inputs[input_map.at(name)] = value; 
         } else {
-            throw Exception("Tried to access a non-existant input " + name + " in set_input.");
+           throw Exception("Tried to access a non-existant input " + name + " in set_input.");
         }
     }
 

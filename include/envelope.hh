@@ -22,8 +22,7 @@ namespace yase {
     private:
 
       // i/o indices
-      int signal_in, 
-          signal_out,
+      int signal, 
           a,d,s,r, 
           velocity;
 

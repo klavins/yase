@@ -20,7 +20,7 @@ namespace yase {
 
       int p, q;
       vector<double> u, y, a, b;
-      int signal;
+      int signal, offset;
 
     };
 

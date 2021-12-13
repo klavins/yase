@@ -1,8 +1,8 @@
 #include "envelope.hh"
 #include "yase.hh"
 
-#define OUTPUT outputs[signal_out]
-#define INPUT inputs[signal_in]
+#define OUTPUT outputs[signal]
+#define INPUT inputs[signal]
 #define A inputs[a]
 #define D inputs[d]
 #define S inputs[s]
@@ -13,13 +13,22 @@ namespace yase {
 
   Envelope::Envelope() {
 
-    signal_in = add_input("signal_in");
-    signal_out = add_output("signal_out");
+    signal = add_input("signal");
+    signal = add_output("signal"); // should both be 0
+
     a = add_input("attack");
     d = add_input("decay");
     s = add_input("sustain");
     r = add_input("release");
+
     velocity = add_input("velocity");
+
+    // Defaults
+    set_input(a, 100); // Rate of attack in % per sample
+    set_input(d, 1);
+    set_input(s, 1);
+    set_input(r, 30);
+    set_input(velocity, 0);    
 
   }
 

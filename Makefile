@@ -37,10 +37,10 @@ directories:
 	@mkdir -p $(BUILDDIR)
 
 tests:
-	cd test && $(MAKE)
+	cd test && $(MAKE) -j 8
 
 example:
-	cd examples && $(MAKE)
+	cd examples && $(MAKE) -j 8
 
 docs: docs/index.html
 

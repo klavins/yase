@@ -17,7 +17,10 @@ namespace yase {
     }
 
     signal = add_input("signal");
-    signal = add_output("signal");
+    signal = add_output("signal"); 
+    offset = add_input("offset");
+
+    set_input(offset, 0.0);
 
   }
 

@@ -24,8 +24,8 @@
 // Oscillators
 #include "oscillator.hh"
 #include "sine.hh"
-#include "dirtytriangle.hh"
-#include "dirtysaw.hh" 
+#include "saw.hh" 
+#include "triangle.hh"
 #include "vanderpol.hh"
 
 // Envelopes

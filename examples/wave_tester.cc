@@ -8,11 +8,20 @@ using namespace yase;
 int main(int argc, char * argv[]) {
 
     Sine sine;
-    DirtyTriangle dirty_triangle;
-    DirtySaw dirty_saw;
-    VanDerPol vanderpol;
+    Saw raw, ptr1, add;
+    VanDerPol vdp;
 
-    vector<Oscillator *> oscillators = { &sine, &dirty_saw, &dirty_triangle, &vanderpol };
+    raw.set_type("raw");
+    ptr1.set_type("ptr1");
+    add.set_type("additive");
+
+    vector<Oscillator *> oscillators = { 
+        &sine,
+        &raw, 
+        &ptr1, 
+        &add, 
+        &vdp };
+        
     vector<Fader *> faders;
 
     int midi_ids[] = { 19, 23, 27, 31, 49, 53, 57, 61 };
@@ -28,15 +37,13 @@ int main(int argc, char * argv[]) {
 
     int i = 0;
     for ( auto osc : oscillators ) {
-        osc->set_input("frequency", 440);
         Fader * fader = new Fader(0,1);
         faders.push_back(fader);
         fader->set_input("target",0.1);
         osc->set_input("amplitude",0.1);
-        std::cout << fader << " ";
         synth.add(*osc)
              .add(*fader)
-             .control(*fader, "target", midi_ids[i])
+             .control(*fader, midi_ids[i])
              .connect(*fader, "value", *osc, "amplitude")
              .connect(*osc, "signal", sum, "signal_" + std::to_string(i));
         i++;

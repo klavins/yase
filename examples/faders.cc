@@ -5,8 +5,8 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    DirtyTriangle osc1;
-    DirtyTriangle osc2;
+    Saw osc1;
+    Saw osc2;
     Fader fader1(55,110), fader2(55,110);
     Audio audio;
     Midi midi;
@@ -27,8 +27,8 @@ int main(int argc, char * argv[]) {
          .connect(osc1,"signal",audio,"left")
          .connect(osc2,"signal",audio,"right");
 
-    synth.control(fader1, "target", 19)
-         .control(fader2, "target", 23);
+    synth.control(fader1, 19)
+         .control(fader2, 23);
 
     synth.run(FOREVER);
 

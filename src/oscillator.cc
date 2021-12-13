@@ -7,6 +7,7 @@ namespace yase {
       amplitude = add_input("amplitude");
       signal = add_output("signal");
       inputs[amplitude] = 1;
+      inputs[frequency] = 440;
   }
 
   void Oscillator::init() {
