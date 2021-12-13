@@ -3,9 +3,12 @@
 
 namespace yase {
 
+  Saw::Saw() : Oscillator() {
+    update_fcn = &Saw::ptr1;
+  }  
+
   void Saw::init() {
     Oscillator::init();
-    update_fcn = &Saw::ptr1;
   }
 
   void Saw::update() {
@@ -51,7 +54,7 @@ namespace yase {
     outputs[signal] = 0;
     int n = 1;
     while ( n * inputs[frequency] < SAMPLE_RATE / 2 ) {
-      outputs[signal] += sin(2*M_PI*inputs[frequency]*accumulator)/n;
+      outputs[signal] += sin(n*2*M_PI*accumulator)/n;
       n++;
     }
   }    

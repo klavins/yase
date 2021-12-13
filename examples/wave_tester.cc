@@ -39,15 +39,17 @@ int main(int argc, char * argv[]) {
     for ( auto osc : oscillators ) {
         Fader * fader = new Fader(0,1);
         faders.push_back(fader);
-        fader->set_input("target",0.1);
-        osc->set_input("amplitude",0.1);
         synth.add(*osc)
              .add(*fader)
              .control(*fader, midi_ids[i])
              .connect(*fader, "value", *osc, "amplitude")
              .connect(*osc, "signal", sum, "signal_" + std::to_string(i));
+        fader->set_input("target",0);
+        osc->set_input("amplitude",0);
         i++;
     }
+
+    //faders[0]->set_input("target", 0.5);
 
     synth.connect(sum, "signal", audio, "left");
     synth.connect(sum, "signal", audio, "right");

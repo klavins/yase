@@ -8,15 +8,16 @@ namespace yase {
   Fader::Fader(double min, double max) : min_val(min), max_val(max) {
     target = add_input("target");
     value = add_output("value");
+    set_input(target,64); // Default position for fader or knob is straight up    
   }
 
   Fader::Fader() : min_val(0), max_val(1) {
     target = add_input("target");
     value = add_output("value");
+    set_input(target,64); // Default position for fader or knob is straight up    
   }
 
   void Fader::init() {
-    set_input(target,64); // Default position for fader or knob is straight up
     outputs[value] = adjusted_target();
   }
 
