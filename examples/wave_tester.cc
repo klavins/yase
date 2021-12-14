@@ -51,7 +51,7 @@ int main(int argc, char * argv[]) {
         i++;
     }
 
-    //faders[0]->set_input("target", 0.5);
+    faders[0]->set_input("target", 64);
 
     synth.connect(sum, "signal", audio, "left");
     synth.connect(sum, "signal", audio, "right");

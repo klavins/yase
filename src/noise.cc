@@ -6,7 +6,7 @@ namespace yase {
 
   void Noise::update() {
 
-    outputs[signal] = distribution(generator);
+    outputs[signal] = inputs[amplitude] * distribution(generator);
 
   }    
 

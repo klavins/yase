@@ -18,7 +18,7 @@ namespace yase {
       + 0.2 * M_PI * (1-x1*x1)*x2 
       - x1 
       + 1.2 * sin(2*M_PI*accumulator) );
-    outputs[signal] = inputs[amplitude] * x2 / 4;
+    outputs[signal] = inputs[amplitude] * x2 / 2;
   }    
 
 }

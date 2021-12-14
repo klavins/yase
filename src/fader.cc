@@ -19,7 +19,8 @@ namespace yase {
 
   Fader::Fader(double min, double max, bool inverted) : min_val(min), max_val(max), inverted(inverted) {
     target = add_input("target");
-    value = add_output("value");    
+    value = add_output("value");  
+    set_input(target,64);  
     if ( inverted && min == 0.0 ) {
       throw Exception("Cannot have an inverted input with a minimum value of zero.");
     }
