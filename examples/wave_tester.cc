@@ -10,6 +10,7 @@ int main(int argc, char * argv[]) {
     Sine sine;
     Saw raw, ptr1, add;
     VanDerPol vdp;
+    Noise noise;
 
     raw.set_type("raw");
     ptr1.set_type("ptr1");
@@ -20,7 +21,8 @@ int main(int argc, char * argv[]) {
         &raw, 
         &ptr1, 
         &add, 
-        &vdp };
+        &vdp,
+        &noise };
         
     vector<Fader *> faders;
 

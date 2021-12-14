@@ -47,9 +47,6 @@ namespace yase {
       buffer[frame][1] = (float) inputs[right];
       frame++;
 
-
-
   }    
 
 }
-
