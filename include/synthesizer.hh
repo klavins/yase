@@ -31,6 +31,7 @@ namespace yase {
       Synthesizer &connect(Module &source, string output, Module &dest, string input);
       Synthesizer &disconnect(Module &source, string output, Module &dest, string input);
       Synthesizer &control(Module &fader, int midi_id);
+      Synthesizer &button(int port, int midi_id, function<void(const Event &)> handler);
 
       void run(int num_steps);
 

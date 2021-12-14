@@ -4,7 +4,7 @@
 
 namespace yase {
 
-  BiquadLPF::BiquadLPF() : Filter (3,3) {
+  BiquadLPF::BiquadLPF() : Filter (3,3), active(true) {
 
     frequency = add_input("frequency");
     resonance = add_input("resonance");
@@ -12,6 +12,18 @@ namespace yase {
     set_input(frequency, 1000);
     set_input(resonance, 10);   
 
+  }
+
+  void BiquadLPF::on() {
+    active = true;
+  }
+
+  void BiquadLPF::off() {
+    active = false;
+  }
+
+  void BiquadLPF::toggle() {
+    active = !active;
   }
 
   void BiquadLPF::init() {
@@ -41,8 +53,11 @@ namespace yase {
 
     }
 
-    Filter::update();
-
+    if ( active ) {
+      Filter::update();
+    } else {
+      outputs[signal] = inputs[signal];
+    }
 
   }    
 

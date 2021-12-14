@@ -88,4 +88,14 @@ namespace yase {
     return *this;
   }
 
+  Synthesizer &Synthesizer::button(int port, int midi_id, function<void(const Event &)> handler) {
+    listeners[MIDI_KEYDOWN].push_back([port, midi_id, handler] (Event e) {
+      if ( e.port == port && e.id == midi_id ) {
+        handler(e);
+      }
+    });
+    return *this;
+  }
+
+
 }

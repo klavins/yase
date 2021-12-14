@@ -15,11 +15,15 @@ namespace yase {
       BiquadLPF();
       void init();
       void update();
+      void on();
+      void off();
+      void toggle();
 
     private:
 
       double prev_freq, prev_res;
       int frequency, resonance;
+      bool active;
 
     };
 

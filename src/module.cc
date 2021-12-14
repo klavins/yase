@@ -4,9 +4,7 @@
 
 namespace yase {
 
-    Module::Module() {
-
-    }
+    Module::Module() {}
 
     int Module::add_input(string name) {
         input_map[name] = input_map.size();
