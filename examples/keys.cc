@@ -14,13 +14,19 @@ int main(int argc, char * argv[]) {
     BiquadLPF filter;
     Gain gain;
 
-    Fader cutoff(1000,12000), res(0.1,20), volume(0,1);
+    Fader cutoff(1000,12000), res(0.1,20), volume(0,1),
+          attack(0.1, 15, true),
+          decay(0.1, 15, true),
+          sustain(0,1),
+          release(0.1,15, true);
     
     osc.set_type("additive");
 
     synth.add(osc)     .add(audio)     .add(midi)
          .add(env)     .add(filter)    .add(cutoff)
-         .add(res)     .add(volume)    .add(gain);
+         .add(res)     .add(volume)    .add(gain)
+         .add(attack)  .add(decay)     .add(sustain)
+         .add(release);
 
     // Main connections
     synth.connect( osc,    "signal", filter, "signal")
@@ -32,7 +38,11 @@ int main(int argc, char * argv[]) {
      // Fader connections
      synth.connect( cutoff, "value",  filter, "frequency")
           .connect( res,    "value",  filter, "resonance")
-          .connect( volume, "value",  gain,   "amplitude");
+          .connect( volume, "value",  gain,   "amplitude")
+          .connect( attack, "value",  env,    "attack")
+          .connect( decay,  "value",  env,    "decay")
+          .connect( sustain, "value", env,    "sustain")
+          .connect( release, "value", env,    "release");
 
     // Midi Keyboard control
     int num_keys = 0;
@@ -58,7 +68,11 @@ int main(int argc, char * argv[]) {
      // Fader - Midi mappings
      synth.control(cutoff, 56)
           .control(res, 60)
-          .control(volume, 62);
+          .control(volume, 62)
+          .control(attack, 19)
+          .control(decay, 23)
+          .control(sustain, 27)
+          .control(release, 31);
 
      // MIDI Buttons
      int akai_port = midi.get_port_id("MIDI Mix");

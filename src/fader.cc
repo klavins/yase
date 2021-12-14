@@ -5,16 +5,24 @@
 
 namespace yase {
 
-  Fader::Fader(double min, double max) : min_val(min), max_val(max) {
+  Fader::Fader(double min, double max) : min_val(min), max_val(max), inverted(false) {
     target = add_input("target");
     value = add_output("value");
     set_input(target,64); // Default position for fader or knob is straight up    
   }
 
-  Fader::Fader() : min_val(0), max_val(1) {
+  Fader::Fader() : min_val(0), max_val(1), inverted(false) {
     target = add_input("target");
     value = add_output("value");
     set_input(target,64); // Default position for fader or knob is straight up    
+  }
+
+  Fader::Fader(double min, double max, bool inverted) : min_val(min), max_val(max), inverted(inverted) {
+    target = add_input("target");
+    value = add_output("value");    
+    if ( inverted && min == 0.0 ) {
+      throw Exception("Cannot have an inverted input with a minimum value of zero.");
+    }
   }
 
   void Fader::init() {
@@ -22,7 +30,13 @@ namespace yase {
   }
 
   double Fader::adjusted_target() {
-    return min_val + ( max_val-min_val ) * inputs[target] / 127.0;    
+    double v;
+    if ( inverted ) {
+      v = 127 - inputs[target];
+    } else {
+      v = inputs[target];
+    }
+    return min_val + ( max_val-min_val ) * v / 127.0;
   }
 
   void Fader::update() {

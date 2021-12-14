@@ -1,6 +1,5 @@
 #include <iostream>
-#include "exception.hh" 
-#include "module.hh"
+#include "yase.hh" 
 
 namespace yase {
 
@@ -25,7 +24,7 @@ namespace yase {
                                        // in fact, it inserts an element if
                                        // one doesn't exist!
         } else {
-            throw Exception("Tried to access a non-existant input " + name + " in get_input_index.");
+            throw Exception("Tried to access a non-existant input '" + name + "' in get_input_index.");
         }
     }
 
@@ -33,7 +32,7 @@ namespace yase {
         if ( output_map.count(name) > 0 ) {
             return output_map.at(name);   
         } else {
-            throw Exception("Tried to access a non-existant output " + name + " in get_output_index.");
+            throw Exception("Tried to access a non-existant output '" + name + "' in get_output_index.");
         }
     }
 
@@ -41,7 +40,7 @@ namespace yase {
         if ( input_map.count(name) > 0 ) {
           inputs[input_map.at(name)] = value; 
         } else {
-           throw Exception("Tried to access a non-existant input " + name + " in set_input.");
+           throw Exception("Tried to access a non-existant input '" + name + "' in set_input.");
         }
     }
 
@@ -53,7 +52,7 @@ namespace yase {
         if ( output_map.count(name) > 0 ) {
           return outputs[output_map.at(name)];
         } else {
-            throw Exception("Tried to access a non-existant output " + name + " in get_input.");
+            throw Exception("Tried to access a non-existant output '" + name + "' in get_input.");
         }
     }
 
