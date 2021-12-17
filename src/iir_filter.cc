@@ -1,10 +1,10 @@
 #include "module.hh"
-#include "filter.hh"
+#include "iir_filter.hh"
 
 
 namespace yase {
 
-  Filter::Filter(int P, int Q) : p(P), q(Q) {
+  IIRFilter::IIRFilter(int P, int Q) : p(P), q(Q) {
 
     for(int i=0; i<p; i++) {
       u.push_back(0);
@@ -24,11 +24,11 @@ namespace yase {
 
   }
 
-  void Filter::init() {
+  void IIRFilter::init() {
 
   }
 
-  void Filter::update() {
+  void IIRFilter::update() {
 
     double s1 = 0, s2 = 0;
     int i;
@@ -45,7 +45,7 @@ namespace yase {
 
   }    
 
-  void Filter::set_coefficients(vector<double> A, vector<double> B) {
+  void IIRFilter::set_coefficients(vector<double> A, vector<double> B) {
     a = A;
     b = B;
   }

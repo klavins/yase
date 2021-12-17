@@ -5,13 +5,13 @@
 
 namespace yase {
 
-    class Filter : public Module {
+    class IIRFilter : public Module {
 
     // An IIR filter 
 
     public:
 
-      Filter(int P, int Q); // size of IIR filter
+      IIRFilter(int P, int Q); // size of IIR filter
       void init();
       void update();
       void set_coefficients(vector<double> A, vector<double> B);

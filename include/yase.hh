@@ -33,7 +33,7 @@
 #include "envelope.hh"
 
 // Filters
-#include "filter.hh"
-#include "biquad_lpf.hh"
+#include "iir_filter.hh"
+#include "biquad.hh"
 
 #endif

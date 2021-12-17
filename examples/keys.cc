@@ -11,10 +11,12 @@ int main(int argc, char * argv[]) {
     Audio audio;
     Midi midi;
     Envelope env;
-    BiquadLPF filter;
+    Biquad filter;
     Gain gain;
 
-    Fader cutoff(1000,12000), res(0.1,20), volume(0,1),
+    filter.set_type("apf");
+
+    Fader cutoff(1000,6000), res(0.1,20), volume(0,1),
           attack(0.1, 15, true),
           decay(0.1, 15, true),
           sustain(0,1),
@@ -76,10 +78,13 @@ int main(int argc, char * argv[]) {
 
      // MIDI Buttons
      int akai_port = midi.get_port_id("MIDI Mix");
-     synth.button(akai_port, 1,  [&] (const Event &e) { osc.set_type("raw"); })
-          .button(akai_port, 4,  [&] (const Event &e) { osc.set_type("ptr1"); })
+     synth.button(akai_port, 1,  [&] (const Event &e) { osc.set_type("raw");      })
+          .button(akai_port, 4,  [&] (const Event &e) { osc.set_type("ptr1");     })
           .button(akai_port, 7,  [&] (const Event &e) { osc.set_type("additive"); })
-          .button(akai_port, 22, [&] (const Event &e) { filter.toggle(); });
+          .button(akai_port, 13, [&] (const Event &e) { filter.set_type("lpf");   })
+          .button(akai_port, 16, [&] (const Event &e) { filter.set_type("hpf");   })
+          .button(akai_port, 19, [&] (const Event &e) { filter.set_type("apf");   })
+          .button(akai_port, 22, [&] (const Event &e) { filter.toggle();          });
 
      synth.run(FOREVER);
 
