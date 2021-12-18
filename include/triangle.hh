@@ -11,6 +11,7 @@ namespace yase {
     typedef  void (Triangle::*UpdateFunction)(); 
 
     public:
+      Triangle();
       void init();
       void update();
       void set_type(std::string name);

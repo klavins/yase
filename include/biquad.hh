@@ -22,6 +22,7 @@ namespace yase {
       void toggle();
 
       void set_type(std::string name);
+      void recalculate();
 
     private:
 
@@ -33,7 +34,6 @@ namespace yase {
              alpha;
       int frequency, resonance;
       bool active, changed;
-      void recalculate();
 
       void lpf();
       void hpf();

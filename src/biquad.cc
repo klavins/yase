@@ -65,10 +65,15 @@ namespace yase {
   void Biquad::recalculate() {
 
     double f0 = inputs[frequency] + inputs[offset],
-            Q = inputs[resonance],
+            Q = inputs[resonance],                 
            w0 = 2 * M_PI * f0 / SAMPLE_RATE;
+
     cosw = cos(w0);
     alpha = sin(w0) / ( 2 * Q );
+
+    prev_freq = inputs[frequency];
+    prev_res = inputs[resonance];    
+    changed = false;
 
   }
 
@@ -83,9 +88,6 @@ namespace yase {
       a[0] = 1 + alpha,
       a[1] = -2 * cosw,
       a[2] = 1 - alpha;      
-
-      prev_freq = inputs[frequency];
-      prev_res = inputs[resonance];
 
     }
 
@@ -103,9 +105,6 @@ namespace yase {
       a[1] = -2 * cosw,
       a[2] = 1 - alpha;     
 
-      prev_freq = inputs[frequency];
-      prev_res = inputs[resonance];
-
     }
 
   }    
@@ -121,9 +120,6 @@ namespace yase {
       a[0] = 1 + alpha,
       a[1] = -2 * cosw,
       a[2] = 1 - alpha;
-
-      prev_freq = inputs[frequency];
-      prev_res = inputs[resonance];
 
     }    
 

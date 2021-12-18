@@ -28,6 +28,7 @@
 #include "triangle.hh"
 #include "vanderpol.hh"
 #include "noise.hh"
+#include "square.hh"
 
 // Envelopes
 #include "envelope.hh"

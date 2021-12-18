@@ -14,13 +14,13 @@ int main(int argc, char * argv[]) {
     Biquad filter;
     Gain gain;
 
-    filter.set_type("apf");
+    filter.set_type("lpf");
 
     Fader cutoff(1000,6000), res(0.1,20), volume(0,1),
-          attack(0.1, 15, true),
-          decay(0.1, 15, true),
+          attack(0.1, 25, true),
+          decay(0.1, 25, true),
           sustain(0,1),
-          release(0.1,15, true);
+          release(0.1,25, true);
     
     osc.set_type("additive");
 
@@ -53,6 +53,7 @@ int main(int argc, char * argv[]) {
           if ( e.port == keyboard_port ) {
                osc.set_input("frequency", e.frequency());
                filter.set_input("offset", e.frequency());
+               filter.recalculate(); // TODO: This is awkward and could be forgotten
                env.set_input("velocity", e.value / 127.0);
                env.trigger();
                num_keys++;

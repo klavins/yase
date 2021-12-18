@@ -2,12 +2,18 @@
 
 namespace yase {
 
+  Triangle::Triangle() : Oscillator() {
+    update_fcn = &Triangle::additive;
+  }
+
   void Triangle::init() {
-    update_fcn = &Triangle::ptr1;
+    Oscillator::init();
   }
 
   void Triangle::update() {
-
+    Oscillator::update();
+    CALL_MEMBER_FN(this, update_fcn);
+    outputs[signal] *= inputs[amplitude];
   }    
 
   void Triangle::set_type(std::string name) {
@@ -33,6 +39,14 @@ namespace yase {
   }    
 
   void Triangle::additive() {
+   
+    outputs[signal] = 0;
+    int n = 1;
+    while ( n * inputs[frequency] < SAMPLE_RATE / 2 ) {
+      outputs[signal] += sin(n*2*M_PI*accumulator)/(n*n);
+      n += 2;
+    }
+    outputs[signal] *= 8/(M_PI*M_PI);
 
   }    
 

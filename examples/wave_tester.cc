@@ -8,19 +8,19 @@ using namespace yase;
 int main(int argc, char * argv[]) {
 
     Sine sine;
-    Saw raw, ptr1, add;
+    Saw add;
+    Triangle tri;
+    Square square;
     VanDerPol vdp;
     Noise noise;
 
-    raw.set_type("raw");
-    ptr1.set_type("ptr1");
     add.set_type("additive");
 
     vector<Oscillator *> oscillators = { 
         &sine,
-        &raw, 
-        &ptr1, 
         &add, 
+        &tri, 
+        &square, 
         &vdp,
         &noise };
         
