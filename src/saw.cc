@@ -4,7 +4,7 @@
 namespace yase {
 
   Saw::Saw() : Oscillator() {
-    update_fcn = &Saw::ptr1;
+    update_fcn = &Saw::additive;
   }  
 
   void Saw::init() {

@@ -29,6 +29,7 @@
 #include "vanderpol.hh"
 #include "noise.hh"
 #include "square.hh"
+#include "osc_group.hh"
 
 // Envelopes
 #include "envelope.hh"

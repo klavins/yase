@@ -1,7 +1,7 @@
 #ifndef YASE_FADER_H
 #define YASE_FADER_H
 
-#include "yase.hh"
+#include "module.hh"
 
 namespace yase {
 

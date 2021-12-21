@@ -10,6 +10,7 @@
 
 #include "module.hh"
 #include "event.hh"
+#include "fader.hh"
 
 namespace yase {
 
@@ -26,11 +27,13 @@ namespace yase {
     public:
 
       Synthesizer();
+      ~Synthesizer();
       Synthesizer &add(Module &module);
       Synthesizer &listen(int event_type, function<void(const Event &)> handler);
       Synthesizer &connect(Module &source, string output, Module &dest, string input);
       Synthesizer &disconnect(Module &source, string output, Module &dest, string input);
       Synthesizer &control(Module &fader, int midi_id);
+      Synthesizer &control(Module &module, string name, double min, double max, bool inverted, int midi_id);
       Synthesizer &button(int port, int midi_id, function<void(const Event &)> handler);
 
       void run(int num_steps);
@@ -42,6 +45,7 @@ namespace yase {
       int sample_rate; 
 
       map<int,vector<function<void(const Event&)>>> listeners;
+      vector<Fader *> faders;
 
     };
 }

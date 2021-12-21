@@ -17,6 +17,13 @@ namespace yase {
     return *this;
   }
 
+  Synthesizer::~Synthesizer() {
+    for (auto f : faders) {
+       delete f;
+     } 
+     faders.clear();    
+  }  
+
   Synthesizer &Synthesizer::connect(Module &source, string output, Module &dest, string input) {
       
     Wire wire = {
@@ -86,6 +93,17 @@ namespace yase {
       }
     });
     return *this;
+  }
+
+  Synthesizer &Synthesizer::control(Module &module, string name, double min, double max, bool inverted, int midi_id) {
+
+    Fader * fader = new Fader(min, max, inverted);
+    add(*fader);
+    connect(*fader, "value", module, name);
+    control(*fader, midi_id);
+    faders.push_back(fader);
+    return *this;
+
   }
 
   Synthesizer &Synthesizer::button(int port, int midi_id, function<void(const Event &)> handler) {
