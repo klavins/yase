@@ -49,6 +49,10 @@ namespace yase {
 
         if ( message.size() == 3 ) {
             emit(Event(message[0], message[1], message[2], port)); 
+            // std::cout << "port " << port << ": "
+            //           << int(message[0]) << ", " 
+            //           << int(message[1]) << ", " 
+            //           << int(message[3]) << "\n";
         } else if ( message.size() == 2 ) {
             emit(Event(message[0], message[1], 0, port)); 
         } else {

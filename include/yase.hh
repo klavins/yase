@@ -13,7 +13,8 @@
 
 // Connectivity
 #include "gain.hh"
-#include "summer.hh"
+#include "sum.hh"
+#include "mixer.hh"
 
 // Events
 #include "event.hh"

@@ -2,7 +2,7 @@
 ARCH := $(shell uname -m)
 
 #Compilers
-CC          := g++ -std=c++17 -Wno-psabi
+CC          := g++ -std=c++20 -Wno-psabi
 DGEN        := doxygen
 
 #The Target Binary Program

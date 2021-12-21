@@ -1,15 +1,15 @@
 #ifndef YASE_SUMMER_H
 #define YASE_SUMMER_H
 
-#include "yase.hh"
+#include "module.hh"
 
 namespace yase {
 
-    class Summer : public Module {
+    class Sum : public Module {
 
     public:
 
-      Summer(int n);
+      Sum(int n);
       void init();
       void update();
 

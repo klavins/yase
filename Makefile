@@ -1,5 +1,5 @@
 #Compilers
-CC          := g++ -std=c++17 -Wno-psabi
+CC          := g++ -std=c++20 -Wno-psabi
 DGEN        := doxygen
 
 #The Target Binary Program
@@ -59,6 +59,9 @@ spotless: clean
 	@$(RM) -rf $(TARGETDIR)/$(TARGET) *.db
 	@$(RM) -rf build lib docs/*
 	cd test && $(MAKE) spotless
+
+wc:
+	wc -l */*.cc */*.hh | sort
 
 #Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)

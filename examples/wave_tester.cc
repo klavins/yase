@@ -28,7 +28,7 @@ int main(int argc, char * argv[]) {
 
     int midi_ids[] = { 19, 23, 27, 31, 49, 53, 57, 61 };
 
-    Summer sum(oscillators.size());
+    Sum sum(oscillators.size());
     Midi midi;
     Audio audio;
     Synthesizer synth;

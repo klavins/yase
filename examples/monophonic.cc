@@ -5,32 +5,58 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Synthesizer synth;     
-    OscGroup osc;
+    // Components
+    Synthesizer synth; 
+    OscGroup osc[3];
+    Sine lfo;
+    Mixer mixer(3),
+          mod_mixer1(2),
+          mod_mixer2(2);
     Audio audio;
     Midi midi;
     Envelope env;
     Biquad filter;
-    Gain gain;
+    Gain gain,
+         osc2_lfo_gain;
     
-    synth.add(osc)     .add(audio)     .add(midi)
-         .add(env)     .add(filter)    .add(gain);
+    synth.add(osc[0])    .add(osc[1])      .add(osc[2])
+         .add(mixer)     .add(mod_mixer1)  .add(mod_mixer2)
+         .add(audio)     .add(midi)        .add(lfo)
+         .add(env)       .add(filter)      .add(gain)
+         .add(osc2_lfo_gain);
 
-    // Main connections
-    synth.connect( osc,    "signal", filter, "signal")
+    // Connections 
+    int lfo_ids[] = { 50, 51, 52 };
+    for ( int i=0; i<3; i++ ) {
+         synth.connect(osc[i], "signal", mixer, i);
+    }
+    synth.connect( mixer,  "signal", filter, "signal")
          .connect( filter, "signal", env,    "signal")
          .connect( env,    "signal", gain,   "signal")
          .connect( gain,   "signal", audio,  "left")
          .connect( gain,   "signal", audio,  "right");
 
-    // Midi Keyboard control
+    synth.connect( lfo,    "signal", mod_mixer1, 0 )
+         .connect( osc[0], "signal", mod_mixer1, 1 )
+         .connect( mod_mixer1, "signal", osc[1], "modulation" )
+
+         .connect( lfo,    "signal", mod_mixer2, 0 )
+         .connect( osc[1], "signal", mod_mixer2, 1 )
+         .connect( mod_mixer2, "signal", osc[2], "modulation" );
+
+     synth.connect( lfo, "signal", osc2_lfo_gain, "signal" )
+          .connect( osc2_lfo_gain, "signal", osc[0], "modulation" );
+
+    // Keyboard Control
     int num_keys = 0;
     int keyboard_port = midi.get_port_id("Arturia KeyStep 32");
     synth.listen(MIDI_KEYDOWN, [&] (const Event &e) {
           if ( e.port == keyboard_port ) {
-               osc.set_input("frequency", e.frequency());
+               for ( int i=0; i<3; i++ ) {
+                   osc[i].set_input("frequency", e.frequency());
+               }
                filter.set_input("offset", e.frequency());
-               filter.recalculate(); // TODO: This is awkward and could be forgotten
+               filter.recalculate(); // TODO: filter could intercept set_input
                env.set_input("velocity", e.value / 127.0);
                env.trigger();
                num_keys++;
@@ -46,30 +72,46 @@ int main(int argc, char * argv[]) {
      });
 
      // Oscillator selector control
-     synth.listen(MIDI_MOD, [&] (const Event &e) {
-         if ( e.id == 16 ) {
-              osc.select(e.value / 127.0);
-         }
-     });
+     int selector_ids[] = { 16, 17, 18 };
+     for ( int i=0; i<3; i++ ) {
+         synth.listen(MIDI_MOD, [&,i] (const Event &e) {
+             if ( e.id == selector_ids[i] ) osc[i].select(e.value / 127.0);
+         });
+     }
 
-     // Faders     Midi mappings
-     //            module  input        min   max    inver?   midi id
+     // Faders     module  input        min   max    invert?  midi id 
      synth.control(filter, "frequency", 1000, 6000,  false,   56)
-          .control(filter, "resonance", 0.1,  20,    false,   60)
-          .control(gain,   "amplitude", 0,    1,     false,   62)
-          .control(osc,    "amplitude", 0,    1,     false,   19)
-          .control(env,    "attack",    0.1,  25,    true,    49)
-          .control(env,    "decay",     0.1,  25,    true,    53)
-          .control(env,    "sustain",   0,    1,     false,   57)
-          .control(env,    "release",   0.1,  25,    true,    61);
+          .control(filter, "resonance", 0.1,  20,    false,   60);
+
+     synth.control(gain,   "amplitude", 0,    1,     false,   62);
+
+     synth.control(env,    "attack",    0.1,  25,    true,    19)
+          .control(env,    "decay",     0.1,  25,    true,    23)
+          .control(env,    "sustain",   0,    1,     false,   27)
+          .control(env,    "release",   0.1,  25,    true,    31);
+
+     synth.control(lfo, "frequency", 0.01, 10, false, 58)
+          .control(lfo, "amplitude", 0, 10, false, 54);
+    
+     synth.control(mod_mixer1, 2, 0, 10, false, 51)
+          .control(mod_mixer1, 3, 0, 10, false, 46)
+          .control(mod_mixer2, 2, 0, 10, false, 52)
+          .control(mod_mixer2, 3, 0, 10, false, 47)
+          .control(osc2_lfo_gain, "amplitude", 0, 10, false, 50);
+
+     // Oscillator amplitudes
+     int amplitude_ids[] = { 28, 29, 30};
+     for (int i=0; i<3; i++) {
+         synth.control(mixer, i+3, 0, 1, false, amplitude_ids[i]);
+     }
 
      // MIDI Buttons
      int akai_port = midi.get_port_id("MIDI Mix");
-     synth.button(akai_port, 13, [&] (const Event &e) { filter.set_type("lpf");   })
-          .button(akai_port, 16, [&] (const Event &e) { filter.set_type("hpf");   })
-          .button(akai_port, 19, [&] (const Event &e) { filter.set_type("apf");   })
+     synth.button(akai_port, 16, [&] (const Event &e) { filter.set_type("lpf");   })
+          .button(akai_port, 19, [&] (const Event &e) { filter.set_type("hpf");   })
           .button(akai_port, 22, [&] (const Event &e) { filter.toggle();          });
 
+     // Go!
      synth.run(FOREVER);
 
      return 0;

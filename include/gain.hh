@@ -1,7 +1,7 @@
 #ifndef YASE_GAIN_H
 #define YASE_GAIN_H
 
-#include "yase.hh"
+#include "module.hh"
 
 namespace yase {
 

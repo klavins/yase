@@ -17,11 +17,9 @@ namespace yase {
 
   void OscGroup::update() {
 
-    oscillators[current]->set_input(frequency, inputs[frequency]);
-    oscillators[current]->set_input(amplitude, inputs[amplitude]);
-    Oscillator::update();
+    oscillators[current]->copy_inputs(*this);
     oscillators[current]->update();
-    outputs[signal] = oscillators[current]->get_output(signal);
+    oscillators[current]->copy_outputs(*this);
 
   }    
 
@@ -43,4 +41,3 @@ namespace yase {
   }
 
 }
-

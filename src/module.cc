@@ -60,6 +60,26 @@ namespace yase {
         return outputs[index];
     }   
 
+    double Module::get_input(int index) const {
+        return inputs[index];
+    }
+
+    void Module::copy_inputs(const Module &source) {
+        for(int i=0; i<inputs.size(); i++ ) {
+            set_input(i, source.get_input(i));
+        }
+    }
+
+    void Module::set_output(int index, double value) {
+        outputs[index] = value;
+    }
+
+    void Module::copy_outputs(Module &destination) const {
+        for(int i=0; i<outputs.size(); i++ ) {
+            destination.set_output(i, outputs[i]);
+        }
+    }    
+
     void Module::emit(Event e) {
         events.push_back(e);
     }

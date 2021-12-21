@@ -39,6 +39,21 @@ namespace yase {
 
   }
 
+  Synthesizer &Synthesizer::connect(Module &source, string output, Module &dest, int input) {
+      
+    Wire wire = {
+      source,
+      source.get_output_index(output),
+      dest,
+      input
+    };
+
+    wires.push_back(wire);
+
+    return *this;
+
+  }  
+
   Synthesizer &Synthesizer::disconnect(Module &source, string output, Module &dest, string input) {
     // TODO
     return *this;
@@ -105,6 +120,17 @@ namespace yase {
     return *this;
 
   }
+
+  Synthesizer &Synthesizer::control(Module &module, int index, double min, double max, bool inverted, int midi_id) {
+
+    Fader * fader = new Fader(min, max, inverted);
+    add(*fader);
+    connect(*fader, "value", module, index);
+    control(*fader, midi_id);
+    faders.push_back(fader);
+    return *this;
+
+  }  
 
   Synthesizer &Synthesizer::button(int port, int midi_id, function<void(const Event &)> handler) {
     listeners[MIDI_KEYDOWN].push_back([port, midi_id, handler] (Event e) {

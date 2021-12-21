@@ -1,10 +1,10 @@
 #include <string>
-#include "summer.hh"
+#include "sum.hh"
 #include "yase.hh"
 
 namespace yase {
 
-  Summer::Summer(int n) : size(n) {
+  Sum::Sum(int n) : size(n) {
 
     for (int i=0; i<size; i++ ) {
       std::string name = "signal_" + std::to_string(i);
@@ -15,11 +15,11 @@ namespace yase {
 
   }
 
-  void Summer::init() {
+  void Sum::init() {
 
   }
 
-  void Summer::update() {
+  void Sum::update() {
     outputs[signal] = 0;
     for ( int i=0; i<size; i++ ) 
       outputs[signal] += inputs[i];
