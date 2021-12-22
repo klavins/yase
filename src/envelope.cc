@@ -28,7 +28,7 @@ namespace yase {
     set_input(d, 1);
     set_input(s, 1);
     set_input(r, 30);
-    set_input(velocity, 0);    
+    set_input(velocity, 1);    
 
   }
 
