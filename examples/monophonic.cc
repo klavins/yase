@@ -116,10 +116,12 @@ int main(int argc, char * argv[]) {
 
      // Oscillator amplitudes and tuning
      int amplitude_ids[] = { 28, 29, 30},
-         tuning_ids[] { 24, 25, 26 };
+         tuning_ids[] { 24, 25, 26 },
+         harmonic_ids[] = { 20, 21, 22 };
      for (int i=0; i<3; i++) {
          synth.control(mixer, i+3, 0, 1, false, amplitude_ids[i])
-              .control(osc[i], "tuning", -8, 7, false, tuning_ids[i]);
+              .control(osc[i], "tuning", -7, 8, false, tuning_ids[i])
+              .control(osc[i], "harmonic", -2, 3, false, harmonic_ids[i]);
      }
 
      // MIDI Buttons

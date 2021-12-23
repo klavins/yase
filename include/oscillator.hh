@@ -21,7 +21,8 @@ namespace yase {
           signal,          // These need to be protected instead of private
           amplitude,       // so that derived classes can use them    
           modulation,
-          tuning;
+          tuning,
+          harmonic;
 
     };
 
