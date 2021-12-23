@@ -28,7 +28,9 @@ namespace yase {
     set_input(d, 1);
     set_input(s, 1);
     set_input(r, 30);
-    set_input(velocity, 1);    
+
+    set_input(velocity, 1);  // sometimes envelopes have no inputs so
+    set_input(signal,1);     // we need defaults or we'll get no signal
 
   }
 

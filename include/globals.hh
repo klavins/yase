@@ -8,6 +8,7 @@
 #define TS      (1.0/SAMPLE_RATE)
 #define FRAMES_PER_BUFFER     512
 #define PA_SAMPLE_TYPE  paFloat32
+#define CENT 1.05946
 
 #define MIDI_ANY -1
 #define MIDI_KEYDOWN 144

@@ -20,7 +20,8 @@ namespace yase {
       int frequency,       // local names for I/O indices
           signal,          // These need to be protected instead of private
           amplitude,       // so that derived classes can use them    
-          modulation;
+          modulation,
+          tuning;
 
     };
 
