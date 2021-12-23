@@ -16,8 +16,11 @@ namespace yase {
 
       for ( unsigned int i=0; i<nPorts; i++ ) {
           RtMidiIn * mi = new RtMidiIn();
+          RtMidiOut * mo = new RtMidiOut();
           mi->openPort(i);
+          mo->openPort(i);
           midi_inputs.push_back(mi);
+          midi_outputs.push_back(mo);
           portName = mi->getPortName(i);
           port_names.push_back(portName);
           std::cout << i << ": " << portName << '\n';
@@ -39,13 +42,12 @@ namespace yase {
     throw Exception(std::string("Unkown MIDI device name ") + device_name);
   }
 
-
   void Midi::update() {
 
       int port = 0;
       for ( auto mi : midi_inputs ) {
 
-        mi->getMessage(&message);
+        mi->getMessage(&message); // TODO: is the old value destroyed?
 
         if ( message.size() == 3 ) {
             emit(Event(message[0], message[1], message[2], port)); 
@@ -66,6 +68,18 @@ namespace yase {
       }
 
   }    
+
+  Midi &Midi::on(int port, unsigned char led) {
+    std::vector<unsigned char> msg = { 144, led, 1 };
+    midi_outputs[port]->sendMessage(&msg);
+    return *this;
+  }
+
+  Midi &Midi::off(int port, unsigned char led) {
+    std::vector<unsigned char> msg = { 144, led, 0 };
+    midi_outputs[port]->sendMessage(&msg);
+    return *this;
+  }
 
 }
 

@@ -16,10 +16,13 @@ namespace yase {
       void init();
       void update();
       int get_port_id(std::string device_name);
+      Midi &on(int port, unsigned char led);
+      Midi &off(int port, unsigned char led);
 
     private:
 
       vector<RtMidiIn *> midi_inputs;
+      vector<RtMidiOut *> midi_outputs;
       vector<string> port_names;
       std::vector<unsigned char> message;
 

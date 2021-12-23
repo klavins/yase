@@ -126,10 +126,32 @@ int main(int argc, char * argv[]) {
      }
 
      // MIDI Buttons
-     int akai_port = midi.get_port_id("MIDI Mix");
-     synth.button(akai_port, 16, [&] (const Event &e) { filter.set_type("lpf");   })
-          .button(akai_port, 19, [&] (const Event &e) { filter.set_type("hpf");   })
-          .button(akai_port, 22, [&] (const Event &e) { filter.toggle();          });
+     int akai_port = midi.get_port_id("MIDI Mix"),
+                     lpf_led = 16,
+                     hpf_led = 19,
+                     filter_led = 22;
+
+     midi.on(akai_port, lpf_led)
+         .on(akai_port, filter_led)
+         .off(akai_port, hpf_led);
+
+     synth.button(akai_port, 16, [&] (const Event &e) { 
+              filter.set_type("lpf");   
+              midi.on(akai_port, lpf_led)
+                  .off(akai_port, hpf_led);
+          })
+          .button(akai_port, 19, [&] (const Event &e) {
+              filter.set_type("hpf");
+              midi.off(akai_port, lpf_led)
+                  .on(akai_port, hpf_led);
+          })
+          .button(akai_port, 22, [&] (const Event &e) {
+              if ( filter.toggle() ) {
+                   midi.on(akai_port, filter_led);
+              } else {
+                   midi.off(akai_port, filter_led);
+              }
+          });
 
      // Go!
      synth.run(FOREVER);

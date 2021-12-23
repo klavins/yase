@@ -19,7 +19,7 @@ namespace yase {
       void update();
       void on();
       void off();
-      void toggle();
+      bool toggle();
 
       void set_type(std::string name);
       void recalculate();

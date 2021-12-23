@@ -41,8 +41,9 @@ namespace yase {
     active = false;
   }
 
-  void Biquad::toggle() {
+  bool Biquad::toggle() {
     active = !active;
+    return active;
   }
 
   void Biquad::init() {
