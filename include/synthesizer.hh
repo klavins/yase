@@ -22,12 +22,14 @@ namespace yase {
 
     typedef tuple<Module &, int, Module &, int> Wire;
 
-    class Synthesizer {
+    class Synthesizer : public Module {
 
     public:
 
       Synthesizer();
       ~Synthesizer();
+      void init();
+      void update();
       Synthesizer &add(Module &module);
       Synthesizer &listen(int event_type, function<void(const Event &)> handler);
       Synthesizer &connect(Module &source, string output, Module &dest, string input);

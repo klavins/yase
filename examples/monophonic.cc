@@ -29,7 +29,6 @@ int main(int argc, char * argv[]) {
          .add(filter_env);
 
     // Connections 
-    int lfo_ids[] = { 50, 51, 52 };
     for ( int i=0; i<3; i++ ) {
          synth.connect(osc[i], "signal", mixer, i);
     }

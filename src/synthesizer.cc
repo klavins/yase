@@ -60,38 +60,49 @@ namespace yase {
 
   }
 
-  void Synthesizer::run(int num_steps) {
+  void Synthesizer::init() {
 
     // call all init methods
     for(Module * m : modules) {
       m->init();
+    }    
+
+  }
+
+  void Synthesizer::update() {
+
+    // WIRES
+    for(Wire & w : wires) {
+      DEST(w).set_input(INPUT(w), SOURCE(w).get_output(OUTPUT(w)));
     }
+
+    // MODULES
+    for(Module * m : modules) {
+      m->update();
+    }
+
+    // EVENTS
+    for(Module * m : modules ) {
+      for(Event &event : m->events) {
+          for(auto handler : listeners[event.code]) {
+            handler(event);
+          }
+          for(auto handler : listeners[MIDI_ANY]) {
+            handler(event);
+          }            
+      }
+      m->events.clear();
+    }
+
+  }
+
+  void Synthesizer::run(int num_steps) {
+
+    init();
+
     // loop
     for(int i=0; num_steps < 0 || i<num_steps; i++) {
-
-      // WIRES
-      for(Wire & w : wires) {
-        DEST(w).set_input(INPUT(w), SOURCE(w).get_output(OUTPUT(w)));
-      }
-
-      // MODULES
-      for(Module * m : modules) {
-        m->update();
-      }
-
-      // EVENTS
-      for(Module * m : modules ) {
-        for(Event &event : m->events) {
-            for(auto handler : listeners[event.code]) {
-              handler(event);
-            }
-            for(auto handler : listeners[MIDI_ANY]) {
-              handler(event);
-            }            
-        }
-        m->events.clear();
-      }
-
+      update();
     }
     
   } 
