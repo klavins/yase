@@ -81,5 +81,13 @@ namespace yase {
     return *this;
   }
 
+  void Midi::shutdown(void) {
+    for ( int i=0; i<128; i++ ) {
+      for ( int j=0; j<midi_outputs.size(); j++ ) {
+        off(j,i);
+      }
+    }
+  }
+
 }
 

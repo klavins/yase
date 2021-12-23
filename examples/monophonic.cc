@@ -154,7 +154,12 @@ int main(int argc, char * argv[]) {
           });
 
      // Go!
-     synth.run(FOREVER);
+     synth.run(UNTIL_INTERRUPTED);
+
+     // Shutdown
+     midi.off(akai_port, lpf_led)
+         .off(akai_port, filter_led)
+         .off(akai_port, hpf_led);
 
      return 0;
 

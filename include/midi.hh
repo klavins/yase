@@ -18,6 +18,7 @@ namespace yase {
       int get_port_id(std::string device_name);
       Midi &on(int port, unsigned char led);
       Midi &off(int port, unsigned char led);
+      void shutdown();
 
     private:
 

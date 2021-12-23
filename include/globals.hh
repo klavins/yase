@@ -1,7 +1,7 @@
 #ifndef YASE_GLOBALS_H
 #define YASE_GLOBALS_H
 
-#define FOREVER -1
+#define UNTIL_INTERRUPTED -1
 #define FADER_GAIN 20
 
 #define SAMPLE_RATE         44100

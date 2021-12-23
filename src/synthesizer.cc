@@ -1,10 +1,18 @@
 #include <iostream>
+#include <signal.h>
+#include <unistd.h>
 #include "yase.hh"
 
 #define SOURCE(__wire__) std::get<0>(__wire__)
 #define OUTPUT(__wire__) std::get<1>(__wire__)
 #define DEST(__wire__)   std::get<2>(__wire__)
 #define INPUT(__wire__)  std::get<3>(__wire__)
+
+bool interuppted = false;
+
+void sighandler(int sig) {
+	  interuppted = true;
+}
 
 namespace yase {
 
@@ -98,10 +106,12 @@ namespace yase {
 
   void Synthesizer::run(int num_steps) {
 
+    signal(SIGINT, sighandler);
+
     init();
 
     // loop
-    for(int i=0; num_steps < 0 || i<num_steps; i++) {
+    for(int i=0; !interuppted && ( num_steps < 0 || i<num_steps ); i++ ) {
       update();
     }
     
