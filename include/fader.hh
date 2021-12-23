@@ -11,7 +11,6 @@ namespace yase {
 
       Fader();
       Fader(double min, double max);
-      Fader(double min, double max, bool inverted);
       void init();
       void update();
       double adjusted_target();
@@ -22,8 +21,6 @@ namespace yase {
             max_val;
 
       int target, value;
-
-      bool inverted;
 
     };
 

@@ -9,6 +9,7 @@
 #define FRAMES_PER_BUFFER     512
 #define PA_SAMPLE_TYPE  paFloat32
 #define CENT 1.05946
+#define LN01 2.30258
 
 #define MIDI_ANY -1
 #define MIDI_KEYDOWN 144

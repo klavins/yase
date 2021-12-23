@@ -110,9 +110,9 @@ namespace yase {
     return *this;
   }
 
-  Synthesizer &Synthesizer::control(Module &module, string name, double min, double max, bool inverted, int midi_id) {
+  Synthesizer &Synthesizer::control(Module &module, string name, double min, double max, int midi_id) {
 
-    Fader * fader = new Fader(min, max, inverted);
+    Fader * fader = new Fader(min, max);
     add(*fader);
     connect(*fader, "value", module, name);
     control(*fader, midi_id);
@@ -121,9 +121,9 @@ namespace yase {
 
   }
 
-  Synthesizer &Synthesizer::control(Module &module, int index, double min, double max, bool inverted, int midi_id) {
+  Synthesizer &Synthesizer::control(Module &module, int index, double min, double max, int midi_id) {
 
-    Fader * fader = new Fader(min, max, inverted);
+    Fader * fader = new Fader(min, max);
     add(*fader);
     connect(*fader, "value", module, index);
     control(*fader, midi_id);

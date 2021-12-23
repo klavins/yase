@@ -13,6 +13,11 @@ namespace yase {
 
   Envelope::Envelope() {
 
+    // 
+    // Linear attack and release
+    // Exponential decay
+    //
+
     signal = add_input("signal");
     signal = add_output("signal"); // should both be 0
 
@@ -24,10 +29,10 @@ namespace yase {
     velocity = add_input("velocity");
 
     // Defaults
-    set_input(a, 100); // Rate of attack in % per sample
-    set_input(d, 1);
-    set_input(s, 1);
-    set_input(r, 30);
+    set_input(a, 0.001); // duration of attack
+    set_input(d, 1);     // time to 90% decayed
+    set_input(s, 1);     // percentage of max
+    set_input(r, 30);    // duration of release
 
     set_input(velocity, 1);  // sometimes envelopes have no inputs so
     set_input(signal,1);     // we need defaults or we'll get no signal
@@ -56,14 +61,14 @@ namespace yase {
   }
 
   void Envelope::attack() {
-    amplitude += TS * A;
+    amplitude += TS * (1/A);
     if ( amplitude >= VELOCITY ) {
       update_fcn = &Envelope::decay;
     }
   }
 
   void Envelope::decay() {
-    amplitude -= TS * D * ( amplitude - S * VELOCITY );
+    amplitude -= TS * (LN01/D) * ( amplitude - S * VELOCITY );
     if ( amplitude <= S * VELOCITY + ENV_EPS ) {
         update_fcn = &Envelope::sustain;
     }
@@ -74,7 +79,7 @@ namespace yase {
   }
   
   void Envelope::_release() {
-    amplitude -= TS * R * amplitude;
+    amplitude -= TS * (LN01/R) * amplitude;
     if ( amplitude <= ENV_EPS ) {
       amplitude = 0.0;
       update_fcn = &Envelope::off;

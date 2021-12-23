@@ -90,38 +90,40 @@ int main(int argc, char * argv[]) {
      }
 
      // Faders
-     synth.control(lfo, "frequency", 0.01, 10, false, 58)            // LFO
-          .control(lfo, "amplitude", 0, 10, false, 54)
+     synth.control(lfo, "frequency", 0.01, 10, 58)            // LFO
+          .control(lfo, "amplitude", 0, 10, 54)
 
-          .control(mod_mixer1, 2, 0, 10, false, 51)                  // OSC CONNECTIONS 
-          .control(mod_mixer1, 3, 0, 10, false, 46)
-          .control(mod_mixer2, 2, 0, 10, false, 52)
-          .control(mod_mixer2, 3, 0, 10, false, 47)
-          .control(osc2_lfo_gain, "amplitude", 0, 10, false, 50)
+          .control(mod_mixer1, 2, 0, 10, 51)                  // OSC CONNECTIONS 
+          .control(mod_mixer1, 3, 0, 10, 46)
+          .control(mod_mixer2, 2, 0, 10, 52)
+          .control(mod_mixer2, 3, 0, 10, 47)
+          .control(osc2_lfo_gain, "amplitude", 0, 10, 50)
 
-          .control(filter, "resonance", 0.1, 20, false, 60)          // FILTER
-          .control(filter_env, "attack", 0.1, 25, true, 49)
-          .control(filter_env, "decay", 0.1, 25, true, 53)
-          .control(filter_env, "sustain", 0, 1, false, 57)
-          .control(filter_env, "release", 0.1, 25, true, 61)
-          .control(filter_env_mixer, 2, 1000, 6000, false, 56 )
-          .control(filter_env_mixer, 3, 1000, 6000, false, 59 )
+          .control(filter, "resonance", 0.1, 20, 60)          // FILTER
 
-          .control(env, "attack", 0.1, 25, true, 19)                 // ENVELOPE
-          .control(env, "decay", 0.1, 25, true, 23)
-          .control(env, "sustain", 0, 1, false, 27)
-          .control(env, "release", 0.1, 25, true, 31)
+          .control(filter_env, "attack", 0.005, 5, 49)
+          .control(filter_env, "decay", 0.005, 5, 53)
+          .control(filter_env, "sustain", 0, 1, 57)
+          .control(filter_env, "release", 0.005, 5, 61)
 
-          .control(gain, "amplitude", 0, 1, false, 62);              // VOLUME
+          .control(filter_env_mixer, 2, 1000, 6000, 56 )
+          .control(filter_env_mixer, 3, 1000, 6000, 59 )
+
+          .control(env, "attack", 0.005, 5, 19)                 // ENVELOPE
+          .control(env, "decay", 0.005, 5, 23)
+          .control(env, "sustain", 0, 1, 27)
+          .control(env, "release", 0.005, 5, 31)
+
+          .control(gain, "amplitude", 0, 1, 62);              // VOLUME
 
      // Oscillator amplitudes and tuning
      int amplitude_ids[] = { 28, 29, 30},
          tuning_ids[] { 24, 25, 26 },
          harmonic_ids[] = { 20, 21, 22 };
      for (int i=0; i<3; i++) {
-         synth.control(mixer, i+3, 0, 1, false, amplitude_ids[i])
-              .control(osc[i], "tuning", -7, 8, false, tuning_ids[i])
-              .control(osc[i], "harmonic", -2, 3, false, harmonic_ids[i]);
+         synth.control(mixer, i+3, 0, 1, amplitude_ids[i])
+              .control(osc[i], "tuning", -7, 8, tuning_ids[i])
+              .control(osc[i], "harmonic", -2, 3, harmonic_ids[i]);
      }
 
      // MIDI Buttons

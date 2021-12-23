@@ -17,10 +17,10 @@ int main(int argc, char * argv[]) {
     filter.set_type("lpf");
 
     Fader cutoff(1000,6000), res(0.1,20), volume(0,1),
-          attack(0.1, 25, true),
-          decay(0.1, 25, true),
+          attack(0.001, 5),
+          decay(0.001, 5),
           sustain(0,1),
-          release(0.1,25, true);
+          release(0.001,5);
     
     osc.set_type("additive");
 
