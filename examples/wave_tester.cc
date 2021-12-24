@@ -56,7 +56,7 @@ int main(int argc, char * argv[]) {
     synth.connect(sum, "signal", audio, "left");
     synth.connect(sum, "signal", audio, "right");
 
-    synth.run(FOREVER);
+    synth.run(UNTIL_INTERRUPTED);
 
     for ( auto f : faders ) {
         delete f;

@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
     synth.control(fader1, 19)
          .control(fader2, 23);
 
-    synth.run(FOREVER);
+    synth.run(UNTIL_INTERRUPTED);
 
     return 0;
 

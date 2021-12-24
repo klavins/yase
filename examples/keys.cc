@@ -87,7 +87,7 @@ int main(int argc, char * argv[]) {
           .button(akai_port, 19, [&] (const Event &e) { filter.set_type("apf");   })
           .button(akai_port, 22, [&] (const Event &e) { filter.toggle();          });
 
-     synth.run(FOREVER);
+     synth.run(UNTIL_INTERRUPTED);
 
      return 0;
 

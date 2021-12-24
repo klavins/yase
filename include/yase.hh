@@ -6,6 +6,7 @@
 #include "exception.hh"
 #include "module.hh"
 #include "synthesizer.hh"
+#include "sequencer.hh"
 
 // Controllers
 #include "midi.hh"

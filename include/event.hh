@@ -14,6 +14,13 @@ namespace yase {
           id(id),
           value(value),
           port(port) {}
+
+      Event(const Event &e) : 
+          code(e.code),
+          id(e.id),
+          value(e.value),
+          port(e.port) {}
+
       double frequency() const;
       int code, id, value, port;
 

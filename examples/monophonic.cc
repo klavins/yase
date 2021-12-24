@@ -19,6 +19,7 @@ int main(int argc, char * argv[]) {
     Biquad filter;
     Gain gain,
          osc2_lfo_gain;
+    Sequencer seq;
     
     synth.add(osc[0])    .add(osc[1])      .add(osc[2])
          .add(mixer)     .add(mod_mixer1)  .add(mod_mixer2)
@@ -26,7 +27,8 @@ int main(int argc, char * argv[]) {
          .add(env)       .add(filter)      .add(gain)
          .add(osc2_lfo_gain) 
          .add(filter_env_mixer)
-         .add(filter_env);
+         .add(filter_env)
+         .add(seq);
 
     // Connections 
     for ( int i=0; i<3; i++ ) {
@@ -152,6 +154,25 @@ int main(int argc, char * argv[]) {
                    midi.off(akai_port, filter_led);
               }
           });
+
+     // Sequencer setup
+     synth.listen(MIDI_KEYDOWN, [&] (const Event &e) { 
+             if ( e.port == keyboard_port ) {
+                  seq.keydown(e); 
+             }
+          })
+          .listen(MIDI_KEYUP, [&] (const Event &e) { 
+             if ( e.port == keyboard_port ) {
+                 seq.keyup(e); 
+             }
+          })
+          .button(akai_port, 1, [&] (const Event &e) { seq.reset(); })
+          .button(akai_port, 4, [&] (const Event &e) { seq.record(); })
+          .button(akai_port, 7, [&] (const Event &e) { seq.stop(); })
+          .button(akai_port, 10, [&] (const Event &e) { seq.play(); })
+          .button(akai_port, 13, [&] (const Event &e) { seq.clear(); });
+        
+
 
      // Go!
      synth.run(UNTIL_INTERRUPTED);
