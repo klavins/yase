@@ -2,9 +2,18 @@
 #include "event.hh"
 #include "sequencer.hh"
 
+#define PERIOD (60/inputs[tempo])
+#define DURATION inputs[duration]
+
 namespace yase {
 
   Sequencer::Sequencer() {
+
+    tempo = add_input("tempo");
+    duration = add_input("duration");
+
+    inputs[tempo] = 240;   // defaults
+    inputs[duration] = 0.5; //
 
   }
 
@@ -12,8 +21,7 @@ namespace yase {
     update_fcn = &Sequencer::idle;
     step = 0;
     t = 0;
-    period = 0.25; // quarter of a second
-    duration = 0.25; // fraction of period
+    mode = UP;
   }
 
   void Sequencer::update() {
@@ -30,14 +38,14 @@ namespace yase {
 
     t += TS;
 
-    if ( mode == UP && t > period ) {
+    if ( mode == UP && t > PERIOD ) {
       mode = DOWN;
       t = 0;
       sequence[step]->code = MIDI_KEYDOWN;
       emit(*sequence[step]);
     } 
     
-    if ( mode == DOWN && t > duration * period ) {
+    if ( mode == DOWN && t > DURATION * PERIOD ) {
       mode = UP;
       sequence[step]->code = MIDI_KEYUP;
       emit(*sequence[step]);
@@ -81,6 +89,11 @@ namespace yase {
   void Sequencer::stop() {
     std::cout << "stopping\n";
     update_fcn = &Sequencer::idle;
+    if ( mode == DOWN ) {
+      sequence[step]->code = MIDI_KEYUP;
+      emit(*sequence[step]); 
+      mode = UP;   
+    }
   }
 
   void Sequencer::play() {

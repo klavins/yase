@@ -32,7 +32,8 @@ namespace yase {
 
       vector<Event *> sequence;
       int step, mode;
-      double t, period, duration;
+      double t;
+      int tempo, duration;
 
       UpdateFunction update_fcn;
 

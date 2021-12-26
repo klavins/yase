@@ -64,6 +64,10 @@ namespace yase {
         return inputs[index];
     }
 
+    double Module::get_input(string name) const {
+        return inputs[get_input_index(name)];
+    }    
+
     void Module::copy_inputs(const Module &source) {
         for(int i=0; i<inputs.size(); i++ ) {
             set_input(i, source.get_input(i));

@@ -1,12 +1,13 @@
+#include <math.h>
 #include "envelope.hh"
 #include "yase.hh"
 
 #define OUTPUT outputs[signal]
 #define INPUT inputs[signal]
-#define A inputs[a]
+#define A ((pow(10.0,4*inputs[a]) - 1)/999.9)
 #define D inputs[d]
-#define S inputs[s]
-#define R inputs[r]
+#define S ((pow(10.0,4*inputs[s]) - 1)/999.9)
+#define R ((pow(10.0,4*inputs[r]) - 1)/999.9)
 #define VELOCITY inputs[velocity]
 
 namespace yase {
@@ -29,10 +30,10 @@ namespace yase {
     velocity = add_input("velocity");
 
     // Defaults
-    set_input(a, 0.001); // duration of attack
-    set_input(d, 1);     // time to 90% decayed
-    set_input(s, 1);     // percentage of max
-    set_input(r, 30);    // duration of release
+    set_input(a, 0.005);     // duration of attack
+    set_input(d, 0.005);     // time to 90% decayed
+    set_input(s, 1);         // percentage of max
+    set_input(r, 0.005);     // duration of release
 
     set_input(velocity, 1);  // sometimes envelopes have no inputs so
     set_input(signal,1);     // we need defaults or we'll get no signal
@@ -53,7 +54,7 @@ namespace yase {
 
   void Envelope::update() {
     CALL_MEMBER_FN(this, update_fcn);
-    OUTPUT = amplitude * INPUT;
+    OUTPUT = VELOCITY * amplitude * INPUT;
   }     
 
   void Envelope::off() {
@@ -62,14 +63,15 @@ namespace yase {
 
   void Envelope::attack() {
     amplitude += TS * (1/A);
-    if ( amplitude >= VELOCITY ) {
+    if ( amplitude >= 1 ) {
+      amplitude = 1;
       update_fcn = &Envelope::decay;
     }
   }
 
   void Envelope::decay() {
     amplitude -= TS * (LN01/D) * ( amplitude - S * VELOCITY );
-    if ( amplitude <= S * VELOCITY + ENV_EPS ) {
+    if ( amplitude <= S + ENV_EPS ) {
         update_fcn = &Envelope::sustain;
     }
   }

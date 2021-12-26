@@ -35,6 +35,7 @@ namespace yase {
     void set_input(string name, double value); // set the value of the input by name
     void set_input(int index, double value);   // set the value of an input by index
     double get_input(int index) const;
+    double get_input(string name) const;
 
     double get_output(string name) const; // simular to inputs
     double get_output(int index) const;
