@@ -173,7 +173,12 @@ int main(int argc, char * argv[]) {
                  seq.keyup(e); 
              }
           })
-          .button(akai_port, 1, [&] (const Event &e) { seq.reset(); })
+          .button(akai_port, 27, [&] (const Event &e) {
+               seq.insert_rest();
+          })
+          .button(akai_port, 1, [&] (const Event &e) { 
+               seq.reset(); 
+          })
           .button(akai_port, 4, [&] (const Event &e) { 
                seq.record();
                midi.on(akai_port, record_led)
@@ -184,11 +189,14 @@ int main(int argc, char * argv[]) {
                midi.off(akai_port, record_led)
                    .off(akai_port, play_led);
           })
-          .button(akai_port, 10, [&] (const Event &e) { seq.play(); 
+          .button(akai_port, 10, [&] (const Event &e) { 
+               seq.play(); 
                midi.off(akai_port, record_led)
                    .on(akai_port, play_led);
           })
-          .button(akai_port, 13, [&] (const Event &e) { seq.clear(); })
+          .button(akai_port, 13, [&] (const Event &e) { 
+               seq.clear(); 
+          })
           .button(akai_port, 3, [&] (const Event &e) {
                // decrease rate
                double tempo = seq.get_input("tempo");

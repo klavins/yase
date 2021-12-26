@@ -41,14 +41,18 @@ namespace yase {
     if ( mode == UP && t > PERIOD ) {
       mode = DOWN;
       t = 0;
-      sequence[step]->code = MIDI_KEYDOWN;
-      emit(*sequence[step]);
+      if ( sequence[step]->code != SEQUENCE_REST ) {
+        sequence[step]->code = MIDI_KEYDOWN;
+        emit(*sequence[step]);
+      }
     } 
     
     if ( mode == DOWN && t > DURATION * PERIOD ) {
       mode = UP;
-      sequence[step]->code = MIDI_KEYUP;
-      emit(*sequence[step]);
+      if ( sequence[step]->code != SEQUENCE_REST ) {
+        sequence[step]->code = MIDI_KEYUP;
+        emit(*sequence[step]);
+      }
       step++;
       if ( step >= sequence.size() ) {
         step = 0;
@@ -74,6 +78,12 @@ namespace yase {
   void Sequencer::keyup(const Event &e) {
     // Do nothing for now, maybe record duration later
     // Or maybe record fader events while pressed
+  }
+
+  void Sequencer::insert_rest() {
+      if ( update_fcn == &Sequencer::recording ) {
+        sequence.push_back(new Event(SEQUENCE_REST, 0, 0, 0));
+      }
   }
 
   void Sequencer::reset() {

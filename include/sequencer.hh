@@ -21,6 +21,7 @@ namespace yase {
 
       void keydown(const Event &e);
       void keyup(const Event &e);
+      void insert_rest();
 
       void reset();
       void record();

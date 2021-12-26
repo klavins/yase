@@ -17,6 +17,7 @@
 #define MIDI_BENDER 224
 #define MIDI_MOD 176
 #define MIDI_AFTER_TOUCH 208
+#define SEQUENCE_REST -1
 
 #define DEBUG std::cout << __FILE__ << ", " << __LINE__ << "\n";
 
