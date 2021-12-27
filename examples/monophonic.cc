@@ -1,7 +1,10 @@
 #include <iostream>
+#include <fstream>
+#include "json.hpp"
 #include "yase.hh"
 
 using namespace yase;
+using namespace nlohmann;
 
 int main(int argc, char * argv[]) {
 
@@ -29,6 +32,11 @@ int main(int argc, char * argv[]) {
          .add(filter_env_mixer)
          .add(filter_env)
          .add(seq);
+
+    std::ifstream config_stream("config/akai-monophonic.json");
+    json config, midi_map;
+    config_stream >> config; 
+    midi_map = config["midi_ids"];
 
     // Connections 
     for ( int i=0; i<3; i++ ) {
@@ -83,80 +91,72 @@ int main(int argc, char * argv[]) {
      });
 
      // Oscillator selector control
-     int selector_ids[] = { 16, 17, 18 };
      for ( int i=0; i<3; i++ ) {
          synth.listen(MIDI_MOD, [&,i] (const Event &e) {
-             if ( e.id == selector_ids[i] ) osc[i].select(e.value / 127.0);
+             if ( e.id == midi_map["osc_selectors"][i] ) osc[i].select(e.value / 127.0);
          });
      }
 
      // Faders
-     synth.control(lfo, "frequency", 0.01, 10, 58)            // LFO
-          .control(lfo, "amplitude", 0, 10, 54)
+     synth.control(lfo, "frequency", 0.01, 10, midi_map["lfo_freq"])           // LFO
+          .control(lfo, "amplitude", 0, 10,    midi_map["lfo_amp"])
 
-          .control(mod_mixer1, 2, 0, 10, 51)                  // OSC CONNECTIONS 
-          .control(mod_mixer1, 3, 0, 10, 46)
-          .control(mod_mixer2, 2, 0, 10, 52)
-          .control(mod_mixer2, 3, 0, 10, 47)
+          .control(mod_mixer1, 2, 0, 10, midi_map["mod_mixer_lfo_ctrl"][0])    // OSC CONNECTIONS 
+          .control(mod_mixer1, 3, 0, 10, midi_map["mod_mixer_mod_ctrl"][0])
+          .control(mod_mixer2, 2, 0, 10, midi_map["mod_mixer_lfo_ctrl"][1])
+          .control(mod_mixer2, 3, 0, 10, midi_map["mod_mixer_mod_ctrl"][1])
           .control(osc2_lfo_gain, "amplitude", 0, 10, 50)
 
-          .control(filter, "resonance", 0.1, 20, 60)          // FILTER
+          .control(filter, "resonance", 0.1, 20, midi_map["filter_resonance"]) // FILTER
 
-          .control(filter_env, "attack", 0.005, 1, 49)
-          .control(filter_env, "decay", 0.005, 1, 53)
-          .control(filter_env, "sustain", 0, 1, 57)
-          .control(filter_env, "release", 0.005, 1, 61)
+          .control(filter_env, "attack", 0.005, 1,  midi_map["filter_env"]["A"])
+          .control(filter_env, "decay", 0.005, 1,   midi_map["filter_env"]["D"])
+          .control(filter_env, "sustain", 0, 1,     midi_map["filter_env"]["S"])
+          .control(filter_env, "release", 0.005, 1, midi_map["filter_env"]["R"])
 
-          .control(filter_env_mixer, 2, 1000, 6000, 56 )
-          .control(filter_env_mixer, 3, 1000, 6000, 59 )
+          .control(filter_env_mixer, 2, 1000, 6000, midi_map["filter_freq"] )
+          .control(filter_env_mixer, 3, 1000, 6000, midi_map["filter_eg_amt"] )
 
-          .control(env, "attack", 0.005, 1, 19)                 // ENVELOPE
-          .control(env, "decay", 0.005, 1, 23)
-          .control(env, "sustain", 0, 1, 27)
-          .control(env, "release", 0.005, 1, 31)
+          .control(env, "attack", 0.005, 1,  midi_map["env"]["A"])             // ENVELOPE
+          .control(env, "decay", 0.005, 1,   midi_map["env"]["D"])
+          .control(env, "sustain", 0, 1,     midi_map["env"]["S"])
+          .control(env, "release", 0.005, 1, midi_map["env"]["R"])
 
-          .control(gain, "amplitude", 0, 0.25, 62);              // VOLUME
+          .control(gain, "amplitude", 0, 0.25, midi_map["volume"]);            // VOLUME
 
      // Oscillator amplitudes and tuning
-     int amplitude_ids[] = { 28, 29, 30},
-         tuning_ids[] { 24, 25, 26 },
-         harmonic_ids[] = { 20, 21, 22 };
      for (int i=0; i<3; i++) {
-         synth.control(mixer, i+3, 0, 1, amplitude_ids[i])
-              .control(osc[i], "tuning", -7, 8, tuning_ids[i])
-              .control(osc[i], "harmonic", -2, 3, harmonic_ids[i]);
+         synth.control(mixer, i+3, 0, 1,          midi_map["amplitudes"][i])
+              .control(osc[i], "tuning", -7, 8,   midi_map["tunings"][i])
+              .control(osc[i], "harmonic", -2, 3, midi_map["harmonics"][i]);
      }
 
      // MIDI Buttons
-     int akai_port = midi.get_port_id("MIDI Mix"),
-                     lpf_led = 16,
-                     hpf_led = 19,
-                     filter_led = 22;
+     int akai_port = midi.get_port_id("MIDI Mix");
+     
+     midi.on(akai_port, midi_map["buttons"]["lpf"])
+         .on(akai_port, midi_map["buttons"]["filter_toggle"])
+         .off(akai_port, midi_map["buttons"]["hpf"]);
 
-     midi.on(akai_port, lpf_led)
-         .on(akai_port, filter_led)
-         .off(akai_port, hpf_led);
-
-     synth.button(akai_port, 16, [&] (const Event &e) { 
+     synth.button(akai_port, midi_map["buttons"]["lpf"], [&] (const Event &e) { 
               filter.set_type("lpf");   
-              midi.on(akai_port, lpf_led)
-                  .off(akai_port, hpf_led);
+              midi.on(akai_port, midi_map["buttons"]["lpf"])
+                  .off(akai_port, midi_map["buttons"]["hpf"]);
           })
-          .button(akai_port, 19, [&] (const Event &e) {
+          .button(akai_port, midi_map["buttons"]["hpf"], [&] (const Event &e) {
               filter.set_type("hpf");
-              midi.off(akai_port, lpf_led)
-                  .on(akai_port, hpf_led);
+              midi.off(akai_port, midi_map["buttons"]["lpf"])
+                  .on(akai_port, midi_map["buttons"]["hpf"]);
           })
-          .button(akai_port, 22, [&] (const Event &e) {
+          .button(akai_port, midi_map["buttons"]["filter_toggle"], [&] (const Event &e) {
               if ( filter.toggle() ) {
-                   midi.on(akai_port, filter_led);
+                   midi.on(akai_port, midi_map["buttons"]["filter_toggle"]);
               } else {
-                   midi.off(akai_port, filter_led);
+                   midi.off(akai_port, midi_map["buttons"]["filter_toggle"]);
               }
           });
 
      // Sequencer setup
-
      int reset_led = 1,
          record_led = 4,
          stop_led = 7,
@@ -173,52 +173,48 @@ int main(int argc, char * argv[]) {
                  seq.keyup(e); 
              }
           })
-          .button(akai_port, 27, [&] (const Event &e) {
+          .button(akai_port, midi_map["buttons"]["rest"], [&] (const Event &e) {
                seq.insert_rest();
           })
-          .button(akai_port, 1, [&] (const Event &e) { 
+          .button(akai_port, midi_map["buttons"]["reset"], [&] (const Event &e) { 
                seq.reset(); 
           })
-          .button(akai_port, 4, [&] (const Event &e) { 
+          .button(akai_port, midi_map["buttons"]["record"], [&] (const Event &e) { 
                seq.record();
-               midi.on(akai_port, record_led)
-                   .off(akai_port, play_led);
+               midi.on(akai_port, midi_map["buttons"]["record"])
+                   .off(akai_port, midi_map["buttons"]["play"]);
           })
-          .button(akai_port, 7, [&] (const Event &e) { 
+          .button(akai_port, midi_map["buttons"]["stop"], [&] (const Event &e) { 
                seq.stop(); 
-               midi.off(akai_port, record_led)
-                   .off(akai_port, play_led);
+               midi.off(akai_port, midi_map["buttons"]["record"])
+                   .off(akai_port, midi_map["buttons"]["play"]);
           })
-          .button(akai_port, 10, [&] (const Event &e) { 
+          .button(akai_port, midi_map["buttons"]["play"], [&] (const Event &e) { 
                seq.play(); 
-               midi.off(akai_port, record_led)
-                   .on(akai_port, play_led);
+               midi.off(akai_port, midi_map["buttons"]["record"])
+                   .on(akai_port, midi_map["buttons"]["play"]);
           })
-          .button(akai_port, 13, [&] (const Event &e) { 
+          .button(akai_port, midi_map["buttons"]["clear"], [&] (const Event &e) { 
                seq.clear(); 
           })
-          .button(akai_port, 3, [&] (const Event &e) {
-               // decrease rate
+          .button(akai_port, midi_map["buttons"]["decrease_tempo"], [&] (const Event &e) {
                double tempo = seq.get_input("tempo");
                if ( tempo > 20 ) {
                     seq.set_input("tempo", tempo - 20);
                }
           })
-          .button(akai_port, 6, [&] (const Event &e) {
-               // increase rate
+          .button(akai_port, midi_map["buttons"]["increase_tempo"], [&] (const Event &e) {
                double tempo = seq.get_input("tempo");
                seq.set_input("tempo", tempo + 20);               
           })
-          .button(akai_port, 9, [&] (const Event &e) {
-               // decrease duration
+          .button(akai_port, midi_map["buttons"]["decrease_duration"], [&] (const Event &e) {
                double dur = seq.get_input("duration");
                if ( dur > 0.2 ) {
                     seq.set_input("duration", dur - 0.1);
                     DEBUG
                }
           })
-          .button(akai_port, 12, [&] (const Event &e) {
-               // increase duration
+          .button(akai_port, midi_map["buttons"]["increase_duration"], [&] (const Event &e) {
                double dur = seq.get_input("duration");
                if ( dur < 0.9 ) {
                     seq.set_input("duration", dur + 0.1);
@@ -226,14 +222,13 @@ int main(int argc, char * argv[]) {
                }
           });          
 
-
      // Go!
      synth.run(UNTIL_INTERRUPTED);
 
      // Shutdown
-     midi.off(akai_port, lpf_led)
-         .off(akai_port, filter_led)
-         .off(akai_port, hpf_led);
+     for ( auto& [_, id] : midi_map["buttons"].items() ) {
+       midi.off(akai_port, id);
+     }
 
      return 0;
 
