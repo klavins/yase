@@ -24,6 +24,8 @@ namespace yase {
       update_fcn = &Biquad::hpf;      
     } else if ( name == "apf" ) {
       update_fcn = &Biquad::apf;
+    } else if ( name == "bpf" ) {
+      update_fcn = &Biquad::bpf;
     } else {
       update_fcn = &Biquad::lpf;
     }
@@ -109,6 +111,22 @@ namespace yase {
     }
 
   }    
+
+  void Biquad::bpf() {
+
+    if ( prev_freq != inputs[frequency] || prev_res != inputs[resonance] || changed ) {
+
+      recalculate();
+      b[0] = inputs[resonance] * alpha,
+      b[1] = 0,
+      b[2] = -inputs[resonance] * alpha,
+      a[0] = 1 + alpha,
+      a[1] = -2 * cosw,
+      a[2] = 1 - alpha;     
+
+    }
+
+  }     
 
   void Biquad::apf() {
 

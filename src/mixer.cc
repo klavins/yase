@@ -29,5 +29,9 @@ namespace yase {
       outputs[signal] += inputs[n+i] * inputs[i];
   }    
 
+  void Mixer::set_amplitude_input(int i, double value) {
+    set_input(i+n, value);
+  }
+
 }
 

@@ -38,6 +38,7 @@ namespace yase {
       void lpf();
       void hpf();
       void apf();
+      void bpf();
 
     };
 

@@ -37,7 +37,8 @@
             "decrease_tempo": 3,
             "increase_tempo": 6,
             "decrease_duration": 9,
-            "increase_duration": 12
+            "increase_duration": 12,
+            "randomize": 26
         }
 
     }

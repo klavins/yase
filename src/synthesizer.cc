@@ -162,5 +162,12 @@ namespace yase {
     return *this;
   }
 
+  void Synthesizer::randomize_faders() {
+
+    for ( auto f : faders ) {
+      f->randomize();
+    }
+
+  }
 
 }

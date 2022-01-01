@@ -42,6 +42,8 @@ namespace yase {
 
       void run(int num_steps);
 
+      void randomize_faders();
+
     private:
 
       vector<Module *> modules;

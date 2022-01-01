@@ -16,6 +16,7 @@ namespace yase {
       void update();
 
       inline int amplitude_index(int i) { return n + i; }
+      void set_amplitude_input(int i, double value); 
 
     private:
 

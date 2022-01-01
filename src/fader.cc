@@ -1,5 +1,6 @@
 #include <iostream>
 #include <math.h>
+#include <stdlib.h>
 #include "fader.hh"
 #include "yase.hh"
 
@@ -28,9 +29,11 @@ namespace yase {
   }
 
   void Fader::update() {
-
     outputs[value] -= TS * FADER_GAIN * (outputs[value] - adjusted_target());
-
   }    
+
+  void Fader::randomize() {
+    set_input(target, rand() % 127 );
+  }
 
 }

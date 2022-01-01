@@ -31,6 +31,7 @@
 #include "vanderpol.hh"
 #include "noise.hh"
 #include "square.hh"
+#include "buzz.hh"
 #include "osc_group.hh"
 
 // Envelopes
@@ -39,5 +40,9 @@
 // Filters
 #include "iir_filter.hh"
 #include "biquad.hh"
+#include "resonator.hh"
+
+// Effects
+#include "compressor.hh"
 
 #endif

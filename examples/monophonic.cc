@@ -1,5 +1,7 @@
 #include <iostream>
 #include <fstream>
+#include <vector>
+#include <algorithm>
 #include "json.hpp"
 #include "yase.hh"
 
@@ -65,7 +67,7 @@ int main(int argc, char * argv[]) {
      filter_env_mixer.set_input(0, 1);
 
     // Keyboard Control
-    int num_keys = 0;
+    std::vector<int> keys;
     int keyboard_port = midi.get_port_id("Arturia KeyStep 32");
     synth.listen(MIDI_KEYDOWN, [&] (const Event &e) {
           if ( e.port == keyboard_port ) {
@@ -77,15 +79,22 @@ int main(int argc, char * argv[]) {
                env.set_input("velocity", e.value / 127.0);
                env.trigger();
                filter_env.trigger();
-               num_keys++;
+               keys.push_back(e.id);
           }
      })
      .listen(MIDI_KEYUP, [&] (const Event &e) {
           if ( e.port == keyboard_port ) {
-               num_keys--;
-               if ( num_keys == 0 ) {
+               keys.erase(std::remove(keys.begin(), keys.end(), e.id), keys.end());
+               if ( keys.size() == 0 ) {
                     env.release();
                     filter_env.release();
+               } else {
+                    Event temp(MIDI_KEYDOWN, keys.back(), 0, 0);
+                    for ( int i=0; i<3; i++ ) {
+                       osc[i].set_input("frequency", temp.frequency());
+                    }
+                    filter.set_input("offset", temp.frequency());
+                    filter.recalculate(); // TODO: filter could intercept set_input                    
                }
           }
      });
@@ -101,25 +110,25 @@ int main(int argc, char * argv[]) {
      synth.control(lfo, "frequency", 0.01, 10, midi_map["lfo_freq"])           // LFO
           .control(lfo, "amplitude", 0, 10,    midi_map["lfo_amp"])
 
-          .control(mod_mixer1, 2, 0, 10, midi_map["mod_mixer_lfo_ctrl"][0])    // OSC CONNECTIONS 
-          .control(mod_mixer1, 3, 0, 10, midi_map["mod_mixer_mod_ctrl"][0])
-          .control(mod_mixer2, 2, 0, 10, midi_map["mod_mixer_lfo_ctrl"][1])
-          .control(mod_mixer2, 3, 0, 10, midi_map["mod_mixer_mod_ctrl"][1])
+          .control(mod_mixer1, mod_mixer1.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][0])    // OSC CONNECTIONS 
+          .control(mod_mixer1, mod_mixer1.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][0])
+          .control(mod_mixer2, mod_mixer2.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][1])
+          .control(mod_mixer2, mod_mixer2.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][1])
           .control(osc2_lfo_gain, "amplitude", 0, 10, 50)
 
           .control(filter, "resonance", 0.1, 20, midi_map["filter_resonance"]) // FILTER
 
-          .control(filter_env, "attack", 0.005, 1,  midi_map["filter_env"]["A"])
-          .control(filter_env, "decay", 0.005, 1,   midi_map["filter_env"]["D"])
-          .control(filter_env, "sustain", 0, 1,     midi_map["filter_env"]["S"])
+          .control(filter_env, "attack",  0.005, 1, midi_map["filter_env"]["A"])
+          .control(filter_env, "decay",   0.005, 1, midi_map["filter_env"]["D"])
+          .control(filter_env, "sustain", 0,     1, midi_map["filter_env"]["S"])
           .control(filter_env, "release", 0.005, 1, midi_map["filter_env"]["R"])
 
-          .control(filter_env_mixer, 2, 1000, 6000, midi_map["filter_freq"] )
-          .control(filter_env_mixer, 3, 1000, 6000, midi_map["filter_eg_amt"] )
+          .control(filter_env_mixer, filter_env_mixer.amplitude_index(0), 10, 6000, midi_map["filter_freq"] )
+          .control(filter_env_mixer, filter_env_mixer.amplitude_index(1), 10, 6000, midi_map["filter_eg_amt"] )
 
-          .control(env, "attack", 0.005, 1,  midi_map["env"]["A"])             // ENVELOPE
-          .control(env, "decay", 0.005, 1,   midi_map["env"]["D"])
-          .control(env, "sustain", 0, 1,     midi_map["env"]["S"])
+          .control(env, "attack",  0.005, 1, midi_map["env"]["A"])             // ENVELOPE
+          .control(env, "decay",   0.005, 1, midi_map["env"]["D"])
+          .control(env, "sustain", 0,     1, midi_map["env"]["S"])
           .control(env, "release", 0.005, 1, midi_map["env"]["R"])
 
           .control(gain, "amplitude", 0, 0.25, midi_map["volume"]);            // VOLUME
@@ -156,13 +165,13 @@ int main(int argc, char * argv[]) {
               }
           });
 
-     // Sequencer setup
-     int reset_led = 1,
-         record_led = 4,
-         stop_led = 7,
-         play_led = 10,
-         clear_led = 13;
+     // Crazy randomize button
+     synth.button(akai_port, midi_map["buttons"]["randomize"], [&] (const Event &e) {
+          synth.randomize_faders();
+          gain.set_input("amplitude", 0.1);
+     });
 
+     // Sequencer setup
      synth.listen(MIDI_KEYDOWN, [&] (const Event &e) { 
              if ( e.port == keyboard_port ) {
                   seq.keydown(e); 
@@ -211,14 +220,12 @@ int main(int argc, char * argv[]) {
                double dur = seq.get_input("duration");
                if ( dur > 0.2 ) {
                     seq.set_input("duration", dur - 0.1);
-                    DEBUG
                }
           })
           .button(akai_port, midi_map["buttons"]["increase_duration"], [&] (const Event &e) {
                double dur = seq.get_input("duration");
                if ( dur < 0.9 ) {
                     seq.set_input("duration", dur + 0.1);
-                    DEBUG
                }
           });          
 

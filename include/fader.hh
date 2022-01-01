@@ -14,6 +14,7 @@ namespace yase {
       void init();
       void update();
       double adjusted_target();
+      void randomize();
 
     private:
 
