@@ -43,7 +43,7 @@ example:
 
 docs: docs/index.html
 
-docs/index.html: $(SOURCES) $(HEADERS) README.md docs.config dox/* examples/*.cc
+docs/index.html: $(SOURCES) $(HEADERS) README.md docs.config examples/*.cc
 	$(DGEN) $(DGENCONFIG)
 	cp .nojekyll docs
 
@@ -56,7 +56,7 @@ clean:
 #Full Clean, Objects and Binaries
 spotless: clean
 	@$(RM) -rf $(TARGETDIR)/$(TARGET) *.db
-	@$(RM) -rf build lib docs/*
+	@$(RM) -rf build lib html latex
 	cd test && $(MAKE) spotless
 
 wc:

@@ -13,6 +13,8 @@ namespace yase {
     using std::map;
     using std::vector;
 
+     //! An abstract base class for modules
+     //! Derived classes should imlement the init and update methods.
     class Module {
 
     friend class Synthesizer;
@@ -20,7 +22,16 @@ namespace yase {
     public:
 
     Module();
+
+    //! Initialization method. This method should be overridden by derived
+    //! classes. It will usually be called once, after all modules and
+    //! connections objects have been added to a synthesizer, but before
+    //! the synthesizer starts running.
     virtual void init() = 0;
+
+    //! Update method. This method should be  overridden by derived
+    //! classes. It will be called repeatedly by a synthesizer at a frequency
+    //! determined by SAMPLE_RATE.    
     virtual void update() = 0;
 
     int add_input(string name); // adds a new input to the object, 
