@@ -8,6 +8,8 @@
 
         "mod_mixer_lfo_ctrl": [51, 52], 
 
+        "osc2_lfo_gain": 50,
+
         "mod_mixer_mod_ctrl": [46, 47],
 
         "filter_resonance": 60,

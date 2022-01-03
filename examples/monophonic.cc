@@ -84,6 +84,7 @@ int main(int argc, char * argv[]) {
      })
      .listen(MIDI_KEYUP, [&] (const Event &e) {
           if ( e.port == keyboard_port ) {
+
                keys.erase(std::remove(keys.begin(), keys.end(), e.id), keys.end());
                if ( keys.size() == 0 ) {
                     env.release();
@@ -114,7 +115,7 @@ int main(int argc, char * argv[]) {
           .control(mod_mixer1, mod_mixer1.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][0])
           .control(mod_mixer2, mod_mixer2.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][1])
           .control(mod_mixer2, mod_mixer2.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][1])
-          .control(osc2_lfo_gain, "amplitude", 0, 10, 50)
+          .control(osc2_lfo_gain, "amplitude", 0, 10, midi_map["osc2_lfo_gain"])
 
           .control(filter, "resonance", 0.1, 20, midi_map["filter_resonance"]) // FILTER
 

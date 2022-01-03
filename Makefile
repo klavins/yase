@@ -1,5 +1,5 @@
 #Compilers
-CC          := g++ -std=c++20 -Wno-psabi
+CC          := g++ -std=c++20
 DGEN        := doxygen
 
 #The Target Binary Program
@@ -13,9 +13,9 @@ TARGETDIR   := ./lib
 SRCEXT      := cc
 
 #Flags, Libraries and Includes
-CFLAGS      := -ggdb
+CFLAGS      := -Wno-psabi -O3
 LIB         := -lgtest -lpthread 
-INC         := -I$(INCDIR)
+INC         := -I$(INCDIR)  -I ../json/include -I ../json/include/nlohmann
 INCDEP      := -I$(INCDIR)
 
 #Files
@@ -26,7 +26,6 @@ OBJECTS     := $(patsubst %.cc, $(BUILDDIR)/%.o, $(notdir $(SOURCES)))
 
 #Defauilt Make
 all: directories $(TARGETDIR)/$(TARGET) tests example
-	echo $(SOURCES) $(HEADERS)
 
 #Remake
 remake: cleaner all

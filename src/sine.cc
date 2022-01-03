@@ -3,6 +3,8 @@
 #include "sine.hh"
 #include "oscillator.hh"
 
+int p = 0;
+
 namespace yase {
 
   void Sine::update() {
@@ -12,4 +14,3 @@ namespace yase {
   }    
 
 }
-

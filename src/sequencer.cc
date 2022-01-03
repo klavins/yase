@@ -125,6 +125,31 @@ namespace yase {
     }
   }
 
+  void Sequencer::decrease_tempo(int amount) {
+      double x = inputs[tempo];
+      if ( x > amount ) {
+          inputs[tempo] = x - amount;
+      }
+  }
+
+  void Sequencer::increase_tempo(int amount) {
+     inputs[tempo] += amount;
+  }
+
+  void Sequencer::decrease_duration(double amount) {
+      double dur = inputs[duration];
+      if ( dur > amount ) {
+          inputs[duration] = dur - amount;
+      }
+  }
+
+  void Sequencer::increase_duration(double amount) {
+      double dur = inputs[duration];
+      if ( dur < 1.0 - amount ) {
+          inputs[duration] = dur + amount;
+      }
+  } 
+
 }
 
  

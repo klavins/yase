@@ -38,6 +38,8 @@ namespace yase {
     set_input(velocity, 1);  // sometimes envelopes have no inputs so
     set_input(signal,1);     // we need defaults or we'll get no signal
 
+    amplitude = 0;
+
   }
 
   void Envelope::init() {
@@ -85,7 +87,7 @@ namespace yase {
     if ( amplitude <= ENV_EPS ) {
       amplitude = 0.0;
       update_fcn = &Envelope::off;
-    }
+     }
   }   
 
 }

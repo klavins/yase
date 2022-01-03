@@ -32,6 +32,7 @@ namespace yase {
       void update();
       Synthesizer &add(Module &module);
       Synthesizer &listen(int event_type, function<void(const Event &)> handler);
+      Synthesizer &listen(int event_type, int port, function<void(const Event &)> handler);
       Synthesizer &connect(Module &source, string output, Module &dest, string input);
       Synthesizer &connect(Module &source, string output, Module &dest, int input);
       Synthesizer &disconnect(Module &source, string output, Module &dest, string input);

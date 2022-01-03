@@ -29,6 +29,11 @@ namespace yase {
       void play();
       void clear();
 
+      void decrease_tempo(int amount);
+      void increase_tempo(int amount);
+      void decrease_duration(double amount);
+      void increase_duration(double amount);
+
     private:
 
       vector<Event *> sequence;

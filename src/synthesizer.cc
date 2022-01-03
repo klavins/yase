@@ -122,6 +122,15 @@ namespace yase {
     return *this;
   }
 
+  Synthesizer &Synthesizer::listen(int event_type, int port, function<void(const Event &)> handler) {
+    listeners[event_type].push_back([port, handler] (const Event & e) {
+        if ( e.port == port ) {
+          handler(e);
+        }
+    });
+    return *this; 
+  }
+
   Synthesizer &Synthesizer::control(Module &fader, int midi_id) {
     listeners[MIDI_MOD].push_back([&fader, midi_id] (Event e) {
       if ( e.id == midi_id ) {

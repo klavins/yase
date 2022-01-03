@@ -17,6 +17,9 @@
 #include "sum.hh"
 #include "mixer.hh"
 
+// Utility
+#include "noop.hh"
+
 // Events
 #include "event.hh"
 
