@@ -35,7 +35,7 @@
             "stop": 7,
             "play": 10,
             "clear": 13,
-            "rest": 27,
+            "rest": 25,
             "decrease_tempo": 3,
             "increase_tempo": 6,
             "decrease_duration": 9,

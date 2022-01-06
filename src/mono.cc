@@ -117,8 +117,8 @@ namespace yase {
     listen(MIDI_KEYUP, keyboard_port, [&] (const Event &e) { seq.keyup(e); });
 
     // SEQUENCERS BUTTONS
-    button(controller_port, midi_map["buttons"]["rest"], [&] (const Event &e) { seq.insert_rest(); });
-    button(controller_port, midi_map["buttons"]["reset"], [&] (const Event &e) { seq.reset(); });
+    momentary(controller_port, midi, midi_map["buttons"]["rest"], [&] (const Event &e) { seq.insert_rest(); });
+    momentary(controller_port, midi, midi_map["buttons"]["reset"], [&] (const Event &e) { seq.reset(); });
     button(controller_port, midi_map["buttons"]["record"], [&] (const Event &e) { 
         seq.record();
         midi.on(controller_port, midi_map["buttons"]["record"])
@@ -134,11 +134,11 @@ namespace yase {
         midi.off(controller_port, midi_map["buttons"]["record"])
             .on(controller_port, midi_map["buttons"]["play"]);
     });
-    button(controller_port, midi_map["buttons"]["clear"], [&] (const Event &e) { seq.clear();  });
-    button(controller_port, midi_map["buttons"]["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
-    button(controller_port, midi_map["buttons"]["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
-    button(controller_port, midi_map["buttons"]["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
-    button(controller_port, midi_map["buttons"]["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
+    momentary(controller_port, midi, midi_map["buttons"]["clear"], [&] (const Event &e) { seq.clear(); });
+    momentary(controller_port, midi, midi_map["buttons"]["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
+    momentary(controller_port, midi, midi_map["buttons"]["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
+    momentary(controller_port, midi, midi_map["buttons"]["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
+    momentary(controller_port, midi, midi_map["buttons"]["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
 
   }
 

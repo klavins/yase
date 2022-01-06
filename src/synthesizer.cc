@@ -163,14 +163,36 @@ namespace yase {
   }  
 
   Synthesizer &Synthesizer::button(int port, int midi_id, function<void(const Event &)> handler) {
+
     listeners[MIDI_KEYDOWN].push_back([port, midi_id, handler] (Event e) {
       if ( e.port == port && e.id == midi_id ) {
         handler(e);
       }
     });
+
     return *this;
+
   }
 
+  Synthesizer &Synthesizer::momentary(int port, Midi &midi, int midi_id, function<void(const Event &)> handler) {
+
+    listeners[MIDI_KEYDOWN].push_back([port, &midi, midi_id, handler] (Event e) {
+      if ( e.port == port && e.id == midi_id ) {
+        handler(e);
+        midi.on(e.port, e.id);
+      }
+    });
+
+    listeners[MIDI_KEYUP].push_back([port, &midi, midi_id, handler] (Event e) {
+      if ( e.port == port && e.id == midi_id ) {
+        midi.off(e.port, e.id);
+      }
+    });
+
+    return *this;
+
+  }
+  
   void Synthesizer::randomize_faders() {
 
     for ( auto f : faders ) {

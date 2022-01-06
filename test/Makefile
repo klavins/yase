@@ -17,7 +17,7 @@ SRCEXT      := cc
 
 #Flags, Libraries and Includes
 CFLAGS      := -ggdb
-LIB         := -L../lib -lgtest -lpthread -lyase
+LIB         := -L../lib -lgtest -lpthread -lyase -lportaudio -lrtmidi
 INC         := -I$(INCDIR) -I../../json/include -I../../json/include/nlohmann
 INCDEP      := -I$(INCDIR)
 ELMALIB		:= ../lib/libyase.a
