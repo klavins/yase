@@ -1,5 +1,4 @@
 #include <iostream>
-#include <fstream>
 #include <vector>
 #include <algorithm>
 #include "json.hpp"
@@ -11,25 +10,22 @@ using namespace nlohmann;
 
 int main(int argc, char * argv[]) {
 
-    // Components
-    Synthesizer synth("MIDI Mix"); 
-    Midi midi;
+    json config = get_config("config/akai-monophonic.json");
 
-    std::ifstream config_stream("config/akai-monophonic.json");
-    json config, midi_map;
-    config_stream >> config; 
-    midi_map = config["midi_ids"];
-    int keyboard_port = midi.get_port_id("Arturia KeyStep 32");
-    int controller_port = midi.get_port_id("MIDI Mix");
-    string button_device_name = "MIDI Mix";
+    // Components
+    Synthesizer synth(config["controller"]); 
+    Midi midi;
+   
+    int keyboard_port = midi.get_port_id(config["keyboard"]);
+    int controller_port = midi.get_port_id(config["controller"]);
 
     Audio audio;  
     Mixer mixer(4);  
     Mono mono[]{
-         Mono(midi, midi_map, button_device_name, keyboard_port, controller_port), 
-         Mono(midi, midi_map, button_device_name, keyboard_port, controller_port), 
-         Mono(midi, midi_map, button_device_name, keyboard_port, controller_port), 
-         Mono(midi, midi_map, button_device_name, keyboard_port, controller_port)
+         Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port), 
+         Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port), 
+         Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port), 
+         Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port)
     };
 
     synth.add(midi).add(audio).add(mixer);

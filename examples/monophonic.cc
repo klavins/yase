@@ -11,21 +11,18 @@ using namespace nlohmann;
 
 int main(int argc, char * argv[]) {
 
+     json config = get_config("config/akai-monophonic.json");
+
      // Components
-     Synthesizer synth("MIDI Mix"); 
+     Synthesizer synth(config["controller"]); 
      Audio audio;
      Midi midi;
 
      // Load config file
-     std::ifstream config_stream("config/akai-monophonic.json");
-     json config, midi_map;
-     config_stream >> config; 
-     midi_map = config["midi_ids"];
-     int keyboard_port = midi.get_port_id("Arturia KeyStep 32");
-     int controller_port = midi.get_port_id("MIDI Mix");
-     string button_device_name = "MIDI Mix";
+     int keyboard_port = midi.get_port_id(config["keyboard"]);
+     int controller_port = midi.get_port_id(config["controller"]);
 
-     Mono mono(midi, midi_map, "MIDI Mix", keyboard_port, controller_port);
+     Mono mono(midi, config["ids"], config["controller"], keyboard_port, controller_port);
 
      synth.add(mono)
           .add(audio)

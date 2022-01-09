@@ -123,23 +123,24 @@ namespace yase {
     listen(MIDI_KEYUP, keyboard_port, [&] (const Event &e) { seq.keyup(e); });
 
     // SEQUENCERS BUTTONS
+    json button = midi_map["buttons"];
 
     mutex({
-        midi_map["buttons"]["stop"], 
-        midi_map["buttons"]["record"],
-        midi_map["buttons"]["play"] }, {
+        button["stop"], 
+        button["record"],
+        button["play"] }, {
         [&] (const Event &e) { seq.stop(); },
         [&] (const Event &e) { seq.record(); },
         [&] (const Event &e) { seq.play(); }
     });
 
-    momentary(midi_map["buttons"]["rest"], [&] (const Event &e) { seq.insert_rest(); });
-    momentary(midi_map["buttons"]["reset"], [&] (const Event &e) { seq.reset(); });
-    momentary(midi_map["buttons"]["clear"], [&] (const Event &e) { seq.clear(); });
-    momentary(midi_map["buttons"]["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
-    momentary(midi_map["buttons"]["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
-    momentary(midi_map["buttons"]["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
-    momentary(midi_map["buttons"]["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
+    momentary(button["rest"], [&] (const Event &e) { seq.insert_rest(); });
+    momentary(button["reset"], [&] (const Event &e) { seq.reset(); });
+    momentary(button["clear"], [&] (const Event &e) { seq.clear(); });
+    momentary(button["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
+    momentary(button["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
+    momentary(button["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
+    momentary(button["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
 
   }
 

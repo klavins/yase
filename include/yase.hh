@@ -7,6 +7,7 @@
 #include "module.hh"
 #include "synthesizer.hh"
 #include "sequencer.hh"
+#include "util.hh"
 
 // Controllers
 #include "event_manager.hh"

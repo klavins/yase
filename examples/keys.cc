@@ -5,7 +5,9 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Synthesizer synth("MIDI Mix");     
+    json config = get_config("config/akai-monophonic.json");
+
+    Synthesizer synth(config["controller"]);     
     Saw osc;
     Sine lfo;
     Audio audio;

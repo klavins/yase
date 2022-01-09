@@ -1,5 +1,10 @@
 {
-    "midi_ids": {
+
+    "keyboard": "Arturia KeyStep 32",
+
+    "controller": "MIDI Mix",
+
+    "ids": {
 
         "osc_selectors": [16, 17, 18],
 

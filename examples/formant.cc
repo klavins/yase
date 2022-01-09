@@ -8,8 +8,10 @@ using namespace nlohmann;
 
 int main(int argc, char * argv[]) {
 
+    json config = get_config("config/akai-monophonic.json");
+
     // Components
-    Synthesizer synth("MIDI Mix"); 
+    Synthesizer synth(config["controller"]); 
 
     Buzz osc;
     Envelope env;
@@ -20,11 +22,8 @@ int main(int argc, char * argv[]) {
     Mixer mixer(3);
     Gain gain;
     Compressor compressor;
-
-    std::ifstream config_stream("config/akai-monophonic.json");
-    json config, midi_map;
-    config_stream >> config; 
-    midi_map = config["midi_ids"];    
+ 
+    json midi_map = config["ids"];    
 
     synth.add(osc)
          .add(env)
