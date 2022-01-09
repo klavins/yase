@@ -7,7 +7,7 @@ int main(int argc, char * argv[]) {
 
     Midi midi;
     Audio audio; // need to throttle execution
-    Synthesizer synth;
+    Container synth;
     ButtonManager buttons("MIDI Mix");
 
     synth.add(midi)

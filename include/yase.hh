@@ -5,13 +5,14 @@
 #include "globals.hh"
 #include "exception.hh"
 #include "module.hh"
-#include "synthesizer.hh"
+#include "container.hh"
 #include "sequencer.hh"
 #include "util.hh"
 
 // Controllers
 #include "event_manager.hh"
 #include "button_manager.hh"
+#include "fader_manager.hh"
 #include "midi.hh"
 #include "fader.hh"
 

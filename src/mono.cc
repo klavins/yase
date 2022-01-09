@@ -4,7 +4,7 @@
 namespace yase {
 
   Mono::Mono(Midi &midi_module, json &midi_map, string button_device_name, int kp, int cp) : 
-                 Synthesizer(), 
+                 Container(), 
                  buttons(button_device_name),
                  mixer(3),
                  mod_mixer1(2),
@@ -36,7 +36,9 @@ namespace yase {
     add(seq);    
     add(noop);
     add(buttons);
+    add(controls);
     propagate_to(buttons);
+    propagate_to(controls);
 
     // CONNECTIONS
     for ( int i=0; i<3; i++ ) 
@@ -69,41 +71,41 @@ namespace yase {
     }    
 
     // LFO CONTROLS
-    control(lfo, "frequency", 0.01, 10, midi_map["lfo_freq"]);
-    control(lfo, "amplitude", 0, 10,    midi_map["lfo_amp"]);
+    controls.control(lfo, "frequency", 0.01, 10, midi_map["lfo_freq"]);
+    controls.control(lfo, "amplitude", 0, 10,    midi_map["lfo_amp"]);
 
     // OSCILLATOR MODULATION CONTROLS
     // CHECK: DOES EACH OSCILLATOR HAVE AN LFO GAIN?
-    control(mod_mixer1, mod_mixer1.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][0]); 
-    control(mod_mixer1, mod_mixer1.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][0]);
-    control(mod_mixer2, mod_mixer2.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][1]);
-    control(mod_mixer2, mod_mixer2.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][1]);
-    control(osc2_lfo_gain, "amplitude", 0, 10, 50);
+    controls.control(mod_mixer1, mod_mixer1.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][0]); 
+    controls.control(mod_mixer1, mod_mixer1.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][0]);
+    controls.control(mod_mixer2, mod_mixer2.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][1]);
+    controls.control(mod_mixer2, mod_mixer2.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][1]);
+    controls.control(osc2_lfo_gain, "amplitude", 0, 10, 50);
 
     // OSCILLATOR AMPLITUDES AND MIXING
     for (int i=0; i<3; i++) {
-        control(mixer, i+3,          0, 1, midi_map["amplitudes"][i]);
-        control(osc[i], "tuning",   -7, 8, midi_map["tunings"][i]);
-        control(osc[i], "harmonic", -2, 3, midi_map["harmonics"][i]);
+        controls.control(mixer, i+3,          0, 1, midi_map["amplitudes"][i]);
+        controls.control(osc[i], "tuning",   -7, 8, midi_map["tunings"][i]);
+        controls.control(osc[i], "harmonic", -2, 3, midi_map["harmonics"][i]);
     }        
 
     // FILTER CONTROLS
-    control(filter, "resonance", 0.1, 20, midi_map["filter_resonance"]);
-    control(filter_env, "attack",  0.005, 1, midi_map["filter_env"]["A"]);
-    control(filter_env, "decay",   0.005, 1, midi_map["filter_env"]["D"]);
-    control(filter_env, "sustain", 0,     1, midi_map["filter_env"]["S"]);
-    control(filter_env, "release", 0.005, 1, midi_map["filter_env"]["R"]);
-    control(filter_env_mixer, filter_env_mixer.amplitude_index(0), 10, 6000, midi_map["filter_freq"] );
-    control(filter_env_mixer, filter_env_mixer.amplitude_index(1), 10, 6000, midi_map["filter_eg_amt"] );
+    controls.control(filter, "resonance", 0.1, 20, midi_map["filter_resonance"]);
+    controls.control(filter_env, "attack",  0.005, 1, midi_map["filter_env"]["A"]);
+    controls.control(filter_env, "decay",   0.005, 1, midi_map["filter_env"]["D"]);
+    controls.control(filter_env, "sustain", 0,     1, midi_map["filter_env"]["S"]);
+    controls.control(filter_env, "release", 0.005, 1, midi_map["filter_env"]["R"]);
+    controls.control(filter_env_mixer, filter_env_mixer.amplitude_index(0), 10, 6000, midi_map["filter_freq"] );
+    controls.control(filter_env_mixer, filter_env_mixer.amplitude_index(1), 10, 6000, midi_map["filter_eg_amt"] );
 
     // MAIN ENVELOPE
-    control(env, "attack",  0.005, 1, midi_map["env"]["A"]);
-    control(env, "decay",   0.005, 1, midi_map["env"]["D"]);
-    control(env, "sustain", 0,     1, midi_map["env"]["S"]);
-    control(env, "release", 0.005, 1, midi_map["env"]["R"]);
+    controls.control(env, "attack",  0.005, 1, midi_map["env"]["A"]);
+    controls.control(env, "decay",   0.005, 1, midi_map["env"]["D"]);
+    controls.control(env, "sustain", 0,     1, midi_map["env"]["S"]);
+    controls.control(env, "release", 0.005, 1, midi_map["env"]["R"]);
 
     // VOLUME
-    control(gain, "amplitude", 0, 0.25, midi_map["volume"]);
+    controls.control(gain, "amplitude", 0, 0.25, midi_map["volume"]);
 
     json button = midi_map["buttons"];
 
@@ -119,7 +121,7 @@ namespace yase {
 
     // KILLER RANDOMIZE BUTTON
     buttons.momentary(midi_map["buttons"]["randomize"], [&] (const Event &e) {
-          randomize_faders();
+          controls.randomize_faders();
           gain.set_input("amplitude", 0.1);
     });    
 
@@ -152,11 +154,11 @@ namespace yase {
   }
 
   void Mono::init() {
-      Synthesizer::init();
+      Container::init();
   }
 
   void Mono::update() {
-    Synthesizer::update();
+    Container::update();
     gain.copy_outputs(*this);
   }   
 

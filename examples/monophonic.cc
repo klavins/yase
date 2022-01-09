@@ -14,7 +14,7 @@ int main(int argc, char * argv[]) {
      json config = get_config("config/akai-monophonic.json");
 
      // Components
-     Synthesizer synth;
+     Container synth;
      Audio audio;
      Midi midi;
 

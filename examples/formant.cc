@@ -11,7 +11,7 @@ int main(int argc, char * argv[]) {
     json config = get_config("config/akai-monophonic.json");
 
     // Components
-    Synthesizer synth; 
+    Container synth; 
 
     Buzz osc;
     Envelope env;
@@ -22,6 +22,7 @@ int main(int argc, char * argv[]) {
     Mixer mixer(3);
     Gain gain;
     Compressor compressor;
+    FaderManager controls;
  
     json midi_map = config["ids"];    
 
@@ -33,7 +34,9 @@ int main(int argc, char * argv[]) {
          .add(midi)
          .add(audio)
          .add(gain)
-         .add(compressor);
+         .add(compressor)
+         .add(controls)
+         .propagate_to(controls);
 
     lpf.set_type("lpf");
     lpf.set_type("hpf");
@@ -46,9 +49,9 @@ int main(int argc, char * argv[]) {
       synth.add(formant[i]);
       synth.connect(osc, "signal", formant[i], "signal");
       synth.connect(formant[i], "signal", mixer, i );
-      synth.control(formant[i], "radius", 0, 0.99, freq_id[i]);
-      synth.control(formant[i], "theta", 0, 2*3.14159, res_id[i]);      
-      synth.control(mixer, mixer.amplitude_index(i), 0, 0.33, amp_id[i]);
+      controls.control(formant[i], "radius", 0, 0.99, freq_id[i]);
+      controls.control(formant[i], "theta", 0, 2*3.14159, res_id[i]);      
+      controls.control(mixer, mixer.amplitude_index(i), 0, 0.33, amp_id[i]);
     }
 
     synth.connect(mixer, "signal", env, "signal");
@@ -83,18 +86,18 @@ int main(int argc, char * argv[]) {
           }
      });   
 
-    synth.control(env, "attack",  0.005, 1, midi_map["env"]["A"])             // ENVELOPE
-         .control(env, "decay",   0.005, 1, midi_map["env"]["D"])
-         .control(env, "sustain", 0,     1, midi_map["env"]["S"])
-         .control(env, "release", 0.005, 1, midi_map["env"]["R"]);
+    controls.control(env, "attack",  0.005, 1, midi_map["env"]["A"])             // ENVELOPE
+            .control(env, "decay",   0.005, 1, midi_map["env"]["D"])
+            .control(env, "sustain", 0,     1, midi_map["env"]["S"])
+            .control(env, "release", 0.005, 1, midi_map["env"]["R"]);
 
-    synth.control(hpf, "frequency", 50, 20000, 57);            // LPF
-    synth.control(hpf, "resonance", 0.1, 25, 61);
+    controls.control(hpf, "frequency", 50, 20000, 57);            // LPF
+    controls.control(hpf, "resonance", 0.1, 25, 61);
 
-    synth.control(lpf, "frequency", 50, 20000, 49);            // HPF
-    synth.control(lpf, "resonance", 0.1, 25, 53);
+    controls.control(lpf, "frequency", 50, 20000, 49);            // HPF
+    controls.control(lpf, "resonance", 0.1, 25, 53);
 
-    synth.control(gain, "amplitude", 0, 0.125, midi_map["volume"]);            // VOLUME         
+    controls.control(gain, "amplitude", 0, 0.125, midi_map["volume"]);            // VOLUME         
 
     synth.run(UNTIL_INTERRUPTED);
 

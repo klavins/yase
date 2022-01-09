@@ -7,8 +7,9 @@ int main(int argc, char * argv[]) {
 
     json config = get_config("config/akai-monophonic.json");
 
-    Synthesizer synth;
+    Container synth;
     ButtonManager buttons(config["controller"]);     
+    FaderManager controls;
     Saw osc;
     Sine lfo;
     Audio audio;
@@ -29,7 +30,9 @@ int main(int argc, char * argv[]) {
          .add(lfo)
          .add(gain)
          .add(buttons)
-         .propagate_to(buttons);
+         .add(controls)
+         .propagate_to(buttons)
+         .propagate_to(controls);
 
     synth.connect( osc,    "signal", filter, "signal")
          .connect( filter, "signal", env,    "signal")
@@ -63,13 +66,13 @@ int main(int argc, char * argv[]) {
           }
      });
 
-     synth.control(env, "attack",  0.005, 1, 19)
-          .control(env, "decay",   0.005, 1, 23)
-          .control(env, "sustain", 0,     1, 27)
-          .control(env, "release", 0.005, 1, 31)
-          .control(gain, "amplitude", 0, 0.25, 62)
-          .control(filter, "frequency", 1000, 6000, 56)
-          .control(filter, "resonance", 0.1, 20, 60);
+     controls.control(env, "attack",  0.005, 1, 19)
+             .control(env, "decay",   0.005, 1, 23)
+             .control(env, "sustain", 0,     1, 27)
+             .control(env, "release", 0.005, 1, 31)
+             .control(gain, "amplitude", 0, 0.25, 62)
+             .control(filter, "frequency", 1000, 6000, 56)
+             .control(filter, "resonance", 0.1, 20, 60);
 
      buttons.mutex({1, 4, 7}, {
           [&] (const Event &e) { osc.set_type("raw");      },

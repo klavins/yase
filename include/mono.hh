@@ -2,13 +2,14 @@
 #define YASE_MONO_H
 
 #include "json.hpp"
+#include "fader_manager.hh"
 #include "yase.hh"
 
 namespace yase {
 
     using namespace nlohmann;  
 
-    class Mono : public Synthesizer {
+    class Mono : public Container {
 
     public:
 
@@ -30,6 +31,7 @@ namespace yase {
       OscGroup osc[3];
 
       ButtonManager buttons;
+      FaderManager controls;
 
       Sine lfo;
 

@@ -5,7 +5,7 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Synthesizer synth;
+    Container synth;
     Midi midi;
     Audio audio; // for throttling
 

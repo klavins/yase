@@ -13,6 +13,7 @@ int main(int argc, char * argv[]) {
     Square square;
     VanDerPol vdp;
     Noise noise;
+    FaderManager controls;
 
     add.set_type("additive");
 
@@ -31,21 +32,24 @@ int main(int argc, char * argv[]) {
     Sum sum(oscillators.size());
     Midi midi;
     Audio audio;
-    Synthesizer synth;
+    Container synth;
 
     synth.add(sum)
          .add(audio)
-         .add(midi);
+         .add(midi)
+         .add(controls)
+         .propagate_to(controls);
 
     int i = 0;
     for ( auto osc : oscillators ) {
         Fader * fader = new Fader(0,1);
         faders.push_back(fader);
         synth.add(*osc)
-             .add(*fader)
-             .control(*fader, midi_ids[i])
-             .connect(*fader, "value", *osc, "amplitude")
-             .connect(*osc, "signal", sum, "signal_" + std::to_string(i));
+             .add(*fader);
+
+        controls.control(*fader, midi_ids[i])
+                .connect(*fader, "value", *osc, "amplitude")
+                .connect(*osc, "signal", sum, "signal_" + std::to_string(i));
         fader->set_input("target",0);
         osc->set_input("amplitude",0);
         i++;

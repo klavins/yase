@@ -1,6 +1,6 @@
 #include "module.hh"
 #include "exception.hh"
-#include "synthesizer.hh"
+#include "container.hh"
 #include "gtest/gtest.h"
 
 namespace {
@@ -45,7 +45,7 @@ namespace {
 
     TEST(PASSTHROUGH,CONNECTIONS) {
         PassThrough a, b;
-        Synthesizer synth;
+        Container synth;
         synth.add(a)
              .add(b)
              .connect(a, "signal_out", b, "signal_in");
