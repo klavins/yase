@@ -12,20 +12,14 @@ namespace yase {
 
     public:
 
-      Mono(Midi &midi_module, json &midi_map, int kp, int cp);
+      Mono(Midi &midi_module, json &midi_map, string button_device_name, int kp, int cp);
       void init();
       void update();
 
       void keydown(const Event &e);
       void keyup(const Event &e);
-
       void select(const Event &e, int i);
-
       void init_leds();
-      void choose_lpf();
-      void choose_hpf();
-      void toggle_filter();
-
       void inject(Event e);
 
     private:

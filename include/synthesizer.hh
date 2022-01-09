@@ -12,6 +12,7 @@
 #include "event.hh"
 #include "fader.hh"
 #include "midi.hh"
+#include "button_manager.hh"
 
 namespace yase {
 
@@ -23,20 +24,16 @@ namespace yase {
 
     typedef tuple<Module &, int, Module &, int> Wire;
 
-    class Synthesizer : public Module {
+    class Synthesizer : public ButtonManager {
 
     public:
 
-      Synthesizer();
+      Synthesizer(string button_device_name);
       ~Synthesizer();
       void init();
       void update();
       Synthesizer &add(Module &module);
       void run(int num_steps);
-
-      // Events
-      Synthesizer &listen(int event_type, function<void(const Event &)> handler);
-      Synthesizer &listen(int event_type, int port, function<void(const Event &)> handler);
 
       // Connectivity
       Synthesizer &connect(Module &source, string output, Module &dest, string input);
@@ -47,20 +44,14 @@ namespace yase {
       Synthesizer &control(Module &fader, int midi_id);
       Synthesizer &control(Module &module, string name, double min, double max, int midi_id);
       Synthesizer &control(Module &module, int index, double min, double max, int midi_id);
-      void randomize_faders();
-
-      // Buttons
-      Synthesizer &button(int port, int midi_id, function<void(const Event &)> handler);
-      Synthesizer &momentary(int port, Midi &midi, int midi_id, function<void(const Event &)> handler);
+      void randomize_faders();          
 
     private:
 
       vector<Module *> modules;
       vector<Wire> wires;
       int sample_rate; 
-
-      map<int,vector<function<void(const Event&)>>> listeners;
-      vector<Fader *> faders;
+      std::vector<Fader *> faders;
 
     };
 }

@@ -5,7 +5,7 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Synthesizer synth;     
+    Synthesizer synth("MIDI Mix");     
 
     Saw osc;
     Sine lfo;
@@ -79,16 +79,24 @@ int main(int argc, char * argv[]) {
           .control(release, 31);
 
      // MIDI Buttons
-     int akai_port = midi.get_port_id("MIDI Mix");
-     synth.button(akai_port, 1,  [&] (const Event &e) { osc.set_type("raw");      })
-          .button(akai_port, 4,  [&] (const Event &e) { osc.set_type("ptr1");     })
-          .button(akai_port, 7,  [&] (const Event &e) { osc.set_type("additive"); })
-          .button(akai_port, 13, [&] (const Event &e) { filter.set_type("lpf");   })
-          .button(akai_port, 16, [&] (const Event &e) { filter.set_type("hpf");   })
-          .button(akai_port, 19, [&] (const Event &e) { filter.set_type("apf");   })
-          .button(akai_port, 22, [&] (const Event &e) { filter.toggle();          });
+
+     synth.mutex({1, 4, 7}, {
+          [&] (const Event &e) { osc.set_type("raw");      },
+          [&] (const Event &e) { osc.set_type("ptr1");     },
+          [&] (const Event &e) { osc.set_type("additive"); }
+     });
+
+     synth.mutex({3, 6, 9}, {
+          [&] (const Event &e) { filter.set_type("lpf");   },
+          [&] (const Event &e) { filter.set_type("hpf");   },
+          [&] (const Event &e) { filter.set_type("apf");   }
+     });
+
+     synth.toggle(22, [&] (const Event &e) { filter.toggle(); }, true);
 
      synth.run(UNTIL_INTERRUPTED);
+
+     synth.clear_leds();
 
      return 0;
 

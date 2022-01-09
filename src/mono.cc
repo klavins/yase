@@ -3,7 +3,8 @@
 
 namespace yase {
 
-  Mono::Mono(Midi &midi_module, json &midi_map, int kp, int cp) : Synthesizer(), 
+  Mono::Mono(Midi &midi_module, json &midi_map, string button_device_name, int kp, int cp) : 
+                 Synthesizer(button_device_name), 
                  mixer(3),
                  mod_mixer1(2),
                  mod_mixer2(2),
@@ -102,12 +103,17 @@ namespace yase {
     control(gain, "amplitude", 0, 0.25, midi_map["volume"]);
 
     // BUTTONS FOR FILTER SELECTION
-    button(controller_port, midi_map["buttons"]["lpf"], [&] (const Event &e) { choose_lpf(); });
-    button(controller_port, midi_map["buttons"]["hpf"], [&] (const Event &e) { choose_hpf(); });
-    button(controller_port, midi_map["buttons"]["filter_toggle"], [&] (const Event &e) { toggle_filter(); });
+    mutex({midi_map["buttons"]["lpf"], midi_map["buttons"]["hpf"]}, {
+          [&] (const Event &e) { filter.set_type("lpf"); }, 
+          [&] (const Event &e) { filter.set_type("hpf"); }
+          });
+
+    toggle(midi_map["buttons"]["filter_toggle"], [&] (const Event &e) {
+              filter.toggle();
+          }, true);
 
     // KILLER RANDOMIZE BUTTON
-    button(controller_port, midi_map["buttons"]["randomize"], [&] (const Event &e) {
+    momentary(midi_map["buttons"]["randomize"], [&] (const Event &e) {
           randomize_faders();
           gain.set_input("amplitude", 0.1);
     });    
@@ -117,28 +123,23 @@ namespace yase {
     listen(MIDI_KEYUP, keyboard_port, [&] (const Event &e) { seq.keyup(e); });
 
     // SEQUENCERS BUTTONS
-    momentary(controller_port, midi, midi_map["buttons"]["rest"], [&] (const Event &e) { seq.insert_rest(); });
-    momentary(controller_port, midi, midi_map["buttons"]["reset"], [&] (const Event &e) { seq.reset(); });
-    button(controller_port, midi_map["buttons"]["record"], [&] (const Event &e) { 
-        seq.record();
-        midi.on(controller_port, midi_map["buttons"]["record"])
-            .off(controller_port, midi_map["buttons"]["play"]);
+
+    mutex({
+        midi_map["buttons"]["stop"], 
+        midi_map["buttons"]["record"],
+        midi_map["buttons"]["play"] }, {
+        [&] (const Event &e) { seq.stop(); },
+        [&] (const Event &e) { seq.record(); },
+        [&] (const Event &e) { seq.play(); }
     });
-    button(controller_port, midi_map["buttons"]["stop"], [&] (const Event &e) { 
-        seq.stop(); 
-        midi.off(controller_port, midi_map["buttons"]["record"])
-            .off(controller_port, midi_map["buttons"]["play"]);
-    });
-    button(controller_port, midi_map["buttons"]["play"], [&] (const Event &e) { 
-        seq.play(); 
-        midi.off(controller_port, midi_map["buttons"]["record"])
-            .on(controller_port, midi_map["buttons"]["play"]);
-    });
-    momentary(controller_port, midi, midi_map["buttons"]["clear"], [&] (const Event &e) { seq.clear(); });
-    momentary(controller_port, midi, midi_map["buttons"]["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
-    momentary(controller_port, midi, midi_map["buttons"]["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
-    momentary(controller_port, midi, midi_map["buttons"]["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
-    momentary(controller_port, midi, midi_map["buttons"]["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
+
+    momentary(midi_map["buttons"]["rest"], [&] (const Event &e) { seq.insert_rest(); });
+    momentary(midi_map["buttons"]["reset"], [&] (const Event &e) { seq.reset(); });
+    momentary(midi_map["buttons"]["clear"], [&] (const Event &e) { seq.clear(); });
+    momentary(midi_map["buttons"]["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
+    momentary(midi_map["buttons"]["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
+    momentary(midi_map["buttons"]["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
+    momentary(midi_map["buttons"]["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
 
   }
 
@@ -148,39 +149,12 @@ namespace yase {
 
   void Mono::init() {
       Synthesizer::init();
-      init_leds();
   }
 
   void Mono::update() {
     Synthesizer::update();
     gain.copy_outputs(*this);
   }   
-
-  void Mono::init_leds() {
-    midi.on(controller_port, midi_map["buttons"]["lpf"])
-        .on(controller_port, midi_map["buttons"]["filter_toggle"])
-        .off(controller_port, midi_map["buttons"]["hpf"]);
-  }
-
-  void Mono::choose_lpf() {
-      filter.set_type("lpf");   
-      midi.on(controller_port, midi_map["buttons"]["lpf"])
-          .off(controller_port, midi_map["buttons"]["hpf"]);
-  }
-
-  void Mono::choose_hpf() {
-      filter.set_type("hpf");
-      midi.off(controller_port, midi_map["buttons"]["lpf"])
-          .on(controller_port, midi_map["buttons"]["hpf"]);    
-  }
-
-  void Mono::toggle_filter() {
-      if ( filter.toggle() ) {
-            midi.on(controller_port, midi_map["buttons"]["filter_toggle"]);
-      } else {
-            midi.off(controller_port, midi_map["buttons"]["filter_toggle"]);
-      }
-  }
 
   void Mono::select(const Event &e, int i) {
     if ( e.id == midi_map["osc_selectors"][i] ) osc[i].select(e.value / 127.0);     

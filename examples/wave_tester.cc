@@ -31,7 +31,7 @@ int main(int argc, char * argv[]) {
     Sum sum(oscillators.size());
     Midi midi;
     Audio audio;
-    Synthesizer synth;
+    Synthesizer synth("MIDI Mix");
 
     synth.add(sum)
          .add(audio)

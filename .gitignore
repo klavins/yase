@@ -5,6 +5,7 @@ test/build
 examples/bin
 build/
 tmp/
+temp/
 ~*
 *.a
 .DS_Store

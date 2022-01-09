@@ -45,7 +45,7 @@ namespace {
 
     TEST(PASSTHROUGH,CONNECTIONS) {
         PassThrough a, b;
-        Synthesizer synth;
+        Synthesizer synth("Midi Mix");
         synth.add(a)
              .add(b)
              .connect(a, "signal_out", b, "signal_in");

@@ -9,6 +9,8 @@
 #include "sequencer.hh"
 
 // Controllers
+#include "event_manager.hh"
+#include "button_manager.hh"
 #include "midi.hh"
 #include "fader.hh"
 

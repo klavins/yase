@@ -7,7 +7,7 @@ int main(int argc, char * argv[]) {
 
     Sine sine1, sine2;
     Audio audio;
-    Synthesizer synth;
+    Synthesizer synth("MIDI Mix");
     
     sine1.set_input("frequency", 440);
     sine2.set_input("frequency", 441);

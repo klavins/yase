@@ -9,7 +9,7 @@ using namespace nlohmann;
 int main(int argc, char * argv[]) {
 
     // Components
-    Synthesizer synth; 
+    Synthesizer synth("MIDI Mix"); 
 
     Buzz osc;
     Envelope env;

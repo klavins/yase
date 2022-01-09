@@ -10,7 +10,7 @@ int main(int argc, char * argv[]) {
     Fader fader1(55,110), fader2(55,110);
     Audio audio;
     Midi midi;
-    Synthesizer synth;
+    Synthesizer synth("MIDI Mix");
 
     osc1.set_input("frequency", 55);
     osc2.set_input("frequency", 55);

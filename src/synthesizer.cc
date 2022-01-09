@@ -16,7 +16,7 @@ void sighandler(int sig) {
 
 namespace yase {
 
-  Synthesizer::Synthesizer() {
+  Synthesizer::Synthesizer(string button_device_name) : ButtonManager(button_device_name) {
 
   }
 
@@ -79,6 +79,9 @@ namespace yase {
 
   void Synthesizer::update() {
 
+    // UPDATE BUTTON MANAGER
+    ButtonManager::update();
+
     // WIRES
     for(Wire & w : wires) {
       DEST(w).set_input(INPUT(w), SOURCE(w).get_output(OUTPUT(w)));
@@ -117,20 +120,6 @@ namespace yase {
     
   } 
 
-  Synthesizer &Synthesizer::listen(int event_type, std::function<void(const Event &)> handler) {
-    listeners[event_type].push_back(handler);
-    return *this;
-  }
-
-  Synthesizer &Synthesizer::listen(int event_type, int port, function<void(const Event &)> handler) {
-    listeners[event_type].push_back([port, handler] (const Event & e) {
-        if ( e.port == port ) {
-          handler(e);
-        }
-    });
-    return *this; 
-  }
-
   Synthesizer &Synthesizer::control(Module &fader, int midi_id) {
     listeners[MIDI_MOD].push_back([&fader, midi_id] (Event e) {
       if ( e.id == midi_id ) {
@@ -160,39 +149,8 @@ namespace yase {
     faders.push_back(fader);
     return *this;
 
-  }  
+  }    
 
-  Synthesizer &Synthesizer::button(int port, int midi_id, function<void(const Event &)> handler) {
-
-    listeners[MIDI_KEYDOWN].push_back([port, midi_id, handler] (Event e) {
-      if ( e.port == port && e.id == midi_id ) {
-        handler(e);
-      }
-    });
-
-    return *this;
-
-  }
-
-  Synthesizer &Synthesizer::momentary(int port, Midi &midi, int midi_id, function<void(const Event &)> handler) {
-
-    listeners[MIDI_KEYDOWN].push_back([port, &midi, midi_id, handler] (Event e) {
-      if ( e.port == port && e.id == midi_id ) {
-        handler(e);
-        midi.on(e.port, e.id);
-      }
-    });
-
-    listeners[MIDI_KEYUP].push_back([port, &midi, midi_id, handler] (Event e) {
-      if ( e.port == port && e.id == midi_id ) {
-        midi.off(e.port, e.id);
-      }
-    });
-
-    return *this;
-
-  }
-  
   void Synthesizer::randomize_faders() {
 
     for ( auto f : faders ) {

@@ -5,16 +5,12 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Synthesizer synth;
+    Synthesizer synth("MIDI Mix");
     Midi midi;
 
-    synth.add(midi)
-         .listen(MIDI_ANY, [](const Event &e) {
-             std::cout << e.code << ", " 
-                       << e.id << ", "
-                       << e.value << "\n";
-         });
-    synth.run(-1);
+    synth.add(midi);
+
+    synth.run(UNTIL_INTERRUPTED);
 
     return 0;
 

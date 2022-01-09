@@ -12,7 +12,7 @@ using namespace nlohmann;
 int main(int argc, char * argv[]) {
 
     // Components
-    Synthesizer synth; 
+    Synthesizer synth("MIDI Mix"); 
     Midi midi;
 
     std::ifstream config_stream("config/akai-monophonic.json");
@@ -21,14 +21,15 @@ int main(int argc, char * argv[]) {
     midi_map = config["midi_ids"];
     int keyboard_port = midi.get_port_id("Arturia KeyStep 32");
     int controller_port = midi.get_port_id("MIDI Mix");
+    string button_device_name = "MIDI Mix";
 
     Audio audio;  
     Mixer mixer(4);  
     Mono mono[]{
-         Mono(midi, midi_map, keyboard_port, controller_port), 
-         Mono(midi, midi_map, keyboard_port, controller_port), 
-         Mono(midi, midi_map, keyboard_port, controller_port), 
-         Mono(midi, midi_map, keyboard_port, controller_port)
+         Mono(midi, midi_map, button_device_name, keyboard_port, controller_port), 
+         Mono(midi, midi_map, button_device_name, keyboard_port, controller_port), 
+         Mono(midi, midi_map, button_device_name, keyboard_port, controller_port), 
+         Mono(midi, midi_map, button_device_name, keyboard_port, controller_port)
     };
 
     synth.add(midi).add(audio).add(mixer);
@@ -43,37 +44,12 @@ int main(int argc, char * argv[]) {
 
     // Select synth
     int current = 0;
-    midi.on(controller_port, 15);
-    synth.button(controller_port, 15, [&] (const Event &e) {
-         midi.on(controller_port, 15);
-         midi.off(controller_port, 18);
-         midi.off(controller_port, 21);
-         midi.off(controller_port, 24);
-         current = 0;
-    });
 
-    synth.button(controller_port, 18, [&] (const Event &e) {
-         midi.off(controller_port, 15);
-         midi.on(controller_port, 18);
-         midi.off(controller_port, 21);
-         midi.off(controller_port, 24);
-         current = 1;
-    });
-
-    synth.button(controller_port, 21, [&] (const Event &e) {
-         midi.off(controller_port, 15);
-         midi.off(controller_port, 18);
-         midi.on(controller_port, 21);
-         midi.off(controller_port, 24);
-         current = 2;
-    });
-
-    synth.button(controller_port, 24, [&] (const Event &e) {
-         midi.off(controller_port, 15);
-         midi.off(controller_port, 18);
-         midi.off(controller_port, 21);
-         midi.on(controller_port, 24);
-         current = 3;
+    synth.mutex({15,18,21,24}, {
+        [&] (const Event &e) { current = 0; },
+        [&] (const Event &e) { current = 1; },
+        [&] (const Event &e) { current = 2; },
+        [&] (const Event &e) { current = 3; }
     });
 
     synth.listen(MIDI_ANY, [&] (const Event &e) {
@@ -84,8 +60,9 @@ int main(int argc, char * argv[]) {
     synth.run(UNTIL_INTERRUPTED);
 
     // Shutdown
-    for ( auto& [_, id] : midi_map["buttons"].items() ) {
-      midi.off(controller_port, id);
+    synth.clear_leds();
+    for ( auto s : mono ) {
+         mono->clear_leds();
     }
 
     return 0;
