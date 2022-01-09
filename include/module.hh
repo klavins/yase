@@ -18,6 +18,7 @@ namespace yase {
     class Module {
 
     friend class Synthesizer;
+    friend class EventManager;
 
     public:
 

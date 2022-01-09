@@ -4,7 +4,8 @@
 namespace yase {
 
   Mono::Mono(Midi &midi_module, json &midi_map, string button_device_name, int kp, int cp) : 
-                 Synthesizer(button_device_name), 
+                 Synthesizer(), 
+                 buttons(button_device_name),
                  mixer(3),
                  mod_mixer1(2),
                  mod_mixer2(2),
@@ -34,6 +35,8 @@ namespace yase {
     add(filter_env);
     add(seq);    
     add(noop);
+    add(buttons);
+    propagate_to(buttons);
 
     // CONNECTIONS
     for ( int i=0; i<3; i++ ) 
@@ -102,18 +105,20 @@ namespace yase {
     // VOLUME
     control(gain, "amplitude", 0, 0.25, midi_map["volume"]);
 
+    json button = midi_map["buttons"];
+
     // BUTTONS FOR FILTER SELECTION
-    mutex({midi_map["buttons"]["lpf"], midi_map["buttons"]["hpf"]}, {
+    buttons.mutex({midi_map["buttons"]["lpf"], midi_map["buttons"]["hpf"]}, {
           [&] (const Event &e) { filter.set_type("lpf"); }, 
           [&] (const Event &e) { filter.set_type("hpf"); }
           });
 
-    toggle(midi_map["buttons"]["filter_toggle"], [&] (const Event &e) {
+    buttons.toggle(midi_map["buttons"]["filter_toggle"], [&] (const Event &e) {
               filter.toggle();
           }, true);
 
     // KILLER RANDOMIZE BUTTON
-    momentary(midi_map["buttons"]["randomize"], [&] (const Event &e) {
+    buttons.momentary(midi_map["buttons"]["randomize"], [&] (const Event &e) {
           randomize_faders();
           gain.set_input("amplitude", 0.1);
     });    
@@ -123,9 +128,7 @@ namespace yase {
     listen(MIDI_KEYUP, keyboard_port, [&] (const Event &e) { seq.keyup(e); });
 
     // SEQUENCERS BUTTONS
-    json button = midi_map["buttons"];
-
-    mutex({
+    buttons.mutex({
         button["stop"], 
         button["record"],
         button["play"] }, {
@@ -134,13 +137,13 @@ namespace yase {
         [&] (const Event &e) { seq.play(); }
     });
 
-    momentary(button["rest"], [&] (const Event &e) { seq.insert_rest(); });
-    momentary(button["reset"], [&] (const Event &e) { seq.reset(); });
-    momentary(button["clear"], [&] (const Event &e) { seq.clear(); });
-    momentary(button["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
-    momentary(button["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
-    momentary(button["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
-    momentary(button["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
+    buttons.momentary(button["rest"], [&] (const Event &e) { seq.insert_rest(); });
+    buttons.momentary(button["reset"], [&] (const Event &e) { seq.reset(); });
+    buttons.momentary(button["clear"], [&] (const Event &e) { seq.clear(); });
+    buttons.momentary(button["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
+    buttons.momentary(button["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
+    buttons.momentary(button["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
+    buttons.momentary(button["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
 
   }
 
@@ -192,6 +195,10 @@ namespace yase {
             filter.recalculate(); 
         }
 
+    }
+
+    void Mono::clear_leds() {
+        buttons.clear_leds();
     }
 
 }

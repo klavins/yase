@@ -20,4 +20,28 @@ namespace yase {
     return *this; 
   }  
 
+  void EventManager::process_events(vector<Module *> &modules) {
+    for(Module * m : modules ) {
+      for(Event &event : m->events) {
+          for(auto handler : listeners[event.code]) {
+            handler(event);
+          }
+          for(auto handler : listeners[MIDI_ANY]) {
+            handler(event);
+          }          
+      }
+      m->events.clear();
+    }
+  }
+
+  void EventManager::respond_to(const Event &event) {
+      for(auto handler : listeners[event.code]) {
+        handler(event);
+      }
+      for(auto handler : listeners[MIDI_ANY]) {
+        handler(event);
+      }     
+  }
+
+
 }

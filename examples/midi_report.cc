@@ -5,10 +5,11 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Synthesizer synth("MIDI Mix");
+    Synthesizer synth;
     Midi midi;
+    Audio audio; // for throttling
 
-    synth.add(midi);
+    synth.add(midi).add(audio);
 
     synth.run(UNTIL_INTERRUPTED);
 

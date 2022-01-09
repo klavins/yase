@@ -24,15 +24,16 @@ namespace yase {
 
     typedef tuple<Module &, int, Module &, int> Wire;
 
-    class Synthesizer : public ButtonManager {
+    class Synthesizer : public Module, public EventManager {
 
     public:
 
-      Synthesizer(string button_device_name);
+      Synthesizer();
       ~Synthesizer();
       void init();
       void update();
       Synthesizer &add(Module &module);
+      Synthesizer &propagate_to(EventManager &em);
       void run(int num_steps);
 
       // Connectivity
@@ -49,6 +50,7 @@ namespace yase {
     private:
 
       vector<Module *> modules;
+      vector<Module *> propagatees;
       vector<Wire> wires;
       int sample_rate; 
       std::vector<Fader *> faders;

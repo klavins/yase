@@ -16,7 +16,7 @@ void sighandler(int sig) {
 
 namespace yase {
 
-  Synthesizer::Synthesizer(string button_device_name) : ButtonManager(button_device_name) {
+  Synthesizer::Synthesizer() {
 
   }
 
@@ -24,6 +24,14 @@ namespace yase {
     modules.push_back(&module);
     return *this;
   }
+
+  Synthesizer &Synthesizer::propagate_to(EventManager &em) {
+    listen(MIDI_ANY, [&] (const Event &e) {
+      em.respond_to(e);
+    });
+    return *this;
+  }
+
 
   Synthesizer::~Synthesizer() {
     for (auto f : faders) {
@@ -79,10 +87,7 @@ namespace yase {
 
   void Synthesizer::update() {
 
-    // UPDATE BUTTON MANAGER
-    ButtonManager::update();
-
-    // WIRES
+   // WIRES
     for(Wire & w : wires) {
       DEST(w).set_input(INPUT(w), SOURCE(w).get_output(OUTPUT(w)));
     }
@@ -93,17 +98,7 @@ namespace yase {
     }
 
     // EVENTS
-    for(Module * m : modules ) {
-      for(Event &event : m->events) {
-          for(auto handler : listeners[event.code]) {
-            handler(event);
-          }
-          for(auto handler : listeners[MIDI_ANY]) {
-            handler(event);
-          }            
-      }
-      m->events.clear();
-    }
+    process_events(modules);
 
   }
 

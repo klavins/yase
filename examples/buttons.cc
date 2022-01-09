@@ -7,32 +7,35 @@ int main(int argc, char * argv[]) {
 
     Midi midi;
     Audio audio; // need to throttle execution
-    Synthesizer synth("MIDI Mix");
+    Synthesizer synth;
+    ButtonManager buttons("MIDI Mix");
 
     synth.add(midi)
-         .add(audio);
+         .add(audio)
+         .add(buttons)
+         .propagate_to(buttons);
 
-    synth.momentary(1, [&] (const Event &e) {
+    buttons.momentary(1, [&] (const Event &e) {
         std::cout << "1\n";
-        synth.blink_on(12, 0.5);
+        buttons.blink_on(12, 0.5);
     })
     .momentary(3, [&] (const Event &e) {
         std::cout << "3\n";
-        synth.blink_off(12);
+        buttons.blink_off(12);
     });    
 
-    synth.mutex({4,7,6,9}, {
+    buttons.mutex({4,7,6,9}, {
       [] (const Event &e) { std::cout << "4\n"; },
       [] (const Event &e) { std::cout << "7\n"; },
       [] (const Event &e) { std::cout << "6\n"; },
       [] (const Event &e) { std::cout << "9\n"; }
     });
 
-    synth.blink_on(10, 0.25);
+    buttons.blink_on(10, 0.25);
 
     synth.run(UNTIL_INTERRUPTED);
 
-    synth.clear_leds(); 
+    buttons.clear_leds(); 
 
     return 0;
 

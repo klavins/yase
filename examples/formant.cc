@@ -11,7 +11,7 @@ int main(int argc, char * argv[]) {
     json config = get_config("config/akai-monophonic.json");
 
     // Components
-    Synthesizer synth(config["controller"]); 
+    Synthesizer synth; 
 
     Buzz osc;
     Envelope env;

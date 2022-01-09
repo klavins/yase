@@ -13,7 +13,8 @@ int main(int argc, char * argv[]) {
     json config = get_config("config/akai-monophonic.json");
 
     // Components
-    Synthesizer synth(config["controller"]); 
+    Synthesizer synth;
+    ButtonManager buttons(config["controller"]); 
     Midi midi;
    
     int keyboard_port = midi.get_port_id(config["keyboard"]);
@@ -28,7 +29,11 @@ int main(int argc, char * argv[]) {
          Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port)
     };
 
-    synth.add(midi).add(audio).add(mixer);
+    synth.add(midi)
+         .add(audio)
+         .add(mixer)
+         .add(buttons)
+         .propagate_to(buttons);
 
     for ( int i=0; i<4; i++ ) {
          synth.add(mono[i]);
@@ -41,7 +46,7 @@ int main(int argc, char * argv[]) {
     // Select synth
     int current = 0;
 
-    synth.mutex({15,18,21,24}, {
+    buttons.mutex({15,18,21,24}, {
         [&] (const Event &e) { current = 0; },
         [&] (const Event &e) { current = 1; },
         [&] (const Event &e) { current = 2; },
@@ -56,7 +61,7 @@ int main(int argc, char * argv[]) {
     synth.run(UNTIL_INTERRUPTED);
 
     // Shutdown
-    synth.clear_leds();
+    buttons.clear_leds();
     for ( auto s : mono ) {
          mono->clear_leds();
     }

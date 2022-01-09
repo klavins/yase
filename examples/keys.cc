@@ -7,7 +7,8 @@ int main(int argc, char * argv[]) {
 
     json config = get_config("config/akai-monophonic.json");
 
-    Synthesizer synth(config["controller"]);     
+    Synthesizer synth;
+    ButtonManager buttons(config["controller"]);     
     Saw osc;
     Sine lfo;
     Audio audio;
@@ -22,10 +23,13 @@ int main(int argc, char * argv[]) {
     synth.add(osc)     
          .add(audio)
          .add(midi)
+         .add(buttons)
          .add(env)
          .add(filter)
          .add(lfo)
-         .add(gain);
+         .add(gain)
+         .add(buttons)
+         .propagate_to(buttons);
 
     synth.connect( osc,    "signal", filter, "signal")
          .connect( filter, "signal", env,    "signal")
@@ -67,22 +71,22 @@ int main(int argc, char * argv[]) {
           .control(filter, "frequency", 1000, 6000, 56)
           .control(filter, "resonance", 0.1, 20, 60);
 
-     synth.mutex({1, 4, 7}, {
+     buttons.mutex({1, 4, 7}, {
           [&] (const Event &e) { osc.set_type("raw");      },
           [&] (const Event &e) { osc.set_type("ptr1");     },
           [&] (const Event &e) { osc.set_type("additive"); }
      });
 
-     synth.mutex({3, 6, 9}, {
+     buttons.mutex({3, 6, 9}, {
           [&] (const Event &e) { filter.set_type("lpf");   },
           [&] (const Event &e) { filter.set_type("hpf");   },
           [&] (const Event &e) { filter.set_type("apf");   }
      });
 
-     synth.toggle(22, [&] (const Event &e) { filter.toggle(); }, true);
+     buttons.toggle(22, [&] (const Event &e) { filter.toggle(); }, true);
 
      synth.run(UNTIL_INTERRUPTED);
-     synth.clear_leds();
+     buttons.clear_leds();
 
      return 0;
 

@@ -25,7 +25,7 @@ namespace {
 
     TEST(EVENT,IO) {
         MyModule mm;
-        Synthesizer synth("MidiMix");
+        Synthesizer synth;
         int x = 0;
         synth.add(mm)
              .listen(1, [&x] (const Event &e) {

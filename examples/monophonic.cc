@@ -14,7 +14,7 @@ int main(int argc, char * argv[]) {
      json config = get_config("config/akai-monophonic.json");
 
      // Components
-     Synthesizer synth(config["controller"]); 
+     Synthesizer synth;
      Audio audio;
      Midi midi;
 
@@ -39,7 +39,6 @@ int main(int argc, char * argv[]) {
      synth.run(UNTIL_INTERRUPTED);
 
      // Shutdown
-     synth.clear_leds();
      mono.clear_leds();
      return 0;
 

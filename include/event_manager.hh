@@ -3,6 +3,7 @@
 
 #include <algorithm>
 #include <map>
+#include "module.hh"
 #include "event.hh"
 
 using std::vector;
@@ -17,6 +18,8 @@ namespace yase {
     public:
 
       EventManager();
+      void process_events(vector<Module *> &modules);
+      void respond_to(const Event &event);
       EventManager &listen(int event_type, function<void(const Event &)> handler);
       EventManager &listen(int event_type, int port, function<void(const Event &)> handler);      
 

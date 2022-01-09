@@ -21,12 +21,15 @@ namespace yase {
       void select(const Event &e, int i);
       void init_leds();
       void inject(Event e);
+      void clear_leds();
 
     private:
 
       int signal;
 
       OscGroup osc[3];
+
+      ButtonManager buttons;
 
       Sine lfo;
 
