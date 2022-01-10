@@ -7,22 +7,28 @@ TARGET      := libyase.a
 
 #The Directories, Source, Includes, Objects, Binary and Resources
 SRCDIR      := ./src
+SYNDIR      := ./synths
 INCDIR      := ./include
 BUILDDIR    := ./build
+SYNDIR      := ./synths
 TARGETDIR   := ./lib
 SRCEXT      := cc
 
 #Flags, Libraries and Includes
 CFLAGS      := -Wno-psabi -O3
 LIB         := -lgtest -lpthread 
-INC         := -I$(INCDIR)  -I ../json/include -I ../json/include/nlohmann
+INC         := -I$(INCDIR)  -I./synths -I ../json/include -I ../json/include/nlohmann
 INCDEP      := -I$(INCDIR)
 
 #Files
 DGENCONFIG  := docs.config
-HEADERS     := $(wildcard $(INCDIR)/*.h)
-SOURCES     := $(wildcard $(SRCDIR)/*.cc)
+HEADERS     := $(wildcard $(INCDIR)/*.h) $(wildcard $(SYNDIR)/*.h) 
+
+SOURCES     := $(wildcard $(SRCDIR)/*.cc) 
 OBJECTS     := $(patsubst %.cc, $(BUILDDIR)/%.o, $(notdir $(SOURCES)))
+
+SYNSOURCES  := $(wildcard $(SYNDIR)/*.cc)
+SYNOBJECTS  := $(patsubst %.cc, $(SYNDIR)/%.o, $(notdir $(SYNSOURCES)))
 
 #Defauilt Make
 all: directories $(TARGETDIR)/$(TARGET) tests example
@@ -43,7 +49,7 @@ example:
 
 docs: docs/index.html
 
-docs/index.html: $(SOURCES) $(HEADERS) README.md docs.config examples/*.cc
+docs/index.html: $(SOURCES) $(SYNSOURCES) $(HEADERS) README.md docs.config examples/*.cc
 	$(DGEN) $(DGENCONFIG)
 	cp .nojekyll docs
 
@@ -59,13 +65,21 @@ spotless: clean
 	@$(RM) -rf build lib html latex
 	cd test && $(MAKE) spotless
 
+huh:
+	echo $(SOURCES)
+	echo $(OBJECTS)
+
 wc:
 	wc -l */*.cc */*.hh | sort
 
 #Link
-$(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)
-	ar rvs $@ $(OBJECTS)
+$(TARGETDIR)/$(TARGET): $(OBJECTS) $(SYNOBJECTS) $(HEADERS)
+	ar rvs $@ $(OBJECTS) $(SYNOBJECTS)
 	
 #Compile
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) $(HEADERS)
 	$(CC) $(CFLAGS) $(INC) -c -fPIC -o $@ $<
+
+#Compile
+$(SYNDIR)/%.o: $(SYNDIR)/%.$(SRCEXT) $(HEADERS)
+	$(CC) $(CFLAGS) $(INC) -c -fPIC -o $@ $<	
