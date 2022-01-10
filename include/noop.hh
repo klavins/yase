@@ -5,6 +5,10 @@
 
 namespace yase {
 
+
+    //! A module that does almost nothing. It is used by the 'inject'
+    //! method of the Mono synth to emit events that the listeners
+    //! will respond to. Otherwise generally useless. 
     class Noop : public Module {
 
     public:

@@ -52,6 +52,9 @@ int main(int argc, char * argv[]) {
         [&] (const Event &e) { current = 3; }
     });
 
+    // Interesting situation where just doing propagate_to
+    // at the beginning won't work. We only want to send
+    // events to the active container. 
     synth.listen(MIDI_ANY, [&] (const Event &e) {
          mono[current].inject(e); 
     });   
