@@ -16,24 +16,20 @@ int main(int argc, char * argv[]) {
      // Components
      Container synth;
      Audio audio;
-     Midi midi;
+     MidiInput keyboard(config["keyboard"]),
+               controller(config["controller"]);
 
      // Load config file
-     int keyboard_port = midi.get_port_id(config["keyboard"]);
-     int controller_port = midi.get_port_id(config["controller"]);
-
-     Mono mono(midi, config["ids"], config["controller"], keyboard_port, controller_port);
+     Mono mono(keyboard, controller, config);
 
      synth.add(mono)
           .add(audio)
-          .add(midi);
+          .add(keyboard)
+          .add(controller)
+          .propagate_to(mono);
 
      synth.connect(mono, "signal", audio, "left")
           .connect(mono, "signal", audio, "right");
-
-     synth.listen(MIDI_ANY, [&] (const Event &e) {
-          mono.inject(e); 
-     });   
 
      // Go!
      synth.run(UNTIL_INTERRUPTED);

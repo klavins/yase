@@ -15,12 +15,12 @@ namespace yase {
           if ( mo->getPortName(i) == device_name ) {
             midi_output = mo;
             port_id = i;
-            std::cout << "Found device " << device_name << " for button manager\n";
+            std::cout << "Found output device " << device_name << "\n";
           }
       }
 
       if ( ! midi_output ) {
-         throw Exception(std::string("Unkown MIDI device name for button manager: ") + device_name);
+         throw Exception(std::string("Unkown MIDI output device: ") + device_name);
       }
       
       delete temp;

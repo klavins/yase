@@ -11,7 +11,6 @@
 #include "module.hh"
 #include "event.hh"
 #include "fader.hh"
-#include "midi.hh"
 #include "button_manager.hh"
 
 namespace yase {

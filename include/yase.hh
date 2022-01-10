@@ -13,7 +13,7 @@
 #include "event_manager.hh"
 #include "button_manager.hh"
 #include "fader_manager.hh"
-#include "midi.hh"
+#include "midi_input.hh"
 #include "fader.hh"
 
 // Connectivity

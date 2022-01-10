@@ -15,21 +15,20 @@ int main(int argc, char * argv[]) {
     // Components
     Container synth;
     ButtonManager buttons(config["controller"]); 
-    Midi midi;
+    MidiInput keyboard(config["keyboard"]),
+              controller(config["controller"]);
    
-    int keyboard_port = midi.get_port_id(config["keyboard"]);
-    int controller_port = midi.get_port_id(config["controller"]);
-
     Audio audio;  
     Mixer mixer(4);  
     Mono mono[]{
-         Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port), 
-         Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port), 
-         Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port), 
-         Mono(midi, config["ids"], config["controller"], keyboard_port, controller_port)
+         Mono(keyboard, controller, config), 
+         Mono(keyboard, controller, config), 
+         Mono(keyboard, controller, config), 
+         Mono(keyboard, controller, config)
     };
 
-    synth.add(midi)
+    synth.add(keyboard)
+         .add(controller)
          .add(audio)
          .add(mixer)
          .add(buttons)

@@ -5,11 +5,11 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Midi midi;
+    MidiInput midi("MIDI Mix");
+    ButtonManager buttons("MIDI Mix");
     Audio audio; // need to throttle execution
     Container synth;
-    ButtonManager buttons("MIDI Mix");
-
+    
     synth.add(midi)
          .add(audio)
          .add(buttons)

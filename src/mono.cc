@@ -3,17 +3,16 @@
 
 namespace yase {
 
-  Mono::Mono(Midi &midi_module, json &midi_map, string button_device_name, int kp, int cp) : 
+  Mono::Mono(MidiInput &keyboard, MidiInput &controller, json &config) : 
                  Container(), 
-                 buttons(button_device_name),
+                 buttons(config["controller"]),
                  mixer(3),
                  mod_mixer1(2),
                  mod_mixer2(2),
                  filter_env_mixer(2),
-                 midi(midi_module),
-                 midi_map(midi_map),
-                 keyboard_port(kp),
-                 controller_port(cp)
+                 keyboard(keyboard),
+                 controller(controller),
+                 config(config)
   {   
 
     // OUTPUT
@@ -62,72 +61,75 @@ namespace yase {
     filter_env_mixer.set_input(0, 1);    
 
     // MIDI KEYBOARD LISTENERS
-    listen(MIDI_KEYDOWN, keyboard_port, [&] (const Event &e) { keydown(e); });
-    listen(MIDI_KEYUP, keyboard_port, [&] (const Event &e) { keyup(e); });
+    listen(MIDI_KEYDOWN, keyboard.port(), [&] (const Event &e) { keydown(e); });
+    listen(MIDI_KEYUP, keyboard.port(), [&] (const Event &e) { keyup(e); });
 
     // OSCILLATOR TYPE SELECTIONS
     for ( int i=0; i<3; i++ ) {
         listen(MIDI_MOD, [&,i] (const Event &e) { select(e, i); });
     }    
 
+    // CONTROLS
+    json ids = config["ids"];
+
     // LFO CONTROLS
-    controls.control(lfo, "frequency", 0.01, 10, midi_map["lfo_freq"]);
-    controls.control(lfo, "amplitude", 0, 10,    midi_map["lfo_amp"]);
+    controls.control(lfo, "frequency", 0.01, 10, ids["lfo_freq"]);
+    controls.control(lfo, "amplitude", 0, 10,    ids["lfo_amp"]);
 
     // OSCILLATOR MODULATION CONTROLS
     // CHECK: DOES EACH OSCILLATOR HAVE AN LFO GAIN?
-    controls.control(mod_mixer1, mod_mixer1.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][0]); 
-    controls.control(mod_mixer1, mod_mixer1.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][0]);
-    controls.control(mod_mixer2, mod_mixer2.amplitude_index(0), 0, 5, midi_map["mod_mixer_lfo_ctrl"][1]);
-    controls.control(mod_mixer2, mod_mixer2.amplitude_index(1), 0, 5, midi_map["mod_mixer_mod_ctrl"][1]);
-    controls.control(osc2_lfo_gain, "amplitude", 0, 10, 50);
+    controls.control(mod_mixer1, mod_mixer1.amplitude_index(0), 0, 5, ids["mod_mixer_lfo_ctrl"][0]); 
+    controls.control(mod_mixer1, mod_mixer1.amplitude_index(1), 0, 5, ids["mod_mixer_mod_ctrl"][0]);
+    controls.control(mod_mixer2, mod_mixer2.amplitude_index(0), 0, 5, ids["mod_mixer_lfo_ctrl"][1]);
+    controls.control(mod_mixer2, mod_mixer2.amplitude_index(1), 0, 5, ids["mod_mixer_mod_ctrl"][1]);
+    controls.control(osc2_lfo_gain, "amplitude", 0, 10, ids["osc2_lfo_gain"]);
 
     // OSCILLATOR AMPLITUDES AND MIXING
     for (int i=0; i<3; i++) {
-        controls.control(mixer, i+3,          0, 1, midi_map["amplitudes"][i]);
-        controls.control(osc[i], "tuning",   -7, 8, midi_map["tunings"][i]);
-        controls.control(osc[i], "harmonic", -2, 3, midi_map["harmonics"][i]);
+        controls.control(mixer, i+3,          0, 1, ids["amplitudes"][i]);
+        controls.control(osc[i], "tuning",   -7, 8, ids["tunings"][i]);
+        controls.control(osc[i], "harmonic", -2, 3, ids["harmonics"][i]);
     }        
 
     // FILTER CONTROLS
-    controls.control(filter, "resonance", 0.1, 20, midi_map["filter_resonance"]);
-    controls.control(filter_env, "attack",  0.005, 1, midi_map["filter_env"]["A"]);
-    controls.control(filter_env, "decay",   0.005, 1, midi_map["filter_env"]["D"]);
-    controls.control(filter_env, "sustain", 0,     1, midi_map["filter_env"]["S"]);
-    controls.control(filter_env, "release", 0.005, 1, midi_map["filter_env"]["R"]);
-    controls.control(filter_env_mixer, filter_env_mixer.amplitude_index(0), 10, 6000, midi_map["filter_freq"] );
-    controls.control(filter_env_mixer, filter_env_mixer.amplitude_index(1), 10, 6000, midi_map["filter_eg_amt"] );
+    controls.control(filter, "resonance", 0.1, 20, ids["filter_resonance"]);
+    controls.control(filter_env, "attack",  0.005, 1, ids["filter_env"]["A"]);
+    controls.control(filter_env, "decay",   0.005, 1, ids["filter_env"]["D"]);
+    controls.control(filter_env, "sustain", 0,     1, ids["filter_env"]["S"]);
+    controls.control(filter_env, "release", 0.005, 1, ids["filter_env"]["R"]);
+    controls.control(filter_env_mixer, filter_env_mixer.amplitude_index(0), 10, 6000, ids["filter_freq"] );
+    controls.control(filter_env_mixer, filter_env_mixer.amplitude_index(1), 10, 6000, ids["filter_eg_amt"] );
 
     // MAIN ENVELOPE
-    controls.control(env, "attack",  0.005, 1, midi_map["env"]["A"]);
-    controls.control(env, "decay",   0.005, 1, midi_map["env"]["D"]);
-    controls.control(env, "sustain", 0,     1, midi_map["env"]["S"]);
-    controls.control(env, "release", 0.005, 1, midi_map["env"]["R"]);
+    controls.control(env, "attack",  0.005, 1, ids["env"]["A"]);
+    controls.control(env, "decay",   0.005, 1, ids["env"]["D"]);
+    controls.control(env, "sustain", 0,     1, ids["env"]["S"]);
+    controls.control(env, "release", 0.005, 1, ids["env"]["R"]);
 
     // VOLUME
-    controls.control(gain, "amplitude", 0, 0.25, midi_map["volume"]);
+    controls.control(gain, "amplitude", 0, 0.25, ids["volume"]);
 
-    json button = midi_map["buttons"];
+    json button = ids["buttons"];
 
     // BUTTONS FOR FILTER SELECTION
-    buttons.mutex({midi_map["buttons"]["lpf"], midi_map["buttons"]["hpf"]}, {
+    buttons.mutex({ids["buttons"]["lpf"], ids["buttons"]["hpf"]}, {
           [&] (const Event &e) { filter.set_type("lpf"); }, 
           [&] (const Event &e) { filter.set_type("hpf"); }
           });
 
-    buttons.toggle(midi_map["buttons"]["filter_toggle"], [&] (const Event &e) {
+    buttons.toggle(ids["buttons"]["filter_toggle"], [&] (const Event &e) {
               filter.toggle();
           }, true);
 
     // KILLER RANDOMIZE BUTTON
-    buttons.momentary(midi_map["buttons"]["randomize"], [&] (const Event &e) {
+    buttons.momentary(ids["buttons"]["randomize"], [&] (const Event &e) {
           controls.randomize_faders();
           gain.set_input("amplitude", 0.1);
     });    
 
     // SEQUENCER KEYBOARD EVENTS
-    listen(MIDI_KEYDOWN, keyboard_port, [&] (const Event &e) { seq.keydown(e); });
-    listen(MIDI_KEYUP, keyboard_port, [&] (const Event &e) { seq.keyup(e); });
+    listen(MIDI_KEYDOWN, keyboard.port(), [&] (const Event &e) { seq.keydown(e); });
+    listen(MIDI_KEYUP, keyboard.port(), [&] (const Event &e) { seq.keyup(e); });
 
     // SEQUENCERS BUTTONS
     buttons.mutex({
@@ -163,7 +165,7 @@ namespace yase {
   }   
 
   void Mono::select(const Event &e, int i) {
-    if ( e.id == midi_map["osc_selectors"][i] ) osc[i].select(e.value / 127.0);     
+    if ( e.id == config["ids"]["osc_selectors"][i] ) osc[i].select(e.value / 127.0);     
   } 
 
   void Mono::keydown(const Event &e) {

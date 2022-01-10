@@ -13,7 +13,7 @@ namespace yase {
 
     public:
 
-      Mono(Midi &midi_module, json &midi_map, string button_device_name, int kp, int cp);
+      Mono(MidiInput &keyboard, MidiInput &controller, json &config);
       void init();
       void update();
 
@@ -49,11 +49,10 @@ namespace yase {
 
       Noop noop;
 
-      Midi &midi;
-      json &midi_map;
+      MidiInput &keyboard, &controller;
+      json &config;
 
       std::vector<int> keys;
-      int keyboard_port, controller_port;
 
     };
 

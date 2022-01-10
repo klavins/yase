@@ -9,7 +9,7 @@ int main(int argc, char * argv[]) {
     Saw osc2;
     FaderManager controls;
     Audio audio;
-    Midi midi;
+    MidiInput midi("MIDI Mix");
     Container synth;
 
     osc1.set_input("frequency", 55);

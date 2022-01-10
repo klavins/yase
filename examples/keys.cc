@@ -13,7 +13,8 @@ int main(int argc, char * argv[]) {
     Saw osc;
     Sine lfo;
     Audio audio;
-    Midi midi;
+    MidiInput midi_keyboard(config["keyboard"]),
+              midi_controller(config["controller"]);
     Envelope env;
     Biquad filter;
     Gain gain;
@@ -23,12 +24,13 @@ int main(int argc, char * argv[]) {
 
     synth.add(osc)     
          .add(audio)
-         .add(midi)
          .add(buttons)
          .add(env)
          .add(filter)
          .add(lfo)
          .add(gain)
+         .add(midi_keyboard)
+         .add(midi_controller)         
          .add(buttons)
          .add(controls)
          .propagate_to(buttons)
@@ -41,9 +43,8 @@ int main(int argc, char * argv[]) {
          .connect( gain,   "signal", audio,  "right");
 
     std::vector<int> keys;
-    int keyboard_port = midi.get_port_id("Arturia KeyStep 32");
     synth.listen(MIDI_KEYDOWN, [&] (const Event &e) {
-          if ( e.port == keyboard_port ) {
+          if ( e.port == midi_keyboard.port() ) {
                osc.set_input("frequency", e.frequency());
                filter.set_input("offset", e.frequency());
                filter.recalculate(); // TODO: This is awkward and could be forgotten
@@ -53,7 +54,7 @@ int main(int argc, char * argv[]) {
           }
      })
      .listen(MIDI_KEYUP, [&] (const Event &e) {
-          if ( e.port == keyboard_port ) {
+          if ( e.port == midi_keyboard.port() ) {
                keys.erase(std::remove(keys.begin(), keys.end(), e.id), keys.end());
                if ( keys.size() == 0 ) {
                     env.release();

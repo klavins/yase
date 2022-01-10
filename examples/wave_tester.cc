@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
     int midi_ids[] = { 19, 23, 27, 31, 49, 53, 57, 61 };
 
     Sum sum(oscillators.size());
-    Midi midi;
+    MidiInput midi("MIDI Mix");
     Audio audio;
     Container synth;
 
