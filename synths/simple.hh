@@ -13,7 +13,7 @@ namespace yase {
       void init();
       void update();
       void keydown(const Event &e);
-      void keyup(const Event &e);      
+      void keyup(const Event &e); 
 
     private:
 

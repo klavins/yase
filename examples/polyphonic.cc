@@ -1,4 +1,5 @@
 #include <iostream>
+#include <stdio.h>
 #include "yase.hh"
 #include "simple.hh"
 
@@ -34,49 +35,46 @@ int main(int argc, char * argv[]) {
 
      vector<tuple<int,Simple *>> notes;
 
+     auto find_note = [&](int id) {
+          int i = 0;
+          while ( i < n && std::get<0>(notes[i]) != id ) i++;
+          return i;
+     };
+
      for ( int i=0; i<n; i++ ) {
         synth.add(*simple[i])
              .propagate_to(*simple[i]);
-        synth.connect(*simple[i], "signal", mixer, i);
         notes.push_back({0,&(*simple[i])});
+        synth.connect(*simple[i], "signal", mixer, i);        
      }
-     DEBUG
+
      synth.connect( mixer, "signal", gain, "signal")
           .connect( gain,   "signal", audio,  "left")
           .connect( gain,   "signal", audio,  "right");
 
-     auto show = [&]() {
-          for ( auto n : notes ) {
-               std::cout << std::get<0>(n) << "\t";
-          }
-          std::cout << "\n";
-     };
-
-     //! \todo Fix this so that release notes that are still ringing do not get 
-     //! \todo reassigned when a new note is pressed (e.g. prioritize notes that
-     //! \todo are release *and* not ringing over ones that are released and ringing).
-
      synth.listen(MIDI_KEYDOWN, [&] (const Event &e) {
            if ( e.port == midi_keyboard.port() ) {
-             Simple * note = std::get<1>(notes.back());
-             notes.pop_back();
+
+             Simple * note;
+             int i = find_note(e.id);
+             if ( i < n ) {
+               note = std::get<1>(notes[i]);
+               notes.erase(notes.begin() + i);
+             } else {
+               note = std::get<1>(notes.back());
+               notes.pop_back();
+             }
              note->keydown(e);
              notes.insert(notes.begin(), {e.id, note});
-             show();
+
            }
       })
       .listen(MIDI_KEYUP, [&] (const Event &e) {
            if ( e.port == midi_keyboard.port() ) {
-             int i=0;
-             while ( std::get<0>(notes[i]) != e.id ) {
-                  i++;
-             }
+             int i = find_note(e.id);
              if ( i < n ) {
                Simple * note = std::get<1>(notes[i]);
                note->keyup(e);
-               notes.erase(notes.begin() + i);
-               notes.push_back({0,note});
-               show();              
              }
            }
       });

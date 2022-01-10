@@ -7,7 +7,7 @@ namespace yase {
         Container()
   {
 
-    signal = add_output("signal");    
+    signal = add_output("signal");
 
     filter.set_type("lpf");   
     osc.set_type("additive");
