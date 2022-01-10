@@ -31,7 +31,6 @@ int main(int argc, char * argv[]) {
          .add(gain)
          .add(midi_keyboard)
          .add(midi_controller)         
-         .add(buttons)
          .add(controls)
          .propagate_to(buttons)
          .propagate_to(controls);

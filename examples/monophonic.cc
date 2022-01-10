@@ -13,13 +13,11 @@ int main(int argc, char * argv[]) {
 
      json config = get_config("config/akai-monophonic.json");
 
-     // Components
      Container synth;
      Audio audio;
      MidiInput keyboard(config["keyboard"]),
                controller(config["controller"]);
 
-     // Load config file
      Mono mono(keyboard, controller, config);
 
      synth.add(mono)
