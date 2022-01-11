@@ -159,7 +159,6 @@ namespace yase {
 
   void ButtonManager::clear_leds() {
     for ( auto [id, state] : button_states ) {
-      std::cout << id << "\n";
       off(id);
     }
   }

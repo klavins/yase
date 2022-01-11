@@ -64,7 +64,8 @@ int main(int argc, char * argv[]) {
 
     // Shutdown
     buttons.clear_leds();
-    for ( auto s : mono ) {
+
+    for ( auto &s : mono ) {
          mono->clear_leds();
     }
 

@@ -18,6 +18,9 @@ int main(int argc, char * argv[]) {
      FaderManager controls;
      Mixer mixer(n);
      Gain gain;
+     Delay delay;
+     Sum sum(2);
+     Gain delay_gain;
 
      vector<Simple *> simple;
 
@@ -30,14 +33,17 @@ int main(int argc, char * argv[]) {
          .add(controls)
          .add(mixer)
          .add(midi_keyboard)
-         .add(midi_controller)         
+         .add(midi_controller)   
+         .add(delay)     
+         .add(sum)
+         .add(delay_gain) 
          .propagate_to(controls);
 
      vector<tuple<int,Simple *>> notes;
 
      auto find_note = [&](int id) {
-          int i = 0;
-          while ( i < n && std::get<0>(notes[i]) != id ) i++;
+          int i;
+          for ( i=0; i < n && std::get<0>(notes[i]) != id;  i++ );
           return i;
      };
 
@@ -48,9 +54,16 @@ int main(int argc, char * argv[]) {
         synth.connect(*simple[i], "signal", mixer, i);        
      }
 
-     synth.connect( mixer, "signal", gain, "signal")
-          .connect( gain,   "signal", audio,  "left")
-          .connect( gain,   "signal", audio,  "right");
+     delay.set_input("size", 0.001 * SAMPLE_RATE);
+     delay_gain.set_input("amplitude", 0.5);
+
+     synth.connect( mixer, "signal", sum,  0)
+          .connect( delay_gain, "signal", sum, 1)
+          .connect( sum, "signal", delay, "signal" )
+          .connect( delay, "signal", delay_gain, "signal")
+          .connect( sum,  "signal", gain, "signal" )
+          .connect( gain, "signal", audio, "left")
+          .connect( gain,  "signal", audio, "right");
 
      synth.listen(MIDI_KEYDOWN, [&] (const Event &e) {
            if ( e.port == midi_keyboard.port() ) {
@@ -80,6 +93,8 @@ int main(int argc, char * argv[]) {
       });
 
      controls.control(gain, "amplitude", 0, 0.1, config["ids"]["volume"]);
+     controls.control(delay, "size", 0.001*SAMPLE_RATE, 1*SAMPLE_RATE, 49);
+     controls.control(delay_gain, "amplitude", 0, 0.99, 53);
 
      synth.run(UNTIL_INTERRUPTED);
 

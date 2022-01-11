@@ -1,10 +1,11 @@
 #include "fader_manager.hh"
 #include "yase.hh"
 
+int nf = 0;
+
 namespace yase {
 
   FaderManager::FaderManager() : Container() {
-
   }
 
   FaderManager::~FaderManager() {
@@ -37,7 +38,7 @@ namespace yase {
     add(*fader);
     connect(*fader, "value", module, name);
     control(*fader, midi_id);
-    faders.push_back(fader);
+    faders.push_back(fader); 
     return *this;
 
   }

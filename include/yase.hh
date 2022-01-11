@@ -51,5 +51,6 @@
 
 // Effects
 #include "compressor.hh"
+#include "delay.hh"
 
 #endif
