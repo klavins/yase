@@ -23,6 +23,10 @@ namespace yase {
 
     typedef tuple<Module &, int, Module &, int> Wire;
 
+    //! A module and event manager that can contain other modules. It can be used
+    //! as a top evel module for constructing an entire synthesizer, or as a way
+    //! to group together a few modules into a commonly used function, as with, for example
+    //! a phasor which would contain a delay and a sum. 
     class Container : public Module, public EventManager {
 
     public:

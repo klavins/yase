@@ -54,7 +54,7 @@ int main(int argc, char * argv[]) {
         synth.connect(*simple[i], "signal", mixer, i);        
      }
 
-     delay.set_input("size", 0.001 * SAMPLE_RATE);
+     delay.set_input("duration", 0.001 * SAMPLE_RATE);
      delay_gain.set_input("amplitude", 0.5);
 
      synth.connect( mixer, "signal", sum,  0)
@@ -93,7 +93,7 @@ int main(int argc, char * argv[]) {
       });
 
      controls.control(gain, "amplitude", 0, 0.1, config["ids"]["volume"]);
-     controls.control(delay, "size", 0.001*SAMPLE_RATE, 1*SAMPLE_RATE, 49);
+     controls.control(delay, "duration", 0.001*SAMPLE_RATE, 1*SAMPLE_RATE, 49);
      controls.control(delay_gain, "amplitude", 0, 0.99, 53);
 
      synth.run(UNTIL_INTERRUPTED);

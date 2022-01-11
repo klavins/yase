@@ -6,6 +6,14 @@
 
 namespace yase {
 
+    //! A pure digital delay using a doubled ended queue. 
+     //! Inputs: 
+     //!   - "signal"
+     //!   - "duration"
+     //! 
+     //! Outputs: 
+     //!   - "signal"
+     //!     
     class Delay : public Module {
 
     public:
@@ -17,7 +25,7 @@ namespace yase {
     private:
 
       deque<double> buffer;
-      int signal, size;
+      int signal, duration;
 
     };
 

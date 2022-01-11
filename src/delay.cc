@@ -6,7 +6,7 @@ namespace yase {
   Delay::Delay() {
 
     signal = add_input("signal");
-    size = add_input("size");
+    duration = add_input("duration");
     signal = add_output("signal");
 
   }
@@ -19,12 +19,12 @@ namespace yase {
 
     buffer.push_front(inputs[signal]);
 
-    if ( buffer.size() >= inputs[size] ) {
+    if ( buffer.size() >= inputs[duration] ) {
         outputs[signal] = buffer.back();
         buffer.pop_back();
     }
 
-    while ( buffer.size() >= inputs[size] ) {
+    while ( buffer.size() >= inputs[duration] ) {
         buffer.pop_back();
     }    
 
