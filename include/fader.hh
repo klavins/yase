@@ -15,11 +15,13 @@ namespace yase {
       void update();
       double adjusted_target();
       void randomize();
+      inline void set_tracking_gain(double x) { tracking_gain = x; }
 
     private:
 
-      float min_val,
-            max_val;
+      double min_val,
+             max_val,
+             tracking_gain;
 
       int target, value;
 

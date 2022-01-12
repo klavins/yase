@@ -52,5 +52,6 @@
 // Effects
 #include "compressor.hh"
 #include "delay.hh"
+#include "fade_delay.hh"
 
 #endif

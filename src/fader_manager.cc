@@ -54,6 +54,17 @@ namespace yase {
 
   }    
 
+  //! Sets the tracking gain of the most recently added control. See
+  //! Fader::set_tracking_gain(double x).
+  //! \param x The new tracking gain (e.g. 0.1*FADER_GAIN)
+  //! \return A reference for method chaining
+  FaderManager &FaderManager::set_tracking_gain(double x) {
+    if ( faders.size() > 0 ) {
+      faders.back()->set_tracking_gain(x);
+    }
+    return *this;
+  }
+
   void FaderManager::randomize_faders() {
 
     for ( auto f : faders ) {

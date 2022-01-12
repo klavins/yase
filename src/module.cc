@@ -27,6 +27,11 @@ namespace yase {
         return output_map[name];
     }
 
+    //! Get the index corresponding to the name used when the input added using add_input. 
+    //! The index is should be used in the update method of a module rather than the
+    //! name because it is faster.    
+    //! \param The name of the output
+    //! \return The index of the output
     int Module::get_input_index(string name) const {
         if ( input_map.count(name) > 0 ) {
             return input_map.at(name); // Note: input_map[name] does not

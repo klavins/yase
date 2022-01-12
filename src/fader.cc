@@ -6,7 +6,7 @@
 
 namespace yase {
 
-  Fader::Fader(double min, double max) : min_val(min), max_val(max) {
+  Fader::Fader(double min, double max) : min_val(min), max_val(max), tracking_gain(FADER_GAIN) {
     target = add_input("target");
     value = add_output("value");
     set_input(target,0); // Default position for fader or knob is straight up    
@@ -29,7 +29,7 @@ namespace yase {
   }
 
   void Fader::update() {
-    outputs[value] -= TS * FADER_GAIN * (outputs[value] - adjusted_target());
+    outputs[value] -= TS * tracking_gain * (outputs[value] - adjusted_target());
   }    
 
   void Fader::randomize() {

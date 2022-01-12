@@ -17,6 +17,7 @@ namespace yase {
       FaderManager &control(Module &fader, int midi_id);
       FaderManager &control(Module &module, string name, double min, double max, int midi_id);
       FaderManager &control(Module &module, int index, double min, double max, int midi_id);
+      FaderManager &set_tracking_gain(double x);
       void randomize_faders(); 
 
     private:
