@@ -8,6 +8,7 @@ To date, Yase has been developed on MacOS 11.6.1. The following are required:
 - PortAudio, which can be installed with 'brew install portaudio'
 - RtMidi:, which can be installed with 'brew install rtmidi'
 - Google Test: which can be installed with 'brew install googletest'
+- Niels Lohman's JSON library, which should be unpacked and put somewhere on your computer. You should then edit the Makefiles to point to the right directory. https://github.com/nlohmann/json
 
 On my Mac, things are installed in strange places. Doing the following helps the linker work right.
 ```
