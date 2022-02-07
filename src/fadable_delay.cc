@@ -1,10 +1,10 @@
 #include <math.h>
-#include "fade_delay.hh"
+#include "fadable_delay.hh"
 #include "yase.hh"
 
 namespace yase {
 
-  FadeDelay::FadeDelay() 
+  FadableDelay::FadableDelay() 
       : state(NORMAL), 
         fade(1.0),
         counter(0),
@@ -23,11 +23,11 @@ namespace yase {
 
   }
 
-  void FadeDelay::init() {
+  void FadableDelay::init() {
 
   }
 
-  void FadeDelay::update() {
+  void FadableDelay::update() {
 
     if ( counter++ == 1000 ) {
       counter = 0;

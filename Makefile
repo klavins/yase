@@ -51,7 +51,6 @@ docs: docs/index.html
 
 docs/index.html: $(SOURCES) $(SYNSOURCES) $(HEADERS) README.md docs.config examples/*.cc
 	$(DGEN) $(DGENCONFIG)
-	cp .nojekyll docs
 
 #Clean only Objects
 clean:

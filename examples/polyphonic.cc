@@ -18,9 +18,7 @@ int main(int argc, char * argv[]) {
      Controls controls;
      Mixer mixer(n);
      Gain gain;
-     FadeDelay delay;
-     Sum sum(2);
-     Gain delay_gain;
+     Echo echo;
 
      vector<Simple *> simple;
 
@@ -34,9 +32,7 @@ int main(int argc, char * argv[]) {
          .add(mixer)
          .add(midi_keyboard)
          .add(midi_controller)   
-         .add(delay)     
-         .add(sum)
-         .add(delay_gain) 
+         .add(echo)     
          .propagate_to(controls);
 
      vector<tuple<int,Simple *>> notes;
@@ -54,13 +50,8 @@ int main(int argc, char * argv[]) {
         synth.connect(*simple[i], "signal", mixer, i);        
      }
 
-     delay_gain.set_input("amplitude", 0.5);
-
-     synth.connect( mixer, "signal", sum,  0)
-          .connect( delay_gain, "signal", sum, 1)
-          .connect( sum, "signal", delay, "signal" )
-          .connect( delay, "signal", delay_gain, "signal")
-          .connect( sum,  "signal", gain, "signal" )
+     synth.connect( mixer, "signal", echo, "signal")
+          .connect( echo, "signal", gain, "signal" )
           .connect( gain, "signal", audio, "left")
           .connect( gain,  "signal", audio, "right");
 
@@ -92,8 +83,8 @@ int main(int argc, char * argv[]) {
       });
 
      controls.control(gain, "amplitude", 0, 0.1, config["ids"]["volume"]);
-     controls.control(delay, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, 49);
-     controls.control(delay_gain, "amplitude", 0, 0.99, 53);
+     controls.control(echo, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, 49);
+     controls.control(echo, "amplitude", 0, 0.99, 53);
 
      synth.run(UNTIL_INTERRUPTED);
 

@@ -1,12 +1,12 @@
-#ifndef YASE_FADEDELAY_H
-#define YASE_FADEDELAY_H
+#ifndef YASE_FADABLE_DELAY_H
+#define YASE_FADABLE_DELAY_H
 
 #include "delay.hh"
 #include "container.hh"
 
 namespace yase {
 
-    //! A time modulatable delay. This module actually contains two delays running
+    //! A time modulatable delay. This module contains two delays running
     //! at the same time. When the "duration" input changes, one of the
     //! delay's duration is reset, and the output fades from the old
     //! delay to the new one. This approach is inspired by the `ddi` method
@@ -31,14 +31,14 @@ namespace yase {
     //! 
     //! Outputs:
     //!   - "signal"
-    class FadeDelay : public Container {
+    class FadableDelay : public Container {
 
     public:
 
       typedef enum { NORMAL, RECORDING, FADING } STATE;
       const double FADE_TIME = 0.1;
 
-      FadeDelay();
+      FadableDelay();
       void init();
       void update();
 

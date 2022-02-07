@@ -50,6 +50,7 @@
 
 // Effects
 #include "delay.hh"
-#include "fade_delay.hh"
+#include "fadable_delay.hh"
+#include "echo.hh"
 
 #endif

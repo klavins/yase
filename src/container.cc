@@ -3,10 +3,18 @@
 #include <unistd.h>
 #include "yase.hh"
 
+// Convenience macros for wires
 #define SOURCE(__wire__) std::get<0>(__wire__)
 #define OUTPUT(__wire__) std::get<1>(__wire__)
 #define DEST(__wire__)   std::get<2>(__wire__)
 #define INPUT(__wire__)  std::get<3>(__wire__)
+
+// Convenience macros for equates
+#define MAIN_INPUT(__equate__)  std::get<0>(__equate__)
+#define MAIN_OUTPUT(__equate__) std::get<0>(__equate__)
+#define SUB_MODULE(__equate__)  std::get<1>(__equate__)
+#define SUB_INPUT(__equate__)   std::get<2>(__equate__)
+#define SUB_OUTPUT(__equate__)  std::get<2>(__equate__)
 
 bool interuppted = false;
 
@@ -85,7 +93,45 @@ namespace yase {
 
     return *this;
 
-  }  
+  }
+
+  //! Equate the main input of this module to the sub-input of the sub-module. Whenever the 
+  //! main module's input is updated, the sub-modules input will also be updated.
+  //! \param input A string identifying the main input
+  //! \param sub_module A reference to the sub-module
+  //! \param sub_input A string identifying the sub-module input
+  Container &Container::equate_input(string input, Module &sub_module, string sub_input) {
+
+    Equate equate {
+      get_input_index(input),                 // MAIN_INPUT
+      sub_module,                             // SUB_MODULE
+      sub_module.get_input_index(sub_input)   // SUB_INPUT
+    };
+
+    input_equates.push_back(equate);
+
+    return *this;
+
+  }
+
+  //! Equate the main output of this module to the sub-output of the sub-module. After the 
+  //! sub-module has been updated, it's output will by copied to the main module output.
+  //! \param output A string identifying the main output
+  //! \param sub_module A reference to the sub-module
+  //! \param sub_output A string identifying the sub-module output
+  Container &Container::equate_output(string output, Module &sub_module, string sub_output) {
+
+    Equate equate {
+      get_input_index(output),                  // MAIN_OUTPUT
+      sub_module,                               // SUB_MODULE
+      sub_module.get_output_index(sub_output)   // SUB_OUTPUT
+    };
+
+    output_equates.push_back(equate);
+
+    return *this;
+
+  }
 
   //! Not implemented
   //! \todo Implement this method or delete it.
@@ -109,9 +155,19 @@ namespace yase {
       DEST(w).set_input(INPUT(w), SOURCE(w).get_output(OUTPUT(w)));
     }
 
+    // INPUT EQUATES
+    for(Equate & e : input_equates) {
+      SUB_MODULE(e).set_input(SUB_INPUT(e), inputs[MAIN_INPUT(e)]);
+    }
+
     // MODULES
     for(Module * m : modules) {
       m->update();
+    }
+
+    // OUTPUT EQUATES
+    for(Equate & e : output_equates) {
+      outputs[MAIN_OUTPUT(e)] = SUB_MODULE(e).get_output(SUB_OUTPUT(e));
     }
 
     // EVENTS
