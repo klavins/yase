@@ -17,7 +17,7 @@ namespace yase {
 
     private:
 
-      FaderManager controls;
+      Controls controls;
       Saw osc;
       Envelope env;
       Biquad filter;

@@ -8,7 +8,7 @@ int main(int argc, char * argv[]) {
     Clock clock;
     Audio audio;
     MidiInput midi("MIDI Mix");
-    FaderManager controls;
+    Controls controls;
     Container container;
     
     clock.set_input("frequency", 1);

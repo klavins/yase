@@ -15,7 +15,7 @@ int main(int argc, char * argv[]) {
      Audio audio;
      MidiInput midi_keyboard(config["keyboard"]),
               midi_controller(config["controller"]);
-     FaderManager controls;
+     Controls controls;
      Mixer mixer(n);
      Gain gain;
      FadeDelay delay;

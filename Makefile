@@ -55,7 +55,7 @@ docs/index.html: $(SOURCES) $(SYNSOURCES) $(HEADERS) README.md docs.config examp
 
 #Clean only Objects
 clean:
-	@$(RM) -rf $(BUILDDIR)/*.o
+	@$(RM) -rf $(BUILDDIR)/*.o synths/*.o
 	cd test && $(MAKE) clean
 	cd examples && $(MAKE) clean
 

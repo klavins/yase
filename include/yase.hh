@@ -11,8 +11,8 @@
 
 // Controllers
 #include "event_manager.hh"
-#include "button_manager.hh"
-#include "fader_manager.hh"
+#include "buttons.hh"
+#include "controls.hh"
 #include "midi_input.hh"
 #include "fader.hh"
 
@@ -35,10 +35,8 @@
 #include "sine.hh"
 #include "saw.hh" 
 #include "triangle.hh"
-#include "vanderpol.hh"
 #include "noise.hh"
 #include "square.hh"
-#include "buzz.hh"
 #include "osc_group.hh"
 #include "clock.hh"
 
@@ -51,7 +49,6 @@
 #include "resonator.hh"
 
 // Effects
-#include "compressor.hh"
 #include "delay.hh"
 #include "fade_delay.hh"
 

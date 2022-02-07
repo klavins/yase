@@ -7,7 +7,7 @@ int main(int argc, char * argv[]) {
 
     Saw osc1;
     Saw osc2;
-    FaderManager controls;
+    Controls controls;
     Audio audio;
     MidiInput midi("MIDI Mix");
     Container synth;

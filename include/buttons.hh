@@ -1,5 +1,5 @@
-#ifndef YASE_BUTTONMANAGER_H
-#define YASE_BUTTONMANAGER_H
+#ifndef YASE_BUTTONS_H
+#define YASE_BUTTONS_H
 
 #include <vector>
 #include <string>
@@ -17,23 +17,23 @@ namespace yase {
        double period;
     } BUTTON_STATE;
 
-    class ButtonManager : public EventManager, public Module {
+    class Buttons : public EventManager, public Module {
 
     public:
 
-      ButtonManager(string output_device_name);
+      Buttons(string output_device_name);
 
       void init();
       void update();
 
-      ButtonManager &on(unsigned char id);
-      ButtonManager &off(unsigned char id);
-      ButtonManager &blink_on(int id, double period);
-      ButtonManager &blink_off(int id);
+      Buttons &on(unsigned char id);
+      Buttons &off(unsigned char id);
+      Buttons &blink_on(int id, double period);
+      Buttons &blink_off(int id);
 
-      ButtonManager &momentary(int id, function<void(const Event &)> handler);
-      ButtonManager &mutex(vector<int> ids, vector<function<void(const Event &)>> handlers);
-      ButtonManager &toggle(int id, function<void(const Event &)> handler, bool init_on);
+      Buttons &momentary(int id, function<void(const Event &)> handler);
+      Buttons &mutex(vector<int> ids, vector<function<void(const Event &)>> handlers);
+      Buttons &toggle(int id, function<void(const Event &)> handler, bool init_on);
 
       void set(int id, BUTTON_STATE state);
       map<int,BUTTON_STATE> get_states();

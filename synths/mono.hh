@@ -2,7 +2,7 @@
 #define YASE_MONO_H
 
 #include "json.hpp"
-#include "fader_manager.hh"
+#include "controls.hh"
 #include "yase.hh"
 
 namespace yase {
@@ -30,8 +30,8 @@ namespace yase {
 
       OscGroup osc[3];
 
-      ButtonManager buttons;
-      FaderManager controls;
+      Buttons buttons;
+      Controls controls;
 
       Sine lfo;
 

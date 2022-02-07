@@ -8,8 +8,8 @@ int main(int argc, char * argv[]) {
     json config = get_config("config/akai-monophonic.json");
 
     Container synth;
-    ButtonManager buttons(config["controller"]);     
-    FaderManager controls;
+    Buttons buttons(config["controller"]);     
+    Controls controls;
     Saw osc;
     Sine lfo;
     Audio audio;

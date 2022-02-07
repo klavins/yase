@@ -14,7 +14,7 @@ int main(int argc, char * argv[]) {
 
     // Components
     Container synth;
-    ButtonManager buttons(config["controller"]); 
+    Buttons buttons(config["controller"]); 
     MidiInput keyboard(config["keyboard"]),
               controller(config["controller"]);
    

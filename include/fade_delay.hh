@@ -23,7 +23,7 @@ namespace yase {
     //!     SAMPLE_RATE, 
     //!     49);
     //! ```
-    //! Where controls is a FaderManager object.
+    //! Where controls is a Controls object.
     //! 
     //! Inputs:
     //!   - "signal"

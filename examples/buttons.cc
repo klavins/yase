@@ -6,7 +6,7 @@ using namespace yase;
 int main(int argc, char * argv[]) {
 
     MidiInput midi("MIDI Mix");
-    ButtonManager buttons("MIDI Mix");
+    Buttons buttons("MIDI Mix");
     Audio audio; // need to throttle execution
     Container synth;
     

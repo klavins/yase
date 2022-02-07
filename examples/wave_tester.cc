@@ -11,9 +11,8 @@ int main(int argc, char * argv[]) {
     Saw add;
     Triangle tri;
     Square square;
-    VanDerPol vdp;
     Noise noise;
-    FaderManager controls;
+    Controls controls;
 
     add.set_type("additive");
 
@@ -22,12 +21,11 @@ int main(int argc, char * argv[]) {
         &add, 
         &tri, 
         &square, 
-        &vdp,
         &noise };
         
     vector<Fader *> faders;
 
-    int midi_ids[] = { 19, 23, 27, 31, 49, 53, 57, 61 };
+    int midi_ids[] = { 19, 23, 27, 31, 49, 53, 57 };
 
     Sum sum(oscillators.size());
     MidiInput midi("MIDI Mix");
