@@ -8,6 +8,13 @@ namespace yase {
 
       left = add_input("left");
       right = add_input("right");
+      aux1 = add_input("aux1");
+      aux2 = add_input("aux2");
+
+      set_input(left,0);
+      set_input(right,0);
+      set_input(aux1,0);
+      set_input(aux2,0);
 
   }
 
@@ -15,7 +22,7 @@ namespace yase {
 
     err = Pa_Initialize();
     outputParameters.device = Pa_GetDefaultOutputDevice();
-    outputParameters.channelCount = 2;
+    outputParameters.channelCount = 4;
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
     outputParameters.suggestedLatency = 0.00;
     outputParameters.hostApiSpecificStreamInfo = NULL;
@@ -45,6 +52,8 @@ namespace yase {
 
       buffer[frame][0] = (float) inputs[left];
       buffer[frame][1] = (float) inputs[right];
+      buffer[frame][2] = (float) inputs[aux1];
+      buffer[frame][3] = (float) inputs[aux2];      
       frame++;
 
   }    

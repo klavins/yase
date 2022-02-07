@@ -40,6 +40,7 @@
 #include "square.hh"
 #include "buzz.hh"
 #include "osc_group.hh"
+#include "clock.hh"
 
 // Envelopes
 #include "envelope.hh"

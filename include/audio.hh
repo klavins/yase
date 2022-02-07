@@ -34,10 +34,10 @@ namespace yase {
       PaStream *stream;
       PaError err;    
 
-      float buffer[FRAMES_PER_BUFFER][2]; /* stereo output buffer */
+      float buffer[FRAMES_PER_BUFFER][4]; /* stereo output buffer */
       int frame;
 
-      int left, right; // indecies into incoming signals
+      int left, right, aux1, aux2; // indecies into incoming signals
 
     };
 
