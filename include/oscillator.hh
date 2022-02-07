@@ -15,7 +15,7 @@ namespace yase {
 
     protected:
 
-      double accumulator;
+      double phase;
       
       int frequency,       // local names for I/O indices
           signal,          // These need to be protected instead of private

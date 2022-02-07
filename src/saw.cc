@@ -32,7 +32,7 @@ namespace yase {
   }    
 
   void Saw::raw() {
-      outputs[signal] = inputs[amplitude] * ( 2 * accumulator - 1 );
+      outputs[signal] = inputs[amplitude] * ( 2 * phase - 1 );
   }    
 
   void Saw::ptr1() {
@@ -43,10 +43,10 @@ namespace yase {
            DC = 1 + cdc,                        // 1.1
            a1 = 2 - 2*h*P0,                     // 2 - 2*100 = -198
            a0 = 2*h - DC;                       // 1 
-    if ( accumulator >= T0 ) {
-        outputs[signal] = 2*accumulator - DC;
+    if ( phase >= T0 ) {
+        outputs[signal] = 2*phase - DC;
     } else {
-        outputs[signal] = a1*accumulator + a0;
+        outputs[signal] = a1*phase + a0;
     }
   }    
 
@@ -54,7 +54,7 @@ namespace yase {
     outputs[signal] = 0;
     int n = 1;
     while ( n * inputs[frequency] < 0.125 * SAMPLE_RATE  ) {
-      outputs[signal] += sin(n*2*M_PI*accumulator + inputs[modulation])/n;
+      outputs[signal] += sin(n*2*M_PI*phase + inputs[modulation])/n;
       n++;
     }
   }    

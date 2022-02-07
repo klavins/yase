@@ -43,7 +43,7 @@ namespace yase {
     outputs[signal] = 0;
     int n = 1;
     while ( n * inputs[frequency] < SAMPLE_RATE / 2 ) {
-      outputs[signal] += sin(n*2*M_PI*accumulator + inputs[modulation])/(n*n);
+      outputs[signal] += sin(n*2*M_PI*phase + inputs[modulation])/(n*n);
       n += 2;
     }
     outputs[signal] *= 8/(M_PI*M_PI);

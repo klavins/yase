@@ -18,14 +18,14 @@ namespace yase {
   }
 
   void Oscillator::init() {
-      accumulator = 0;
+      phase = 0;
   }
 
   void Oscillator::update() {
       double h = pow(2, floor(inputs[harmonic]));
-      accumulator += TS * (h*inputs[frequency] + CENT*floor(2*inputs[tuning])/2);
-      if ( accumulator > 1 ) {
-        accumulator -= 1;
+      phase += TS * (h*inputs[frequency] + CENT*floor(2*inputs[tuning])/2);
+      if ( phase > 1.0 ) {
+        phase -= 1.0;
       }     
   }
 

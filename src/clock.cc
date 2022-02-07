@@ -8,10 +8,10 @@ namespace yase {
 
   void Clock::update() {
       Oscillator::update(); 
-      if ( accumulator < prev ) {
+      if ( phase < prev ) {
         outputs[signal] *= -1.0;
       }
-      prev = accumulator;
+      prev = phase;
   }    
 
 }
