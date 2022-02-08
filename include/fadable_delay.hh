@@ -17,20 +17,18 @@ namespace yase {
     //! following:
     //! ```
     //! controls.control(
-    //!     fade_delay, 
+    //!     fadable_delay, 
     //!     "duration", 
     //!     0.001 * SAMPLE_RATE, 
     //!     SAMPLE_RATE, 
     //!     49);
     //! ```
-    //! Where controls is a Controls object.
+    //! Where controls is a Controls object and "49" refers to a midi input id.
     //! 
-    //! Inputs:
-    //!   - "signal"
-    //!   - "duration"
-    //! 
-    //! Outputs:
-    //!   - "signal"
+    //! \param[in] signal
+    //! \param[in] duration
+    //! \param[out] signal
+    //!
     class FadableDelay : public Container {
 
     public:

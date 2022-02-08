@@ -5,6 +5,11 @@
 
 namespace yase {
 
+    //! An echo module incorporating a fadable delay in a feedback configuration
+    //! \param[in] duration
+    //! \param[in] gain
+    //! \param[in] signal
+    //! \param[out] signal
     class Echo : public Container {
 
     public:
