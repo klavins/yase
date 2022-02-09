@@ -28,6 +28,15 @@ namespace yase {
     //! as a top level module for constructing an entire synthesizer, or as a way
     //! to group together a few modules into a commonly used function, as with, for example
     //! a phasor which would contain a delay and a sum. 
+    //!
+    //! A good example of a container is the Echo Module, which contains a Delay, a
+    //! a Gain and a Sum. 
+    //!
+    //! Additionally, most examples use a container to add sub modules to. For example,
+    //! the following code sets up a Container called synth, adds a few modules to it,
+    //! identifies a module to propagate events to, and makes a couple of connections.
+    //! \include faders.cc
+    //! 
     class Container : public Module, public EventManager {
 
     public:

@@ -45,7 +45,7 @@ tests:
 	cd test && $(MAKE) -j 8
 
 example:
-	cd examples && $(MAKE) -j 8
+	cd examples && $(MAKE)
 
 docs: docs/index.html
 

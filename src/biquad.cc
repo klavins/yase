@@ -16,6 +16,9 @@ namespace yase {
 
   }
 
+  //! Set the type of the filter to be either low pass, high pass, all
+  //! pass, or band pass.
+  //! \param name Either "lpf", "hpf", "apf", or "bpf"
   void Biquad::set_type(std::string name) {
 
     if ( name == "lpf" )  {
@@ -34,15 +37,18 @@ namespace yase {
 
   } 
 
-
+  //! Turn the filter on. 
   void Biquad::on() {
     active = true;
   }
 
+  //! Turn the filter off. In it's off state, the input signal
+  //! is routed directly to the output signal.
   void Biquad::off() {
     active = false;
   }
 
+  //! Turn the filter on if it is off and off if it is on.
   bool Biquad::toggle() {
     active = !active;
     return active;
@@ -65,6 +71,9 @@ namespace yase {
 
   }
 
+  //! Recalculate the coefficients of the filter. Generally this
+  //! is done automatically when the frequency or resonance input
+  //! changes.
   void Biquad::recalculate() {
 
     double f0 = inputs[frequency] + inputs[offset],

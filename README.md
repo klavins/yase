@@ -1,7 +1,7 @@
 # YASE: Yet Another Synthesizer Engine
 
-Building
-===
+## Building
+
 To date, Yase has been developed on MacOS 11.6.1. The following are required:
 - 'git', 'g++', and 'make', part of the MacOS Development Tools.
 - Brew, for installing things: https://brew.sh/

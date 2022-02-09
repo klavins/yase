@@ -1,42 +1,9 @@
-#Architecture
-ARCH := $(shell uname -m)
+TOPTARGETS := all clean
 
-#Compilers
-CC          := g++ -std=c++20 -Wno-psabi
+SUBDIRS := $(wildcard */.)
 
-#The Target Library
+$(TOPTARGETS): $(SUBDIRS)
+$(SUBDIRS):
+	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-#The Directories, Source, Includes, Objects, Binary and Resources
-SRCEXT      := cc
-
-#Flags, Libraries and Includes
-CFLAGS      := -ggdb
-LIB         := -lpthread -lyase -lportaudio -lrtmidi
-INCLUDE		:= -I../include -I../synths -I../../json/include -I../../json/include/nlohmann
-LIBDIR		:= -L../lib -L../../rtmidi 
-ELMALIB		:= ../lib/libyase.a
-
-#Files
-TARGETDIR	 := ./bin
-SOURCES      := $(wildcard *.cc)
-TARGETS		 := $(patsubst %.cc,%,$(wildcard *.cc))
-FULL_TARGETS := $(addprefix $(TARGETDIR)/, $(TARGETS))
-
-#Default Make
-all: dirs $(FULL_TARGETS)
-
-dirs: $(TARGETDIR)
-	@mkdir -p $(TARGETDIR)
-
-#Clean only Objects
-clean:
-	@$(RM) -rf $(TARGETDIR)
-
-# Compile
-$(TARGETDIR)/%: %.cc $(ELMALIB)
-	$(CC) $(CFLAGS) $(INCLUDE) $< $(LIBDIR) $(LIB) -o $@
-
-# bin/basic: basic.cc
-# 	$(CC) $(CFLAGS) $(INCLUDE) $<  $(LIBDIR) $(LIB) -o $@
-
-.PHONY: directories remake clean cleaner $(BUILDDIR) $(TARGETDIR)
+.PHONY: $(TOPTARGETS) $(SUBDIRS)

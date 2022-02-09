@@ -6,11 +6,16 @@
 
 namespace yase {
 
+    //! Standard Biquad filters adapated from
+    //! https://www.w3.org/TR/audio-eq-cookbook/
+    //! \param[in] signal
+    //! \param[in] frequency
+    //! \param[in] resonance
+    //! \param[out] signal
+    //! 
     class Biquad : public IIRFilter {
 
-      // From https://www.w3.org/TR/audio-eq-cookbook/
-
-    typedef void (Biquad::*UpdateFunction)(); 
+      typedef void (Biquad::*UpdateFunction)(); 
 
     public:
 

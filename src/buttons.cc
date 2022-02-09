@@ -2,6 +2,8 @@
 
 namespace yase {
 
+  //! Constructor for a new Buttons object. 
+  //! \param device_name The name of the MIDI device who's buttons should be be used.
   Buttons::Buttons(string device_name) {
 
       // Check inputs
@@ -49,10 +51,15 @@ namespace yase {
     }
   }
 
+  //! Set a button's state.
+  //! \param id The MIDI id of the button
+  //! \param state The desired state of the button
   void Buttons::set(int id, BUTTON_STATE state) {
     button_states[id] = state;
   }
 
+  //! Turn a button on, illuminating it's LED
+  //! \param id The MIDI id of the button
   Buttons &Buttons::on(unsigned char id) {
     std::vector<unsigned char> msg = { 144, id, 1 };
     midi_output->sendMessage(&msg);
@@ -60,6 +67,8 @@ namespace yase {
     return *this;
   }
 
+  //! Turn a button off, unilluminating it's LED
+  //! \param id The MIDI id of the button
   Buttons &Buttons::off(unsigned char id) {
     std::vector<unsigned char> msg = { 144, id, 0 };
     midi_output->sendMessage(&msg);
@@ -67,17 +76,33 @@ namespace yase {
     return *this;
   }
 
+  //! Set a button blinking.
+  //! \param id The MIDI id of the button
+  //! \param period The period in seconds
   Buttons &Buttons::blink_on(int id, double period) {
     set(id, {false, true, 0, period});
     return *this;
   }
 
+  //! Stop a button blinking
+  //! \param id The MIDI id of the button
   Buttons &Buttons::blink_off(int id) {
     set(id, {false, false, 0, 0});
     off(id);
     return *this;
   }
 
+  //! Associate a button with an method to run when the button is pressed.
+  //! The LED of the button is illumiated momentarily.
+  //! For example
+  //! \code{.cpp}
+  //! buttons.momentary(123, [](const Event &e) {
+  //!   cout << "You pressed buton 123\n";
+  //! });
+  //! \endcode
+  //! \param id The MIDI id of the button
+  //! \param handler The method to run
+  //!
   Buttons &Buttons::momentary(int id, function<void(const Event &)> handler) {
 
     set(id, {false, false, 0, 0});
@@ -99,6 +124,19 @@ namespace yase {
 
   }
 
+  //! Associate a set of buttons with a set of method to run when the associated 
+  //! button is pressed. The LED of the most recently pressed button is
+  //! For example
+  //! \code{.cpp}
+  //! buttons.mutex({123, 234}, [](const Event &e) {
+  //!   cout << "You pressed buton 123\n";
+  //! }, [](const Event &e) {
+  //!   cout << "You pressed buton 234\n";
+  //! });
+  //! \endcode
+  //! \param id The MIDI id of the button
+  //! \param handler The method to run
+  //!
   Buttons &Buttons::mutex(vector<int> ids, vector<function<void(const Event &)>> handlers) {
 
       for ( int i=0; i<ids.size(); i++ ) {
@@ -127,9 +165,10 @@ namespace yase {
 
   }
 
-  //! Set up a toggle button
+  //! Set up a toggle button. When it is pressed, the method is run and the led is illumated
+  //! (unless init_on is true). When it is pressed again, the LED is turned off. 
   //! \param id The midi id of the button
-  //! \param id The function to call when the button is pressed
+  //! \param handler The function to call when the button is pressed
   //! \param init_on Whether the led for the button is initially on or off
   Buttons &Buttons::toggle(int id, function<void(const Event &)> handler, bool init_on) {
     set(id, {init_on, false, 0, 0});
@@ -157,6 +196,7 @@ namespace yase {
     button_states = states;
   }
 
+  //! Turn off all the currently illuminated LEDs
   void Buttons::clear_leds() {
     for ( auto [id, state] : button_states ) {
       off(id);

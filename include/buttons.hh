@@ -11,12 +11,14 @@ using std::string;
 
 namespace yase {
 
+    //! Possible states for a button managed by a Buttons object.
     typedef struct {
        bool on, blink;
        double timer;
        double period;
     } BUTTON_STATE;
 
+    //! A class for managing MIDI buttons. 
     class Buttons : public EventManager, public Module {
 
     public:

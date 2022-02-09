@@ -1,3 +1,5 @@
+/*! \file */
+
 #include "echo.hh"
 #include "yase.hh"
 
