@@ -12,6 +12,7 @@ temp/
 *.o
 course/
 .vs_code/
+.vscode/
 todo.txt
 html/
 latex/
