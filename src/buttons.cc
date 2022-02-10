@@ -62,8 +62,22 @@ namespace yase {
   //! \param id The MIDI id of the button
   Buttons &Buttons::on(unsigned char id) {
     std::vector<unsigned char> msg = { 144, id, 1 };
-    midi_output->sendMessage(&msg);
+    send(msg);
     button_states[id].on = true;
+    return *this;
+  }
+
+  //! Turn a button on, illuminating it's LED
+  //! \param id The MIDI id of the button
+  Buttons &Buttons::on(unsigned char id, unsigned char color) {
+    std::vector<unsigned char> msg = { 144, id, color };
+    send(msg);
+    button_states[id].on = true;
+    return *this;
+  }  
+
+  Buttons &Buttons::send(std::vector<unsigned char> msg) {
+    midi_output->sendMessage(&msg);
     return *this;
   }
 
@@ -71,7 +85,7 @@ namespace yase {
   //! \param id The MIDI id of the button
   Buttons &Buttons::off(unsigned char id) {
     std::vector<unsigned char> msg = { 144, id, 0 };
-    midi_output->sendMessage(&msg);
+    send(msg);
     button_states[id].on = false;
     return *this;
   }

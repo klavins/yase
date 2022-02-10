@@ -23,6 +23,7 @@
 
 // Utility
 #include "noop.hh"
+#include "timer.hh"
 
 // Events
 #include "event.hh"

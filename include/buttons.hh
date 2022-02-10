@@ -29,6 +29,7 @@ namespace yase {
       void update();
 
       Buttons &on(unsigned char id);
+      Buttons &on(unsigned char id, unsigned char color);
       Buttons &off(unsigned char id);
       Buttons &blink_on(int id, double period);
       Buttons &blink_off(int id);
@@ -36,6 +37,8 @@ namespace yase {
       Buttons &momentary(int id, function<void(const Event &)> handler);
       Buttons &mutex(vector<int> ids, vector<function<void(const Event &)>> handlers);
       Buttons &toggle(int id, function<void(const Event &)> handler, bool init_on);
+
+      Buttons &send(std::vector<unsigned char> msg);
 
       void set(int id, BUTTON_STATE state);
       map<int,BUTTON_STATE> get_states();
