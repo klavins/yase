@@ -1,57 +1,47 @@
-#Architecture
-ARCH := $(shell uname -m)
-
-#Compilers
-CC          := g++ -std=c++20 -Wno-psabi
-DGEN        := doxygen
-
 #The Target Binary Program
-TARGET      := test
+TESTTARGET      := test
 
 #The Directories, Source, Includes, Objects, Binary and Resources
-SRCDIR      := .
-INCDIR      := ../include
-BUILDDIR    := ./build
-TARGETDIR   := ./bin
-SRCEXT      := cc
+
+include ../defs.mk
+TESTSRCDIR      := .
+TESTBUILDDIR    := ./build
+TESTTARGETDIR   := ./bin
 
 #Flags, Libraries and Includes
 CFLAGS      := -ggdb
-LIB         := -L../lib -lgtest -lpthread -lyase -lportaudio -lrtmidi
-INC         := -I$(INCDIR) -I../../json/include -I../../json/include/nlohmann
-INCDEP      := -I$(INCDIR)
-ELMALIB		:= ../lib/libyase.a
+LIB         := $(LIBDIR) $(LIBS) -lgtest 
 
 #Files
 HEADERS     := $(wildcard *.h)
 SOURCES     := $(wildcard *.cc)
-OBJECTS     := $(patsubst %.cc, $(BUILDDIR)/%.o, $(notdir $(SOURCES)))
+OBJECTS     := $(patsubst %.cc, $(TESTBUILDDIR)/%.o, $(notdir $(SOURCES)))
 
 #Defauilt Make
-all: directories $(TARGETDIR)/$(TARGET)
+all: directories $(TESTTARGETDIR)/$(TESTTARGET)
 
 #Remake
 remake: cleaner all
 
 #Make the Directories
 directories:
-	@mkdir -p $(TARGETDIR)
-	@mkdir -p $(BUILDDIR)
+	@mkdir -p $(TESTTARGETDIR)
+	@mkdir -p $(TESTBUILDDIR)
 
 #Clean only Objects
 clean:
-	@$(RM) -rf $(BUILDDIR)/*.o
+	@$(RM) -rf $(TESTBUILDDIR)/*.o
 
 #Full Clean, Objects and Binaries
 spotless: clean
-	@$(RM) -rf $(TARGETDIR)/$(TARGET) $(DGENCONFIG) *.db
+	@$(RM) -rf $(TESTTARGETDIR)/$(TESTTARGET) 
 
 #Link
-$(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)
-	$(CC) $(CFLAGS) -o $(TARGETDIR)/$(TARGET) $^ $(LIB)
+$(TESTTARGETDIR)/$(TESTTARGET): $(OBJECTS) $(HEADERS)
+	$(CC) $(CFLAGS) -o $(TESTTARGETDIR)/$(TESTTARGET) $^ $(LIB)
 
 #Compile
-$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) $(HEADERS) $(ELMALIB)
-	$(CC) $(CFLAGS) $(INC) -c -o $@ $<
+$(TESTBUILDDIR)/%.o: $(TESTSRCDIR)/%.$(SRCEXT) 
+	$(CC) $(CFLAGS) $(INCDIR) -c -o $@ $<
 
-.PHONY: directories remake clean cleaner apidocs $(BUILDDIR) $(TARGETDIR)
+.PHONY: directories remake clean cleaner apidocs $(TESTBUILDDIR) $(TESTTARGETDIR)

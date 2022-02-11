@@ -24,7 +24,7 @@ namespace yase {
 
     public:
 
-      Audio();
+      Audio(int num_channels=2);
       void init();
       void update();
 
@@ -32,12 +32,13 @@ namespace yase {
 
       PaStreamParameters outputParameters;
       PaStream *stream;
-      PaError err;    
+      PaError err;
 
-      float buffer[FRAMES_PER_BUFFER][4]; /* stereo output buffer */
+      float buffer[FRAMES_PER_BUFFER][2]; 
+      
       int frame;
-
-      int left, right, aux1, aux2; // indecies into incoming signals
+      int left, right, aux1, aux2; // indices into incoming signals
+      int num_channels;
 
     };
 

@@ -4,7 +4,7 @@
 
 namespace yase {
 
-  Audio::Audio() {
+  Audio::Audio(int num_channels) : num_channels(num_channels) {
 
       left = add_input("left");
       right = add_input("right");
@@ -22,7 +22,7 @@ namespace yase {
 
     err = Pa_Initialize();
     outputParameters.device = Pa_GetDefaultOutputDevice();
-    outputParameters.channelCount = 4;
+    outputParameters.channelCount = num_channels;
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
     outputParameters.suggestedLatency = 0.00;
     outputParameters.hostApiSpecificStreamInfo = NULL;
@@ -43,17 +43,23 @@ namespace yase {
 
   }
 
-  void Audio::update() {
+  void Audio::update() {        
 
       if ( frame >= FRAMES_PER_BUFFER ) {
         err = Pa_WriteStream( stream, buffer, FRAMES_PER_BUFFER );
         frame = 0;
-      }    
+      }
 
       buffer[frame][0] = (float) inputs[left];
       buffer[frame][1] = (float) inputs[right];
-      buffer[frame][2] = (float) inputs[aux1];
-      buffer[frame][3] = (float) inputs[aux2];      
+
+      if ( num_channels >= 3 ) {
+        buffer[frame][2] = (float) inputs[aux1];
+      }
+      if ( num_channels >= 4 ) {
+        buffer[frame][3] = (float) inputs[aux2];      
+      }
+
       frame++;
 
   }    

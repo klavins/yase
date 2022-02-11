@@ -28,7 +28,7 @@ namespace yase {
 
     timer += TS;
 
-    if ( timer > duration ) {
+    if ( active && timer > duration ) {
         active = false;      
         handler();
     }

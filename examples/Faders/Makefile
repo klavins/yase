@@ -1,23 +1,5 @@
-#Architecture
-ARCH := $(shell uname -m)
-
-#Compilers
-CC          := g++ -std=c++20 -Wno-psabi
-
-#Directories
-YASE        := ../..
-JSON        := ../../../json
-MIDI        := ../../../rtmidi
-
-#The Directories, Source, Includes, Objects, Binary and Resources
-SRCEXT      := cc
-
 #Flags, Libraries and Includes
-CFLAGS      := -ggdb
-LIB         := -lpthread -lyase -lportaudio -lrtmidi
-INCLUDE		:= -I$(YASE)/include -I$(JSON)/include -I$(JSON)/include/nlohmann
-LIBDIR		:= -L$(YASE)/lib -L$(MIDI)
-ELMALIB		:= $(YASE)/lib/libyase.a
+include ../../defs.mk
 
 #Files
 TARGETDIR	 := ./bin
@@ -37,6 +19,6 @@ clean:
 
 # Compile
 $(TARGETDIR)/%: %.cc
-	$(CC) $(CFLAGS) $(INCLUDE) $< $(LIBDIR) $(LIB) -o $@
+	$(CC) $(CFLAGS) $(INCDIR) $< $(LIBDIR) $(LIBS) -o $@
 
 .PHONY: directories remake clean cleaner $(BUILDDIR) $(TARGETDIR)

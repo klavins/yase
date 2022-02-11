@@ -1,51 +1,38 @@
-#Compilers
-CC          := g++ -std=c++20
-DGEN        := doxygen
+include ../../defs.mk
 
 #The Target Binary Program
-TARGET      := monophonic
+EX_TARGET      := monophonic
 
 #The Directories, Source, Includes, Objects, Binary and Resources
-SRCDIR      := .
-INCDIR      := ../../include
-LIBDIR      := ../../lib
-BUILDDIR    := .
-TARGETDIR   := ./bin
-SRCEXT      := cc
+EX_SRCDIR      := .
+EX_BUILDDIR    := .
+EX_TARGETDIR   := ./bin
 
 #Flags, Libraries and Includes
-CFLAGS      := -Wno-psabi -O3
-LIB         := -lpthread -lyase -lportaudio -lrtmidi
-LIBDIR      := -L$(LIBDIR) -L../../../rtmidi
-INC         := -I$(INCDIR)  -I ../../../json/include -I ../../../json/include/nlohmann
+INC         := $(INCDIR) 
 
 #Files
-HEADERS     := $(wildcard $(INCDIR)/*.h) $(wildcard $(SYNDIR)/*.h) 
-SOURCES     := $(wildcard $(SRCDIR)/*.cc) 
-OBJECTS     := $(patsubst %.cc, $(BUILDDIR)/%.o, $(notdir $(SOURCES)))
+SOURCES     := $(wildcard $(EX_SRCDIR)/*.cc) 
+OBJECTS     := $(patsubst %.cc, $(EX_BUILDDIR)/%.o, $(notdir $(SOURCES)))
 
 #Defauilt Make
-all: directories $(TARGETDIR)/$(TARGET) 
+all: directories $(EX_TARGETDIR)/$(EX_TARGET) 
 
 #Remake
 remake: cleaner all
 
 #Make the Directories
 directories:
-	@mkdir -p $(TARGETDIR)
+	@mkdir -p $(EX_TARGETDIR)
 
 #Clean only Objects
 clean:
-	@$(RM) -rf $(BUILDDIR)/*.o $(TARGETDIR)/$(TARGET)
-
-huh:
-	echo $(SOURCES)
-	echo $(OBJECTS)
+	@$(RM) -rf $(EX_BUILDDIR)/*.o $(EX_TARGETDIR)/$(EX_TARGET)
 
 #Link
-$(TARGETDIR)/$(TARGET): $(OBJECTS) $(HEADERS)
-	$(CC) $(LIB) $(LIBDIR) $(OBJECTS) -o $@
+$(EX_TARGETDIR)/$(EX_TARGET): $(OBJECTS)
+	$(CC) $(LIBS) $(LIBDIR) $(OBJECTS) -o $@
 	
 #Compile
-$(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) $(HEADERS)
+$(EX_BUILDDIR)/%.o: $(EX_SRCDIR)/%.$(SRCEXT) 
 	$(CC) $(CFLAGS) $(INC) -c -fPIC -o $@ $<

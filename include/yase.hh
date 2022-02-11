@@ -30,6 +30,7 @@
 
 // Audio
 #include "audio.hh"
+#include "sample.hh"
 
 // Oscillators
 #include "oscillator.hh"
