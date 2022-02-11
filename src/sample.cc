@@ -3,6 +3,8 @@
 
 namespace yase {
 
+  //! Construct a new sample module from a .wav file
+  //! \param path The path to a .wav file.
   Sample::Sample(string path) : Module(), active(false), n(0) {
     audioFile.load (path);
     //audioFile.printSummary();
@@ -15,6 +17,7 @@ namespace yase {
     right = add_output("right");
   }
 
+  //! Trigger the sample to play. It needs to have been added to a container first. 
   void Sample::trigger() {
     n = 0;
   }

@@ -27,7 +27,7 @@ $(EXAMPLE_DIRS):
 
 docs: docs/index.html
 
-docs/index.html: $(SOURCES) README.md docs.config examples/*.cc
+docs/index.html: $(SOURCES) README.md docs.config examples/*/*.cc
 	$(DGEN) $(DGENCONFIG)
 
 #Clean only Objects
