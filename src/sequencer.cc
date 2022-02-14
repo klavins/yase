@@ -2,18 +2,18 @@
 #include "event.hh"
 #include "sequencer.hh"
 
-#define PERIOD (60/inputs[tempo])
 #define DURATION inputs[duration]
 
 namespace yase {
 
   Sequencer::Sequencer() {
 
-    tempo = add_input("tempo");
     duration = add_input("duration");
+    clock = add_input("clock");
 
-    inputs[tempo] = 240;   // defaults
-    inputs[duration] = 0.5; //
+    inputs[duration] = 0.5;
+    inputs[clock] = -1;
+    prev_clock = -1;
 
   }
 
@@ -21,12 +21,21 @@ namespace yase {
     update_fcn = &Sequencer::idle;
     step = 0;
     t = 0;
+    prev_clock = inputs[clock];
     mode = UP;
+    tick = false;
   }
 
   void Sequencer::update() {
     CALL_MEMBER_FN(this, update_fcn);
-  }    
+    t += TS;
+    tick = (prev_clock < inputs[clock]);
+    prev_clock = inputs[clock];    
+    if ( tick ) {
+      period = t;
+      t = 0;
+    }
+  }
 
   void Sequencer::recording() {
     // Not much do to here for a key at a time sequencer.
@@ -36,18 +45,16 @@ namespace yase {
 
   void Sequencer::playing() {
 
-    t += TS;
-
-    if ( mode == UP && t > PERIOD ) {
+    if ( mode == UP && tick ) {
       mode = DOWN;
-      t = 0;
+      DEBUG
       if ( sequence[step]->code != SEQUENCE_REST ) {
         sequence[step]->code = MIDI_KEYDOWN;
         emit(*sequence[step]);
       }
     } 
     
-    if ( mode == DOWN && t > DURATION * PERIOD ) {
+    if ( mode == DOWN && t > DURATION * period ) {
       mode = UP;
       if ( sequence[step]->code != SEQUENCE_REST ) {
         sequence[step]->code = MIDI_KEYUP;
@@ -57,8 +64,8 @@ namespace yase {
       if ( step >= sequence.size() ) {
         step = 0;
       }
-
     }
+
   }
 
   void Sequencer::idle() {
@@ -68,10 +75,7 @@ namespace yase {
   void Sequencer::keydown(const Event &e) {
     if ( update_fcn == &Sequencer::recording ) {
       sequence.push_back(new Event(e));
-      for ( int i=0; i< sequence.size(); i++ ) {
-        std::cout << sequence[i]->id << " ";
-      }
-      std::cout << "\n";
+      DEBUG
     }
   }
 
@@ -82,22 +86,20 @@ namespace yase {
 
   void Sequencer::insert_rest() {
       if ( update_fcn == &Sequencer::recording ) {
+        DEBUG
         sequence.push_back(new Event(SEQUENCE_REST, 0, 0, 0));
       }
   }
 
   void Sequencer::reset() {
-    std::cout << "resetting\n";
     step = 0;
   }
 
   void Sequencer::record() {
-    std::cout << "recording\n";
     update_fcn = &Sequencer::recording;
   }
 
   void Sequencer::stop() {
-    std::cout << "stopping\n";
     update_fcn = &Sequencer::idle;
     if ( mode == DOWN ) {
       sequence[step]->code = MIDI_KEYUP;
@@ -108,7 +110,7 @@ namespace yase {
 
   void Sequencer::play() {
     if ( sequence.size() > 0 ) {
-      std::cout << "playing\n";
+      DEBUG
       t = 0; 
       mode = UP;
       update_fcn = &Sequencer::playing;
@@ -117,7 +119,6 @@ namespace yase {
 
   void Sequencer::clear() {
     if ( update_fcn == &Sequencer::idle ) { 
-      std::cout << "clearing\n";
       for (auto e : sequence) {
         delete e;
       }       
@@ -125,31 +126,37 @@ namespace yase {
     }
   }
 
-  void Sequencer::decrease_tempo(int amount) {
-      double x = inputs[tempo];
-      if ( x > amount ) {
-          inputs[tempo] = x - amount;
-      }
-  }
-
-  void Sequencer::increase_tempo(int amount) {
-     inputs[tempo] += amount;
-  }
-
   void Sequencer::decrease_duration(double amount) {
       double dur = inputs[duration];
-      if ( dur > amount ) {
+      if ( dur > 0.01 + amount ) {
           inputs[duration] = dur - amount;
       }
   }
 
   void Sequencer::increase_duration(double amount) {
       double dur = inputs[duration];
-      if ( dur < 1.0 - amount ) {
+      if ( dur < 0.99 - amount ) {
           inputs[duration] = dur + amount;
       }
   } 
 
-}
+  void Sequencer::allocate(int n) {
+      for ( int i=0; i<n; i++ ) {
+        sequence.push_back(new Event(SEQUENCE_REST, 0, 0, 0));
+      }    
+  }
 
- 
+  void Sequencer::set(int index, int note) {
+      //delete sequence[index];
+      sequence[index] = new Event(MIDI_KEYDOWN, note, 127, 0);
+  }
+
+  bool Sequencer::is_rest(int index) {
+      return sequence[index]->code == SEQUENCE_REST;
+  }
+
+  void Sequencer::rest(int index) {
+      sequence[index] = new Event(SEQUENCE_REST, 0, 0, 0);
+  }
+
+}

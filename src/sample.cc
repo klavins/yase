@@ -6,15 +6,20 @@ namespace yase {
   //! Construct a new sample module from a .wav file
   //! \param path The path to a .wav file.
   Sample::Sample(string path) : Module(), active(false), n(0) {
+
     audioFile.load (path);
-    //audioFile.printSummary();
     if ( audioFile.getNumChannels() != 2 ) {
       throw Exception("Expected sample to have two channels");
     }
     length = audioFile.getNumSamplesPerChannel();
     n = length; // initially off
+
     left = add_output("left");
     right = add_output("right");
+    amplitude = add_input("amplitude");
+
+    inputs[amplitude] = 0.25;
+
   }
 
   //! Trigger the sample to play. It needs to have been added to a container first. 
@@ -28,8 +33,8 @@ namespace yase {
 
   void Sample::update() {
     if ( n < length ) {
-      outputs[left] = audioFile.samples[0][n];
-      outputs[right] = audioFile.samples[1][n]; 
+      outputs[left] = inputs[amplitude] * audioFile.samples[0][n];
+      outputs[right] = inputs[amplitude] * audioFile.samples[1][n]; 
       n++;
     } else {
       outputs[left] = 0;
@@ -37,6 +42,11 @@ namespace yase {
     }
 
   }    
+
+  //! Stop playing the sample
+  void Sample::stop() {
+    n = length;
+  }
 
 }
 

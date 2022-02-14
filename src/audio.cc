@@ -4,7 +4,7 @@
 
 namespace yase {
 
-  Audio::Audio(int num_channels) : num_channels(num_channels) {
+  Audio::Audio(int num_channels) : num_channels(4) {
 
       left = add_input("left");
       right = add_input("right");

@@ -122,9 +122,11 @@ namespace yase {
     set(id, {false, false, 0, 0});
 
     listeners[MIDI_KEYDOWN].push_back([this, id, handler] (const Event e) {
-      if ( e.port == port_id && e.id == id ) {
+      if ( e.port == port_id && e.id == id && e.value > 0 ) {
         handler(e);
         on(e.id);
+      } else if ( e.port == port_id && e.id == id && e.value == 0 ) {
+        off(e.id);
       }
     });
 
@@ -189,8 +191,8 @@ namespace yase {
     if ( init_on ) {
       on(id);
     }
-    listeners[MIDI_KEYUP].push_back([this, id, handler] (const Event e) {
-      if ( e.port == port_id && e.id == id ) {
+    listeners[MIDI_ANY].push_back([this, id, handler] (const Event e) {
+      if ( ( e.code == MIDI_KEYUP || ( e.code == MIDI_KEYDOWN && e.value == 0 ) ) && e.port == port_id && e.id == id ) {
         if ( button_states[id].on ) {
           off(id);
         } else {

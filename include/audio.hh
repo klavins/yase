@@ -34,7 +34,7 @@ namespace yase {
       PaStream *stream;
       PaError err;
 
-      float buffer[FRAMES_PER_BUFFER][2]; 
+      float buffer[FRAMES_PER_BUFFER][4]; 
       
       int frame;
       int left, right, aux1, aux2; // indices into incoming signals

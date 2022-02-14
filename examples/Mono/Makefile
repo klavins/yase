@@ -30,7 +30,7 @@ clean:
 	@$(RM) -rf $(EX_BUILDDIR)/*.o $(EX_TARGETDIR)/$(EX_TARGET)
 
 #Link
-$(EX_TARGETDIR)/$(EX_TARGET): $(OBJECTS)
+$(EX_TARGETDIR)/$(EX_TARGET): $(OBJECTS) ../../lib/libyase.a
 	$(CC) $(LIBS) $(LIBDIR) $(OBJECTS) -o $@
 	
 #Compile

@@ -6,12 +6,12 @@ using namespace yase;
 int main(int argc, char * argv[]) {
 
     Clock clock;
-    Audio audio;
+    Audio audio(3);
     MidiInput midi("MIDI Mix");
     Controls controls;
     Container container;
     
-    clock.set_input("frequency", 1);
+    clock.set_input("frequency", 4);
 
     container.add(clock)
              .add(midi)

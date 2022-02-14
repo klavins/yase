@@ -52,6 +52,8 @@ namespace yase {
       MidiInput &keyboard, &controller;
       json &config;
 
+      Clock clock;
+
       std::vector<int> keys;
 
     };

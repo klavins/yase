@@ -16,6 +16,8 @@ namespace yase {
     //!     timer.reset();
     //! });
     //! \endcode
+    //!
+    //! This module has no inputs or outputs
     class Timer : public Module {
 
     public:

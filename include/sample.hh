@@ -22,8 +22,9 @@ namespace yase {
     //! });;
     //! \endcode
     //!
+    //! \param[in] amplitude
     //! \param[out] left
-    //! \param[out right]
+    //! \param[out] right
     class Sample : public Module {
 
     public:
@@ -32,10 +33,11 @@ namespace yase {
       void init();
       void update();
       void trigger();
+      void stop();
 
     private:
 
-      int left, right;
+      int left, right, amplitude;
       int n, length;
       bool active;    
       AudioFile<double> audioFile;

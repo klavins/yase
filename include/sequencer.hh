@@ -29,8 +29,11 @@ namespace yase {
       void play();
       void clear();
 
-      void decrease_tempo(int amount);
-      void increase_tempo(int amount);
+      void allocate(int n);
+      void set(int index, int note);
+      bool is_rest(int index);
+      void rest(int index);
+
       void decrease_duration(double amount);
       void increase_duration(double amount);
 
@@ -38,8 +41,9 @@ namespace yase {
 
       vector<Event *> sequence;
       int step, mode;
-      double t;
-      int tempo, duration;
+      double t, period, prev_clock;
+      int duration, clock;
+      bool tick;
 
       UpdateFunction update_fcn;
 

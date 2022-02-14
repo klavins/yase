@@ -8,7 +8,7 @@ TARGETS		 := $(patsubst %.cc,%,$(wildcard *.cc))
 FULL_TARGETS := $(addprefix $(TARGETDIR)/, $(TARGETS))
 
 #Default Make
-all: dirs $(FULL_TARGETS)
+all: dirs $(FULL_TARGETS) 
 
 dirs: $(TARGETDIR)
 	@mkdir -p $(TARGETDIR)
@@ -18,7 +18,7 @@ clean:
 	@$(RM) -rf $(TARGETDIR)
 
 # Compile
-$(TARGETDIR)/%: %.cc
+$(TARGETDIR)/%: %.cc ../../lib/libyase.a
 	$(CC) $(CFLAGS) $(INCDIR) $< $(LIBDIR) $(LIBS) -o $@
 
 .PHONY: directories remake clean cleaner $(BUILDDIR) $(TARGETDIR)

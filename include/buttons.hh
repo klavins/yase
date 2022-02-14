@@ -37,7 +37,7 @@ namespace yase {
       Buttons &momentary(int id, function<void(const Event &)> handler);
       Buttons &mutex(vector<int> ids, vector<function<void(const Event &)>> handlers);
       Buttons &toggle(int id, function<void(const Event &)> handler, bool init_on);
-
+      
       Buttons &send(std::vector<unsigned char> msg);
 
       void set(int id, BUTTON_STATE state);

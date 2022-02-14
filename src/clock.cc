@@ -3,13 +3,14 @@
 namespace yase {
 
   Clock::Clock() {
-    outputs[signal] = 1.0;
+    inputs[frequency] = 1;
+    outputs[signal] = 5.0;
   }
 
   void Clock::update() {
       Oscillator::update(); 
       if ( phase < prev ) {
-        outputs[signal] *= -1.0;
+        outputs[signal] *= -5.0;
       }
       prev = phase;
   }    
