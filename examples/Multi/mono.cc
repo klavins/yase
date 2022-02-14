@@ -32,7 +32,8 @@ namespace yase {
     add(osc2_lfo_gain); 
     add(filter_env_mixer);
     add(filter_env);
-    add(seq);    
+    add(seq);   
+    add(clock); 
     add(noop);
     add(buttons);
     add(controls);
@@ -56,6 +57,9 @@ namespace yase {
     connect( osc2_lfo_gain, "signal", osc[0], "modulation" );
     connect( filter_env, "signal", filter_env_mixer, 1 );
     connect( filter_env_mixer, "signal", filter, "frequency" );
+    connect ( clock, "signal", seq, "clock");
+
+    clock.set_input("frequency", 4);
 
     // DEFAULT INPUT
     filter_env_mixer.set_input(0, 1);    
@@ -144,10 +148,20 @@ namespace yase {
     buttons.momentary(button["rest"], [&] (const Event &e) { seq.insert_rest(); });
     buttons.momentary(button["reset"], [&] (const Event &e) { seq.reset(); });
     buttons.momentary(button["clear"], [&] (const Event &e) { seq.clear(); });
-    buttons.momentary(button["decrease_tempo"], [&] (const Event &e) { seq.decrease_tempo(20); });
-    buttons.momentary(button["increase_tempo"], [&] (const Event &e) { seq.increase_tempo(20); });
     buttons.momentary(button["decrease_duration"], [&] (const Event &e) { seq.decrease_duration(0.1); });
     buttons.momentary(button["increase_duration"], [&] (const Event &e) { seq.increase_duration(0.1); });      
+
+    buttons.momentary(button["decrease_tempo"], [&] (const Event &e) { 
+        double f = clock.get_input("frequency");
+        if ( f > 0.25 ) {
+            clock.set_input("frequency", f - 0.25);
+        }
+    });
+
+    buttons.momentary(button["increase_tempo"], [&] (const Event &e) { 
+        double f = clock.get_input("frequency");
+        clock.set_input("frequency", f + 0.25);
+    });    
 
   }
 

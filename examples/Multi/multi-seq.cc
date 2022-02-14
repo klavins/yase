@@ -10,7 +10,7 @@ using namespace nlohmann;
 
 int main(int argc, char * argv[]) {
 
-    json config = get_config("config/akai-monophonic.json");
+    json config = get_config("./examples/Multi/akai.json");
 
     // Components
     Container synth;

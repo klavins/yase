@@ -47,7 +47,6 @@ namespace yase {
 
     if ( mode == UP && tick ) {
       mode = DOWN;
-      DEBUG
       if ( sequence[step]->code != SEQUENCE_REST ) {
         sequence[step]->code = MIDI_KEYDOWN;
         emit(*sequence[step]);
@@ -75,7 +74,6 @@ namespace yase {
   void Sequencer::keydown(const Event &e) {
     if ( update_fcn == &Sequencer::recording ) {
       sequence.push_back(new Event(e));
-      DEBUG
     }
   }
 
@@ -86,7 +84,6 @@ namespace yase {
 
   void Sequencer::insert_rest() {
       if ( update_fcn == &Sequencer::recording ) {
-        DEBUG
         sequence.push_back(new Event(SEQUENCE_REST, 0, 0, 0));
       }
   }
@@ -110,7 +107,6 @@ namespace yase {
 
   void Sequencer::play() {
     if ( sequence.size() > 0 ) {
-      DEBUG
       t = 0; 
       mode = UP;
       update_fcn = &Sequencer::playing;
