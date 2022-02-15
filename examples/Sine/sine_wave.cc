@@ -19,6 +19,7 @@ int main(int argc, char * argv[]) {
          .connect(sine2,"signal",audio,"right");
 
     synth.run(100000);
+    audio.show_buffer();
 
     return 0; 
 

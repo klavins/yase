@@ -17,6 +17,12 @@ namespace yase {
 
   }
 
+  Sequencer::~Sequencer() {
+      for (auto e : sequence) {
+          delete e;
+      }       
+  }
+
   void Sequencer::init() {
     update_fcn = &Sequencer::idle;
     step = 0;
@@ -171,8 +177,12 @@ namespace yase {
   //! \param index The index of the event
   //! \param note The MIDI id ot eh note to play
   void Sequencer::set(int index, int note) {
-      //delete sequence[index];
-      sequence[index] = new Event(MIDI_KEYDOWN, note, 127, 0);
+      if ( index >= 0 && index < sequence.size() ) {
+        delete sequence[index];
+        sequence[index] = new Event(MIDI_KEYDOWN, note, 127, 0);
+      } else {
+        throw Exception("Index out of range in Sequencer::set");
+      }
   }
 
   //! Return true of the sequence at the given index is a rest
@@ -184,7 +194,17 @@ namespace yase {
   //! Set the sequence at the given index to a rest
   //! \param index The given index
   void Sequencer::rest(int index) {
-      sequence[index] = new Event(SEQUENCE_REST, 0, 0, 0);
+      if ( index >= 0 && index < sequence.size() ) {
+        delete sequence[index];
+        sequence[index] = new Event(SEQUENCE_REST, 0, 0, 0);
+      } else {
+        throw Exception("Index out of range in Sequencer::rest");
+      }
+  }
+
+  //! Returns true if the sequencer is playing (because of a previous call to play())
+  bool Sequencer::is_playing() {
+    return (update_fcn == &Sequencer::playing);
   }
 
 }

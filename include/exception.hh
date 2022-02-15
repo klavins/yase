@@ -14,7 +14,7 @@ namespace yase {
     //! but otherwise look like run time errors.
     class Exception : public std::runtime_error {
        public:
-       Exception(const string& what = "") : std::runtime_error("Yase Error:" + what) {}
+       Exception(const string& what = "") : std::runtime_error("Yase Error: " + what) {}
     };
 
 }

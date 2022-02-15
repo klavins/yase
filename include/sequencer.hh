@@ -23,6 +23,8 @@ namespace yase {
     public:
 
       Sequencer();
+      ~Sequencer();
+
       void init();
       void update();
 
@@ -43,6 +45,8 @@ namespace yase {
 
       void decrease_duration(double amount);
       void increase_duration(double amount);
+
+      bool is_playing();
 
     private:
 

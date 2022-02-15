@@ -18,7 +18,7 @@ clean:
 	@$(RM) -rf $(TARGETDIR)
 
 # Compile
-$(TARGETDIR)/%: %.cc
+$(TARGETDIR)/%: %.cc ../../lib/libyase.a
 	$(CC) $(CFLAGS) $(INCDIR) $< $(LIBDIR) $(LIBS) -o $@
 
 .PHONY: directories remake clean cleaner $(BUILDDIR) $(TARGETDIR)

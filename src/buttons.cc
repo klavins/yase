@@ -117,24 +117,39 @@ namespace yase {
   //! \param id The MIDI id of the button
   //! \param handler The method to run
   //!
-  Buttons &Buttons::momentary(int id, function<void(const Event &)> handler) {
+  Buttons &Buttons::momentary(int id, function<void(const Event &)> handler, int type) {
 
     set(id, {false, false, 0, 0});
 
-    listeners[MIDI_KEYDOWN].push_back([this, id, handler] (const Event e) {
-      if ( e.port == port_id && e.id == id && e.value > 0 ) {
-        handler(e);
-        on(e.id);
-      } else if ( e.port == port_id && e.id == id && e.value == 0 ) {
-        off(e.id);
-      }
-    });
+    if ( type == MIDI_KEYDOWN ) {
 
-    listeners[MIDI_KEYUP].push_back([this, id, handler] (const Event e) {
-      if ( e.port == port_id && e.id == id ) {
-        off(e.id);
-      }
-    });
+      listeners[MIDI_KEYDOWN].push_back([this, id, handler] (const Event e) {
+        if ( e.port == port_id && e.id == id && e.value > 0 ) {
+          handler(e);
+          on(e.id);
+        } else if ( e.port == port_id && e.id == id && e.value == 0 ) {
+          off(e.id);
+        }
+      });
+
+      listeners[MIDI_KEYUP].push_back([this, id, handler] (const Event e) {
+        if ( e.port == port_id && e.id == id ) {
+          off(e.id);
+        }
+      });
+
+    } else if ( type == MIDI_MOD ) {
+
+      listeners[MIDI_MOD].push_back([this, id, handler] (const Event e) {
+        if ( e.port == port_id && e.id == id && e.value > 0 ) {
+          handler(e);
+          on(e.id);
+        } else if ( e.port == port_id && e.id == id && e.value == 0 ) {
+          off(e.id);
+        }
+      });
+
+    }
 
     return *this;
 

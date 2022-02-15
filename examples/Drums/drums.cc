@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
     vector<Module *> drums = { &kick, &snare, &hat_closed, &hat_open };
     Sequencer seq[4];
 
-    Audio audio;
+    Audio audio(3);
     Mixer mixer(8);
     Buttons buttons("Launchpad Mini MK3 LPMiniMK3 MIDI In");
     MidiInput midi("Launchpad Mini MK3 LPMiniMK3 MIDI Out");  
@@ -49,7 +49,11 @@ int main(int argc, char * argv[]) {
          .propagate_to(buttons)
          .propagate_to(controls);
 
+    DEBUG
+
     synth.connect(clock, "signal", audio, "aux1");
+
+    DEBUG
 
     for ( int i=0; i<4; i++ ) { 
         synth.add(*drums[i]);
@@ -101,30 +105,30 @@ int main(int argc, char * argv[]) {
         }, false);                 
     }     
 
-    synth.listen(MIDI_MOD, [&] (const Event &e) {
-        if ( e.value > 0 ) {
-            switch ( e.id ) {
-                case 89:
-                   for ( int i=0; i<4; i++ ) seq[i].play();
-                   buttons.blink_on(89, 2/clock.get_input("frequency"));
-                   break;
-                case 79:
-                    for ( int i=0; i<4; i++ ) seq[i].stop();
-                    buttons.blink_off(89);
-                    break;
-                case 69:
-                    clock.set_input("frequency", clock.get_input("frequency") + 0.25);
-                    break;
-                case 59:
-                    double f = clock.get_input("frequency");
-                    if ( f > 2 ) {
-                      clock.set_input("frequency", f - 0.25);
-                    }
-                    break;
-            }
+    buttons.momentary(89, [&] (const Event & e) {
+        if ( seq[0].is_playing() ) {
+            for ( int i=0; i<4; i++ ) seq[i].stop();
+            buttons.blink_off(89);
+        } else {
+            for ( int i=0; i<4; i++ ) 
+            seq[i].play();
+            buttons.blink_on(89, 2/clock.get_input("frequency"));
         }
-    });    
+        audio.show_buffer();
+    }, MIDI_MOD);
 
+    buttons.momentary(79, [&] (const Event & e) {
+        clock.set_input("frequency", clock.get_input("frequency") + 0.25);
+    }, MIDI_MOD);
+
+    buttons.momentary(69, [&] (const Event & e) {
+        double f = clock.get_input("frequency");
+        if ( f > 2 ) {
+            clock.set_input("frequency", f - 0.25);
+        }
+    }, MIDI_MOD);
+
+    // Listen to sequencer events
     synth.listen(MIDI_KEYDOWN, [&] (const Event &e) {
         switch ( e.id ) {
             case KICK_ID:
@@ -143,6 +147,7 @@ int main(int argc, char * argv[]) {
         }
     });     
 
+    DEBUG
     synth.run(UNTIL_INTERRUPTED); 
     buttons.clear_leds();    
 

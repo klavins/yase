@@ -5,6 +5,7 @@
 #include <string>
 #include "event_manager.hh"
 #include "../../rtmidi/RtMidi.h"
+#include "globals.hh"
 
 using std::vector;
 using std::string;
@@ -34,7 +35,7 @@ namespace yase {
       Buttons &blink_on(int id, double period);
       Buttons &blink_off(int id);
 
-      Buttons &momentary(int id, function<void(const Event &)> handler);
+      Buttons &momentary(int id, function<void(const Event &)> handler, int type=MIDI_KEYDOWN);
       Buttons &mutex(vector<int> ids, vector<function<void(const Event &)>> handlers);
       Buttons &toggle(int id, function<void(const Event &)> handler, bool init_on);
       
