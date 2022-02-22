@@ -9,7 +9,7 @@ int main(int argc, char * argv[]) {
 
      int n = 8;
 
-     json config = get_config("config/akai-monophonic.json");
+     json config = get_config("./examples/Poly/akai.json");
 
      Container synth;
      Audio audio;
@@ -24,16 +24,16 @@ int main(int argc, char * argv[]) {
 
      for ( int i=0; i<n; i++ ) {
         simple.push_back(new Simple(config));
-     }     
+     }
 
      synth.add(audio)
-         .add(gain)
-         .add(controls)
-         .add(mixer)
-         .add(midi_keyboard)
-         .add(midi_controller)   
-         .add(echo)     
-         .propagate_to(controls);
+          .add(gain)
+          .add(controls)
+          .add(mixer)
+          .add(midi_keyboard)
+          .add(midi_controller)   
+          .add(echo)                
+          .propagate_to(controls);
 
      vector<tuple<int,Simple *>> notes;
 

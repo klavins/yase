@@ -5,7 +5,7 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Sine sine1, sine2;
+    Saw sine1, sine2;
     Audio audio;
     Container synth;
     
@@ -19,9 +19,8 @@ int main(int argc, char * argv[]) {
          .connect(sine2,"signal",audio,"right");
 
     synth.run(100000);
-    audio.show_buffer();
 
     return 0; 
 
 }
-
+ 

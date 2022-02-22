@@ -63,7 +63,6 @@ namespace yase {
       Container &add(Module &module, int n);
       void run_threaded(int num_steps);
       void update_threaded();
-      void thread_loop(int i);
 
     private:
 
@@ -72,10 +71,7 @@ namespace yase {
       vector<Equate> input_equates, output_equates;
 
       // Thread groups
-      vector<std::thread> threads;
       vector<vector<Module *> > groups;
-      vector<bool> working_flags;
-      std::mutex mtx;
 
     };
 }

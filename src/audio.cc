@@ -81,12 +81,12 @@ namespace yase {
 
       if ( frame >= FRAMES_PER_BUFFER ) {
         err = Pa_WriteStream( stream, buffer, FRAMES_PER_BUFFER );
-        if ( err != paNoError ) {
-            throw Exception(
-              "Failed to write to audio stream with error: " + 
-              std::string(Pa_GetErrorText(err))
-            );
-        }
+        // if ( err != paNoError ) {
+        //     throw Exception(
+        //       "Failed to write to audio stream with error: " + 
+        //       std::string(Pa_GetErrorText(err))
+        //     );
+        // }
         frame = 0;
       }
 
@@ -102,6 +102,9 @@ namespace yase {
   }    
   
   void Audio::show_buffer() {
+
+    std::cout << buffer << ", " << &buffer[0] << "\n";
+
     for ( int i=0; i<FRAMES_PER_BUFFER; i++  ) {
         if ( i == frame ) {
             std::cout << "----------------\n";

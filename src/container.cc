@@ -1,6 +1,10 @@
 #include <iostream>
 #include <signal.h>
 #include <unistd.h>
+#include <chrono>
+#include <mutex>
+#include <unistd.h>
+#include <pthread.h>
 #include "yase.hh"
 
 // Convenience macros for wires
@@ -184,11 +188,135 @@ namespace yase {
 
     init();
 
-    // loop
+    auto start = std::chrono::high_resolution_clock::now();
     for(int i=0; !interuppted && ( num_steps < 0 || i < num_steps ); i++ ) {
       update();
     }
+    auto finish = std::chrono::high_resolution_clock::now();
+    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count()/num_steps << " ns / step\n";
     
   } 
+
+  Container &Container::set_thread_number(int n) {
+    if ( groups.size() == 0 ) {
+      for ( int i=0; i<n; i++ ) {
+        groups.push_back({});
+      }
+    } else {
+      throw Exception("Attempted to set thread number more than once.");
+    }
+    std::cout << "Number of threads: " << groups.size() << "\n";
+    return *this;
+  }
+
+  Container &Container::add(Module &module, int n) {
+
+    if ( n >=0 && n < groups.size() ) {
+      modules.push_back(&module);
+      groups[n].push_back(&module);
+    } else {
+      throw Exception("Attempted at add a module to a non-existent thread group (index out of range)");
+    }
+
+    return *this;
+  }
+
+  //////////////////////////////////////////////////////////////////////////////////////////////
+  // EXPERIMENTAL THREADED UPDATES (Not entirely working well [yet])
+  //
+
+  void Container::thread_loop(int i) {
+    bool flag;
+    while ( true ) {
+    //  mtx.lock();
+      flag = working_flags[i];
+    //  mtx.unlock();
+      if ( flag ) {
+          for ( auto m : groups[i] ) {   
+              m->update();
+          }    
+          mtx.lock();
+          working_flags[i] = false;        
+          mtx.unlock();
+      } else {
+          //usleep(1);
+          std::this_thread::sleep_for (1ns);
+          //std::this_thread::yield();
+      }
+    }
+  }
+
+  void Container::run_threaded(int num_steps) {
+
+    signal(SIGINT, sighandler);
+
+    working_flags.push_back(false); // for zeroth thread
+    sched_param params;
+    params.sched_priority = 99;
+
+    for ( int i=1; i<groups.size(); i++ ) {
+      working_flags.push_back(false);
+      threads.push_back(std::thread(&Container::thread_loop, this, i));
+      pthread_setschedparam(threads.back().native_handle(), SCHED_RR, &params);
+    }
+
+    init();
+
+    // loop
+    auto start = std::chrono::high_resolution_clock::now();
+    for(int i=0; !interuppted && ( num_steps < 0 || i < num_steps ); i++ ) {
+      update_threaded();
+    }
+    auto finish = std::chrono::high_resolution_clock::now();
+    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count()/num_steps << " ns / step\n";
+    
+  }
+
+  void Container::update_threaded() {
+
+    // WIRES
+    for(Wire & w : wires) {
+      DEST(w).set_input(INPUT(w), SOURCE(w).get_output(OUTPUT(w)));
+    }
+
+    // INPUT EQUATES
+    for(Equate & e : input_equates) {
+      SUB_MODULE(e).set_input(SUB_INPUT(e), inputs[MAIN_INPUT(e)]);
+    }
+
+    // MODULES
+
+    // Wake up threads
+    for ( int i=1; i<working_flags.size(); i++ ) {
+      mtx.lock();
+      working_flags[i] = true;
+      mtx.unlock();
+    } 
+
+    // update zeroth thread
+    for ( auto m : groups[0] ) {   
+        m->update();
+    }    
+
+    // wait for other threads to finish
+    bool done = false;
+    while ( !done ) {
+      done = true;
+      for ( int i=1; i<working_flags.size(); i++ ) {
+        //mtx.lock();
+        done = done && (!working_flags[i]);
+        //mtx.unlock();
+      }
+    }
+
+    // OUTPUT EQUATES
+    for(Equate & e : output_equates) {
+      outputs[MAIN_OUTPUT(e)] = SUB_MODULE(e).get_output(SUB_OUTPUT(e));
+    }
+
+    // EVENTS
+    process_events(modules);
+
+  }
 
 }

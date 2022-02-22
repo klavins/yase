@@ -49,11 +49,7 @@ int main(int argc, char * argv[]) {
          .propagate_to(buttons)
          .propagate_to(controls);
 
-    DEBUG
-
     synth.connect(clock, "signal", audio, "aux1");
-
-    DEBUG
 
     for ( int i=0; i<4; i++ ) { 
         synth.add(*drums[i]);
@@ -114,7 +110,6 @@ int main(int argc, char * argv[]) {
             seq[i].play();
             buttons.blink_on(89, 2/clock.get_input("frequency"));
         }
-        audio.show_buffer();
     }, MIDI_MOD);
 
     buttons.momentary(79, [&] (const Event & e) {
@@ -123,7 +118,7 @@ int main(int argc, char * argv[]) {
 
     buttons.momentary(69, [&] (const Event & e) {
         double f = clock.get_input("frequency");
-        if ( f > 2 ) {
+        if ( f > 0.25 ) {
             clock.set_input("frequency", f - 0.25);
         }
     }, MIDI_MOD);
@@ -147,7 +142,6 @@ int main(int argc, char * argv[]) {
         }
     });     
 
-    DEBUG
     synth.run(UNTIL_INTERRUPTED); 
     buttons.clear_leds();    
 
