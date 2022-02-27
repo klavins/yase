@@ -8,7 +8,7 @@ namespace yase {
 
   MidiInput::MidiInput(string device_name) : device_name(device_name) {
 
-      std::cout << "Looking for " << device_name << "\n";
+      std::cout << "\nLooking for " << device_name << " ... ";
 
       RtMidiIn * temp = new RtMidiIn();
       unsigned int nPorts = temp->getPortCount();
@@ -20,7 +20,7 @@ namespace yase {
           if ( mi->getPortName(i) == device_name ) {
             midi_input = mi;
             _port = i;
-            std::cout << "Found " << device_name << "\n";
+            std::cout << "found it!\n";
           } else {
             mi->closePort();
           }

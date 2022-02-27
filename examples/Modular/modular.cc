@@ -13,7 +13,7 @@ int main(int argc, char * argv[]) {
 
     // DECLARE MODULES
     Container synth;
-    Audio audio;
+    Audio audio(2,1);
     MidiInput keyboard(config["keyboard"]);
     MidiInput controller(config["controller"]);
     MidiInput matrix_input(config["matrix_input"]); 
@@ -74,12 +74,15 @@ int main(int argc, char * argv[]) {
     outputs.push_back({&eg1,    "signal"});
     outputs.push_back({&eg2,    "signal"});
     outputs.push_back({&echo,   "signal"});
+    outputs.push_back({&audio,  "line_in0"});
 
     // CONNECT OUTPUTS TO INPUT MIXERS
     for ( int i=0; i<inputs.size(); i++ ) {
         for ( int j=0; j<outputs.size(); j++ ) {
-            synth.connect(*MOD(outputs[j]), PORT(outputs[j]), mixer[i], j);
-            mixer[i].set_amplitude_input(j,0);
+            if ( ! ( ( i == 2 || i == 4 || i == 7 ) && j == 7 ) ) {
+              synth.connect(*MOD(outputs[j]), PORT(outputs[j]), mixer[i], j);
+              mixer[i].set_amplitude_input(j,0);
+            }
         }
         synth.connect(mixer[i], "signal", *MOD(inputs[i]), PORT(inputs[i]));
     }
@@ -102,7 +105,6 @@ int main(int argc, char * argv[]) {
     controls.control(osc2, "harmonic", -2, 3, config["osc2"]["harmonic"]);
 
     // LFO KNOBS
-    //mixer[2].set_input(7,0.01);
     controls.control(mixer[2], 7, 0, 1, config["lfo"]["offset"]);
     mixer[2].set_amplitude_input(7,1);
     controls.control(mixer[2], "output_gain", 0.01, 10, config["lfo"]["frequency"]);
@@ -131,23 +133,28 @@ int main(int argc, char * argv[]) {
     controls.control(echo, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, config["echo"]["duration"]);
     controls.control(echo, "amplitude", 0, 0.99, config["echo"]["amplitude"]);
 
+    // VCA KNOB
+    controls.control(mixer[7], 7, 0, 1, config["vca"]["offset"]);
+
     // VOLUME KNOB
     controls.control(volume, "amplitude", 0, 0.25, config["volume"]);
 
     // DEFINE MATRIX BEHAVIOR
     matrix_output.send({240,0,32,41,2,13,0,127,247}); // set launchpad to programmer mode   
     int colors[5] = { 0, 11, 10, 9, 5 };
-    for(int output=0; output<7; output++) {
+    for(int output=0; output<8; output++) {
         for ( int input=0; input<8; input++ ) {
-            synth.listen(MIDI_KEYDOWN, matrix_input.port(), [&,input,output] (const Event &e) {
-                if ( e.id == config["buttons"][output][input] && e.value > 0 ) {
-                    double value = mixer[input].get_amplitude_input(output);
-                    value += 0.2;
-                    if ( value >= 1.0 ) value = 0.0;
-                    mixer[input].set_amplitude_input(output, value);
-                    matrix_output.on(e.id, colors[(int) (5*value)]);
-                }
-            });
+            if ( ! ( ( input == 2 || input == 4 || input == 7 ) && output == 7 ) ) {
+                synth.listen(MIDI_KEYDOWN, matrix_input.port(), [&,input,output] (const Event &e) {
+                    if ( e.id == config["buttons"][output][input] && e.value > 0 ) {
+                        double value = mixer[input].get_amplitude_input(output);
+                        value += 0.2;
+                        if ( value >= 1.0 ) value = 0.0;
+                        mixer[input].set_amplitude_input(output, value);
+                        matrix_output.on(e.id, colors[(int) (5*value)]);
+                    }
+                });
+            }
         }
     }
 

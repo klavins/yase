@@ -48,6 +48,10 @@
         "R": 61
     },
 
+    "vca": { 
+        "offset": 60
+    },
+
     "volume": 62,
 
     "buttons": [

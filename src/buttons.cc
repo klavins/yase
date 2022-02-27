@@ -10,6 +10,8 @@ namespace yase {
       RtMidiIn * temp = new RtMidiIn();
       unsigned int nPorts = temp->getPortCount();
 
+      std::cout << "\nLooking for " << device_name << " ... ";
+
       midi_output = NULL;
       for ( unsigned int i=0; i<nPorts; i++ ) {
           RtMidiOut * mo = new RtMidiOut();
@@ -17,7 +19,7 @@ namespace yase {
           if ( mo->getPortName(i) == device_name ) {
             midi_output = mo;
             port_id = i;
-            std::cout << "Found output device " << device_name << "\n";
+            std::cout << " found it!\n";
           }
       }
 

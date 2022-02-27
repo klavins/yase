@@ -4,7 +4,9 @@
 
 namespace yase {
 
-  Audio::Audio(int num_channels) : num_channels(num_channels) {
+  Audio::Audio(int num_output_channels, int num_input_channels) : 
+    num_output_channels(num_output_channels),
+    num_input_channels(num_input_channels) {
 
       left = add_input("left");
       right = add_input("right");
@@ -12,44 +14,72 @@ namespace yase {
       set_input(left,0);
       set_input(right,0);
 
-      for ( int i=2; i<num_channels; i++ ) {
+      for ( int i=2; i<num_output_channels; i++ ) {
           int j = add_input("aux" + std::to_string(i-1));
           set_input(j, 0);
       }
 
-      buffer = new float[FRAMES_PER_BUFFER * num_channels];       
+      for ( int i=0; i<num_input_channels; i++ ) {
+          int j = add_output("line_in" + std::to_string(i));
+      }
+
+      output_buffer = new float[FRAMES_PER_BUFFER * num_output_channels];       
+      input_buffer = new float[FRAMES_PER_BUFFER * num_input_channels];       
 
   }
 
   void Audio::init() {
 
     err = Pa_Initialize();
+
+    // SET UP AUDIO OUTPUTS
     outputParameters.device = Pa_GetDefaultOutputDevice();
-    outputParameters.channelCount = num_channels;
+    outputParameters.channelCount = num_output_channels;
     outputParameters.sampleFormat = PA_SAMPLE_TYPE;
     outputParameters.suggestedLatency = 0.00;
     outputParameters.hostApiSpecificStreamInfo = NULL;
 
     const PaDeviceInfo * info = Pa_GetDeviceInfo(outputParameters.device);
 
-    std::cout << "Using Audio Device '" << info->name << "'\n";
+    std::cout << "\nUsing Audio Device '" << info->name << "'\n";
     std::cout << "  - Inputs: " << info->maxInputChannels << "\n";
     std::cout << "  - Outputs: " << info->maxOutputChannels << "\n";
-    std::cout << "  - Outputs requested: " << num_channels << "\n";
+    std::cout << "  - Outputs requested: " << num_output_channels << "\n";    
+    std::cout << "  - Inputs requested: " << num_input_channels << "\n\n";       
 
-    if ( num_channels > info->maxOutputChannels ) {
+    if ( num_output_channels > info->maxOutputChannels ) {
         throw Exception(
           "Audio device has fewer output channels (" + 
           std::to_string(info->maxOutputChannels) + 
           ") than requested (" +
-          std::to_string(num_channels) + 
+          std::to_string(num_output_channels) + 
           ")"
         );
+    }    
+
+    // SET UP AUDIO INPUTS
+
+    if ( num_input_channels > 0 ) {
+      inputParameters.device = Pa_GetDefaultOutputDevice();
+      inputParameters.channelCount = num_input_channels;
+      inputParameters.sampleFormat = PA_SAMPLE_TYPE;
+      inputParameters.suggestedLatency = 0.00;
+      inputParameters.hostApiSpecificStreamInfo = NULL;
+
+      if ( num_input_channels > info->maxInputChannels ) {
+          throw Exception(
+            "Audio device has fewer input channels (" + 
+            std::to_string(info->maxInputChannels) + 
+            ") than requested (" +
+            std::to_string(num_input_channels) + 
+            ")"
+          );
+      }
     }
 
     err = Pa_OpenStream(
               &stream,
-              NULL,
+              num_input_channels > 0 ? &inputParameters : NULL,
               &outputParameters,
               SAMPLE_RATE,
               FRAMES_PER_BUFFER,
@@ -80,40 +110,32 @@ namespace yase {
   void Audio::update() {        
 
       if ( frame >= FRAMES_PER_BUFFER ) {
-        err = Pa_WriteStream( stream, buffer, FRAMES_PER_BUFFER );
+        err = Pa_WriteStream( stream, output_buffer, FRAMES_PER_BUFFER );
         // if ( err != paNoError ) {
         //     throw Exception(
         //       "Failed to write to audio stream with error: " + 
         //       std::string(Pa_GetErrorText(err))
         //     );
         // }
+        if ( num_input_channels > 0 ) {
+          err = Pa_ReadStream( stream, input_buffer, FRAMES_PER_BUFFER );
+        }
         frame = 0;
       }
 
-      buffer[frame * num_channels + 0] = (float) inputs[left];
-      buffer[frame * num_channels + 1] = (float) inputs[right];
+      output_buffer[frame * num_output_channels + 0] = (float) inputs[left];
+      output_buffer[frame * num_output_channels + 1] = (float) inputs[right];
 
-      for ( int i=2; i<num_channels; i++ ) {
-          buffer[frame * num_channels + i] = (float) inputs[i];
+      for ( int i=2; i<num_output_channels; i++ ) {
+          output_buffer[frame * num_output_channels + i] = (float) inputs[i];
+      }
+
+      for ( int i=0; i<num_input_channels; i++ ) {
+        outputs[i] = (double) input_buffer[frame * num_input_channels + i];
       }
 
       frame++;
 
   }    
   
-  void Audio::show_buffer() {
-
-    std::cout << buffer << ", " << &buffer[0] << "\n";
-
-    for ( int i=0; i<FRAMES_PER_BUFFER; i++  ) {
-        if ( i == frame ) {
-            std::cout << "----------------\n";
-        }
-        for ( int j=0; j<num_channels; j++ ) {
-            std::cout << buffer[i*num_channels + j] << "\t";
-        }
-        std::cout << "\n";
-    }
-  }
-
 }

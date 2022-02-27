@@ -27,22 +27,22 @@ namespace yase {
 
     public:
 
-      Audio(int num_channels=2);
+      Audio(int num_output_channels=2, int num_input_channels=0);
       void init();
       void update();
-      void show_buffer();
 
     private:
 
-      PaStreamParameters outputParameters; 
+      PaStreamParameters outputParameters, inputParameters;
       PaStream *stream;
       PaError err;
      
       int frame;
       int left, right; 
-      int num_channels;
+      int num_output_channels,
+          num_input_channels;
 
-      float * buffer;
+      float * output_buffer, * input_buffer;
 
     };
 
