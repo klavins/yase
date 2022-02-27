@@ -41,6 +41,7 @@ namespace yase {
       int n, length;
       bool active;    
       AudioFile<double> audioFile;
+      int num_channels;
 
     };
 

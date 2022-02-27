@@ -22,10 +22,10 @@ vector<int> id_set(int a, int b, int c, int d) {
 
 int main(int argc, char * argv[]) {
 
-    Sample kick("./samples/Trap Kicks/trap-kicks-25.wav"),
-           snare("./samples/Trap Snares/trap-snare-14.wav"),
-           hat_closed("./samples/Trap Hats/trap-hihat-19.wav"),
-           hat_open("./samples/Trap Hats/trap-hihat-14.wav");
+    Sample kick("./samples/808/Hits/Bass Drum [BD]/E808_BD[short]-07.wav"),
+           snare("./samples/808/Hits/Snare Drum [SD]/E808_SD-15.wav"),
+           hat_closed("./samples/808/Hits/Closed Hi Hat [CH]/E808_CH-04.wav"),
+           hat_open("./samples/808/Hits/Open Hi Hat [OH]/E808_OH-10.wav");
 
     vector<Module *> drums = { &kick, &snare, &hat_closed, &hat_open };
     Sequencer seq[4];

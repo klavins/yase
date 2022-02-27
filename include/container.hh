@@ -8,6 +8,7 @@
 #include <typeinfo>
 #include <algorithm>
 #include <thread>
+#include <list>
 
 #include "module.hh"
 #include "event.hh"

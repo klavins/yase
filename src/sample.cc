@@ -8,8 +8,10 @@ namespace yase {
   Sample::Sample(string path) : Module(), active(false), n(0) {
 
     audioFile.load (path);
-    if ( audioFile.getNumChannels() != 2 ) {
-      throw Exception("Expected sample to have two channels");
+    num_channels = audioFile.getNumChannels();
+    if ( ! ( num_channels == 1 || num_channels == 2 ) ) {
+      std::cout << num_channels << "\n";
+      throw Exception("Expected sample to have one or two channels");
     }
     length = audioFile.getNumSamplesPerChannel();
     n = length; // initially off
@@ -33,8 +35,13 @@ namespace yase {
 
   void Sample::update() {
     if ( n < length ) {
-      outputs[left] = inputs[amplitude] * audioFile.samples[0][n];
-      outputs[right] = inputs[amplitude] * audioFile.samples[1][n]; 
+      if ( num_channels == 2 ) {
+        outputs[left] = inputs[amplitude] * audioFile.samples[0][n];
+        outputs[right] = inputs[amplitude] * audioFile.samples[1][n]; 
+      } else {
+        outputs[left] = inputs[amplitude] * audioFile.samples[0][n];
+        outputs[right] = inputs[amplitude] * audioFile.samples[0][n]; 
+      }
       n++;
     } else {
       outputs[left] = 0;

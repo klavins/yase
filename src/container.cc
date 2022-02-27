@@ -5,6 +5,7 @@
 #include <mutex>
 #include <unistd.h>
 #include <pthread.h>
+#include <list>
 #include "yase.hh"
 
 // Convenience macros for wires

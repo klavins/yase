@@ -17,10 +17,13 @@ namespace yase {
 
       inline int amplitude_index(int i) { return n + i; }
       void set_amplitude_input(int i, double value); 
+      double get_amplitude_input(int i);
 
     private:
 
-      int n, signal;
+      int n, 
+          signal, 
+          output_gain;
 
     };
 

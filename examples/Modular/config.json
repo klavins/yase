@@ -1,0 +1,75 @@
+{
+
+    "keyboard": "Arturia KeyStep 32",
+    "controller": "MIDI Mix",
+    "matrix_input": "Launchpad Mini MK3 LPMiniMK3 MIDI Out",
+    "matrix_output": "Launchpad Mini MK3 LPMiniMK3 MIDI In",
+
+    "osc1": {
+        "select": 16,
+        "tuning": 17,
+        "harmonic": 18
+    },
+
+    "osc2": {
+        "select": 20,
+        "tuning": 21,
+        "harmonic": 22
+    },
+
+    "lfo": {
+        "amplitude": 24,
+        "frequency": 25,
+        "offset": 26
+    },
+
+    "lpf": {
+        "resonance": 28,
+        "frequency": 29,
+        "offset": 30
+    },
+
+    "echo": {
+        "duration": 46,
+        "amplitude": 47
+    }, 
+
+    "eg1": {
+        "A": 19, 
+        "D": 23,
+        "S": 27, 
+        "R": 31
+    },
+
+    "eg2": {
+        "A": 49, 
+        "D": 53,
+        "S": 57, 
+        "R": 61
+    },
+
+    "volume": 62,
+
+    "buttons": [
+        [81,82,83,84,85,86,87,88],        
+        [71,72,73,74,75,76,77,78],        
+        [61,62,63,64,65,66,67,68],        
+        [51,52,53,54,55,56,57,58],        
+        [41,42,43,44,45,46,47,48],        
+        [31,32,33,34,35,36,37,38],        
+        [21,22,23,24,25,26,27,28],        
+        [11,12,13,14,15,16,17,18]
+    ]    
+
+}
+
+
+
+
+
+
+
+
+
+
+

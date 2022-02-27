@@ -12,6 +12,7 @@ namespace yase {
 
       RtMidiIn * temp = new RtMidiIn();
       unsigned int nPorts = temp->getPortCount();
+      midi_input = NULL;
 
       for ( unsigned int i=0; i<nPorts; i++ ) {
           RtMidiIn * mi = new RtMidiIn();
@@ -25,7 +26,7 @@ namespace yase {
           }
       }
 
-      if ( ! midi_input ) {
+      if ( !midi_input ) {
          throw Exception(std::string("Unkown MIDI input device: ") + device_name);
       }
                   
