@@ -5,6 +5,13 @@
 
 namespace yase {
 
+    //! Transform an input signal with a stateless, user-defined
+    //! function. For example
+    //! \code
+    //! Transform invert( [] (double u) { return -u; });
+    //! \endcode
+    //! \param[input] signal
+    //! \param[output] signal
     class Transform : public Module {
 
     public:
