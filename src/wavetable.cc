@@ -4,7 +4,10 @@ namespace yase {
 
   Wavetable::Wavetable(string path) : Oscillator() {
 
-    audioFile.load (path);
+    if ( !audioFile.load (path) ) {
+      throw Exception(std::string("Could not load wavetable ") + path);
+    }
+
     int num_channels = audioFile.getNumChannels();
 
     if ( num_channels != 1 ) {

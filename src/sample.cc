@@ -7,7 +7,10 @@ namespace yase {
   //! \param path The path to a .wav file.
   Sample::Sample(string path) : Module(), active(false), n(0) {
 
-    audioFile.load (path);
+    if ( !audioFile.load (path) ) {
+      throw Exception(std::string("Could not load sample file ") + path);
+    }
+
     num_channels = audioFile.getNumChannels();
     if ( ! ( num_channels == 1 || num_channels == 2 ) ) {
       std::cout << num_channels << "\n";

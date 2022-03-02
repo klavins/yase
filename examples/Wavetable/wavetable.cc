@@ -5,7 +5,7 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Wavetable wt("./samples/triangle-square.wav");
+    Wavetable wt("./wavetables/triangle-square.wav");
     Envelope envelope;
     Audio audio;
     Container synth;
