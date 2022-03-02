@@ -48,7 +48,6 @@ namespace yase {
 
   void Envelope::trigger() {
     update_fcn = &Envelope::attack;
-    DEBUG
   }  
 
   void Envelope::release() {
@@ -69,7 +68,6 @@ namespace yase {
     if ( amplitude >= 1 ) {
       amplitude = 1;
       update_fcn = &Envelope::decay;
-      DEBUG
     }
   }
 
@@ -77,7 +75,6 @@ namespace yase {
     amplitude -= TS * (LN01/D) * ( amplitude - S * VELOCITY );
     if ( amplitude <= S + ENV_EPS ) {
         update_fcn = &Envelope::sustain;
-        DEBUG
     }
   }
 
