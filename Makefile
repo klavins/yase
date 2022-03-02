@@ -7,7 +7,7 @@ SOURCES     := $(wildcard $(SRCDIR)/*.cc)
 OBJECTS     := $(patsubst %.cc, $(BUILDDIR)/%.o, $(notdir $(SOURCES)))
 
 #Defauilt Make
-all: directories $(TARGETDIR)/$(TARGET) tests examples
+all: directories $(TARGETDIR)/$(TARGET) examples
 
 #Remake
 remake: cleaner all

@@ -41,6 +41,7 @@
 #include "square.hh"
 #include "osc_group.hh"
 #include "clock.hh"
+#include "wavetable.hh"
 
 // Envelopes
 #include "envelope.hh"
