@@ -25,6 +25,7 @@
 #include "noop.hh"
 #include "timer.hh"
 #include "transform.hh"
+#include "sampler.hh"
 
 // Events
 #include "event.hh"

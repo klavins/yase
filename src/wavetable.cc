@@ -19,9 +19,6 @@ namespace yase {
     num_waves = 64;
     length = length / num_waves;
 
-    std::cout << "Wavetable length = " << length << "\n";
-    audioFile.printSummary();
-
     amplitude = add_input("amplitude");
     morph = add_input("morph");
 
@@ -78,8 +75,6 @@ namespace yase {
       outputs[signal] = (1-f) * v1 + f * v2;
 
     }
-
-    //outputs[signal] = 0 * outputs[signal];
     
   }    
 

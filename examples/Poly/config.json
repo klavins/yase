@@ -1,0 +1,31 @@
+{
+
+    "keyboard": "Arturia KeyStep 32",
+    "controller": "MIDI Mix",
+
+    "osc1": {
+        "morph": 16,
+        "tuning": 17,
+        "harmonic": 18
+    },
+
+    "lpf": {
+        "resonance": 28,
+        "frequency": 29
+    },
+
+    "echo": {
+        "duration": 46,
+        "amplitude": 47
+    }, 
+
+    "eg1": {
+        "A": 19, 
+        "D": 23,
+        "S": 27, 
+        "R": 31
+    },
+    
+    "volume": 62
+        
+}

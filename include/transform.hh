@@ -10,8 +10,8 @@ namespace yase {
     //! \code
     //! Transform invert( [] (double u) { return -u; });
     //! \endcode
-    //! \param[input] signal
-    //! \param[output] signal
+    //! \param[in] signal
+    //! \param[out] signal
     class Transform : public Module {
 
     public:

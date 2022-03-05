@@ -18,9 +18,9 @@ namespace yase {
     //! Example wavetables of the correct format can be found in the
     //! `wavetables` directory.
     //!
-    //! \param[input] morph A value in the interval [0,1]
-    //! \param[input] amplitude
-    //! \param[output] signa;
+    //! \param[in] morph A value in the interval [0,1]
+    //! \param[in] amplitude
+    //! \param[out] signal
     //!
     class Wavetable : public Oscillator {
 
@@ -28,9 +28,10 @@ namespace yase {
 
       Wavetable(string path);
       void update();
-      double value(int wave_num, double x);
-
+      
     private:
+
+      double value(int wave_num, double x);
 
       int length, num_waves;
       AudioFile<double> audioFile;

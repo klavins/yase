@@ -87,7 +87,6 @@ namespace yase {
     if ( amplitude <= ENV_EPS ) {
       amplitude = 0.0;
       update_fcn = &Envelope::off;
-      DEBUG
      }
   }   
 

@@ -1,7 +1,7 @@
 #include <iostream>
 #include <stdio.h>
 #include "yase.hh"
-#include "simple.hh"
+#include "voice.hh"
 
 using namespace yase;
 
@@ -9,7 +9,7 @@ int main(int argc, char * argv[]) {
 
      int n = 8;
 
-     json config = get_config("./examples/Poly/akai.json");
+     json config = get_config("./examples/Poly/config.json");
 
      Container synth;
      Audio audio;
@@ -20,10 +20,10 @@ int main(int argc, char * argv[]) {
      Gain gain;
      Echo echo;
 
-     vector<Simple *> simple;
+     vector<Voice *> voices;
 
      for ( int i=0; i<n; i++ ) {
-        simple.push_back(new Simple(config));
+        voices.push_back(new Voice(config));
      }
 
      synth.add(audio)
@@ -35,7 +35,7 @@ int main(int argc, char * argv[]) {
           .add(echo)                
           .propagate_to(controls);
 
-     vector<tuple<int,Simple *>> notes;
+     vector<tuple<int,Voice *>> notes;
 
      auto find_note = [&](int id) {
           int i;
@@ -44,10 +44,10 @@ int main(int argc, char * argv[]) {
      };
 
      for ( int i=0; i<n; i++ ) {
-        synth.add(*simple[i])
-             .propagate_to(*simple[i]);
-        notes.push_back({0,&(*simple[i])});
-        synth.connect(*simple[i], "signal", mixer, i);        
+        synth.add(*voices[i])
+             .propagate_to(*voices[i]);
+        notes.push_back({0,&(*voices[i])});
+        synth.connect(*voices[i], "signal", mixer, i);        
      }
 
      synth.connect( mixer, "signal", echo, "signal")
@@ -58,7 +58,7 @@ int main(int argc, char * argv[]) {
      synth.listen(MIDI_KEYDOWN, [&] (const Event &e) {
            if ( e.port == midi_keyboard.port() ) {
 
-             Simple * note;
+             Voice * note;
              int i = find_note(e.id);
              if ( i < n ) {
                note = std::get<1>(notes[i]);
@@ -76,15 +76,15 @@ int main(int argc, char * argv[]) {
            if ( e.port == midi_keyboard.port() ) {
              int i = find_note(e.id);
              if ( i < n ) {
-               Simple * note = std::get<1>(notes[i]);
+               Voice * note = std::get<1>(notes[i]);
                note->keyup(e);
              }
            }
       });
 
-     controls.control(gain, "amplitude", 0, 0.1, config["ids"]["volume"]);
-     controls.control(echo, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, 49);
-     controls.control(echo, "amplitude", 0, 0.99, 53);
+     controls.control(gain, "amplitude", 0, 0.1, config["volume"]);
+     controls.control(echo, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, config["echo"]["duration"]);
+     controls.control(echo, "amplitude", 0, 0.99, config["echo"]["amplitude"]);
 
      synth.run(UNTIL_INTERRUPTED);
 

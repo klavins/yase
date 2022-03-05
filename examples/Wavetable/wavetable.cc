@@ -5,18 +5,19 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Wavetable wt("./wavetables/triangle-square.wav");
-    Sine lfo;
+    Wavetable wt("./wavetables/i-e-o-a.wav");
+    Saw lfo;
     Transform adjust([&] (double u) { return (1+u)/2; });
     Envelope envelope;
     Audio audio;
     Container synth;
     Timer timer;
 
-    wt.set_input("frequency", 220);
-    lfo.set_input("frequency", 2);
+    wt.set_input("frequency", 110);
+    lfo.set_input("frequency", 0.5);
+    lfo.set_type("raw");
 
-    double dt = 0.75;
+    double dt = 0.5;
 
     envelope.set_input("attack", dt);
     envelope.set_input("decay", dt);
@@ -39,12 +40,12 @@ int main(int argc, char * argv[]) {
 
     timer.set(0.25, [&] () { 
         envelope.trigger();
-        timer.set(3, [&] () { 
+        timer.set(7, [&] () { 
             envelope.release();
         });        
     });
 
-    synth.run(4*SAMPLE_RATE);
+    synth.run(8.5*SAMPLE_RATE);
 
     return 0; 
 
