@@ -34,6 +34,7 @@ namespace yase {
       void update();
       void trigger();
       void stop();
+      inline int size() { return length; }
 
     private:
 
