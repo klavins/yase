@@ -3,7 +3,7 @@
 #include "echo.hh"
 #include "yase.hh"
 
-namespace yase {
+namespace yase { 
 
   Echo::Echo() : Container(), sum(2) {
 

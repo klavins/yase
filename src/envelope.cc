@@ -40,11 +40,11 @@ namespace yase {
 
     amplitude = 0;
 
+    update_fcn = &Envelope::off;
+
   }
 
-  void Envelope::init() {
-    update_fcn = &Envelope::off;
-  }
+  void Envelope::init() {}
 
   void Envelope::trigger() {
     update_fcn = &Envelope::attack;

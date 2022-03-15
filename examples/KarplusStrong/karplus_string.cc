@@ -1,14 +1,14 @@
 #include <iostream>
 #include "yase.hh"
-#include <stdlib.h>
+#include <random>
 
 using namespace yase;
 
-#define LENGTH 600
+#define LENGTH (((int) (SAMPLE_RATE/220)) - 3)
 
 class String : public Container {
 
-  public:
+public:
   
   String() : delay(LENGTH), prev(1), mixer(2) {
 
@@ -18,8 +18,8 @@ class String : public Container {
     add(prev);
     add(mixer);
 
-    mixer.set_amplitude_input(0, 0.499);
-    mixer.set_amplitude_input(1, 0.499);
+    mixer.set_amplitude_input(0, 0.495);
+    mixer.set_amplitude_input(1, 0.495);
 
     equate_output("signal", delay, "signal");
 
@@ -28,11 +28,20 @@ class String : public Container {
     connect(prev, "signal", mixer, 1);
     connect(mixer, "signal", delay, "signal");
 
+    std::default_random_engine generator;
+    std::normal_distribution<double> distribution(0.0,1.0);
+
     for(int i=0; i<LENGTH; i++) {
-        double y = (rand()%1000 - 500)/5000.0;
+        double y = distribution(generator);
         delay.set_input("signal", y);
         delay.update();
     }
+
+    // for(int i=0; i<LENGTH; i++) {
+    //     double y = (i>=10 && i <=20 ? 1: 0);
+    //     delay.set_input("signal", y);
+    //     delay.update();
+    // }    
 
   }
 
@@ -44,7 +53,7 @@ class String : public Container {
     Container::update();
   }
 
-  private:
+private:
 
   int signal;
   Delay delay, prev;
@@ -56,18 +65,22 @@ int main(int argc, char * argv[]) {
 
     String string;
     Audio audio;
-    Controls controls;
+    Envelope env;    
     Container synth;
+
+    env.set_input("attack", 0.375);
+    env.set_input("decay", 0.5);
+    env.set_input("sustain", 1.0);
 
     synth.add(string)
          .add(audio)
-         .add(controls)
-         .propagate_to(controls)
-         .connect(string,"signal",audio,"left")
-         .connect(string,"signal",audio,"right");
+         .add(env)
+         .connect(string, "signal", env, "signal")
+         .connect(env,"signal",audio,"left")
+         .connect(env,"signal",audio,"right");
 
-    synth.run(UNTIL_INTERRUPTED);
-
+    env.trigger();
+    synth.run(4*SAMPLE_RATE);
     return 0; 
 
 }
