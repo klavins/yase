@@ -127,7 +127,7 @@ namespace yase {
   Container &Container::equate_output(string output, Module &sub_module, string sub_output) {
 
     Equate equate {
-      get_input_index(output),                  // MAIN_OUTPUT
+      get_output_index(output),                  // MAIN_OUTPUT
       sub_module,                               // SUB_MODULE
       sub_module.get_output_index(sub_output)   // SUB_OUTPUT
     };

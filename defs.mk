@@ -13,7 +13,7 @@ SRCDIR      := $(ROOT_DIR)/src
 BUILDDIR    := $(ROOT_DIR)/build
 TARGETDIR   := $(ROOT_DIR)/lib
 
-EXAMPLE_DIRS := $(ROOT_DIR)/examples/PlaySample # $(wildcard $(ROOT_DIR)/examples/*)
+EXAMPLE_DIRS := $(ROOT_DIR)/examples/KarplusStrong # $(wildcard $(ROOT_DIR)/examples/*)
 
 # Directories where include files are
 INCDIR      := -I $(ROOT_DIR)/include \
