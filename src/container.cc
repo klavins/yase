@@ -42,6 +42,22 @@ namespace yase {
     return *this;
   }
 
+  //! Add if the module is not already added
+  //! \param module The module to be added
+  //! \return A reference to the container for method chaining
+  Container &Container::add_if_new(Module &module) {
+    bool found = false;
+    for ( auto m : modules ) {
+      if ( m == &module ) {
+        found = true;
+      }
+    }
+    if ( !found ) {
+      add(module);
+    }
+    return *this;
+  }
+
   //! Tell the container to propagate all events to another event manager. Thus, if some
   //! module contained within the container emits an event, the event manager em will
   //! hear the event too. Usuall used in conjunction with add().
@@ -51,7 +67,7 @@ namespace yase {
     listen(MIDI_ANY, [&] (const Event &e) {
       em.respond_to(e);
     });
-    return *this;
+    return *this; 
   }
 
   //! Connect the source output to the destination input with a virtual wire. Upon each
@@ -63,6 +79,9 @@ namespace yase {
   //! \param input The name of the input of the desintation module
   //! \return A reference to the container for method chaining  
   Container &Container::connect(Module &source, string output, Module &dest, string input) {
+
+    add_if_new(source);
+    add_if_new(dest);
       
     Wire wire = {
       source,
@@ -86,6 +105,9 @@ namespace yase {
   //! \param input The index of the input of the desintation module
   //! \return A reference to the container for method chaining  
   Container &Container::connect(Module &source, string output, Module &dest, int input) {
+
+    add_if_new(source);
+    add_if_new(dest);    
       
     Wire wire = {
       source,
@@ -98,6 +120,23 @@ namespace yase {
 
     return *this;
 
+  }
+
+  Container &Container::connect(Module &source, Module &dest) {
+      return connect(source, "signal", dest, "signal");
+  }
+
+  Container &Container::path(Module &a, Module &b, Module &c) {
+      connect(a, "signal", b, "signal");
+      connect(b, "signal", c, "signal");
+      return *this;
+  }
+
+  Container &Container::path(Module &a, Module &b, Module &c, Module &d) {
+      connect(a, "signal", b, "signal");
+      connect(b, "signal", c, "signal");
+      connect(c, "signal", d, "signal");
+      return *this;
   }
 
   //! Equate the main input of this module to the sub-input of the sub-module. Whenever the 

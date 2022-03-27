@@ -47,12 +47,18 @@ namespace yase {
       void init();
       void update();
       Container &add(Module &module);
+      Container &add_if_new(Module &module);      
       Container &propagate_to(EventManager &em);
       void run(int num_steps);
 
       // Connectivity
       Container &connect(Module &source, string output, Module &dest, string input);
       Container &connect(Module &source, string output, Module &dest, int input);
+
+      Container &connect(Module &source, Module &dest); // assumes signal name is "signal"
+      Container &path(Module &a, Module &b, Module &c);
+      Container &path(Module &a, Module &b, Module &c, Module &d);
+
       Container &disconnect(Module &source, string output, Module &dest, string input);
 
       // I/O Identifications

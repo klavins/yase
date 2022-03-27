@@ -24,6 +24,10 @@ namespace yase {
 
   }
 
+  IIRFilter::IIRFilter(vector<double> A, vector<double> B) : IIRFilter(A.size(), B.size()) {
+    set_coefficients(A,B);
+  }
+
   void IIRFilter::init() {
 
   }

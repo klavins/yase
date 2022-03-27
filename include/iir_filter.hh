@@ -12,6 +12,7 @@ namespace yase {
     public:
 
       IIRFilter(int P, int Q); // size of IIR filter
+      IIRFilter(vector<double> A, vector<double> B); // coeefficient list
       void init();
       void update();
       void set_coefficients(vector<double> A, vector<double> B);
