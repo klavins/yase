@@ -73,6 +73,7 @@ namespace yase {
   //! Connect the source output to the destination input with a virtual wire. Upon each
   //! update, the container will first copy the output of source to the input of
   //! destination, and then it will update the modules. 
+  //! NOTE: This method has the side effect that it adds both source and dest to the container, if they are not alreaddy added  
   //! \param source The source module
   //! \param output The name of the output of the source module
   //! \param dest The desintation module
@@ -99,6 +100,7 @@ namespace yase {
   //! Connect the source output to the destination input with a virtual wire. Upon each
   //! update, the container will first copy the output of source to the input of
   //! destination, and then it will update the modules. 
+  //! NOTE: This method has the side effect that it adds both source and dest to the container, if they are not alreaddy added
   //! \param source The source module
   //! \param output The name of the output of the source module
   //! \param dest The desintation module
@@ -122,16 +124,35 @@ namespace yase {
 
   }
 
+  //! Connect the two modules, assuming the output and input are called "signal"
+  //! NOTE: This method has the side effect that it adds both source and dest to the container, if they are not alreaddy added
+  //! \param source The source module
+  //! \param dest The desintation module
+  //! \return A reference to the container for method chaining    
   Container &Container::connect(Module &source, Module &dest) {
       return connect(source, "signal", dest, "signal");
   }
 
+  //! Connect the three modules into a path, assuming the outputs and inputs are called "signal"
+  //! NOTE: This method has the side effect that it adds all modules container, if they are not alreaddy added
+  //! \param a The first module
+  //! \param b The second module
+  //! \param c The third module
+  //! \return A reference to the container for method chaining    
   Container &Container::path(Module &a, Module &b, Module &c) {
       connect(a, "signal", b, "signal");
       connect(b, "signal", c, "signal");
       return *this;
   }
 
+  //! Connect the four modules into a path, assuming the outputs and inputs are called "signal"
+  //! NOTE: This method has the side effect that it adds all modules container, if they are not alreaddy added
+
+  //! \param a The first module
+  //! \param b The second module
+  //! \param c The third module
+  //! \param d The fourth module  
+  //! \return A reference to the container for method chaining    
   Container &Container::path(Module &a, Module &b, Module &c, Module &d) {
       connect(a, "signal", b, "signal");
       connect(b, "signal", c, "signal");

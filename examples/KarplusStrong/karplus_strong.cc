@@ -4,7 +4,7 @@
 
 using namespace yase;
 
-#define LENGTH (((int) (SAMPLE_RATE/220)) - 1)
+#define LENGTH (((int) (SAMPLE_RATE/220)) - 2)
 
 class RandomImpulse : public Module {
 
@@ -38,7 +38,7 @@ public:
   
   String() : delay(LENGTH), impulse(LENGTH), filter({2.01}, {1, 1}), sum(2) {
 
-    signal = add_output("signal"); 
+    add_output("signal"); 
     path(sum, delay, filter);
     connect(filter, "signal", sum, 0);
     connect(impulse, "signal", sum, 1);
@@ -48,7 +48,6 @@ public:
 
 private:
 
-  int signal;
   Delay delay;
   IIRFilter filter;
   RandomImpulse impulse;
