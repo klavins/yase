@@ -19,8 +19,10 @@ namespace yase {
     public:
 
       Delay(int duration);
+      Delay();
       void init();
       void update();
+      void clear();
 
       void set(int new_duration);
       bool is_full();

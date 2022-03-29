@@ -9,12 +9,9 @@ namespace yase {
      //! Is often used to control the overall volume, and positioned as the last stage 
      //! before and Audio module. A MIDI fader would be hooked up to the "amplitude" input.
      //! 
-     //! Inputs: 
-     //!   - "signal"
-     //!   - "amplitude"
-     //! 
-     //! Outputs:
-     //!   - "signal"
+     //! \param[in] signal
+     //! \param[in] amplitude
+     //! \param[out] signal
      //! 
     class Gain : public Module {
 

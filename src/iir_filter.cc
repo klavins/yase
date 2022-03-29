@@ -4,6 +4,10 @@
 
 namespace yase {
 
+  //! Define a new IIR filter with feedforward order P and feedback order Q. 
+  //! Call IIRFilter::set_coefficients to set the value of the coefficents.
+  //! \param P Feedforward order
+  //! \param Q Feedback order. 
   IIRFilter::IIRFilter(int P, int Q) : p(P), q(Q) {
 
     for(int i=0; i<p; i++) {
@@ -24,6 +28,9 @@ namespace yase {
 
   }
 
+  //! Define a new IIR filter feedforward coefficients A and feedback coefficients B.
+  //! \param A Feedforward coefficients.
+  //! \param B Feedback coefficients. 
   IIRFilter::IIRFilter(vector<double> A, vector<double> B) : IIRFilter(A.size(), B.size()) {
     set_coefficients(A,B);
   }
@@ -52,6 +59,9 @@ namespace yase {
 
   }    
 
+  //! Set the coefficients of the filter. 
+  //! \param A Feedforward coefficients.
+  //! \param B Feedback coefficients.   
   void IIRFilter::set_coefficients(vector<double> A, vector<double> B) {
     a = A;
     b = B;

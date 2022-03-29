@@ -3,12 +3,16 @@
 
 namespace yase {
 
+  //! Construct a new delay with the given duration (in steps)
+  //! \param duration The number of steps
   Delay::Delay(int duration) : duration(duration) {
 
     signal = add_input("signal");
     signal = add_output("signal");
 
   }
+
+  Delay::Delay() : Delay(1) {}
 
   //! Set the desired delay. 
   //! \param new_duration
@@ -22,6 +26,11 @@ namespace yase {
       }
     }
     duration = new_duration;
+  }
+
+  //! Clear the delay buffer.
+  void Delay::clear() {
+    buffer.clear();
   }
 
   //! Check if the buffer is full

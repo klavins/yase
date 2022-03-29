@@ -15,6 +15,8 @@ namespace yase {
 
   }
 
+  Sum::Sum() : Sum(2) {}
+
   void Sum::init() {
 
   }

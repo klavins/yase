@@ -1,16 +1,12 @@
-#include <iostream>
 #include "yase.hh"
-#include <random>
 
 using namespace yase;
 
-#define LENGTH (((int) (SAMPLE_RATE/220)) - 2)
-
-class RandomImpulse : public Module {
+class Impulse : public Module {
 
   public:
 
-  RandomImpulse(int length) : length(length), n(0), distribution(0,1) {
+  Impulse() : length(1) {
     signal = add_output("signal");
   }
 
@@ -18,17 +14,23 @@ class RandomImpulse : public Module {
 
   void update() {
     if ( n++ < length ) {
-      outputs[signal] = distribution(generator);
+      outputs[signal] = 1;
     } else {
       outputs[signal] = 0;
     }
   }
 
+  void trigger() {
+    n = 0;
+  }
+
+  void set(int k) {
+    length = k;
+  }
+
 private:
 
   int length, n, signal;
-  std::default_random_engine generator;
-  std::normal_distribution<double> distribution;
 
 };
 
@@ -36,9 +38,11 @@ class String : public Container {
 
 public:
   
-  String() : delay(LENGTH), impulse(LENGTH), filter({2.01}, {1, 1}), sum(2) {
+  String() : filter({2.01}, {1, 1}), sum(2) {
 
+    frequency = add_input("frequency");
     add_output("signal"); 
+
     path(sum, delay, filter);
     connect(filter, "signal", sum, 0);
     connect(impulse, "signal", sum, 1);
@@ -46,12 +50,24 @@ public:
 
   }
 
+  double length() {
+    return ((int) (SAMPLE_RATE/inputs[frequency])) - 3;
+  }
+
+  void pluck() {
+    delay.clear();
+    delay.set(length());
+    impulse.set(length()/2);
+    impulse.trigger();
+  }
+
 private:
 
   Delay delay;
   IIRFilter filter;
-  RandomImpulse impulse;
+  Impulse impulse;
   Sum sum;
+  int frequency;
 
 };
 
@@ -59,19 +75,29 @@ int main(int argc, char * argv[]) {
 
     String string;
     Audio audio;
-    Envelope env;    
     Container synth;
+    Timer timer;
 
-    env.set_input("attack", 0.25);
-    env.set_input("decay", 0.5);
-    env.set_input("sustain", 1.0);
+    synth.connect(string,"signal",audio,"left")
+         .connect(string,"signal",audio,"right")
+         .add(timer);
 
-    synth.connect(string, env)
-         .connect(env,"signal",audio,"left")
-         .connect(env,"signal",audio,"right");
+    vector<double> notes = { 440, 587.33, 220, 659.26, 246.94, 293.67 };
+    int n = 0;
+    double duration = 1.0;
 
-    env.trigger();
-    synth.run(4*SAMPLE_RATE);
+    auto update = [&] () {
+      string.set_input("frequency", notes[n++ % notes.size()]);
+      string.pluck();
+    };
+
+    update();
+    timer.set(duration, [&] () {
+      update();
+      timer.reset();
+    });
+
+    synth.run(3*notes.size()*duration*SAMPLE_RATE);
     return 0; 
 
 }

@@ -10,6 +10,7 @@ namespace yase {
     public:
 
       Sum(int n);
+      Sum();
       void init();
       void update();
 
