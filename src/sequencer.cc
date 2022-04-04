@@ -34,7 +34,7 @@ namespace yase {
 
   void Sequencer::update() {
     CALL_MEMBER_FN(this, update_fcn);
-    t += TS;
+    t += ts;
     tick = (prev_clock < inputs[clock]);
     prev_clock = inputs[clock];    
     if ( tick ) {

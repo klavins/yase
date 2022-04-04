@@ -198,10 +198,29 @@ namespace yase {
 
   }
 
-  //! Not implemented
-  //! \todo Implement this method or delete it.
+  //! Remove a connection
+  //! \param source The source module
+  //! \param output The name of the output of the source module
+  //! \param dest The desintation module
+  //! \param input The name of the input of the desintation module
   Container &Container::disconnect(Module &source, string output, Module &dest, string input) {
+
+    int index = -1;
+    int u = source.get_output_index(output);
+    int v = dest.get_input_index(input);
+    for ( int i=0; i<wires.size(); i++ ) {
+        if ( &SOURCE(wires[i]) == &source &&
+             OUTPUT(wires[i]) == u &&
+             &DEST(wires[i]) == &dest &&
+             INPUT(wires[i]) == v ) {
+             index = i;
+         }
+    }
+    if ( index >=0 ) {
+        wires.erase(wires.begin() + index);
+    }
     return *this;
+
   }
 
   void Container::init() {
@@ -242,21 +261,28 @@ namespace yase {
 
   //! Run the container for the indicated number of steps. Use -1 or UNTIL_INTERRUPTED
   //! for the number of steps to run until interupted by Ctrl-C. 
-  //! \param The number of steps to run the container. 
+  //! \param The number of steps argument to run the container. 
   void Container::run(int num_steps) {
 
     signal(SIGINT, sighandler);
 
     init();
 
-    auto start = std::chrono::high_resolution_clock::now();
     for(int i=0; !interuppted && ( num_steps < 0 || i < num_steps ); i++ ) {
       update();
     }
-    auto finish = std::chrono::high_resolution_clock::now();
-    std::cout << std::chrono::duration_cast<std::chrono::nanoseconds>(finish-start).count()/num_steps << " ns / step\n";
     
   } 
+
+  //! Continue running assuming it has already been run for some amount of time. 
+  //! Will run for the indicated number of steps. Use -1 or UNTIL_INTERRUPTED
+  //! for the number of steps arrgument to run until interupted by Ctrl-C. 
+  //! \param The number of steps to run the container. 
+  void Container::run_again(int num_steps)   {
+    for(int i=0; !interuppted && ( num_steps < 0 || i < num_steps ); i++ ) {
+      update();
+    }    
+  }
 
   Container &Container::set_thread_number(int n) {
     if ( groups.size() == 0 ) {

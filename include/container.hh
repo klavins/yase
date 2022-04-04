@@ -50,6 +50,7 @@ namespace yase {
       Container &add_if_new(Module &module);      
       Container &propagate_to(EventManager &em);
       void run(int num_steps);
+      void run_again(int num_steps);
 
       // Connectivity
       Container &connect(Module &source, string output, Module &dest, string input);

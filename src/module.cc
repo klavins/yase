@@ -3,7 +3,7 @@
 
 namespace yase {
 
-    Module::Module() {}
+    Module::Module() : ts(TS) {}
 
     //! This method is used to add a new input to the module. The name 
     //! can be later used to refer to this input. This method is typically called

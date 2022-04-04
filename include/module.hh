@@ -50,6 +50,9 @@ namespace yase {
     void copy_outputs(Module &destination) const;
     void emit(Event e);
 
+    inline void set_ts(double s) { ts = s; }
+    inline double get_ts() { return ts; }
+
     protected:
 
     map<string,int> input_map,  // relates input names to their indices
@@ -59,6 +62,8 @@ namespace yase {
                    outputs;  // values of the outputs
 
     vector<Event> events;
+
+    double ts;
 
     };
 

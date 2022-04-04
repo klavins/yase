@@ -50,21 +50,21 @@ namespace yase {
             for ( int j = 0; j<m/4; j++ ) {
                 std::cout << "*";
             }
-            std:cout << "\n";
+            std:cout << "\n"; 
         }
     }
 
     void FFT::html() {
 
         std::cout <<  R""""(
-            <!DOCTYPE html>
-            <html>
+            <!DOCTYPE html> 
+            <html> 
             <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-            <body>
+            <body background='#000'>
             <canvas id="myChart" style="width:100%;max-width:700px"></canvas>
 
             <script>
-            var xyValues = [
+            var xyValues = [ 
         )"""";
 
         double f;
@@ -80,15 +80,31 @@ namespace yase {
             type: "scatter",
             data: {
                 datasets: [{
-                pointRadius: 4,
-                pointBackgroundColor: "rgb(0,0,255)",
-                data: xyValues
+                    pointRadius: 4,
+                    pointBackgroundColor: "rgb(0,0,255)",              
+                    data: xyValues
                 }]
             },
             options: {
-                legend: {display: false},
+                legend: {display: false},                
+                title: {
+                    display: true,
+                    text: 'YASE Spectrum'
+                },
                 scales: {
-                   xAxes: [{ticks: {min: 0, max:44100/2}}],
+                   xAxes: [{
+                     ticks: {min: 0, max:44100/2},
+                     scaleLabel: {
+                       labelString: "Frequency (Hz)",
+                       display: true
+                     }
+                   }],
+                   yAxes: [{
+                     scaleLabel: {
+                       labelString: "Magnitude",
+                       display: true
+                     }
+                   }]                   
                 }                
             }
             });
@@ -100,4 +116,3 @@ namespace yase {
     }
 
 }
-

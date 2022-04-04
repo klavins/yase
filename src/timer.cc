@@ -32,7 +32,7 @@ namespace yase {
 
   void Timer::update() {
 
-    timer += TS;
+    timer += ts;
 
     if ( active && timer > duration ) {
         active = false;      

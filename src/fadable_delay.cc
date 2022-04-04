@@ -42,7 +42,7 @@ namespace yase {
     } else if ( state == RECORDING && delays[current].is_full() ) {
       state = FADING;
     } else if ( state == FADING && fade < 1.0 ) {
-      fade += TS / FADE_TIME;
+      fade += ts / FADE_TIME;
     } else if ( state == FADING && fade >= 1.0 ) {
       fade = 1.0;
       state = NORMAL;

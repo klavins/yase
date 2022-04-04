@@ -28,6 +28,7 @@
 #include "transform.hh"
 #include "sampler.hh"
 #include "fft.hh"
+#include "anti_alias.hh"
 
 // Events
 #include "event.hh"

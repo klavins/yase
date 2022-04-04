@@ -29,7 +29,7 @@ namespace yase {
   }
 
   void Fader::update() {
-    outputs[value] -= TS * tracking_gain * (outputs[value] - adjusted_target());
+    outputs[value] -= ts * tracking_gain * (outputs[value] - adjusted_target());
   }    
 
   void Fader::randomize() {

@@ -39,7 +39,7 @@ namespace yase {
 
   void Cycle::update() {
 
-    t += TS;
+    t += ts;
 
     if ( t >= duration ) {
       callback(pitches[n++]);

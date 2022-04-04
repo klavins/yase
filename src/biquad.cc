@@ -78,7 +78,7 @@ namespace yase {
 
     double f0 = inputs[frequency] + inputs[offset],
             Q = inputs[resonance],                 
-           w0 = 2 * M_PI * f0 / SAMPLE_RATE;
+           w0 = 2 * M_PI * f0 * ts;
 
     cosw = cos(w0);
     alpha = sin(w0) / ( 2 * Q );

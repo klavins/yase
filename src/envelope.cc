@@ -64,7 +64,7 @@ namespace yase {
   }
 
   void Envelope::attack() {
-    amplitude += TS * (1/A);
+    amplitude += ts * (1/A);
     if ( amplitude >= 1 ) {
       amplitude = 1;
       update_fcn = &Envelope::decay;
@@ -72,7 +72,7 @@ namespace yase {
   }
 
   void Envelope::decay() {
-    amplitude -= TS * (LN01/D) * ( amplitude - S * VELOCITY );
+    amplitude -= ts * (LN01/D) * ( amplitude - S * VELOCITY );
     if ( amplitude <= S + ENV_EPS ) {
         update_fcn = &Envelope::sustain;
     }
@@ -83,7 +83,7 @@ namespace yase {
   }
   
   void Envelope::_release() {
-    amplitude -= TS * (LN01/R) * amplitude;
+    amplitude -= ts * (LN01/R) * amplitude;
     if ( amplitude <= ENV_EPS ) {
       amplitude = 0.0;
       update_fcn = &Envelope::off;

@@ -6,7 +6,7 @@ namespace yase {
     Oscillator::update();
     outputs[signal] = 0;
     int n = 1;
-    while ( n * inputs[frequency] < 0.125 * SAMPLE_RATE ) {
+    while ( n * inputs[frequency] < 0.5 * SAMPLE_RATE ) {
       outputs[signal] += sin(n*2*M_PI*phase  + inputs[modulation])/n;
       n += 2;
     }

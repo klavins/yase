@@ -22,6 +22,9 @@ tests:
 
 examples: $(EXAMPLE_DIRS)
 
+example: $(TARGETDIR)/$(TARGET) 
+	$(MAKE) -C $(ROOT_DIR)/examples/$(name) 
+
 $(EXAMPLE_DIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
