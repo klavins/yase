@@ -9,6 +9,7 @@ To date, Yase has been developed on MacOS 11.6.1. The following are required:
 - RtMidi:, which can be installed with 'brew install rtmidi'
 - Google Test: which can be installed with 'brew install googletest'
 - Niels Lohman's JSON library, which should be unpacked and put somewhere on your computer. You should then edit the Makefiles to point to the right directory. https://github.com/nlohmann/json
+- FFTW, which can be downloaded here: https://www.fftw.org/download.html. Put this in yase/third-party, compile it, and install it.
 
 On my Mac, things are installed in strange places. Doing the following helps the linker work right.
 ```

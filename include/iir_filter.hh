@@ -5,7 +5,6 @@
 
 namespace yase {
 
-    
     //! This module implements an Infinite Impulse Response (IIR) filter accordint to the difference
     //! equation
     //!

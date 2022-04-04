@@ -38,7 +38,7 @@ class String : public Container {
 
 public:
   
-  String() : filter({2.01}, {1, 1}), sum(2) {
+  String() : filter({2.01}, {1, 1}) {
 
     frequency = add_input("frequency");
     add_output("signal"); 
@@ -75,29 +75,19 @@ int main(int argc, char * argv[]) {
 
     String string;
     Audio audio;
+    Cycle cycle;    
     Container synth;
-    Timer timer;
+
+    cycle.set({ 440, 587.33, 220, 659.26, 246.94, 293.67 }, [&] (double freq) {
+      string.set_input("frequency", freq);
+      string.pluck();
+    }, 1.0);    
 
     synth.connect(string,"signal",audio,"left")
          .connect(string,"signal",audio,"right")
-         .add(timer);
+         .add(cycle);
 
-    vector<double> notes = { 440, 587.33, 220, 659.26, 246.94, 293.67 };
-    int n = 0;
-    double duration = 1.0;
-
-    auto update = [&] () {
-      string.set_input("frequency", notes[n++ % notes.size()]);
-      string.pluck();
-    };
-
-    update();
-    timer.set(duration, [&] () {
-      update();
-      timer.reset();
-    });
-
-    synth.run(3*notes.size()*duration*SAMPLE_RATE);
+    synth.run(18*SAMPLE_RATE);
     return 0; 
 
 }

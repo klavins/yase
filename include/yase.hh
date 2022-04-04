@@ -24,8 +24,10 @@
 // Utility
 #include "noop.hh"
 #include "timer.hh"
+#include "cycle.hh"
 #include "transform.hh"
 #include "sampler.hh"
+#include "fft.hh"
 
 // Events
 #include "event.hh"

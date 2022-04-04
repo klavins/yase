@@ -14,7 +14,7 @@ namespace yase {
       inputs[frequency] = 440;
       inputs[modulation] = 0;
       inputs[tuning] = 0;
-      inputs[harmonic] = 1;
+      inputs[harmonic] = 0;
   }
 
   void Oscillator::init() {

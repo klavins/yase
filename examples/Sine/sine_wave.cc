@@ -5,12 +5,12 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Saw sine1, sine2;
+    Sine sine1, sine2;
     Audio audio;
     Container synth;
     
     sine1.set_input("frequency", 440);
-    sine2.set_input("frequency", 441);
+    sine2.set_input("frequency", 440);
 
     synth.add(sine1)
          .add(sine2)
