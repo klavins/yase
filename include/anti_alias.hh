@@ -11,10 +11,9 @@ namespace yase {
     public:
 
       AntiAlias(Module &m);
-
       void init();
-
       void update();
+      void set(double frequency, double resonance);
 
     private:
 

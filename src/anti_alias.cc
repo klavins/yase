@@ -24,8 +24,11 @@ namespace yase {
 
   }
 
-  void AntiAlias::init() {
+  void AntiAlias::init() {}
 
+  void AntiAlias::set(double frequency, double resonance) {
+    lowpass.set_input("frequency", frequency);
+    lowpass.set_input("resonance", resonance);
   }
 
   void AntiAlias::update() {

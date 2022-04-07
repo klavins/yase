@@ -47,6 +47,7 @@
 #include "osc_group.hh"
 #include "clock.hh"
 #include "wavetable.hh"
+#include "impulse.hh"
 
 // Envelopes
 #include "envelope.hh"

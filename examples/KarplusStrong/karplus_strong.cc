@@ -2,50 +2,19 @@
 
 using namespace yase;
 
-class Impulse : public Module {
-
-  public:
-
-  Impulse() : length(1) {
-    signal = add_output("signal");
-  }
-
-  void init() {}
-
-  void update() {
-    if ( n++ < length ) {
-      outputs[signal] = 1;
-    } else {
-      outputs[signal] = 0;
-    }
-  }
-
-  void trigger() {
-    n = 0;
-  }
-
-  void set(int k) {
-    length = k;
-  }
-
-private:
-
-  int length, n, signal;
-
-};
-
 class String : public Container {
 
 public:
   
-  String() : filter({2.01}, {1, 1}) {
+  String() : filter({2.01}, {1, 1}), aa_impulse(impulse) {
 
     frequency = add_input("frequency");
     add_output("signal"); 
+    impulse.set_type("random");
 
     path(sum, delay, filter);
     connect(filter, "signal", sum, 0);
-    connect(impulse, "signal", sum, 1);
+    connect(aa_impulse, "signal", sum, 1);
     equate_output("signal", delay, "signal");
 
   }
@@ -57,7 +26,9 @@ public:
   void pluck() {
     delay.clear();
     delay.set(length());
-    impulse.set(length()/2);
+    impulse.set(100); // constant or variable? Seems like the area
+                      // where you pluck the string is independent
+                      // of pitch
     impulse.trigger();
   }
 
@@ -66,6 +37,7 @@ private:
   Delay delay;
   IIRFilter filter;
   Impulse impulse;
+  AntiAlias aa_impulse;
   Sum sum;
   int frequency;
 
@@ -87,7 +59,7 @@ int main(int argc, char * argv[]) {
          .connect(string,"signal",audio,"right")
          .add(cycle);
 
-    synth.run(18*SAMPLE_RATE);
+    synth.run(19*SAMPLE_RATE);
     return 0; 
 
 }
