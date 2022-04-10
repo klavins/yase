@@ -10,7 +10,7 @@ public:
 
     frequency = add_input("frequency");
     add_output("signal"); 
-    impulse.set_type("random");
+    impulse.set_type("square");
 
     path(sum, delay, filter);
     connect(filter, "signal", sum, 0);
@@ -49,17 +49,19 @@ int main(int argc, char * argv[]) {
     Audio audio;
     Cycle cycle;    
     Container synth;
+    Delay delay(0.005 * SAMPLE_RATE); // To make a more stereo sound
 
-    cycle.set({ 440, 587.33, 220, 659.26, 246.94, 293.67 }, [&] (double freq) {
+    cycle.set({ G4, C5, A4, F4, D4, G4, E4, C4 }, [&] (double freq) {
       string.set_input("frequency", freq);
       string.pluck();
     }, 1.0);    
 
-    synth.connect(string,"signal",audio,"left")
-         .connect(string,"signal",audio,"right")
+    synth.connect(string,"signal",audio,"right")
+         .connect(string,"signal",delay,"signal")
+         .connect(delay,"signal",audio,"left")
          .add(cycle);
 
-    synth.run(19*SAMPLE_RATE);
+    synth.run(8*SAMPLE_RATE);
     return 0; 
 
 }

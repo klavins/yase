@@ -29,6 +29,7 @@
 #include "sampler.hh"
 #include "fft.hh"
 #include "anti_alias.hh"
+#include "pitches.hh"
 
 // Events
 #include "event.hh"
