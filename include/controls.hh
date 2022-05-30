@@ -68,7 +68,7 @@ namespace yase {
       Controls &linear();
       Controls &exponential(double base);
 
-      void randomize_faders(); 
+      void randomize(); 
 
     private:
 

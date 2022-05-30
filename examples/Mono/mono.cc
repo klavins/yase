@@ -127,7 +127,7 @@ namespace yase {
 
     // KILLER RANDOMIZE BUTTON
     buttons.momentary(ids["buttons"]["randomize"], [&] (const Event &e) {
-          controls.randomize_faders();
+          controls.randomize();
           gain.set_input("amplitude", 0.1);
     });    
 
