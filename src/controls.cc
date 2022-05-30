@@ -65,6 +65,20 @@ namespace yase {
     return *this;
   }
 
+  Controls &Controls::linear() {
+    if ( faders.size() > 0 ) {
+      faders.back()->linear();
+    }
+    return *this;
+  }
+
+  Controls &Controls::exponential(double base) {
+    if ( faders.size() > 0 ) {
+      faders.back()->exponential(base);
+    }
+    return *this;
+  }
+
   void Controls::randomize_faders() {
 
     for ( auto f : faders ) {

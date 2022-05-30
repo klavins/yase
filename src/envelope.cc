@@ -5,8 +5,8 @@
 #define OUTPUT outputs[signal]
 #define INPUT inputs[signal]
 #define A ((pow(10.0,4*inputs[a]) - 1)/999.9)
-#define D inputs[d]
-#define S ((pow(10.0,4*inputs[s]) - 1)/999.9)
+#define D ((pow(10.0,4*inputs[d]) - 1)/999.9)
+#define S inputs[s]
 #define R ((pow(10.0,4*inputs[r]) - 1)/999.9)
 #define VELOCITY inputs[velocity]
 

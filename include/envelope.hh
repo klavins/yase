@@ -9,6 +9,13 @@ namespace yase {
 
     typedef  void (Envelope::*UpdateFunction)();  
 
+    //! An ADSR envelope
+    //! \param[in] attack duration
+    //! \param[in] decay
+    //! \param[in] sustain    
+    //! \param[in] release
+    //! \param[in] signal
+    //! \param[out] signal
     class Envelope : public Module {
 
     public:
