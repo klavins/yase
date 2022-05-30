@@ -6,6 +6,10 @@ namespace yase {
 
   int num_ports = 0;
 
+  //! Construct a new MidiInput object. When constructed, the object will attempt to 
+  //! find the Midi Device connected to your computer with the given name. 
+  //! If it cannot, it will throw an exception. 
+  //! \param device_name The name of the device 
   MidiInput::MidiInput(string device_name) : device_name(device_name) {
 
       std::cout << "\nLooking for " << device_name << " ... ";
