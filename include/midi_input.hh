@@ -8,7 +8,9 @@
 
 namespace yase {
 
-    //! A Midi Input manager. Add one of these to your container for each 
+    //! A Midi Input manager. 
+
+    //! Add one of these to your container for each 
     //! Midi device you are using. Any MIDI Event received from that device will be
     //! sent to the containing Module. For example
     //! \code
@@ -21,6 +23,8 @@ namespace yase {
     //!   std::cout << "You pressed the key associated with MIDI id " << e.id() << "\n";
     //! });
     //! \endcode
+    //!
+    //! This class is a YASE wrapper of RTMidi (https://www.music.mcgill.ca/~gary/rtmidi/).
     class MidiInput : public Module {
 
     public:

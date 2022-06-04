@@ -6,7 +6,9 @@
 
 namespace yase {
 
-    //! A time modulatable delay. This module contains two delays running
+    //! A time modulatable delay.
+    
+    //! This module contains two delays running
     //! at the same time. When the "duration" input changes, one of the
     //! delay's duration is reset, and the output fades from the old
     //! delay to the new one. This approach is inspired by the `ddi` method

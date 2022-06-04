@@ -20,7 +20,7 @@ int main(int argc, char * argv[]) {
              .connect(clock,"signal",audio,"aux1")
              .propagate_to(controls);
 
-    controls.control(clock, "frequency", 1, 10, 60);
+    controls.map(clock, "frequency", 1, 10, 60);
 
     container.run(UNTIL_INTERRUPTED);
 

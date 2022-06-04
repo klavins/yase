@@ -66,13 +66,13 @@ int main(int argc, char * argv[]) {
           }
      });
 
-     controls.control(env, "attack",  0.005, 1, 19)
-             .control(env, "decay",   0.005, 1, 23)
-             .control(env, "sustain", 0,     1, 27)
-             .control(env, "release", 0.005, 1, 31)
-             .control(gain, "amplitude", 0, 0.25, 62)
-             .control(filter, "frequency", 1000, 6000, 56)
-             .control(filter, "resonance", 0.1, 20, 60);
+     controls.map(env, "attack",  0.005, 1, 19)
+             .map(env, "decay",   0.005, 1, 23)
+             .map(env, "sustain", 0,     1, 27)
+             .map(env, "release", 0.005, 1, 31)
+             .map(gain, "amplitude", 0, 0.25, 62)
+             .map(filter, "frequency", 1000, 6000, 56)
+             .map(filter, "resonance", 0.1, 20, 60);
 
      buttons.mutex({1, 4, 7}, {
           [&] (const Event &e) { osc.set_type("raw");      },

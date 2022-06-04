@@ -2,10 +2,12 @@
 #define YASE_CONTROLS_H
 
 #include "yase.hh"
+#include "json.hpp"
 
 namespace yase {
 
     //! Use a Controls object to connect MIDI knobs and faders to Module inputs. 
+    
     //! For example, to add a volume knob to your project, you can do 
     //! 
     //! \code
@@ -19,8 +21,8 @@ namespace yase {
     //!      .add(midi)
     //!      .propagate_to(controls); // Important!
     //!
-    //!               // module, input name,  min, max, midi id                  
-    //! controls.control(gain,   "amplitude", 0,   1,   123);
+    //!           // module, input name,  min, max, midi id                  
+    //! controls.map(gain,   "amplitude", 0,   1,   123);
     //! \endcode
     //! 
     //! Note that a controls object is a Container, just like the synth Container above. Thus,
@@ -34,7 +36,7 @@ namespace yase {
     //! For example, 
     //!
     //! \code
-    //! controls.control(gain, "amplitude", 0, 1, 123)
+    //! controls.map(gain, "amplitude", 0, 1, 123)
     //!         .exponential(1e4);
     //! \endcode
     //!
@@ -50,6 +52,12 @@ namespace yase {
     //! 
     //! \image html exponential-controls.png
     //! 
+    //! ## Example
+    //! 
+    //! A complete example is listed below using a custom module to display the value of each control
+    //! in real time as the associated knob is adjusted. 
+    //! 
+    //! \include Controls/controls.cc
 
     class Controls : public Container {
 
@@ -60,9 +68,10 @@ namespace yase {
       void init();
       void update();
 
-      Controls &control(Module &fader, int midi_id);
-      Controls &control(Module &module, string name, double min, double max, int midi_id);
-      Controls &control(Module &module, int index, double min, double max, int midi_id);
+      Controls &map(Module &fader, int midi_id);
+      Controls &map(Module &module, string name, double min, double max, int midi_id);
+      Controls &map(Module &module, int index, double min, double max, int midi_id);
+      Controls &map(Module &module, string name, json spec) ;
 
       Controls &set_tracking_gain(double x);
       Controls &linear();

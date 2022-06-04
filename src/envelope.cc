@@ -4,10 +4,10 @@
 
 #define OUTPUT outputs[signal]
 #define INPUT inputs[signal]
-#define A ((pow(10.0,4*inputs[a]) - 1)/999.9)
-#define D ((pow(10.0,4*inputs[d]) - 1)/999.9)
+#define A inputs[a]
+#define D inputs[d]
 #define S inputs[s]
-#define R ((pow(10.0,4*inputs[r]) - 1)/999.9)
+#define R inputs[r]
 #define VELOCITY inputs[velocity]
 
 namespace yase {

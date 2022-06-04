@@ -7,6 +7,7 @@
 namespace yase {
 
     //! A module that can be used to play a sample stored as a .wav file.
+    
     //! For example, 
     //! \code{cpp}
     //! Sample sample("/path/to/a/wavefile.wav");

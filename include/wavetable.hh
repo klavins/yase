@@ -6,7 +6,9 @@
 
 namespace yase {
 
-    //! A wavetable oscillator. The path argument to the constructor
+    //! A wavetable oscillator. 
+    
+    //! The path argument to the constructor
     //! should point to a .wav file that has 64 sections of 1024 samples. 
     //! Each section should be one cycle of the oscillator. You can use the
     //! morph input (in [0,1]) to choose the wave to play. The oscillator will interpolate

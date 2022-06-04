@@ -26,18 +26,18 @@ namespace yase {
     typedef tuple<Module &, int, Module &, int> Wire;
     typedef tuple<int, Module &, int> Equate;
 
-    //! A module and event manager that can contain other modules. It can be used
+    //! A module and event manager that can contain other modules. 
+    
+    //! It can be used
     //! as a top level module for constructing an entire synthesizer, or as a way
     //! to group together a few modules into a commonly used function, as with, for example
     //! a phasor which would contain a delay and a sum. 
-    //!
     //! A good example of a container is the Echo Module, which contains a Delay, a
     //! a Gain and a Sum. 
-    //!
-    //! Additionally, most examples use a container to add sub modules to. For example,
-    //! the following code sets up a Container called synth, adds a few modules to it,
-    //! identifies a module to propagate events to, and makes a couple of connections.
-    //! \include faders.cc
+    //! Additionally, most examples use a main container to add sub-modules to. For example,
+    //! the following code sets up a Container called synth, adds a few modules to it.
+    //! 
+    //! \include Sine/sine_wave.cc
     //! 
     class Container : public Module, public EventManager {
 

@@ -13,7 +13,8 @@ namespace yase {
     using std::map;
     using std::vector;
 
-     //! An abstract base class for modules
+     //! An abstract base class for modules.
+
      //! Derived classes should imlement the init and update methods.
     class Module {
 

@@ -6,6 +6,7 @@
 namespace yase {
 
     //! A timer that can be used to do something one or more times in the future.
+    
     //! For example, the following prints "Time's up!" every second.
     //! \code{cpp}
     //! Timer timer;

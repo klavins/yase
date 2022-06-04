@@ -5,8 +5,7 @@
 
 namespace yase {
 
-    //! Cycle through a list of pitches, running a callback for each one with the
-    //! specified duration.
+    //! Cycle through a list of pitches, running a callback for each one with the specified duration.
     class Cycle : public Module {
 
     public:

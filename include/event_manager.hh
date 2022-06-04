@@ -13,7 +13,9 @@ using std::function;
 
 namespace yase {
 
-    //! A class that keeps track of event listeners. It can be used in isolation,
+    //! A class that keeps track of event listeners. 
+    
+    //! This class can be used in isolation,
     //! but is usually inheritied from. For example, the Container class inherits from
     //! this class. 
     class EventManager {

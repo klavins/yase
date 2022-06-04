@@ -1,5 +1,6 @@
 #include "controls.hh"
 #include "yase.hh"
+#include "json.hpp"
 
 int nf = 0;
 
@@ -26,7 +27,7 @@ namespace yase {
   //! Associate a MIDI listener with a Fader. Typically this method is not called directly by the user.
   //! \param fader A reference to a Fader object
   //! \param midi_it The MIDI id of the controller
-  Controls &Controls::control(Module &fader, int midi_id) {
+  Controls &Controls::map(Module &fader, int midi_id) {
     listeners[MIDI_MOD].push_back([&fader, midi_id] (Event e) {
       if ( e.id == midi_id ) {
         fader.set_input(0, e.value);
@@ -41,15 +42,51 @@ namespace yase {
   //! \param min The minimum output of the control
   //! \param max The minimum maximum value of the control
   //! \param midi_id The MIDI id of the knob or fader on your MIDI controller
-  Controls &Controls::control(Module &module, string name, double min, double max, int midi_id) {
+  Controls &Controls::map(Module &module, string name, double min, double max, int midi_id) {
 
     Fader * fader = new Fader(min, max);
     add(*fader);
     connect(*fader, "value", module, name);
-    control(*fader, midi_id);
+    map(*fader, midi_id);
     faders.push_back(fader); 
     return *this;
 
+  }
+
+  //! Associate a controller with an input of a module.
+  //! \param module The target module
+  //! \param name The name of the target module's input
+  //! \param spec A json object containing fields min, max, mid, type, and base (if type is exponential)
+  //!
+  //! This version of the control method can be called with a json specification of the control, which is
+  //! especially useful when setting up controls from json files. For example, if a json file called "config.json"
+  //! had
+  //! \code
+  //! { 
+  //!   "attack": { 
+  //!     "midi": 77, 
+  //!     "min": 0.005,
+  //!     "max": 1.0, 
+  //!     "default": 0.005,
+  //!     "type": "exponential", 
+  //!     "base": 10000 
+  //!   } 
+  //! }
+  //! \endcode
+  //! in it, then you could do
+  //! \code
+  //! Controls controls;
+  //! Envelope envelope;
+  //! json config = get_config("config.json")
+  //! controls.map(envelope, "attack", config["attack"]);
+  //! \endcode
+  Controls &Controls::map(Module &module, string name, json spec) {
+      map(module, name,  spec["min"], spec["max"], spec["midi"]);
+      if ( spec["type"] == "exponential" ) {
+          exponential(spec["base"]);
+          
+      }    
+      return *this;
   }
 
   //! Associate a controller with an input of a module.
@@ -58,12 +95,12 @@ namespace yase {
   //! \param min The minimum output of the control
   //! \param max The minimum maximum value of the control
   //! \param midi_id The MIDI id of the knob or fader on your MIDI controller
-  Controls &Controls::control(Module &module, int index, double min, double max, int midi_id) {
+  Controls &Controls::map(Module &module, int index, double min, double max, int midi_id) {
 
     Fader * fader = new Fader(min, max);
     add(*fader);
     connect(*fader, "value", module, index);
-    control(*fader, midi_id);
+    map(*fader, midi_id);
     faders.push_back(fader);
     return *this;
 

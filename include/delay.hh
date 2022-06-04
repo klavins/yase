@@ -8,7 +8,9 @@ using namespace std;
 
 namespace yase {
 
-    //! A pure digital delay using a doubled ended queue. This module is good for a fixed delay.
+    //! A pure digital delay using a doubled ended queue. 
+    
+    //! This module is good for a fixed delay.
     //! If you want a modulatable delay, use FadeDelay, which has a "duration" input.
     //! 
     //! \param[in] signal

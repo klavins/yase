@@ -45,7 +45,7 @@ int main(int argc, char * argv[]) {
         synth.add(*osc)
              .add(*fader);
 
-        controls.control(*fader, midi_ids[i])
+        controls.map(*fader, midi_ids[i])
                 .connect(*fader, "value", *osc, "amplitude")
                 .connect(*osc, "signal", sum, "signal_" + std::to_string(i));
         fader->set_input("target",0);

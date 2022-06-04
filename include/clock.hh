@@ -6,6 +6,7 @@
 namespace yase {
 
     //! A raw (aliasing) square wave alternating between -1 and 1. 
+    
     //! Can be used to clock sequencers or even external modular 
     //! systems if sent to an aux audio output. 
     //!

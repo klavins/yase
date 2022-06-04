@@ -77,41 +77,41 @@ namespace yase {
     json ids = config["ids"];
 
     // LFO CONTROLS
-    controls.control(lfo, "frequency", 0.01, 10, ids["lfo_freq"]);
-    controls.control(lfo, "amplitude", 0, 10,    ids["lfo_amp"]);
+    controls.map(lfo, "frequency", 0.01, 10, ids["lfo_freq"]);
+    controls.map(lfo, "amplitude", 0, 10,    ids["lfo_amp"]);
 
     // OSCILLATOR MODULATION CONTROLS
     // CHECK: DOES EACH OSCILLATOR HAVE AN LFO GAIN?
-    controls.control(mod_mixer1, mod_mixer1.amplitude_index(0), 0, 5, ids["mod_mixer_lfo_ctrl"][0]); 
-    controls.control(mod_mixer1, mod_mixer1.amplitude_index(1), 0, 5, ids["mod_mixer_mod_ctrl"][0]);
-    controls.control(mod_mixer2, mod_mixer2.amplitude_index(0), 0, 5, ids["mod_mixer_lfo_ctrl"][1]);
-    controls.control(mod_mixer2, mod_mixer2.amplitude_index(1), 0, 5, ids["mod_mixer_mod_ctrl"][1]);
-    controls.control(osc2_lfo_gain, "amplitude", 0, 10, ids["osc2_lfo_gain"]);
+    controls.map(mod_mixer1, mod_mixer1.amplitude_index(0), 0, 5, ids["mod_mixer_lfo_ctrl"][0]); 
+    controls.map(mod_mixer1, mod_mixer1.amplitude_index(1), 0, 5, ids["mod_mixer_mod_ctrl"][0]);
+    controls.map(mod_mixer2, mod_mixer2.amplitude_index(0), 0, 5, ids["mod_mixer_lfo_ctrl"][1]);
+    controls.map(mod_mixer2, mod_mixer2.amplitude_index(1), 0, 5, ids["mod_mixer_mod_ctrl"][1]);
+    controls.map(osc2_lfo_gain, "amplitude", 0, 10, ids["osc2_lfo_gain"]);
 
     // OSCILLATOR AMPLITUDES AND MIXING
     for (int i=0; i<3; i++) {
-        controls.control(mixer, i+3,          0, 1, ids["amplitudes"][i]);
-        controls.control(osc[i], "tuning",   -7, 8, ids["tunings"][i]);
-        controls.control(osc[i], "harmonic", -2, 3, ids["harmonics"][i]);
+        controls.map(mixer, i+3,          0, 1, ids["amplitudes"][i]);
+        controls.map(osc[i], "tuning",   -7, 8, ids["tunings"][i]);
+        controls.map(osc[i], "harmonic", -2, 3, ids["harmonics"][i]);
     }        
 
     // FILTER CONTROLS
-    controls.control(filter, "resonance", 0.1, 20, ids["filter_resonance"]);
-    controls.control(filter_env, "attack",  0.005, 1, ids["filter_env"]["A"]);
-    controls.control(filter_env, "decay",   0.005, 1, ids["filter_env"]["D"]);
-    controls.control(filter_env, "sustain", 0,     1, ids["filter_env"]["S"]);
-    controls.control(filter_env, "release", 0.005, 1, ids["filter_env"]["R"]);
-    controls.control(filter_env_mixer, filter_env_mixer.amplitude_index(0), 10, 6000, ids["filter_freq"] );
-    controls.control(filter_env_mixer, filter_env_mixer.amplitude_index(1), 10, 6000, ids["filter_eg_amt"] );
+    controls.map(filter, "resonance", 0.1, 20, ids["filter_resonance"]);
+    controls.map(filter_env, "attack",  0.005, 1, ids["filter_env"]["A"]);
+    controls.map(filter_env, "decay",   0.005, 1, ids["filter_env"]["D"]);
+    controls.map(filter_env, "sustain", 0,     1, ids["filter_env"]["S"]);
+    controls.map(filter_env, "release", 0.005, 1, ids["filter_env"]["R"]);
+    controls.map(filter_env_mixer, filter_env_mixer.amplitude_index(0), 10, 6000, ids["filter_freq"] );
+    controls.map(filter_env_mixer, filter_env_mixer.amplitude_index(1), 10, 6000, ids["filter_eg_amt"] );
 
     // MAIN ENVELOPE
-    controls.control(env, "attack",  0.005, 1, ids["env"]["A"]);
-    controls.control(env, "decay",   0.005, 1, ids["env"]["D"]);
-    controls.control(env, "sustain", 0,     1, ids["env"]["S"]);
-    controls.control(env, "release", 0.005, 1, ids["env"]["R"]);
+    controls.map(env, "attack",  0.005, 1, ids["env"]["A"]);
+    controls.map(env, "decay",   0.005, 1, ids["env"]["D"]);
+    controls.map(env, "sustain", 0,     1, ids["env"]["S"]);
+    controls.map(env, "release", 0.005, 1, ids["env"]["R"]);
 
     // VOLUME
-    controls.control(gain, "amplitude", 0, 0.25, ids["volume"]);
+    controls.map(gain, "amplitude", 0, 0.25, ids["volume"]);
 
     json button = ids["buttons"];
 
@@ -127,7 +127,7 @@ namespace yase {
 
     // KILLER RANDOMIZE BUTTON
     buttons.momentary(ids["buttons"]["randomize"], [&] (const Event &e) {
-          controls.randomize_faders();
+          controls.randomize();
           gain.set_input("amplitude", 0.1);
     });    
 

@@ -21,15 +21,15 @@ namespace yase {
     connect( osc,    "signal", filter, "signal");
     connect( filter, "signal", env,    "signal");
 
-    controls.control(osc, "morph", 0, 1, config["osc1"]["morph"]);
+    controls.map(osc, "morph", 0, 1, config["osc1"]["morph"]);
 
-    controls.control(env, "attack",  0.005, 1, config["eg1"]["A"]);
-    controls.control(env, "decay",   0.005, 1, config["eg1"]["D"]);
-    controls.control(env, "sustain", 0,     1, config["eg1"]["S"]);
-    controls.control(env, "release", 0.005, 1, config["eg1"]["R"]);
+    controls.map(env, "attack",  0.005, 1, config["eg1"]["A"]);
+    controls.map(env, "decay",   0.005, 1, config["eg1"]["D"]);
+    controls.map(env, "sustain", 0,     1, config["eg1"]["S"]);
+    controls.map(env, "release", 0.005, 1, config["eg1"]["R"]);
 
-    controls.control(filter, "frequency", 1000, 6000, config["lpf"]["frequency"]);
-    controls.control(filter, "resonance", 0.1, 20, config["lpf"]["resonance"]);    
+    controls.map(filter, "frequency", 1000, 6000, config["lpf"]["frequency"]);
+    controls.map(filter, "resonance", 0.1, 20, config["lpf"]["resonance"]);    
 
   }
 

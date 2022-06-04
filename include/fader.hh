@@ -5,7 +5,9 @@
 
 namespace yase {
 
-    //! A Fader Module maps an input target to an output value. Typically,
+    //! A Fader Module maps an input target to an output value. 
+    
+    //! Typically,
     //! the input comes from a Midi control such as a knob. Because such 
     //! controls are discrete (for example, integers from 0 to 127), directly
     //! mapping the input to the output would result in abropt changes to

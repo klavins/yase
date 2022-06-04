@@ -6,8 +6,8 @@
 
 namespace yase {
 
-    //! Standard Biquad filters adapated from
-    //! https://www.w3.org/TR/audio-eq-cookbook/
+    //! Standard Biquad filters adapated from https://www.w3.org/TR/audio-eq-cookbook/
+
     //! \param[in] signal
     //! \param[in] frequency
     //! \param[in] resonance

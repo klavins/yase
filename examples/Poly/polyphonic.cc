@@ -82,9 +82,9 @@ int main(int argc, char * argv[]) {
            }
       });
 
-     controls.control(gain, "amplitude", 0, 0.1, config["volume"]);
-     controls.control(echo, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, config["echo"]["duration"]);
-     controls.control(echo, "amplitude", 0, 0.99, config["echo"]["amplitude"]);
+     controls.map(gain, "amplitude", 0, 0.1, config["volume"]);
+     controls.map(echo, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, config["echo"]["duration"]);
+     controls.map(echo, "amplitude", 0, 0.99, config["echo"]["amplitude"]);
 
      synth.run(UNTIL_INTERRUPTED);
 

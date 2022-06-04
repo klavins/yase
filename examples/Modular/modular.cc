@@ -99,45 +99,45 @@ int main(int argc, char * argv[]) {
     synth.listen(MIDI_MOD, [&] (const Event &e) {
         if ( e.id == config["osc2"]["select"] ) osc2.select(e.value / 127.0); 
     });
-    controls.control(osc1, "tuning",   -7, 8, config["osc1"]["tuning"]);
-    controls.control(osc1, "harmonic", -2, 3, config["osc1"]["harmonic"]);
-    controls.control(osc2, "tuning",   -7, 8, config["osc2"]["tuning"]);
-    controls.control(osc2, "harmonic", -2, 3, config["osc2"]["harmonic"]);
+    controls.map(osc1, "tuning",   -7, 8, config["osc1"]["tuning"]);
+    controls.map(osc1, "harmonic", -2, 3, config["osc1"]["harmonic"]);
+    controls.map(osc2, "tuning",   -7, 8, config["osc2"]["tuning"]);
+    controls.map(osc2, "harmonic", -2, 3, config["osc2"]["harmonic"]);
 
     // LFO KNOBS
-    controls.control(mixer[2], 7, 0, 1, config["lfo"]["offset"]);
+    controls.map(mixer[2], 7, 0, 1, config["lfo"]["offset"]);
     mixer[2].set_amplitude_input(7,1);
-    controls.control(mixer[2], "output_gain", 0.01, 10, config["lfo"]["frequency"]);
-    controls.control(lfo, "amplitude", 0, 1,    config["lfo"]["amplitude"]);
+    controls.map(mixer[2], "output_gain", 0.01, 10, config["lfo"]["frequency"]);
+    controls.map(lfo, "amplitude", 0, 1,    config["lfo"]["amplitude"]);
 
     // LPF KNOBS
     //mixer[4].set_input(7,1);
-    controls.control(mixer[4], 7, 0, 1, config["lpf"]["offset"]);
+    controls.map(mixer[4], 7, 0, 1, config["lpf"]["offset"]);
     mixer[4].set_amplitude_input(7,1);
-    controls.control(lpf, "resonance", 0.1, 20, config["lpf"]["resonance"]);
-    controls.control(mixer[4], "output_gain", 10, 6000, config["lpf"]["frequency"]);
+    controls.map(lpf, "resonance", 0.1, 20, config["lpf"]["resonance"]);
+    controls.map(mixer[4], "output_gain", 10, 6000, config["lpf"]["frequency"]);
 
     // EG1 KNOBS
-    controls.control(eg1, "attack",  0.005, 1, config["eg1"]["A"]);
-    controls.control(eg1, "decay",   0.005, 1, config["eg1"]["D"]);
-    controls.control(eg1, "sustain", 0,     1, config["eg1"]["S"]);
-    controls.control(eg1, "release", 0.005, 1, config["eg1"]["R"]);    
+    controls.map(eg1, "attack",  0.005, 1, config["eg1"]["A"]);
+    controls.map(eg1, "decay",   0.005, 1, config["eg1"]["D"]);
+    controls.map(eg1, "sustain", 0,     1, config["eg1"]["S"]);
+    controls.map(eg1, "release", 0.005, 1, config["eg1"]["R"]);    
 
     // EG2 KNOBS
-    controls.control(eg2, "attack",  0.005, 1, config["eg2"]["A"]);
-    controls.control(eg2, "decay",   0.005, 1, config["eg2"]["D"]);
-    controls.control(eg2, "sustain", 0,     1, config["eg2"]["S"]);
-    controls.control(eg2, "release", 0.005, 1, config["eg2"]["R"]);
+    controls.map(eg2, "attack",  0.005, 1, config["eg2"]["A"]);
+    controls.map(eg2, "decay",   0.005, 1, config["eg2"]["D"]);
+    controls.map(eg2, "sustain", 0,     1, config["eg2"]["S"]);
+    controls.map(eg2, "release", 0.005, 1, config["eg2"]["R"]);
 
     // ECHO KNOBS
-    controls.control(echo, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, config["echo"]["duration"]);
-    controls.control(echo, "amplitude", 0, 0.99, config["echo"]["amplitude"]);
+    controls.map(echo, "duration", 0.001 * SAMPLE_RATE, SAMPLE_RATE, config["echo"]["duration"]);
+    controls.map(echo, "amplitude", 0, 0.99, config["echo"]["amplitude"]);
 
     // VCA KNOB
-    controls.control(mixer[7], 7, 0, 1, config["vca"]["offset"]);
+    controls.map(mixer[7], 7, 0, 1, config["vca"]["offset"]);
 
     // VOLUME KNOB
-    controls.control(volume, "amplitude", 0, 0.25, config["volume"]);
+    controls.map(volume, "amplitude", 0, 0.25, config["volume"]);
 
     // DEFINE MATRIX BEHAVIOR
     matrix_output.send({240,0,32,41,2,13,0,127,247}); // set launchpad to programmer mode   

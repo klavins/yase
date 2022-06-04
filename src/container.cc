@@ -34,7 +34,9 @@ namespace yase {
   }
 
   //! Adds a module to the container. When the container is run, the module will
-  //! be updated on each iteration. 
+  //! be updated on each iteration. Note that if you use Module::connect to connect
+  //! two modules, those modules will be automatically added so you don't need to 
+  //! add them with this method. 
   //! \param module The module to be added
   //! \return A reference to the container for method chaining
   Container &Container::add(Module &module) {
@@ -60,14 +62,21 @@ namespace yase {
 
   //! Tell the container to propagate all events to another event manager. Thus, if some
   //! module contained within the container emits an event, the event manager em will
-  //! hear the event too. Usuall used in conjunction with add().
+  //! hear the event too. Usually used in conjunction with add().
   //! \param em The event manager (another module) that should receive events
   //! \return A reference to the container for method chaining
+  //! 
+  //! In the following example, a Controls object is constructed, added, and propagated to.
+  //! When MidiEvents are received by the container, they are sent to the control, which 
+  //! responds to them by adjusting the associated input. 
+  //!
+  //! \include Faders/faders.cc
+  //! 
   Container &Container::propagate_to(EventManager &em) {
     listen(MIDI_ANY, [&] (const Event &e) {
       em.respond_to(e);
     });
-    return *this; 
+    return *this;
   }
 
   //! Connect the source output to the destination input with a virtual wire. Upon each
@@ -274,7 +283,8 @@ namespace yase {
     
   } 
 
-  //! Continue running assuming it has already been run for some amount of time. 
+  //! Continue running assuming the container has already been run for some amount of time. 
+  //! Contained Module init() methods will not be called again.
   //! Will run for the indicated number of steps. Use -1 or UNTIL_INTERRUPTED
   //! for the number of steps arrgument to run until interupted by Ctrl-C. 
   //! \param The number of steps to run the container. 
@@ -284,6 +294,11 @@ namespace yase {
     }    
   }
 
+  //////////////////////////////////////////////////////////////////////////////////////////////
+  // EXPERIMENTAL THREADED UPDATES (Not entirely working well [yet])
+  //
+
+  //! EXPERIMENTAL
   Container &Container::set_thread_number(int n) {
     if ( groups.size() == 0 ) {
       for ( int i=0; i<n; i++ ) {
@@ -296,6 +311,7 @@ namespace yase {
     return *this;
   }
 
+  //! EXPERIMENTAL
   Container &Container::add(Module &module, int n) {
 
     if ( n >=0 && n < groups.size() ) {
@@ -308,10 +324,7 @@ namespace yase {
     return *this;
   }
 
-  //////////////////////////////////////////////////////////////////////////////////////////////
-  // EXPERIMENTAL THREADED UPDATES (Not entirely working well [yet])
-  //
-
+  //! EXPERIMENTAL
   void Container::thread_loop(int i) {
     bool flag;
     while ( true ) {
@@ -333,6 +346,7 @@ namespace yase {
     }
   }
 
+  //! EXPERIMENTAL
   void Container::run_threaded(int num_steps) {
 
     signal(SIGINT, sighandler);
@@ -359,6 +373,7 @@ namespace yase {
     
   }
 
+  //! EXPERIMENTAL
   void Container::update_threaded() {
 
     // WIRES

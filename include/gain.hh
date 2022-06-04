@@ -5,7 +5,9 @@
 
 namespace yase {
 
-     //! Amplifies (or attenuates) its input signal to get the output signal. This module
+     //! Amplifies (or attenuates) its input signal to get the output signal. 
+     
+     //! This module
      //! Is often used to control the overall volume, and positioned as the last stage 
      //! before and Audio module. A MIDI fader would be hooked up to the "amplitude" input.
      //! 

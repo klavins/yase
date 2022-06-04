@@ -7,8 +7,8 @@
 
 namespace yase {
 
-    //! 
-    //! A module wrapper for a stereo PortAudio interface (http://www.portaudio.com/). 
+    //! A module wrapper for a stereo PortAudio interface (http://www.portaudio.com/).
+
     //! Use this module if you want to hear something coming from your speakers. By 
     //! default it uses the computer's default audio interface (whatever is set up in the
     //! system settings). The module accumulates FRAMES_PER_BUFFER input samples into a 2D array and

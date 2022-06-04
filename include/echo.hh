@@ -5,7 +5,8 @@
 
 namespace yase {
 
-    //! An echo module incorporating a fadable delay in a feedback configuration
+    //! An echo module incorporating a fadable delay in a feedback configuration.
+    
     //! \param[in] duration
     //! \param[in] gain
     //! \param[in] signal

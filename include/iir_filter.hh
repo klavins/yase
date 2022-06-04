@@ -5,7 +5,9 @@
 
 namespace yase {
 
-    //! This module implements an Infinite Impulse Response (IIR) filter accordint to the difference
+    //! This module implements an Infinite Impulse Response (IIR) filter.
+    
+    //! The IIR operates according to the difference
     //! equation
     //!
     //!       a[0]*y[n] + a[1]*y[n-1] + ... + a[p]*y[n-p] = b[0]*u[n] + b[1]*u[n-1] + ... + b[q]*u[n-q].
