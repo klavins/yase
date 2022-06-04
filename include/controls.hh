@@ -81,7 +81,7 @@ namespace yase {
 
     private:
 
-      std::vector<Fader *> faders;           
+      std::vector<Fader *> faders;
 
     };
 
