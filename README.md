@@ -1,6 +1,12 @@
-# YASE: Yet Another Synthesizer Engine
+<center>
+<h1>Yet Another Synthesizer Engine</h1>
+<img src="yase-logo.png">
+<p><i>YASE is a modular digital audio synthesis and processing library. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</i></p>
+<a href="http://klavinslab.org/yase">http://klavinslab.org/yase</a>
+<br>
+</center>
 
-YASE is a modular digital audio synthesis and processing library. You can use it to make sounds, sequences, and effects. Literally any digital synthesis is available, from frequency modulation, wavetables, physical modeling, sampling, and so on. External audio devices, such as modular synthesizers and effects, can easily be incorporated with a based audio interface. With it's MIDI capabilities, you can control your creations with various MIDI controllers.
+<hr>
 
 While there are literally dozens of similar libraries available, we believe YASE hits a sweet spot because it is
 - Written in modern C++
@@ -12,7 +18,7 @@ While there are literally dozens of similar libraries available, we believe YASE
 
 Have fun and share what you make!
 
-## Example
+# Example
 
 Here's an example of a super basic YASE program. 
 
@@ -44,7 +50,7 @@ The first three lines of the main function declare some modules: two sine wave s
 
 One thing to notice about modules is that their inputs and outputs are named by strings during set up. This makes working with I/O easy and straightforward. When you make your own modules, you can add as many inputs and outputs as you would like with whatever names make sense for your use case. If you use the wrong name, YASE gives you an easy to understand error message. Once all the connections are made and the container (named `synth` in this case) is run, YASE uses integer indices to the I/O so there is no string matching at run time. These two *setup* and *run* phases are common to all YASE programs. 
 
-## Building
+# Building
 
 To date, Yase has been developed on MacOS 11.6.1. The following are required:
 - 'git', 'g++', and 'make', part of the MacOS Development Tools.
