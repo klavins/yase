@@ -16,6 +16,7 @@ That said, YASE is pretty fun and easy. It is:
 - Easy to use and extend
 - Modular, just like your signal processing diagrams
 - Open source (Gnu Public License)
+
 YASE is an especially good (actually the only) choice for University of Washington students taking courses from Prof. Eric Klavins, because he wrote it. Therefore, he can help you with your project and answer lots of questions about how it works. In contrast, Prof. Klavins can tell you very little about how Faust or any other digital audio library works. This is because Prof. Klavins likes to reinvent the wheel whenever possible. He thinks it helps you learn how wheels work. 
 
 # Example
