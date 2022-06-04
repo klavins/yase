@@ -1,7 +1,7 @@
 <center>
 <h1>Yet Another Synthesizer Engine</h1>
 <img src="yase-logo.png">
-<p><i>YASE is a modular digital audio synthesis and processing library. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</i></p>
+<p><i>YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</i></p>
 <a href="http://klavinslab.org/yase">http://klavinslab.org/yase</a>
 <br>
 </center>
