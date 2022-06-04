@@ -8,19 +8,21 @@
 
 <hr>
 
-While there are literally dozens of similar libraries available, we believe YASE hits a sweet spot because it is
-- Written in modern C++
+There are literally dozens of tools to YASE -- like [Faust](https://faust.grame.fr/), the [STK](https://ccrma.stanford.edu/software/stk/), and [SuperCollider](https://github.com/supercollider/supercollider). You should probably use one of those. They are more established, have broader user bases, and tons of contributed modules and examples. Those other systems likely have fewer bugs too. 
+
+That said, YASE is pretty fun and easy. It is:
+- Written in modern(ish) C++
 - Fast and scalable
 - Easy to use and extend
-- Very, very modular
-- Extensible
-- Open source
+- Modular, just like your signal processing diagrams
+- Open source (Gnu Public License)
+YASE is an especially good (actually the only) choice for students taking courses from Prof. Eric Klavins, because he wrote it. Therefore, he can help you with your project and answer lots of questions about how it works. In contrast, Prof. Klavins can tell you very little about how Faust works. 
 
 Have fun and share what you make!
 
 # Example
 
-Here's an example of a super basic YASE program. 
+Here's an example of a super basic YASE program that makes a neat sound. 
 
 ```cpp
 #include "yase.hh"
@@ -61,7 +63,7 @@ To date, Yase has been developed on MacOS 11.6.1. The following are required:
 - Niels Lohman's JSON library, which should be unpacked and put somewhere on your computer. You should then edit the Makefiles to point to the right directory. https://github.com/nlohmann/json
 - FFTW, which can be downloaded here: https://www.fftw.org/download.html. Put this in yase/third-party, compile it, and install it.
 
-On my Mac, things are installed in strange places. Doing the following helps the linker work right.
+On some Macs things are installed in strange places. Doing the following helps the linker work right.
 ```
 export PATH="/usr/bin:$PATH"
 ```
