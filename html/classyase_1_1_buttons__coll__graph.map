@@ -1,0 +1,5 @@
+<map id="yase::Buttons" name="yase::Buttons">
+<area shape="rect" id="node1" title="A class for managing MIDI buttons." alt="" coords="99,80,202,107"/>
+<area shape="rect" id="node2" href="$classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="5,5,149,32"/>
+<area shape="rect" id="node3" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="173,5,275,32"/>
+</map>

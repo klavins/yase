@@ -1,0 +1,4 @@
+<map id="yase::Delay" name="yase::Delay">
+<area shape="rect" id="node1" title="A pure digital delay using a doubled ended queue." alt="" coords="10,80,102,107"/>
+<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,107,32"/>
+</map>
