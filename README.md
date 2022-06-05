@@ -8,7 +8,7 @@
 
 <hr>
 
-There are literally dozens of tools similar to YASE -- like [Faust](https://faust.grame.fr/), the [STK](https://ccrma.stanford.edu/software/stk/), and [SuperCollider](https://github.com/supercollider/supercollider). You should probably use one of those. They are more established, have broader user bases, and tons of contributed modules and examples. Those other systems likely have higher performance and fewer than YASE bugs too. 
+There are literally dozens of tools similar to YASE -- like [Faust](https://faust.grame.fr/), the [STK](https://ccrma.stanford.edu/software/stk/), and [SuperCollider](https://github.com/supercollider/supercollider). You should probably use one of those. They are more established, have broader user bases, and tons of contributed modules and examples. Those other systems likely have higher performance and fewer bugs than YASE. 
 
 That said, YASE is pretty fun and easy. In case you are interested, it is:
 - Written in modern(ish) C++
@@ -17,9 +17,9 @@ That said, YASE is pretty fun and easy. In case you are interested, it is:
 - Modular, just like your signal processing diagrams
 - Open source (Gnu Public License)
 
-YASE is an especially good (actually, the only) choice for University of Washington students taking audio courses from Prof. Eric Klavins, because he wrote YASE from scratch. Therefore, he can help you with your project and answer lots of questions about how it works. In contrast, Prof. Klavins can tell you very little about how Faust or any other digital audio library works.
+YASE is an especially good (actually, the only) choice for University of Washington students taking audio courses from Prof. Eric Klavins, because he wrote YASE from scratch. Therefore, he can help you with your project and answer questions about how it works. In contrast, Prof. Klavins can tell you very little about how Faust or any other digital audio library works.
 
-In fact, generally Prof. Klavins seems to prefer reinvent the wheel whenever possible. He has been criticized many times for doing so, but he thinks it helps you learn how wheels work. There is also the off chance that the resulting wheel is better than currently available wheels. So far this hasn't happened with any of his projects. But time will tell. Also, you know, it is just fun to make something from scratch. Like baking bread. Maybe your homemade bread is not as good as store bought bread. But you made it! So that's cool. And fun. 
+In fact, generally Prof. Klavins seems to prefer reinvent the wheel whenever possible. He has been criticized many times for doing so, but he thinks it helps him learn how wheels work. There is also the off chance that the resulting wheel is better than currently available wheels. So far this hasn't happened with any of his projects. But time will tell. Also, you know, it is just fun to make something from scratch. Like baking bread. Maybe your homemade bread is not as good as store bought bread. But you made it! So that's cool. And fun. 
 
 # Example
 
