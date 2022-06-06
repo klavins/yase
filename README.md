@@ -1,12 +1,12 @@
-<center>
-<h1>Yet Another Synthesizer Engine</h1>
-<img src="yase-logo.png" height=100px>
-<p><i>YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</i></p>
-<a href="http://klavinslab.org/yase">http://klavinslab.org/yase</a>
-<br>
-</center>
+<div class='showy' style='text-align: center;'>
+  <h1>Yet Another Synthesizer Engine</h1>
+  <img class='github-only' src="yase-logo.png" height=100px>
+  <p><i>YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</i></p>
+  <a href="http://klavinslab.org/yase" class='github-only'>http://klavinslab.org/yase</a>
+  <br class='github-only'>
+</div>
 
-<hr>
+<hr class='github-only'>
 
 There are literally dozens of tools similar to YASE -- like [Faust](https://faust.grame.fr/), the [STK](https://ccrma.stanford.edu/software/stk/), and [SuperCollider](https://github.com/supercollider/supercollider). You should probably use one of those. They are more established, have broader user bases, and tons of contributed modules and examples. Those other systems likely have higher performance and fewer bugs than YASE. 
 
@@ -20,6 +20,13 @@ That said, YASE is pretty fun and easy. In case you are interested, it is:
 YASE is an especially good (actually, the only) choice for University of Washington students taking audio courses from Prof. Eric Klavins. Because he wrote YASE from scratch, he can help you with your project and answer questions about how it works. In contrast, Prof. Klavins can tell you very little about how Faust or any other digital audio library works.
 
 In fact, generally Prof. Klavins seems to prefer reinvent the wheel whenever possible. He has been criticized many times for doing so, but he thinks it helps him learn how wheels work. There is also the off chance that the resulting wheel is better than currently available wheels. So far this hasn't happened with any of his projects. But time will tell. Also, you know, it is just fun to make something from scratch. Like baking bread. Maybe your homemade bread is not as good as store bought bread. But you made it! So that's cool. And fun. 
+
+More information about YASE can be found at
+<ul>
+<li><a href="https://klavins.github.io/yase/">https://klavins.github.io/yase/</a></li>
+<li><a href="http://klavinslab.org/yase" >http://klavinslab.org/yase</a></li>
+<li><a href="https://github.com/klavins/yase" >https://github.com/klavins/yase</a></li>
+</ul>
 
 # Example
 

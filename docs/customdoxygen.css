@@ -1,98 +1,113 @@
-#titlearea {
-    padding: 16px;
-    background: black;
-    color: rgb(27, 214, 68);
+/**
+
+Doxygen Awesome
+https://github.com/jothepro/doxygen-awesome-css
+
+MIT License
+
+Copyright (c) 2021 jothepro
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.
+
+ */
+
+ html {
+    /* side nav width. MUST be = `TREEVIEW_WIDTH`.
+     * Make sure it is wide enough to contain the page title (logo + title + version)
+     */
+    --side-nav-fixed-width: 335px;
+    --menu-display: none;
+
+    --top-height: 120px;
 }
 
 #projectname {
-    text-transform: uppercase;
-    font-size: 48pt;
+    white-space: nowrap;
 }
 
-#projectbrief {
-    margin-bottom: 8px;
-    font-size: 24pt;
-    color: rgb(27, 214, 68);
-}
 
-h1 {
-    border-bottom: 1px solid #879ECB;
-    padding-bottom: 10px;
-    color: #354C7B;    
-}
+@media screen and (min-width: 768px) {
+    html {
+        --searchbar-background: var(--page-background-color);
+    }
 
-h2 {
-    font-weight: normal;
-    color: #354C7B;
-}
+    #side-nav {
+        min-width: var(--side-nav-fixed-width);
+        max-width: var(--side-nav-fixed-width);
+        top: var(--top-height);
+        overflow: visible;
+    }
 
-.fragment {
-    margin-left: 28px !important;
-    margin-right: 28px !important;    
-}
+    #nav-tree, #side-nav {
+        height: calc(100vh - var(--top-height)) !important;
+    }
 
-/* TABS */
+    #nav-tree {
+        padding: 0;
+    }
 
-.tabs, .tabs2, .tabs3 {
-    background-image: none;
-    width: 100%;
-    z-index: 101;
-    font-size: 13px;
-    font-family: 'Lucida Grande',Geneva,Helvetica,Arial,sans-serif;
-    border-bottom: 1pt solid #eee;
-}
+    #top {
+        display: block;
+        border-bottom: none;
+        height: var(--top-height);
+        margin-bottom: calc(0px - var(--top-height));
+        max-width: var(--side-nav-fixed-width);
+        overflow: hidden;
+        background: var(--side-nav-background);
+    }
+    #main-nav {
+        float: left;
+        padding-right: 0;
+    }
 
-.tabs2 {
-    font-size: 10px;
-}
-.tabs3 {
-    font-size: 9px;
-}
+    .ui-resizable-handle {
+        cursor: default;
+        width: 1px !important;
+        box-shadow: 0 calc(-2 * var(--top-height)) 0 0 var(--separator-color);
+    }
 
-.tablist {
-    margin: 0;
-    padding: 0;
-    display: table;
-}
+    #nav-path {
+        position: fixed;
+        right: 0;
+        left: var(--side-nav-fixed-width);
+        bottom: 0;
+        width: auto;
+    }
 
-.tablist li {
-    float: left;
-    display: table-cell;
-    background-image: none;
-    line-height: 36px;
-    list-style: none;
-}
+    #doc-content {
+        height: calc(100vh - 31px) !important;
+        padding-bottom: calc(3 * var(--spacing-large));
+        padding-top: calc(var(--top-height) - 80px);
+        box-sizing: border-box;
+        margin-left: var(--side-nav-fixed-width) !important;
+    }
 
-.tablist a {
-    display: block;
-    padding: 0 20px;
-    font-weight: bold;
-    background-image: none;
-    background-repeat:no-repeat;
-    background-position:right;
-    color: #030;
-    text-shadow: none;
-    text-decoration: none;
-    outline: none;
-}
+    #MSearchBox {
+        width: calc(var(--side-nav-fixed-width) - calc(2 * var(--spacing-medium)));
+    }
 
-.tabs3 .tablist a {
-    padding: 0 10px;
-}
+    #MSearchField {
+        width: calc(var(--side-nav-fixed-width) - calc(2 * var(--spacing-medium)) - 65px);
+    }
 
-.tablist a:hover {
-    background: #ddd;
-    background-image: none;
-    background-repeat:repeat-x;
-    color: #aaa;
-    text-shadow: none;
-    text-decoration: none;
-}
-
-.tablist li.current a {
-    background: rgb(193, 210, 243);    
-    background-image: none;
-    background-repeat:repeat-x;
-    color: #000;
-    text-shadow: none;
+    #MSearchResultsWindow {
+        left: var(--spacing-medium) !important;
+        right: auto;
+    }
 }

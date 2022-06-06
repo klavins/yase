@@ -1,7 +1,14 @@
 #titlearea {
     padding: 16px;
-    background: black;
+    background: white;
     color: rgb(27, 214, 68);
+}
+
+.navpath ul {
+    background: white;    
+    background-image: url(nav_h.png);
+    background-repeat: repeat-x;
+    background-color: #F6F6F6;    
 }
 
 #projectname {
@@ -15,15 +22,19 @@
     color: rgb(27, 214, 68);
 }
 
+#projectlogo img {
+    height: 100px;
+}
+
 h1 {
     border-bottom: 1px solid #879ECB;
     padding-bottom: 10px;
-    color: #354C7B;    
+    color: #171717;    
 }
 
 h2 {
     font-weight: normal;
-    color: #354C7B;
+    color: #171717;
 }
 
 .fragment {
@@ -95,4 +106,40 @@ h2 {
     background-repeat:repeat-x;
     color: #000;
     text-shadow: none;
+}
+
+.sm-dox {
+    background-image: none;
+    border-bottom: 1pt solid #333;
+}
+
+.github-only {
+    display: none;
+}
+
+.showy {
+    text-align: left !important;
+}
+
+.ui-resizable-e {
+    background-image: none;
+    background-color: #eee;
+    border-left: 1pt solid #aaa;
+    border-right: 1pt solid #aaa;
+}
+
+#titlearea {
+    border-bottom: 1px solid #aaa;;
+}
+
+#nav-tree {
+    background-image: none;
+}
+
+div.header {
+    background-image: none;
+}
+
+h2.groupheader {
+    margin-top: 10px;
 }

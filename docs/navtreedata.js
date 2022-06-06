@@ -25,7 +25,6 @@
 var NAVTREE =
 [
   [ "YASE", "index.html", [
-    [ "Source", "^https://github.com/klavins/yase", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
