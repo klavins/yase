@@ -1,7 +1,7 @@
 <div class='showy' style='text-align: center;'>
-  <h1>Yet Another Synthesizer Engine</h1>
+  <h1 class='github-only'>Yet Another Synthesizer Engine</h1>
   <img class='github-only' src="yase-logo.png" height=100px>
-  <p><i>YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</i></p>
+  <p>YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</p>
   <a href="http://klavinslab.org/yase" class='github-only'>http://klavinslab.org/yase</a>
   <br class='github-only'>
 </div>
@@ -88,4 +88,4 @@ Assuming no errors, you should be able to hear sound if you run
 ```bash
 ./examples/bin/sine_wave
 ```
-***Note: We recommend that when you work on audio projects you keep your volume very low until you are sure your code works and isn't producing ear-splitting, speaker cone damaging signals.***
+

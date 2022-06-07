@@ -32,6 +32,30 @@ MathJax.Hub.Config({
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<script>
+    function delay(time) {
+       return new Promise(resolve => setTimeout(resolve, time));
+    }
+    window.onload = function() {
+      var el = document.getElementsByClassName('title');
+      if ( el[0].innerText == 'YASE') {
+          el[0].innerText = 'Yet Another Synthesizer Engine';
+          el[0].style.cssText += "";
+          delay(100).then(() => {
+          var els = document.getElementsByClassName('item');
+          els[1].children[0].click();
+          delay(100).then(() => {
+            els = document.getElementsByClassName('item');
+            els[2].children[0].click();
+            delay(100).then(() => {
+                els = document.getElementsByClassName('item');
+                els[3].children[0].click();
+            });
+          });
+      });
+    }
+    }
+</script>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->

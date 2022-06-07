@@ -32,6 +32,30 @@ MathJax.Hub.Config({
 <link href="doxygen.css" rel="stylesheet" type="text/css" />
 <link href="doxygen-awesome.css" rel="stylesheet" type="text/css"/>
 <link href="doxygen-awesome-sidebar-only.css" rel="stylesheet" type="text/css"/>
+<script>
+    function delay(time) {
+       return new Promise(resolve => setTimeout(resolve, time));
+    }
+    window.onload = function() {
+      var el = document.getElementsByClassName('title');
+      if ( el[0].innerText == 'YASE') {
+          el[0].innerText = 'Yet Another Synthesizer Engine';
+          el[0].style.cssText += "";
+          delay(100).then(() => {
+          var els = document.getElementsByClassName('item');
+          els[1].children[0].click();
+          delay(100).then(() => {
+            els = document.getElementsByClassName('item');
+            els[2].children[0].click();
+            delay(100).then(() => {
+                els = document.getElementsByClassName('item');
+                els[3].children[0].click();
+            });
+          });
+      });
+    }
+    }
+</script>
 </head>
 <body>
 <div id="top"><!-- do not remove this div, it is closed by doxygen! -->
@@ -108,8 +132,8 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
   <div class="headertitle"><div class="title">YASE </div></div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p ><a class="anchor" id="md_README"></a> </p><div class="showy" style="text-align: center;"> <h1>Yet Another Synthesizer Engine</h1>
-</div><div class="showy" style="text-align: center;"> <img src="yase-logo.png" alt="" class="github-only" height="100px" class="inline"/> </div><div class="showy" style="text-align: center;"><em>YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</em></div><div class="showy" style="text-align: center;"> <a href="http://klavinslab.org/yase" class="github-only">http://klavinslab.org/yase</a> <br  class="github-only" />
+<div class="textblock"><p ><a class="anchor" id="md_README"></a> </p><div class="showy" style="text-align: center;"> <h1 class="github-only">Yet Another Synthesizer Engine</h1>
+</div><div class="showy" style="text-align: center;"> <img src="yase-logo.png" alt="" class="github-only" height="100px" class="inline"/> </div><div class="showy" style="text-align: center;">YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</div><div class="showy" style="text-align: center;"> <a href="http://klavinslab.org/yase" class="github-only">http://klavinslab.org/yase</a> <br  class="github-only" />
  </div><hr  class="github-only" />
 <p >There are literally dozens of tools similar to YASE &ndash; like <a href="https://faust.grame.fr/">Faust</a>, the <a href="https://ccrma.stanford.edu/software/stk/">STK</a>, and <a href="https://github.com/supercollider/supercollider">SuperCollider</a>. You should probably use one of those. They are more established, have broader user bases, and tons of contributed modules and examples. Those other systems likely have higher performance and fewer bugs than YASE.</p>
 <p >That said, YASE is pretty fun and easy. In case you are interested, it is:</p><ul>
@@ -173,8 +197,7 @@ Building</h1>
 <div class="line">cd yase</div>
 <div class="line">make</div>
 </div><!-- fragment --><p >Assuming no errors, you should be able to hear sound if you run </p><div class="fragment"><div class="line">./examples/bin/sine_wave</div>
-</div><!-- fragment --><p> <em><b>Note: We recommend that when you work on audio projects you keep your volume very low until you are sure your code works and isn't producing ear-splitting, speaker cone damaging signals.</b></em> </p>
-</div></div><!-- PageDoc -->
+</div><!-- fragment --> </div></div><!-- PageDoc -->
 </div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

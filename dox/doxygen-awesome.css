@@ -149,7 +149,7 @@ html {
     /* sidebar navigation (treeview) colors */
     --side-nav-background: #fbfbfb;
     --side-nav-foreground: var(--page-foreground-color);
-    --side-nav-arrow-opacity: 0;
+    --side-nav-arrow-opacity: 0.9;
     --side-nav-arrow-hover-opacity: 0.9;
 
     --toc-background: var(--side-nav-background);
@@ -378,7 +378,7 @@ a.anchor {
 
 #projectbrief {
     font-family: inherit;
-    font-size: 80%;
+    font-size: 100%;
     padding: 15px;
     text-align: center;
 }
@@ -849,15 +849,17 @@ div.contents, div.header .title, div.header .summary {
 
 div.contents, div.header .title  {
     line-height: initial;
-    margin: calc(var(--spacing-medium) + .2em) auto var(--spacing-medium) auto;
+    margin: calc(var(--spacing-medium) + .2em) auto var(--spacing-medium) auto !important;
 }
 
 div.header .summary {
     margin: var(--spacing-medium) auto 0 auto;
+    margin-bottom: 10px;
 }
 
 div.headertitle {
-    padding: 0;
+    padding: 10px;
+    border-top: 1pt solid #eee;
 }
 
 div.header .title {
@@ -2148,4 +2150,11 @@ h2:hover a.anchorlink, h1:hover a.anchorlink, h3:hover a.anchorlink, h4:hover a.
 
 .showy {
     text-align: left !important;
+}
+
+.warning {
+    border: 1pt solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    background-color: yellow;
 }
