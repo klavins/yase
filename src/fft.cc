@@ -8,7 +8,7 @@
 // terms of the GNU General Public License as published by the Free Software
 // Foundation, either version 3 of the License, or (at your option) any later
 // version.
-//
+// 
 // YASE is distributed in the hope that it will be useful, but WITHOUT ANY
 // WARRANTY; without even the implied warranty of MERCHANTABILITY or FITNESS
 // FOR A PARTICULAR PURPOSE. See the GNU General Public License for more
@@ -72,6 +72,29 @@ namespace yase {
             }
             std:cout << "\n"; 
         }
+    }
+
+    std::string FFT::json() {
+
+        string result = "[";
+        double f;
+
+        for ( int i=0; i<size/2+1; i++ ) {
+            double a = out[i][0], b = out[i][1], m = sqrt(a*a+b*b) / size;            
+            f = (int) (SAMPLE_RATE * 1.0 * i / size);
+            result += "{\"x\": " + 
+                      std::to_string(f) + 
+                      ", \"y\":" +
+                      std::to_string(m) 
+                      + "}";
+            if ( i < size/2+1-1 ) {
+                result += ",";
+            }
+        }     
+
+        result += "]";
+        return result;
+
     }
 
     void FFT::html() {

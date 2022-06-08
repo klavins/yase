@@ -36,7 +36,7 @@ int main(int argc, char * argv[]) {
     Audio audio;
     Container synth; 
 
-    double freq = 1975.0;
+    double freq = B6;
     raw.set_input("frequency", freq);
     aliased.set_input("frequency", freq);
     additive.set_input("frequency", freq);

@@ -88,7 +88,7 @@ namespace yase {
       void init();
       void update();
 
-      Controls &map(Module &fader, int midi_id);
+      Controls &map(Fader &fader, int midi_id);
       Controls &map(Module &module, string name, double min, double max, int midi_id);
       Controls &map(Module &module, int index, double min, double max, int midi_id);
       Controls &map(Module &module, string name, json spec) ;

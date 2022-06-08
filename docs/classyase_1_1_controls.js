@@ -3,7 +3,7 @@ var classyase_1_1_controls =
     [ "exponential", "classyase_1_1_controls.html#ad050c0b2db3929f748598a88b185f234", null ],
     [ "init", "classyase_1_1_controls.html#a5ec38d5087fcff9bf2813ae7556f1733", null ],
     [ "linear", "classyase_1_1_controls.html#a63a6374e3e6b6bc67d1ca7fdcd440aa5", null ],
-    [ "map", "classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0", null ],
+    [ "map", "classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd", null ],
     [ "map", "classyase_1_1_controls.html#a4dd8e2dbc4f8e00121f27c4f71498e8b", null ],
     [ "map", "classyase_1_1_controls.html#a0735d8b9fc2c210c981c114014129c4a", null ],
     [ "map", "classyase_1_1_controls.html#ad42ae73cabd4d44d18f1c29813ae028e", null ],

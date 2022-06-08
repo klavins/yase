@@ -42,18 +42,18 @@ MathJax.Hub.Config({
           el[0].innerText = 'Yet Another Synthesizer Engine';
           el[0].style.cssText += "";
           delay(100).then(() => {
-          var els = document.getElementsByClassName('item');
-          els[1].children[0].click();
-          delay(100).then(() => {
-            els = document.getElementsByClassName('item');
-            els[2].children[0].click();
+            var els = document.getElementsByClassName('item');
+            els[1].children[0].click();
             delay(100).then(() => {
                 els = document.getElementsByClassName('item');
-                els[3].children[0].click();
+                els[2].children[0].click();
+                delay(100).then(() => {
+                    els = document.getElementsByClassName('item');
+                    els[3].children[0].click();
+                });
             });
           });
-      });
-    }
+      }
     }
 </script>
 </head>
@@ -292,8 +292,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a5ec38d5087fcff9bf2813ae7556f1733"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa390cf974372d54d7a37d3a04fc6977d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_controls.html#aa390cf974372d54d7a37d3a04fc6977d">update</a> ()</td></tr>
 <tr class="separator:aa390cf974372d54d7a37d3a04fc6977d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7b705973126fdc6502e15c6add06e6e0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_controls.html">Controls</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">map</a> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;fader, int midi_id)</td></tr>
-<tr class="separator:a7b705973126fdc6502e15c6add06e6e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a489c872d5f1e788559a92e6adca55ebd"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_controls.html">Controls</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">map</a> (<a class="el" href="classyase_1_1_fader.html">Fader</a> &amp;fader, int midi_id)</td></tr>
+<tr class="separator:a489c872d5f1e788559a92e6adca55ebd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0735d8b9fc2c210c981c114014129c4a"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_controls.html">Controls</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_controls.html#a0735d8b9fc2c210c981c114014129c4a">map</a> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;module, string name, double min, double max, int midi_id)</td></tr>
 <tr class="separator:a0735d8b9fc2c210c981c114014129c4a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4dd8e2dbc4f8e00121f27c4f71498e8b"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_controls.html">Controls</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_controls.html#a4dd8e2dbc4f8e00121f27c4f71498e8b">map</a> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;module, int index, double min, double max, int midi_id)</td></tr>
@@ -463,8 +463,8 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 
 </div>
 </div>
-<a id="a7b705973126fdc6502e15c6add06e6e0" name="a7b705973126fdc6502e15c6add06e6e0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a7b705973126fdc6502e15c6add06e6e0">&#9670;&nbsp;</a></span>map() <span class="overload">[1/4]</span></h2>
+<a id="a489c872d5f1e788559a92e6adca55ebd" name="a489c872d5f1e788559a92e6adca55ebd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a489c872d5f1e788559a92e6adca55ebd">&#9670;&nbsp;</a></span>map() <span class="overload">[1/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -472,7 +472,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
         <tr>
           <td class="memname"><a class="el" href="classyase_1_1_controls.html">Controls</a> &amp; yase::Controls::map </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classyase_1_1_module.html">Module</a> &amp;&#160;</td>
+          <td class="paramtype"><a class="el" href="classyase_1_1_fader.html">Fader</a> &amp;&#160;</td>
           <td class="paramname"><em>fader</em>, </td>
         </tr>
         <tr>
@@ -659,11 +659,11 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 <div class="line">    <span class="stringliteral">&quot;base&quot;</span>: 10000 </div>
 <div class="line">  } </div>
 <div class="line">}</div>
-</div><!-- fragment --><p> in it, then you could do </p><div class="fragment"><div class="line">Controls controls;</div>
+</div><!-- fragment --><p> in it. Then you could do </p><div class="fragment"><div class="line">Controls controls;</div>
 <div class="line">Envelope envelope;</div>
 <div class="line">json config = get_config(<span class="stringliteral">&quot;config.json&quot;</span>)</div>
-<div class="line">controls.<a class="code hl_function" href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">map</a>(envelope, &quot;attack&quot;, config[&quot;attack&quot;]);</div>
-<div class="ttc" id="aclassyase_1_1_controls_html_a7b705973126fdc6502e15c6add06e6e0"><div class="ttname"><a href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">yase::Controls::map</a></div><div class="ttdeci">Controls &amp; map(Module &amp;fader, int midi_id)</div><div class="ttdef"><b>Definition:</b> controls.cc:50</div></div>
+<div class="line">controls.<a class="code hl_function" href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">map</a>(envelope, &quot;attack&quot;, config[&quot;attack&quot;]);</div>
+<div class="ttc" id="aclassyase_1_1_controls_html_a489c872d5f1e788559a92e6adca55ebd"><div class="ttname"><a href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">yase::Controls::map</a></div><div class="ttdeci">Controls &amp; map(Fader &amp;fader, int midi_id)</div><div class="ttdef"><b>Definition:</b> controls.cc:50</div></div>
 </div><!-- fragment --> 
 </div>
 </div>

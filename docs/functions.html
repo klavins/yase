@@ -42,18 +42,18 @@ MathJax.Hub.Config({
           el[0].innerText = 'Yet Another Synthesizer Engine';
           el[0].style.cssText += "";
           delay(100).then(() => {
-          var els = document.getElementsByClassName('item');
-          els[1].children[0].click();
-          delay(100).then(() => {
-            els = document.getElementsByClassName('item');
-            els[2].children[0].click();
+            var els = document.getElementsByClassName('item');
+            els[1].children[0].click();
             delay(100).then(() => {
                 els = document.getElementsByClassName('item');
-                els[3].children[0].click();
+                els[2].children[0].click();
+                delay(100).then(() => {
+                    els = document.getElementsByClassName('item');
+                    els[3].children[0].click();
+                });
             });
           });
-      });
-    }
+      }
     }
 </script>
 </head>
@@ -211,7 +211,7 @@ $(document).ready(function(){initNavTree('functions.html',''); initResizable(); 
 
 
 <h3><a id="index_m" name="index_m"></a>- m -</h3><ul>
-<li>map()&#160;:&#160;<a class="el" href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">yase::Controls</a></li>
+<li>map()&#160;:&#160;<a class="el" href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">yase::Controls</a></li>
 <li>MidiInput()&#160;:&#160;<a class="el" href="classyase_1_1_midi_input.html#ac5fd6f0cac2171e2de34dab29e157b7e">yase::MidiInput</a></li>
 <li>momentary()&#160;:&#160;<a class="el" href="classyase_1_1_buttons.html#a9eee17122c898a2868435ca40ebaca5c">yase::Buttons</a></li>
 <li>mutex()&#160;:&#160;<a class="el" href="classyase_1_1_buttons.html#abc42df6c76770ee09294ba0a7e14eb25">yase::Buttons</a></li>

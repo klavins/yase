@@ -99,7 +99,8 @@ SOFTWARE.
     }
 
     #MSearchBox {
-        width: calc(var(--side-nav-fixed-width) - calc(2 * var(--spacing-medium)));
+        width: calc(var(--side-nav-fixed-width) - calc(4 * var(--spacing-medium)));
+        margin-left: var(--spacing-medium);
     }
 
     #MSearchField {

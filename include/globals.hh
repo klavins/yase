@@ -33,7 +33,7 @@
 //! The duration of a sample
 #define TS      (1.0/SAMPLE_RATE)
 //! The number of frames to prepare to be sent to the audio interface
-#define FRAMES_PER_BUFFER     128
+#define FRAMES_PER_BUFFER     512
 //! Use floats for the audio interface
 #define PA_SAMPLE_TYPE  paFloat32
 //! A unit of pitch

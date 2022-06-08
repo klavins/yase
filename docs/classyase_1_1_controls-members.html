@@ -42,18 +42,18 @@ MathJax.Hub.Config({
           el[0].innerText = 'Yet Another Synthesizer Engine';
           el[0].style.cssText += "";
           delay(100).then(() => {
-          var els = document.getElementsByClassName('item');
-          els[1].children[0].click();
-          delay(100).then(() => {
-            els = document.getElementsByClassName('item');
-            els[2].children[0].click();
+            var els = document.getElementsByClassName('item');
+            els[1].children[0].click();
             delay(100).then(() => {
                 els = document.getElementsByClassName('item');
-                els[3].children[0].click();
+                els[2].children[0].click();
+                delay(100).then(() => {
+                    els = document.getElementsByClassName('item');
+                    els[3].children[0].click();
+                });
             });
           });
-      });
-    }
+      }
     }
 </script>
 </head>
@@ -164,7 +164,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_controls.html',''); init
   <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_controls.html#a63a6374e3e6b6bc67d1ca7fdcd440aa5">linear</a>()</td><td class="entry"><a class="el" href="classyase_1_1_controls.html">yase::Controls</a></td><td class="entry"></td></tr>
   <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>listen</b>(int event_type, function&lt; void(const Event &amp;)&gt; handler) (defined in <a class="el" href="classyase_1_1_event_manager.html">yase::EventManager</a>)</td><td class="entry"><a class="el" href="classyase_1_1_event_manager.html">yase::EventManager</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_event_manager.html#a80ef1b68cb3c6381d0a33d4a734c4137">listen</a>(int event_type, int port, function&lt; void(const Event &amp;)&gt; handler)</td><td class="entry"><a class="el" href="classyase_1_1_event_manager.html">yase::EventManager</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">map</a>(Module &amp;fader, int midi_id)</td><td class="entry"><a class="el" href="classyase_1_1_controls.html">yase::Controls</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">map</a>(Fader &amp;fader, int midi_id)</td><td class="entry"><a class="el" href="classyase_1_1_controls.html">yase::Controls</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_controls.html#a0735d8b9fc2c210c981c114014129c4a">map</a>(Module &amp;module, string name, double min, double max, int midi_id)</td><td class="entry"><a class="el" href="classyase_1_1_controls.html">yase::Controls</a></td><td class="entry"></td></tr>
   <tr class="odd"><td class="entry"><a class="el" href="classyase_1_1_controls.html#a4dd8e2dbc4f8e00121f27c4f71498e8b">map</a>(Module &amp;module, int index, double min, double max, int midi_id)</td><td class="entry"><a class="el" href="classyase_1_1_controls.html">yase::Controls</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_controls.html#ad42ae73cabd4d44d18f1c29813ae028e">map</a>(Module &amp;module, string name, json spec)</td><td class="entry"><a class="el" href="classyase_1_1_controls.html">yase::Controls</a></td><td class="entry"></td></tr>

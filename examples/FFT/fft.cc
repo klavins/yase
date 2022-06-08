@@ -27,20 +27,35 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    double freq = 1975; // B6
-    double cycles = 10;
-
-    Saw osc;
-    AntiAlias aa_osc(osc);
-    osc.set_type("raw");
-    osc.set_input("frequency", freq);
-    FFT fft(cycles*SAMPLE_RATE / freq);
+    double freq = B6;
+    double cycles = 31;
 
     Container synth;
-    synth.connect(aa_osc,fft);
-    synth.run(cycles*SAMPLE_RATE/freq+1);
+    Audio audio;
+    Saw osc;
+    Cycle cycle;
+    AntiAlias aa_osc(osc);
+    FFT fft(cycles*SAMPLE_RATE / freq);
+    Timer timer;
+    
+    osc.set_type("raw");
 
-    fft.html();
+    cycle.set({ G4, C5, A4, F4, D4, G4, E4, C4, G5, C6, A5, F5, A5, B5, C6 }, [&] (double freq) {
+      osc.set_input("frequency", freq);
+    }, 2.0);        
+   
+    synth.add(timer)
+         .add(cycle);
+    synth.connect(aa_osc, fft);
+    synth.connect(aa_osc, "signal", audio, "left");
+    synth.connect(aa_osc, "signal", audio, "right");
+
+    timer.set(0.025,[&]() {
+        std::cout << fft.json() << "\n";
+        timer.reset();
+    });
+    
+    synth.run(UNTIL_INTERRUPTED);
 
     return 0; 
 

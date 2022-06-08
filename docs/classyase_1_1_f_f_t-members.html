@@ -42,18 +42,18 @@ MathJax.Hub.Config({
           el[0].innerText = 'Yet Another Synthesizer Engine';
           el[0].style.cssText += "";
           delay(100).then(() => {
-          var els = document.getElementsByClassName('item');
-          els[1].children[0].click();
-          delay(100).then(() => {
-            els = document.getElementsByClassName('item');
-            els[2].children[0].click();
+            var els = document.getElementsByClassName('item');
+            els[1].children[0].click();
             delay(100).then(() => {
                 els = document.getElementsByClassName('item');
-                els[3].children[0].click();
+                els[2].children[0].click();
+                delay(100).then(() => {
+                    els = document.getElementsByClassName('item');
+                    els[3].children[0].click();
+                });
             });
           });
-      });
-    }
+      }
     }
 </script>
 </head>
@@ -152,13 +152,14 @@ $(document).ready(function(){initNavTree('classyase_1_1_f_f_t.html',''); initRes
   <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>get_ts</b>() (defined in <a class="el" href="classyase_1_1_module.html">yase::Module</a>)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
   <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>html</b>() (defined in <a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a>)</td><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a></td><td class="entry"></td></tr>
   <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html#a672350c0b8973d04f99834ad4beffeaf">init</a>()</td><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>Module</b>() (defined in <a class="el" href="classyase_1_1_module.html">yase::Module</a>)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_module.html#afe7c00f891cb7bb6fd9e8e37d1c1a76f">set_input</a>(string name, double value)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"></td></tr>
-  <tr class="odd"><td class="entry"><a class="el" href="classyase_1_1_module.html#ab83f209d7fc831be5aca08a165d6a98c">set_input</a>(int index, double value)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_module.html#ae73371c6475c66925fd90a9255cd57a3">set_output</a>(int index, double value)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>set_ts</b>(double s) (defined in <a class="el" href="classyase_1_1_module.html">yase::Module</a>)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
-  <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html#aec46d2e087f6fc39da9b4a6e26a711a0">update</a>()</td><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
-  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>~FFT</b>() (defined in <a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a>)</td><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="odd"><td class="entry"><b>json</b>() (defined in <a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a>)</td><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>Module</b>() (defined in <a class="el" href="classyase_1_1_module.html">yase::Module</a>)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classyase_1_1_module.html#afe7c00f891cb7bb6fd9e8e37d1c1a76f">set_input</a>(string name, double value)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"></td></tr>
+  <tr class="even"><td class="entry"><a class="el" href="classyase_1_1_module.html#ab83f209d7fc831be5aca08a165d6a98c">set_input</a>(int index, double value)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classyase_1_1_module.html#ae73371c6475c66925fd90a9255cd57a3">set_output</a>(int index, double value)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>set_ts</b>(double s) (defined in <a class="el" href="classyase_1_1_module.html">yase::Module</a>)</td><td class="entry"><a class="el" href="classyase_1_1_module.html">yase::Module</a></td><td class="entry"><span class="mlabel">inline</span></td></tr>
+  <tr class="odd"><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html#aec46d2e087f6fc39da9b4a6e26a711a0">update</a>()</td><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a></td><td class="entry"><span class="mlabel">virtual</span></td></tr>
+  <tr bgcolor="#f0f0f0" class="even"><td class="entry"><b>~FFT</b>() (defined in <a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a>)</td><td class="entry"><a class="el" href="classyase_1_1_f_f_t.html">yase::FFT</a></td><td class="entry"></td></tr>
 </table></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

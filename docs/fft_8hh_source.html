@@ -42,18 +42,18 @@ MathJax.Hub.Config({
           el[0].innerText = 'Yet Another Synthesizer Engine';
           el[0].style.cssText += "";
           delay(100).then(() => {
-          var els = document.getElementsByClassName('item');
-          els[1].children[0].click();
-          delay(100).then(() => {
-            els = document.getElementsByClassName('item');
-            els[2].children[0].click();
+            var els = document.getElementsByClassName('item');
+            els[1].children[0].click();
             delay(100).then(() => {
                 els = document.getElementsByClassName('item');
-                els[3].children[0].click();
+                els[2].children[0].click();
+                delay(100).then(() => {
+                    els = document.getElementsByClassName('item');
+                    els[3].children[0].click();
+                });
             });
           });
-      });
-    }
+      }
     }
 </script>
 </head>
@@ -170,22 +170,24 @@ $(document).ready(function(){initNavTree('fft_8hh_source.html',''); initResizabl
 <div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_f_f_t.html#aec46d2e087f6fc39da9b4a6e26a711a0">update</a>();</div>
 <div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      <span class="keywordtype">void</span> ascii();</div>
 <div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>      <span class="keywordtype">void</span> html();</div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      fftw_complex * get();</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>      std::string json();</div>
 <div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      fftw_complex * get();</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      <span class="keywordtype">double</span> * in;</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      fftw_complex *out;</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      fftw_plan plan;</div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>      <span class="keywordtype">int</span> size, n;</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>      <span class="keywordtype">int</span> signal, ready;</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    };</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span> </div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      <span class="keywordtype">double</span> * in;</div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>      fftw_complex *out;</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>      fftw_plan plan;</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      <span class="keywordtype">int</span> size, n;</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      <span class="keywordtype">int</span> signal, ready;</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>}</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    };</div>
 <div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span><span class="preprocessor">#endif</span></div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>}</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassyase_1_1_f_f_t_html"><div class="ttname"><a href="classyase_1_1_f_f_t.html">yase::FFT</a></div><div class="ttdef"><b>Definition:</b> fft.hh:29</div></div>
 <div class="ttc" id="aclassyase_1_1_f_f_t_html_a672350c0b8973d04f99834ad4beffeaf"><div class="ttname"><a href="classyase_1_1_f_f_t.html#a672350c0b8973d04f99834ad4beffeaf">yase::FFT::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> fft.cc:43</div></div>
 <div class="ttc" id="aclassyase_1_1_f_f_t_html_aec46d2e087f6fc39da9b4a6e26a711a0"><div class="ttname"><a href="classyase_1_1_f_f_t.html#aec46d2e087f6fc39da9b4a6e26a711a0">yase::FFT::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> fft.cc:45</div></div>

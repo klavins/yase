@@ -42,18 +42,18 @@ MathJax.Hub.Config({
           el[0].innerText = 'Yet Another Synthesizer Engine';
           el[0].style.cssText += "";
           delay(100).then(() => {
-          var els = document.getElementsByClassName('item');
-          els[1].children[0].click();
-          delay(100).then(() => {
-            els = document.getElementsByClassName('item');
-            els[2].children[0].click();
+            var els = document.getElementsByClassName('item');
+            els[1].children[0].click();
             delay(100).then(() => {
                 els = document.getElementsByClassName('item');
-                els[3].children[0].click();
+                els[2].children[0].click();
+                delay(100).then(() => {
+                    els = document.getElementsByClassName('item');
+                    els[3].children[0].click();
+                });
             });
           });
-      });
-    }
+      }
     }
 </script>
 </head>
@@ -171,10 +171,10 @@ $(document).ready(function(){initNavTree('controls_8hh_source.html',''); initRes
 <div class="line"><a id="l00088" name="l00088"></a><span class="lineno">   88</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_controls.html#a5ec38d5087fcff9bf2813ae7556f1733">init</a>();</div>
 <div class="line"><a id="l00089" name="l00089"></a><span class="lineno">   89</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_controls.html#aa390cf974372d54d7a37d3a04fc6977d">update</a>();</div>
 <div class="line"><a id="l00090" name="l00090"></a><span class="lineno">   90</span> </div>
-<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">map</a>(<a class="code hl_class" href="classyase_1_1_module.html">Module</a> &amp;fader, <span class="keywordtype">int</span> midi_id);</div>
-<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">map</a>(<a class="code hl_class" href="classyase_1_1_module.html">Module</a> &amp;module, <span class="keywordtype">string</span> name, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, <span class="keywordtype">int</span> midi_id);</div>
-<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">map</a>(<a class="code hl_class" href="classyase_1_1_module.html">Module</a> &amp;module, <span class="keywordtype">int</span> index, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, <span class="keywordtype">int</span> midi_id);</div>
-<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">map</a>(<a class="code hl_class" href="classyase_1_1_module.html">Module</a> &amp;module, <span class="keywordtype">string</span> name, json spec) ;</div>
+<div class="line"><a id="l00091" name="l00091"></a><span class="lineno">   91</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">map</a>(<a class="code hl_class" href="classyase_1_1_fader.html">Fader</a> &amp;fader, <span class="keywordtype">int</span> midi_id);</div>
+<div class="line"><a id="l00092" name="l00092"></a><span class="lineno">   92</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">map</a>(<a class="code hl_class" href="classyase_1_1_module.html">Module</a> &amp;module, <span class="keywordtype">string</span> name, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, <span class="keywordtype">int</span> midi_id);</div>
+<div class="line"><a id="l00093" name="l00093"></a><span class="lineno">   93</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">map</a>(<a class="code hl_class" href="classyase_1_1_module.html">Module</a> &amp;module, <span class="keywordtype">int</span> index, <span class="keywordtype">double</span> min, <span class="keywordtype">double</span> max, <span class="keywordtype">int</span> midi_id);</div>
+<div class="line"><a id="l00094" name="l00094"></a><span class="lineno">   94</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">map</a>(<a class="code hl_class" href="classyase_1_1_module.html">Module</a> &amp;module, <span class="keywordtype">string</span> name, json spec) ;</div>
 <div class="line"><a id="l00095" name="l00095"></a><span class="lineno">   95</span> </div>
 <div class="line"><a id="l00096" name="l00096"></a><span class="lineno">   96</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a07f390eb2933c5c417f22ffdf0e7bffc">set_tracking_gain</a>(<span class="keywordtype">double</span> x);</div>
 <div class="line"><a id="l00097" name="l00097"></a><span class="lineno">   97</span>      <a class="code hl_class" href="classyase_1_1_controls.html">Controls</a> &amp;<a class="code hl_function" href="classyase_1_1_controls.html#a63a6374e3e6b6bc67d1ca7fdcd440aa5">linear</a>();</div>
@@ -194,12 +194,13 @@ $(document).ready(function(){initNavTree('controls_8hh_source.html',''); initRes
 <div class="ttc" id="aclassyase_1_1_container_html"><div class="ttname"><a href="classyase_1_1_container.html">yase::Container</a></div><div class="ttdoc">A module and event manager that can contain other modules.</div><div class="ttdef"><b>Definition:</b> container.hh:62</div></div>
 <div class="ttc" id="aclassyase_1_1_controls_html"><div class="ttname"><a href="classyase_1_1_controls.html">yase::Controls</a></div><div class="ttdoc">Use a Controls object to connect MIDI knobs and faders to Module inputs.</div><div class="ttdef"><b>Definition:</b> controls.hh:82</div></div>
 <div class="ttc" id="aclassyase_1_1_controls_html_a07f390eb2933c5c417f22ffdf0e7bffc"><div class="ttname"><a href="classyase_1_1_controls.html#a07f390eb2933c5c417f22ffdf0e7bffc">yase::Controls::set_tracking_gain</a></div><div class="ttdeci">Controls &amp; set_tracking_gain(double x)</div><div class="ttdef"><b>Definition:</b> controls.cc:133</div></div>
+<div class="ttc" id="aclassyase_1_1_controls_html_a489c872d5f1e788559a92e6adca55ebd"><div class="ttname"><a href="classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd">yase::Controls::map</a></div><div class="ttdeci">Controls &amp; map(Fader &amp;fader, int midi_id)</div><div class="ttdef"><b>Definition:</b> controls.cc:50</div></div>
 <div class="ttc" id="aclassyase_1_1_controls_html_a4f96987ae47aa1e315b75e164dcb10e6"><div class="ttname"><a href="classyase_1_1_controls.html#a4f96987ae47aa1e315b75e164dcb10e6">yase::Controls::randomize</a></div><div class="ttdeci">void randomize()</div><div class="ttdoc">Randomly assign a value to all controls.</div><div class="ttdef"><b>Definition:</b> controls.cc:158</div></div>
 <div class="ttc" id="aclassyase_1_1_controls_html_a5ec38d5087fcff9bf2813ae7556f1733"><div class="ttname"><a href="classyase_1_1_controls.html#a5ec38d5087fcff9bf2813ae7556f1733">yase::Controls::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> controls.cc:39</div></div>
 <div class="ttc" id="aclassyase_1_1_controls_html_a63a6374e3e6b6bc67d1ca7fdcd440aa5"><div class="ttname"><a href="classyase_1_1_controls.html#a63a6374e3e6b6bc67d1ca7fdcd440aa5">yase::Controls::linear</a></div><div class="ttdeci">Controls &amp; linear()</div><div class="ttdoc">Set the most recently added control's response to linear.</div><div class="ttdef"><b>Definition:</b> controls.cc:141</div></div>
-<div class="ttc" id="aclassyase_1_1_controls_html_a7b705973126fdc6502e15c6add06e6e0"><div class="ttname"><a href="classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0">yase::Controls::map</a></div><div class="ttdeci">Controls &amp; map(Module &amp;fader, int midi_id)</div><div class="ttdef"><b>Definition:</b> controls.cc:50</div></div>
 <div class="ttc" id="aclassyase_1_1_controls_html_aa390cf974372d54d7a37d3a04fc6977d"><div class="ttname"><a href="classyase_1_1_controls.html#aa390cf974372d54d7a37d3a04fc6977d">yase::Controls::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> controls.cc:43</div></div>
 <div class="ttc" id="aclassyase_1_1_controls_html_ad050c0b2db3929f748598a88b185f234"><div class="ttname"><a href="classyase_1_1_controls.html#ad050c0b2db3929f748598a88b185f234">yase::Controls::exponential</a></div><div class="ttdeci">Controls &amp; exponential(double base)</div><div class="ttdef"><b>Definition:</b> controls.cc:150</div></div>
+<div class="ttc" id="aclassyase_1_1_fader_html"><div class="ttname"><a href="classyase_1_1_fader.html">yase::Fader</a></div><div class="ttdoc">A Fader Module maps an input target to an output value.</div><div class="ttdef"><b>Definition:</b> fader.hh:40</div></div>
 <div class="ttc" id="aclassyase_1_1_module_html"><div class="ttname"><a href="classyase_1_1_module.html">yase::Module</a></div><div class="ttdoc">An abstract base class for modules.</div><div class="ttdef"><b>Definition:</b> module.hh:39</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->

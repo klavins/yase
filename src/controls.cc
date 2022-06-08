@@ -47,7 +47,7 @@ namespace yase {
   //! Associate a MIDI listener with a Fader. Typically this method is not called directly by the user.
   //! \param fader A reference to a Fader object
   //! \param midi_it The MIDI id of the controller
-  Controls &Controls::map(Module &fader, int midi_id) {
+  Controls &Controls::map(Fader &fader, int midi_id) {
     listeners[MIDI_MOD].push_back([&fader, midi_id] (Event e) {
       if ( e.id == midi_id ) {
         fader.set_input(0, e.value);
@@ -93,7 +93,7 @@ namespace yase {
   //!   } 
   //! }
   //! \endcode
-  //! in it, then you could do
+  //! in it. Then you could do
   //! \code
   //! Controls controls;
   //! Envelope envelope;

@@ -36,6 +36,8 @@ namespace yase {
       void update();
       void ascii();
       void html();
+      std::string json();
+
       fftw_complex * get();
 
     private:

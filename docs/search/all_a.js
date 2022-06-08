@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['map_0',['map',['../classyase_1_1_controls.html#a7b705973126fdc6502e15c6add06e6e0',1,'yase::Controls::map(Module &amp;fader, int midi_id)'],['../classyase_1_1_controls.html#a0735d8b9fc2c210c981c114014129c4a',1,'yase::Controls::map(Module &amp;module, string name, double min, double max, int midi_id)'],['../classyase_1_1_controls.html#a4dd8e2dbc4f8e00121f27c4f71498e8b',1,'yase::Controls::map(Module &amp;module, int index, double min, double max, int midi_id)'],['../classyase_1_1_controls.html#ad42ae73cabd4d44d18f1c29813ae028e',1,'yase::Controls::map(Module &amp;module, string name, json spec)']]],
+  ['map_0',['map',['../classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd',1,'yase::Controls::map(Fader &amp;fader, int midi_id)'],['../classyase_1_1_controls.html#a0735d8b9fc2c210c981c114014129c4a',1,'yase::Controls::map(Module &amp;module, string name, double min, double max, int midi_id)'],['../classyase_1_1_controls.html#a4dd8e2dbc4f8e00121f27c4f71498e8b',1,'yase::Controls::map(Module &amp;module, int index, double min, double max, int midi_id)'],['../classyase_1_1_controls.html#ad42ae73cabd4d44d18f1c29813ae028e',1,'yase::Controls::map(Module &amp;module, string name, json spec)']]],
   ['midi_5fafter_5ftouch_1',['MIDI_AFTER_TOUCH',['../globals_8hh.html#a7d5190ed6fcb8224d695829a86735ec5',1,'globals.hh']]],
   ['midi_5fany_2',['MIDI_ANY',['../globals_8hh.html#a39f3a183590521e26a5d3c1a1a76f14b',1,'globals.hh']]],
   ['midi_5fbender_3',['MIDI_BENDER',['../globals_8hh.html#af16728ea59b9524a2e4ec4159085d3e3',1,'globals.hh']]],
