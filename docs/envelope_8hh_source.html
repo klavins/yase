@@ -164,39 +164,39 @@ $(document).ready(function(){initNavTree('envelope_8hh_source.html',''); initRes
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span>    <span class="keyword">typedef</span>  void (Envelope::*UpdateFunction)();  </div>
 <div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span> </div>
 <div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    </div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno"><a class="line" href="classyase_1_1_envelope.html">   40</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classyase_1_1_envelope.html">Envelope</a> : <span class="keyword">public</span> <a class="code hl_class" href="classyase_1_1_module.html">Module</a> {</div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span> </div>
-<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span> </div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      <a class="code hl_class" href="classyase_1_1_envelope.html">Envelope</a>();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_envelope.html#a2be2db4027fdff82db1c8a7dd9458872">init</a>();</div>
-<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_envelope.html#ae1ca85a59e65e686395e100376c528b1">update</a>(); </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>      <span class="keywordtype">void</span> trigger();</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>      <span class="keywordtype">void</span> release();</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno"><a class="line" href="classyase_1_1_envelope.html">   50</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classyase_1_1_envelope.html">Envelope</a> : <span class="keyword">public</span> <a class="code hl_class" href="classyase_1_1_module.html">Module</a> {</div>
 <div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      <span class="comment">// i/o indices</span></div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      <span class="keywordtype">int</span> signal, </div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>          a,d,s,r, </div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>          velocity;</div>
-<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
-<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>      UpdateFunction update_fcn;</div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span> </div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>      <span class="keywordtype">double</span> amplitude;</div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>      <span class="keywordtype">void</span> off();</div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      <span class="keywordtype">void</span> attack();</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      <span class="keywordtype">void</span> decay();</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      <span class="keywordtype">void</span> sustain();</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      <span class="keywordtype">void</span> _release();          </div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span> </div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      <a class="code hl_class" href="classyase_1_1_envelope.html">Envelope</a>();</div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_envelope.html#a2be2db4027fdff82db1c8a7dd9458872">init</a>();</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_envelope.html#ae1ca85a59e65e686395e100376c528b1">update</a>(); </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>      <span class="keywordtype">void</span> trigger();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>      <span class="keywordtype">void</span> release();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      <span class="comment">// i/o indices</span></div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      <span class="keywordtype">int</span> signal, </div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>          a,d,s,r, </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>          velocity;</div>
 <div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    };</div>
+<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>      UpdateFunction update_fcn;</div>
 <div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
+<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>      <span class="keywordtype">double</span> amplitude;</div>
 <div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassyase_1_1_envelope_html"><div class="ttname"><a href="classyase_1_1_envelope.html">yase::Envelope</a></div><div class="ttdoc">An ADSR envelope.</div><div class="ttdef"><b>Definition:</b> envelope.hh:40</div></div>
+<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span>      <span class="keywordtype">void</span> off();</div>
+<div class="line"><a id="l00072" name="l00072"></a><span class="lineno">   72</span>      <span class="keywordtype">void</span> attack();</div>
+<div class="line"><a id="l00073" name="l00073"></a><span class="lineno">   73</span>      <span class="keywordtype">void</span> decay();</div>
+<div class="line"><a id="l00074" name="l00074"></a><span class="lineno">   74</span>      <span class="keywordtype">void</span> sustain();</div>
+<div class="line"><a id="l00075" name="l00075"></a><span class="lineno">   75</span>      <span class="keywordtype">void</span> _release();          </div>
+<div class="line"><a id="l00076" name="l00076"></a><span class="lineno">   76</span> </div>
+<div class="line"><a id="l00077" name="l00077"></a><span class="lineno">   77</span>    };</div>
+<div class="line"><a id="l00078" name="l00078"></a><span class="lineno">   78</span> </div>
+<div class="line"><a id="l00079" name="l00079"></a><span class="lineno">   79</span>}</div>
+<div class="line"><a id="l00080" name="l00080"></a><span class="lineno">   80</span> </div>
+<div class="line"><a id="l00081" name="l00081"></a><span class="lineno">   81</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassyase_1_1_envelope_html"><div class="ttname"><a href="classyase_1_1_envelope.html">yase::Envelope</a></div><div class="ttdoc">An ADSR envelope.</div><div class="ttdef"><b>Definition:</b> envelope.hh:50</div></div>
 <div class="ttc" id="aclassyase_1_1_envelope_html_a2be2db4027fdff82db1c8a7dd9458872"><div class="ttname"><a href="classyase_1_1_envelope.html#a2be2db4027fdff82db1c8a7dd9458872">yase::Envelope::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> envelope.cc:67</div></div>
 <div class="ttc" id="aclassyase_1_1_envelope_html_ae1ca85a59e65e686395e100376c528b1"><div class="ttname"><a href="classyase_1_1_envelope.html#ae1ca85a59e65e686395e100376c528b1">yase::Envelope::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> envelope.cc:77</div></div>
 <div class="ttc" id="aclassyase_1_1_module_html"><div class="ttname"><a href="classyase_1_1_module.html">yase::Module</a></div><div class="ttdoc">An abstract base class for modules.</div><div class="ttdef"><b>Definition:</b> module.hh:39</div></div>

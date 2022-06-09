@@ -161,9 +161,11 @@ $(document).ready(function(){initNavTree('classyase_1_1_envelope.html',''); init
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p >An ADSR envelope. </p>
-<dl class="params"><dt>Parameters</dt><dd>
+<p >Typically, the input signal is not used. The output is fed to, for example, the amplitude of a gain or the frequency of a filter. The attack phase is linear, the decay and release phases are exponential. The attack input determines the length of the attack in seconds. The release and decay inputs determine the release and decay rates according to</p>
+<p >\(e^{-1/k}\)</p>
+<p >where k is either the (decay or release) parameter. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">attack</td><td>duration </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">attack</td><td></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">decay</td><td></td></tr>
     <tr><td class="paramdir">[in]</td><td class="paramname">sustain</td><td><br  />
  </td></tr>

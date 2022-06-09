@@ -61,11 +61,11 @@ int main(int argc, char * argv[]) {
          .connect(scale, "signal", filter, "frequency")
          .add(cycle);
 
-    cycle.set({ G3, C4, A3, F4 }, [&] (double freq) {
+    cycle.set({ G3, C4, A3, F4, F2, F1 }, [&] (double freq) {
       raw_saw.set_input("frequency", freq);
       wave_envelope.trigger();
       filter_envelope.trigger();
-    }, 4.0);   
+    }, 3.0);   
 
     synth.run(UNTIL_INTERRUPTED);
 

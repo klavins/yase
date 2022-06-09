@@ -31,7 +31,17 @@ namespace yase {
 
     //! An ADSR envelope
     
-    //! \param[in] attack duration
+    //! Typically, the input signal is not used. The output is fed to, 
+    //! for example, the amplitude of a gain or the frequency of a filter.
+    //! The attack phase is linear, the decay and release phases are exponential.
+    //! The attack input determines the length of the attack in seconds. The
+    //! release and decay inputs determine the release and decay rates according
+    //! to 
+    //!
+    //! \f$y = e^{-t/k}\f$
+    //! 
+    //! where k is either the (decay or release) parameter.
+    //! \param[in] attack
     //! \param[in] decay
     //! \param[in] sustain    
     //! \param[in] release
