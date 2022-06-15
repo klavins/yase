@@ -24,7 +24,7 @@
 #include <vector>
 #include <string>
 #include "module.hh"
-#include "../../rtmidi/RtMidi.h"
+#include "RtMidi.h"
 
 namespace yase {
 
