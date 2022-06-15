@@ -37,6 +37,9 @@ int main(int argc, char * argv[]) {
               invert( [] (double u) { return -u; });
     Echo echo;
 
+    raw_saw.set_type("raw");
+    raw_saw.set_input("amplitude", 0.4);
+
     filter.set_input("resonance", 10);
 
     echo.set_input("duration", SAMPLE_RATE/2);

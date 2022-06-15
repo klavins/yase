@@ -19,7 +19,8 @@ EXAMPLE_DIRS := $(wildcard $(ROOT_DIR)/examples/*)
 INCDIR      := -I $(ROOT_DIR)/include \
 			   -I $(ROOT_DIR)/third-party/json/include \
 			   -I $(ROOT_DIR)/third-party/json/include/nlohmann \
-			   -I $(ROOT_DIR)/third-party/AudioFile
+			   -I $(ROOT_DIR)/third-party/AudioFile \
+			   -I /usr/local/Cellar/rtmidi/5.0.0/include/rtmidi
 
 # Libraries for executables
 LIBDIR      := -L $(ROOT_DIR)/lib

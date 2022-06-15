@@ -24,7 +24,7 @@
 #include <vector>
 #include <string>
 #include "event_manager.hh"
-#include "../../rtmidi/RtMidi.h"
+#include "RtMidi.h"
 #include "globals.hh"
 
 using std::vector;
