@@ -17,8 +17,8 @@ EXAMPLE_DIRS := $(wildcard $(ROOT_DIR)/examples/*)
 
 # Directories where include files are
 INCDIR      := -I $(ROOT_DIR)/include \
-			   -I /usr/local/Cellar/nlohmann-json/3.10.5/include/nlohmann/ \
-			   -I $(ROOT_DIR)/third-party/AudioFile \
+			   -I /usr/local/Cellar/nlohmann-json/3.10.5/include/nlohmann \
+			   -I /usr/local/Cellar/adamstark-audiofile/1.1.0/include \
 			   -I /usr/local/Cellar/rtmidi/5.0.0/include/rtmidi
 
 # Libraries for executables
