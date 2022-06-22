@@ -23,9 +23,16 @@
 
 namespace yase {
 
+  //! Construct a sawtooth oscillator. The default is to set the type to "additive".
   Saw::Saw() : Oscillator() {
     update_fcn = &Saw::additive;
   }  
+
+  //! Construct a sawtooth oscillator with the desired type.
+  //! \param type Either "raw", "additive", or "ptr1". 
+  Saw::Saw(std::string type) : Saw() {
+    set_type(type);
+  }
 
   void Saw::init() {
     Oscillator::init();
@@ -37,6 +44,8 @@ namespace yase {
     outputs[signal] *= inputs[amplitude];
   }    
 
+  //! Set the type of the oscillator to the desired type.
+  //! \param name Either "raw", "additive", or "ptr1". 
   void Saw::set_type(std::string name) {
 
     if ( name == "raw" )  {

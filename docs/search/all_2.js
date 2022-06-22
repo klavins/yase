@@ -10,6 +10,5 @@ var searchData=
   ['container_7',['Container',['../classyase_1_1_container.html',1,'yase']]],
   ['controls_8',['Controls',['../classyase_1_1_controls.html',1,'yase']]],
   ['copy_5finputs_9',['copy_inputs',['../classyase_1_1_module.html#a4a3275763cfe947a85500f4fa164e1a6',1,'yase::Module']]],
-  ['copy_5foutputs_10',['copy_outputs',['../classyase_1_1_module.html#adb74447d12446d5ac1b25d9b6354610a',1,'yase::Module']]],
-  ['cycle_11',['Cycle',['../classyase_1_1_cycle.html',1,'yase']]]
+  ['copy_5foutputs_10',['copy_outputs',['../classyase_1_1_module.html#adb74447d12446d5ac1b25d9b6354610a',1,'yase::Module']]]
 ];

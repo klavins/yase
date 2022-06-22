@@ -23,37 +23,34 @@
 
 using namespace yase;
 
+/*
+ TODO:
+   - Constructor to Saw should take type
+   - AntiAlias shold have the same inputs and outputs as its sub-module (doesn't assume they are called "signal")
+ */
+
 int main(int argc, char * argv[]) {
 
+    // Declare Modules
     Container synth;
     Audio audio;
     Biquad filter;
-    Saw raw_saw;
+    Saw raw_saw("raw");
     AntiAlias saw(raw_saw);
     Envelope wave_envelope, filter_envelope;
-    Cycle cycle;
+    Player player;
     Gain gain;
     Transform scale( [] (double u) { return 500 + 4000*u; }),
               invert( [] (double u) { return -u; });
     Echo echo;
 
-    raw_saw.set_type("raw");
+    // Setup modules and connections
     raw_saw.set_input("amplitude", 0.4);
-
     filter.set_input("resonance", 10);
-
     echo.set_input("duration", SAMPLE_RATE/2);
     echo.set_input("amplitude", 0.8);
-
-    wave_envelope.set_input("attack",  0.8);
-    wave_envelope.set_input("decay",   1.0);
-    wave_envelope.set_input("sustain", 0.5);
-    wave_envelope.set_input("release", 0.1);
-
-    filter_envelope.set_input("attack",  2.0);
-    filter_envelope.set_input("decay",   2.0);
-    filter_envelope.set_input("sustain", 0.0);
-    filter_envelope.set_input("release", 0.1);    
+    wave_envelope.set_adsr(0.8, 1.0, 0.5, 0.1);
+    filter_envelope.set_adsr(2.0, 2.0, 0.0, 0.1);    
 
     synth.path(saw, filter, gain, echo)
          .connect(echo, invert)
@@ -62,14 +59,15 @@ int main(int argc, char * argv[]) {
          .connect(wave_envelope, "signal", gain, "amplitude")
          .connect(filter_envelope, scale)
          .connect(scale, "signal", filter, "frequency")
-         .add(cycle);
+         .add(player);
 
-    cycle.set({ G3, C4, A3, F4, F2, F1 }, [&] (double freq) {
+    player.set({ G3, C4, A3, F4, F2, F1 }, [&] (double freq) {
       raw_saw.set_input("frequency", freq);
       wave_envelope.trigger();
       filter_envelope.trigger();
-    }, 3.0);   
+    }, 3.0);
 
+    // Run
     synth.run(UNTIL_INTERRUPTED);
 
     return 0; 

@@ -6,7 +6,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=11"/>
 <meta name="generator" content="Doxygen 1.9.2"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>YASE: include/midi_input.hh Source File</title>
+<title>YASE: include/player.hh Source File</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -110,7 +110,7 @@ var searchBox = new SearchBox("searchBox", "search",'Search','.html');
 </div>
 <script type="text/javascript">
 /* @license magnet:?xt=urn:btih:d3d9a9a6595521f9666a5e94cc830dab83b65699&amp;dn=expat.txt MIT */
-$(document).ready(function(){initNavTree('midi__input_8hh_source.html',''); initResizable(); });
+$(document).ready(function(){initNavTree('player_8hh_source.html',''); initResizable(); });
 /* @license-end */
 </script>
 <div id="doc-content">
@@ -129,11 +129,11 @@ $(document).ready(function(){initNavTree('midi__input_8hh_source.html',''); init
 </div>
 
 <div class="header">
-  <div class="headertitle"><div class="title">midi_input.hh</div></div>
+  <div class="headertitle"><div class="title">player.hh</div></div>
 </div><!--header-->
 <div class="contents">
 <div class="fragment"><div class="line"><a id="l00001" name="l00001"></a><span class="lineno">    1</span><span class="comment">// </span></div>
-<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// YASE Midi Input Module Header</span></div>
+<div class="line"><a id="l00002" name="l00002"></a><span class="lineno">    2</span><span class="comment">// YASE Player Module Header</span></div>
 <div class="line"><a id="l00003" name="l00003"></a><span class="lineno">    3</span><span class="comment">// </span></div>
 <div class="line"><a id="l00004" name="l00004"></a><span class="lineno">    4</span><span class="comment">// Copyright (C) 2022 Eric Klavins</span></div>
 <div class="line"><a id="l00005" name="l00005"></a><span class="lineno">    5</span><span class="comment">// This file is part of YASE</span></div>
@@ -152,51 +152,45 @@ $(document).ready(function(){initNavTree('midi__input_8hh_source.html',''); init
 <div class="line"><a id="l00018" name="l00018"></a><span class="lineno">   18</span><span class="comment">// with YASE. If not, see &lt;https://www.gnu.org/licenses/&gt;.</span></div>
 <div class="line"><a id="l00019" name="l00019"></a><span class="lineno">   19</span><span class="comment">// </span></div>
 <div class="line"><a id="l00020" name="l00020"></a><span class="lineno">   20</span> </div>
-<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#ifndef YASE_MIDI_INPUT_H</span></div>
-<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define YASE_MIDI_INPUT_H</span></div>
+<div class="line"><a id="l00021" name="l00021"></a><span class="lineno">   21</span><span class="preprocessor">#ifndef YASE_PLAYER_H</span></div>
+<div class="line"><a id="l00022" name="l00022"></a><span class="lineno">   22</span><span class="preprocessor">#define YASE_PLAYER_H</span></div>
 <div class="line"><a id="l00023" name="l00023"></a><span class="lineno">   23</span> </div>
-<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &lt;vector&gt;</span></div>
-<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span><span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="preprocessor">#include &quot;module.hh&quot;</span></div>
-<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="preprocessor">#include &quot;RtMidi.h&quot;</span></div>
-<div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno">   29</span><span class="keyword">namespace </span>yase {</div>
+<div class="line"><a id="l00024" name="l00024"></a><span class="lineno">   24</span><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
+<div class="line"><a id="l00025" name="l00025"></a><span class="lineno">   25</span> </div>
+<div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span><span class="keyword">namespace </span>yase {</div>
+<div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span> </div>
+<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classyase_1_1_player.html">   29</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classyase_1_1_player.html">Player</a> : <span class="keyword">public</span> <a class="code hl_class" href="classyase_1_1_module.html">Module</a> {</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
+<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">public</span>:</div>
 <div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno"><a class="line" href="classyase_1_1_midi_input.html">   48</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classyase_1_1_midi_input.html">MidiInput</a> : <span class="keyword">public</span> <a class="code hl_class" href="classyase_1_1_module.html">Module</a> {</div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span> </div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span> </div>
-<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span>      <a class="code hl_function" href="classyase_1_1_midi_input.html#ac5fd6f0cac2171e2de34dab29e157b7e">MidiInput</a>(<span class="keywordtype">string</span> device_name);</div>
-<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_midi_input.html#a9598f97bb991f25c819688549ce8cab1">init</a>();</div>
-<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_midi_input.html#ac49d1f4da36e1925692fe379f048e830">update</a>();</div>
-<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span> </div>
-<div class="line"><a id="l00058" name="l00058"></a><span class="lineno"><a class="line" href="classyase_1_1_midi_input.html#a9ac1971a6612e35089b4aab68af6728c">   58</a></span>      <span class="keyword">inline</span> <span class="keywordtype">int</span> <a class="code hl_function" href="classyase_1_1_midi_input.html#a9ac1971a6612e35089b4aab68af6728c">port</a>() { <span class="keywordflow">return</span> _port; }</div>
-<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span> </div>
-<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span> </div>
-<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span>      RtMidiIn * midi_input;</div>
-<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>      <span class="keywordtype">string</span> device_name;</div>
-<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span>      std::vector&lt;unsigned char&gt; message;</div>
-<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span>      <span class="keywordtype">int</span> _port;</div>
-<div class="line"><a id="l00066" name="l00066"></a><span class="lineno">   66</span> </div>
-<div class="line"><a id="l00067" name="l00067"></a><span class="lineno">   67</span>    };</div>
-<div class="line"><a id="l00068" name="l00068"></a><span class="lineno">   68</span> </div>
-<div class="line"><a id="l00069" name="l00069"></a><span class="lineno">   69</span>}</div>
-<div class="line"><a id="l00070" name="l00070"></a><span class="lineno">   70</span> </div>
-<div class="line"><a id="l00071" name="l00071"></a><span class="lineno">   71</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassyase_1_1_midi_input_html"><div class="ttname"><a href="classyase_1_1_midi_input.html">yase::MidiInput</a></div><div class="ttdoc">A Midi Input manager.</div><div class="ttdef"><b>Definition:</b> midi_input.hh:48</div></div>
-<div class="ttc" id="aclassyase_1_1_midi_input_html_a9598f97bb991f25c819688549ce8cab1"><div class="ttname"><a href="classyase_1_1_midi_input.html#a9598f97bb991f25c819688549ce8cab1">yase::MidiInput::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> midi_input.cc:61</div></div>
-<div class="ttc" id="aclassyase_1_1_midi_input_html_a9ac1971a6612e35089b4aab68af6728c"><div class="ttname"><a href="classyase_1_1_midi_input.html#a9ac1971a6612e35089b4aab68af6728c">yase::MidiInput::port</a></div><div class="ttdeci">int port()</div><div class="ttdef"><b>Definition:</b> midi_input.hh:58</div></div>
-<div class="ttc" id="aclassyase_1_1_midi_input_html_ac49d1f4da36e1925692fe379f048e830"><div class="ttname"><a href="classyase_1_1_midi_input.html#ac49d1f4da36e1925692fe379f048e830">yase::MidiInput::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> midi_input.cc:63</div></div>
-<div class="ttc" id="aclassyase_1_1_midi_input_html_ac5fd6f0cac2171e2de34dab29e157b7e"><div class="ttname"><a href="classyase_1_1_midi_input.html#ac5fd6f0cac2171e2de34dab29e157b7e">yase::MidiInput::MidiInput</a></div><div class="ttdeci">MidiInput(string device_name)</div><div class="ttdef"><b>Definition:</b> midi_input.cc:33</div></div>
+<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>      <a class="code hl_class" href="classyase_1_1_player.html">Player</a>();</div>
+<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_player.html#ad77246802f228c318730649bb40c7ea0">set</a>(vector&lt;double&gt; pitch_list, <span class="keyword">function</span>&lt;<span class="keywordtype">void</span>(<span class="keywordtype">double</span>)&gt; f, <span class="keywordtype">double</span> dt);</div>
+<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_player.html#a99ad706bdbd810f80cb0b4de8cebb637">init</a>();</div>
+<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_player.html#ae1f9d874adbf7a6078b7c4a042382272">update</a>();</div>
+<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span> </div>
+<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span> </div>
+<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span>      <span class="keyword">function</span>&lt;void(<span class="keywordtype">double</span>)&gt; callback;</div>
+<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      <span class="keywordtype">double</span> duration, t;</div>
+<div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span>      vector&lt;double&gt; pitches;</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      <span class="keywordtype">int</span> n;</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    };</div>
+<div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>}</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span><span class="preprocessor">#endif</span></div>
 <div class="ttc" id="aclassyase_1_1_module_html"><div class="ttname"><a href="classyase_1_1_module.html">yase::Module</a></div><div class="ttdoc">An abstract base class for modules.</div><div class="ttdef"><b>Definition:</b> module.hh:39</div></div>
+<div class="ttc" id="aclassyase_1_1_player_html"><div class="ttname"><a href="classyase_1_1_player.html">yase::Player</a></div><div class="ttdoc">Cycle through a list of pitches, running a callback for each one with the specified duration.</div><div class="ttdef"><b>Definition:</b> player.hh:29</div></div>
+<div class="ttc" id="aclassyase_1_1_player_html_a99ad706bdbd810f80cb0b4de8cebb637"><div class="ttname"><a href="classyase_1_1_player.html#a99ad706bdbd810f80cb0b4de8cebb637">yase::Player::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> player.cc:46</div></div>
+<div class="ttc" id="aclassyase_1_1_player_html_ad77246802f228c318730649bb40c7ea0"><div class="ttname"><a href="classyase_1_1_player.html#ad77246802f228c318730649bb40c7ea0">yase::Player::set</a></div><div class="ttdeci">void set(vector&lt; double &gt; pitch_list, function&lt; void(double)&gt; f, double dt)</div><div class="ttdef"><b>Definition:</b> player.cc:40</div></div>
+<div class="ttc" id="aclassyase_1_1_player_html_ae1f9d874adbf7a6078b7c4a042382272"><div class="ttname"><a href="classyase_1_1_player.html#ae1f9d874adbf7a6078b7c4a042382272">yase::Player::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> player.cc:60</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
     <ul>
-      <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>midi_input.hh</b></li>
+      <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><b>player.hh</b></li>
       <li class="footer">YASE was developed by and is maintained by <a href="http://klavinslab.org">Eric Klavins</a>
     </ul>
   </div>

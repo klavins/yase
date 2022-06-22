@@ -33,19 +33,19 @@ int main(int argc, char * argv[]) {
     Container synth;
     Audio audio;
     Saw osc;
-    Cycle cycle;
+    Player player;
     AntiAlias aa_osc(osc);
     FFT fft(cycles*SAMPLE_RATE / freq);
     Timer timer;
     
     osc.set_type("raw");
 
-    cycle.set({ G4, C5, A4, F4, D4, G4, E4, C4, G5, C6, A5, F5, A5, B5, C6 }, [&] (double freq) {
+    player.set({ G4, C5, A4, F4, D4, G4, E4, C4, G5, C6, A5, F5, A5, B5, C6 }, [&] (double freq) {
       osc.set_input("frequency", freq);
     }, 2.0);        
    
     synth.add(timer)
-         .add(cycle);
+         .add(player);
     synth.connect(aa_osc, fft);
     synth.connect(aa_osc, "signal", audio, "left");
     synth.connect(aa_osc, "signal", audio, "right");

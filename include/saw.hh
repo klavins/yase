@@ -33,6 +33,7 @@ namespace yase {
     public:
 
       Saw();
+      Saw(std::string type);
       void init();
       void update();
       void set_type(std::string name);

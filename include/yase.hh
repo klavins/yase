@@ -44,7 +44,7 @@
 // Utility
 #include "noop.hh"
 #include "timer.hh"
-#include "cycle.hh"
+#include "player.hh"
 #include "transform.hh"
 #include "sampler.hh"
 #include "fft.hh"

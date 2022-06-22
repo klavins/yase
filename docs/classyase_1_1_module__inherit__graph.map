@@ -4,18 +4,18 @@
 <area shape="rect" id="node3" href="$classyase_1_1_audio.html" title="A module wrapper for a stereo PortAudio interface (http://www.portaudio.com/)." alt="" coords="170,56,262,83"/>
 <area shape="rect" id="node4" href="$classyase_1_1_buttons.html" title="A class for managing MIDI buttons." alt="" coords="165,107,267,133"/>
 <area shape="rect" id="node5" href="$classyase_1_1_container.html" title="A module and event manager that can contain other modules." alt="" coords="158,157,274,184"/>
-<area shape="rect" id="node9" href="$classyase_1_1_cycle.html" title="Cycle through a list of pitches, running a callback for each one with the specified duration." alt="" coords="171,208,261,235"/>
-<area shape="rect" id="node10" href="$classyase_1_1_delay.html" title="A pure digital delay using a doubled ended queue." alt="" coords="170,259,262,285"/>
-<area shape="rect" id="node11" href="$classyase_1_1_envelope.html" title="An ADSR envelope." alt="" coords="159,309,273,336"/>
-<area shape="rect" id="node12" href="$classyase_1_1_f_f_t.html" title=" " alt="" coords="175,360,257,387"/>
-<area shape="rect" id="node13" href="$classyase_1_1_fader.html" title="A Fader Module maps an input target to an output value." alt="" coords="170,411,262,437"/>
-<area shape="rect" id="node14" href="$classyase_1_1_gain.html" title="Amplifies (or attenuates) its input signal to get the output signal." alt="" coords="173,461,259,488"/>
-<area shape="rect" id="node15" href="$classyase_1_1_i_i_r_filter.html" title="This module implements an Infinite Impulse Response (IIR) filter." alt="" coords="164,512,268,539"/>
-<area shape="rect" id="node18" href="$classyase_1_1_impulse.html" title=" " alt="" coords="164,563,268,589"/>
-<area shape="rect" id="node19" href="$classyase_1_1_midi_input.html" title="A Midi Input manager." alt="" coords="160,613,272,640"/>
-<area shape="rect" id="node20" href="$classyase_1_1_mixer.html" title=" " alt="" coords="171,664,261,691"/>
-<area shape="rect" id="node21" href="$classyase_1_1_noop.html" title="A module that does almost nothing." alt="" coords="171,715,261,741"/>
-<area shape="rect" id="node22" href="$classyase_1_1_oscillator.html" title=" " alt="" coords="159,765,273,792"/>
+<area shape="rect" id="node9" href="$classyase_1_1_delay.html" title="A pure digital delay using a doubled ended queue." alt="" coords="170,208,262,235"/>
+<area shape="rect" id="node10" href="$classyase_1_1_envelope.html" title="An ADSR envelope." alt="" coords="159,259,273,285"/>
+<area shape="rect" id="node11" href="$classyase_1_1_f_f_t.html" title=" " alt="" coords="175,309,257,336"/>
+<area shape="rect" id="node12" href="$classyase_1_1_fader.html" title="A Fader Module maps an input target to an output value." alt="" coords="170,360,262,387"/>
+<area shape="rect" id="node13" href="$classyase_1_1_gain.html" title="Amplifies (or attenuates) its input signal to get the output signal." alt="" coords="173,411,259,437"/>
+<area shape="rect" id="node14" href="$classyase_1_1_i_i_r_filter.html" title="This module implements an Infinite Impulse Response (IIR) filter." alt="" coords="164,461,268,488"/>
+<area shape="rect" id="node17" href="$classyase_1_1_impulse.html" title=" " alt="" coords="164,512,268,539"/>
+<area shape="rect" id="node18" href="$classyase_1_1_midi_input.html" title="A Midi Input manager." alt="" coords="160,563,272,589"/>
+<area shape="rect" id="node19" href="$classyase_1_1_mixer.html" title=" " alt="" coords="171,613,261,640"/>
+<area shape="rect" id="node20" href="$classyase_1_1_noop.html" title="A module that does almost nothing." alt="" coords="171,664,261,691"/>
+<area shape="rect" id="node21" href="$classyase_1_1_oscillator.html" title=" " alt="" coords="159,715,273,741"/>
+<area shape="rect" id="node30" href="$classyase_1_1_player.html" title="Cycle through a list of pitches, running a callback for each one with the specified duration." alt="" coords="168,765,264,792"/>
 <area shape="rect" id="node31" href="$classyase_1_1_sample.html" title="A module that can be used to play a sample stored as a .wav file." alt="" coords="165,816,267,843"/>
 <area shape="rect" id="node32" href="$classyase_1_1_sampler.html" title=" " alt="" coords="163,867,269,893"/>
 <area shape="rect" id="node33" href="$classyase_1_1_sequencer.html" title=" " alt="" coords="155,917,277,944"/>
@@ -25,14 +25,14 @@
 <area shape="rect" id="node6" href="$classyase_1_1_controls.html" title="Use a Controls object to connect MIDI knobs and faders to Module inputs." alt="" coords="342,107,449,133"/>
 <area shape="rect" id="node7" href="$classyase_1_1_echo.html" title="An echo module incorporating a fadable delay in a feedback configuration." alt="" coords="351,157,439,184"/>
 <area shape="rect" id="node8" href="$classyase_1_1_fadable_delay.html" title="A time modulatable delay." alt="" coords="325,208,465,235"/>
-<area shape="rect" id="node16" href="$classyase_1_1_biquad.html" title="Standard Biquad filters adapated from https://www.w3.org/TR/audio&#45;eq&#45;cookbook/." alt="" coords="346,461,445,488"/>
-<area shape="rect" id="node17" href="$classyase_1_1_resonator.html" title=" " alt="" coords="336,512,455,539"/>
-<area shape="rect" id="node23" href="$classyase_1_1_clock.html" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="350,588,441,615"/>
-<area shape="rect" id="node24" href="$classyase_1_1_noise.html" title=" " alt="" coords="349,639,441,665"/>
-<area shape="rect" id="node25" href="$classyase_1_1_osc_group.html" title=" " alt="" coords="336,689,455,716"/>
-<area shape="rect" id="node26" href="$classyase_1_1_saw.html" title=" " alt="" coords="353,740,437,767"/>
-<area shape="rect" id="node27" href="$classyase_1_1_sine.html" title=" " alt="" coords="353,791,437,817"/>
-<area shape="rect" id="node28" href="$classyase_1_1_square.html" title=" " alt="" coords="345,841,445,868"/>
-<area shape="rect" id="node29" href="$classyase_1_1_triangle.html" title=" " alt="" coords="343,892,448,919"/>
-<area shape="rect" id="node30" href="$classyase_1_1_wavetable.html" title="A wavetable oscillator." alt="" coords="335,943,455,969"/>
+<area shape="rect" id="node15" href="$classyase_1_1_biquad.html" title="Standard Biquad filters adapated from https://www.w3.org/TR/audio&#45;eq&#45;cookbook/." alt="" coords="346,411,445,437"/>
+<area shape="rect" id="node16" href="$classyase_1_1_resonator.html" title=" " alt="" coords="336,461,455,488"/>
+<area shape="rect" id="node22" href="$classyase_1_1_clock.html" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="350,537,441,564"/>
+<area shape="rect" id="node23" href="$classyase_1_1_noise.html" title=" " alt="" coords="349,588,441,615"/>
+<area shape="rect" id="node24" href="$classyase_1_1_osc_group.html" title=" " alt="" coords="336,639,455,665"/>
+<area shape="rect" id="node25" href="$classyase_1_1_saw.html" title=" " alt="" coords="353,689,437,716"/>
+<area shape="rect" id="node26" href="$classyase_1_1_sine.html" title=" " alt="" coords="353,740,437,767"/>
+<area shape="rect" id="node27" href="$classyase_1_1_square.html" title=" " alt="" coords="345,791,445,817"/>
+<area shape="rect" id="node28" href="$classyase_1_1_triangle.html" title=" " alt="" coords="343,841,448,868"/>
+<area shape="rect" id="node29" href="$classyase_1_1_wavetable.html" title="A wavetable oscillator." alt="" coords="335,892,455,919"/>
 </map>

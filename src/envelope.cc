@@ -64,6 +64,26 @@ namespace yase {
 
   }
 
+  //! The equivalent of doing
+  //!
+  //! \code
+  //!  set_input("attack", aa);
+  //!  set_input("decay",  dd);
+  //!  set_input("sustain", ss);
+  //!  set_input("release", rr);  
+  //! \endcode
+  //!
+  //! \param aa Attack duration
+  //! \param dd Time to 90% decayed
+  //! \param ss Percentage of maximum for the sustain
+  //! \param rr To to 90% released
+  void Envelope::set_adsr(double aa, double dd, double ss, double rr) {
+    set_input("attack", aa);
+    set_input("decay",  dd);
+    set_input("sustain", ss);
+    set_input("release", rr);    
+  }
+
   void Envelope::init() {}
 
   void Envelope::trigger() {

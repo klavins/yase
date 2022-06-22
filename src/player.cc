@@ -18,32 +18,32 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
-#include "cycle.hh"
+#include "player.hh"
 #include "yase.hh"
 
 namespace yase {
 
-  Cycle::Cycle() : pitches({}) {
+  Player::Player() : pitches({}) {
 
   }
 
-  //! Set the list of pitches, the callback function, and the duration of each step in the cycle. 
+  //! Set the list of pitches, the callback function, and the duration of each step in the player's cycle. 
   //! For example, 
   //! 
-  //!     cycle.set({ 440, 587.33, 220, 659.26, 246.94, 293.67 }, [&] (double freq) {
+  //!     player.set({ 440, 587.33, 220, 659.26, 246.94, 293.67 }, [&] (double freq) {
   //!         osc.set_input("frequency", freq);
   //!     }, 1.0);
   //! 
   //! \param pitch_list the list of pitches
   //! \param f the callback function, which should take a pitch as an argument
   //! \param dt The duration of each step
-  void Cycle::set(vector<double> pitch_list, function<void(double)> f, double dt) {
+  void Player::set(vector<double> pitch_list, function<void(double)> f, double dt) {
     callback = f;
     pitches = pitch_list;
     duration = dt;
   }
 
-  void Cycle::init() {
+  void Player::init() {
 
     t = 0;
     n = 0;
@@ -57,7 +57,7 @@ namespace yase {
 
   }
 
-  void Cycle::update() {
+  void Player::update() {
 
     t += ts;
 

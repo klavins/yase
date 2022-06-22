@@ -56,6 +56,7 @@ namespace yase {
       void update(); 
       void trigger();
       void release();
+      void set_adsr(double aa, double dd, double ss, double rr);
 
     private:
 

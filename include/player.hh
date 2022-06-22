@@ -1,5 +1,5 @@
 // 
-// YASE Cycle Module Header
+// YASE Player Module Header
 // 
 // Copyright (C) 2022 Eric Klavins
 // This file is part of YASE
@@ -18,19 +18,19 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
-#ifndef YASE_CYCLE_H
-#define YASE_CYCLE_H
+#ifndef YASE_PLAYER_H
+#define YASE_PLAYER_H
 
 #include "yase.hh"
 
 namespace yase {
 
     //! Cycle through a list of pitches, running a callback for each one with the specified duration.
-    class Cycle : public Module {
+    class Player : public Module {
 
     public:
 
-      Cycle();
+      Player();
       void set(vector<double> pitch_list, function<void(double)> f, double dt);
       void init();
       void update();

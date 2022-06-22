@@ -15,7 +15,6 @@ var hierarchy =
       [ "yase::Audio", "classyase_1_1_audio.html", null ],
       [ "yase::Buttons", "classyase_1_1_buttons.html", null ],
       [ "yase::Container", "classyase_1_1_container.html", null ],
-      [ "yase::Cycle", "classyase_1_1_cycle.html", null ],
       [ "yase::Delay", "classyase_1_1_delay.html", null ],
       [ "yase::Envelope", "classyase_1_1_envelope.html", null ],
       [ "yase::FFT", "classyase_1_1_f_f_t.html", null ],
@@ -39,6 +38,7 @@ var hierarchy =
         [ "yase::Triangle", "classyase_1_1_triangle.html", null ],
         [ "yase::Wavetable", "classyase_1_1_wavetable.html", null ]
       ] ],
+      [ "yase::Player", "classyase_1_1_player.html", null ],
       [ "yase::Sample", "classyase_1_1_sample.html", null ],
       [ "yase::Sampler", "classyase_1_1_sampler.html", null ],
       [ "yase::Sequencer", "classyase_1_1_sequencer.html", null ],

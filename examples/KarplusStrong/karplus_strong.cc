@@ -67,11 +67,11 @@ int main(int argc, char * argv[]) {
 
     String string;
     Audio audio;
-    Cycle cycle;    
+    Player player;    
     Container synth;
     Delay delay(0.005 * SAMPLE_RATE); // To make a more stereo sound
 
-    cycle.set({ G4, C5, A4, F4, D4, G4, E4, C4 }, [&] (double freq) {
+    player.set({ G4, C5, A4, F4, D4, G4, E4, C4 }, [&] (double freq) {
       string.set_input("frequency", freq);
       string.pluck();
     }, 1.0);    
@@ -79,7 +79,7 @@ int main(int argc, char * argv[]) {
     synth.connect(string,"signal",audio,"right")
          .connect(string,"signal",delay,"signal")
          .connect(delay,"signal",audio,"left")
-         .add(cycle);
+         .add(player);
 
     synth.run(8*SAMPLE_RATE);
     return 0; 
