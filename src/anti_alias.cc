@@ -31,8 +31,13 @@ namespace yase {
     lowpass.set_input("frequency", 0.5 * SAMPLE_RATE);
     lowpass.set_input("resonance", 0.75);
 
-    signal = add_input("signal");
+    for (int i=0; i<module->num_inputs(); i++) {
+      add_input(module->get_input_name(i));
+      set_input(i,module->get_input(i));
+    }
+    
     signal = add_output("signal");
+
     lowpass_signal_in = lowpass.get_input_index("signal");
     lowpass_signal_out = lowpass.get_output_index("signal");
 
@@ -52,6 +57,10 @@ namespace yase {
   }
 
   void AntiAlias::update() {
+
+    for ( int i=0; i<inputs.size(); i++ ) {
+      module->set_input(i, inputs[i]);
+    }
 
     module->update();
     lowpass.set_input(lowpass_signal_in, module->get_output(module_signal_out));

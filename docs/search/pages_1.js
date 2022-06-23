@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yase_3a_20yet_20another_20synthesizer_20engine_0',['YASE: Yet Another Synthesizer Engine',['../index.html',1,'']]]
+  ['tutorial_3a_20the_20basics_0',['Tutorial: The Basics',['../md_tutorials_intro.html',1,'']]]
 ];

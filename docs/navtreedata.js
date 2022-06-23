@@ -25,6 +25,8 @@
 var NAVTREE =
 [
   [ "YASE", "index.html", [
+    [ "License", "md__c_o_p_y_i_n_g.html", null ],
+    [ "Tutorial: The Basics", "md_tutorials_intro.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -48,7 +50,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"globals_8hh.html#ad60da9c2de104709f47c11d56d070489"
+"globals_8hh.html#a9c75e3ed4f289dca9f75ac0cd3b8ac7e"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

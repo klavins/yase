@@ -29,7 +29,7 @@ int main(int argc, char * argv[]) {
     AntiAlias anti_aliased(aliased);
 
     raw.set_type("raw");
-    aliased.set_type("aliased");
+    aliased.set_type("raw");
     additive.set_type("additive");
     additive.set_input("amplitude", 0.7);
 
@@ -38,7 +38,7 @@ int main(int argc, char * argv[]) {
 
     double freq = B6;
     raw.set_input("frequency", freq);
-    aliased.set_input("frequency", freq);
+    anti_aliased.set_input("frequency", freq);
     additive.set_input("frequency", freq);
 
     synth.connect(raw,"signal",audio,"left")

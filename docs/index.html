@@ -153,8 +153,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <li>
 <a href="https://github.com/klavins/yase">https://github.com/klavins/yase</a> </li>
 </ul>
-<h1><a class="anchor" id="autotoc_md1"></a>
-Example</h1>
+<h2>Example</h2>
 <p >Here's an example of a basic YASE program that makes a neat sound. There are more examples in the <code>/examples</code> directory of this repository.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
@@ -180,8 +179,7 @@ Example</h1>
 <div class="ttc" id="aglobals_8hh_html_a6949631d06a570d1c3f014ac82285d47"><div class="ttname"><a href="globals_8hh.html#a6949631d06a570d1c3f014ac82285d47">UNTIL_INTERRUPTED</a></div><div class="ttdeci">#define UNTIL_INTERRUPTED</div><div class="ttdoc">Use as in Synthesizer::run(UNTIL_INTERUPTED)</div><div class="ttdef"><b>Definition:</b> globals.hh:27</div></div>
 </div><!-- fragment --><p >The first three lines of the main function declare some modules: two sine wave sources, an audio interface, and a container to put everything into. The next block sets the frequency inputs of the two sine waves to be 440 Hz and 441 Hz respectively. The <code>connect</code> statements connect the output signals of the sine waves to the left and right inputs of the audio interface. Finally, the <code>run</code> statement runs the program until the user presses <code>Ctrl-C</code>. The result is a pleasing sound. Try it!</p>
 <p >One thing to notice about modules is that their inputs and outputs are named by strings during set up. This makes working with I/O easy and straightforward. When you make your own modules, you can add as many inputs and outputs as you would like with whatever names make sense for your use case. If you use the wrong name, YASE gives you an easy to understand error message. Once all the connections are made and the container (named <code>synth</code> in this case) is run, YASE uses integer indices to the I/O so there is no string matching at run time. These two <em>setup</em> and <em>run</em> phases are common to all YASE programs.</p>
-<h1><a class="anchor" id="autotoc_md2"></a>
-Building</h1>
+<h2>Building</h2>
 <p >To date, Yase has been developed on MacOS 11.6.1. The following are required:</p><ul>
 <li>'git', 'g++', and 'make', part of the MacOS Development Tools.</li>
 <li>Brew, for installing things: <a href="https://brew.sh/">https://brew.sh/</a></li>

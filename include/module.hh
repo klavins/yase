@@ -59,6 +59,8 @@ namespace yase {
     int add_input(string name); 
     int add_output(string name); // adds a new output
     int get_input_index(string name) const;  
+    string get_input_name(int index) const;
+    string get_output_name(int index) const;
     int get_output_index(string name) const; // get the output index corresponding to the name
     void set_input(string name, double value); 
     void set_input(int index, double value);
@@ -69,6 +71,10 @@ namespace yase {
     void set_output(int index, double value);
     void copy_inputs(const Module &source);
     void copy_outputs(Module &destination) const;
+
+    inline int num_inputs() const { return input_map.size(); }
+    inline int num_outputs() const { return output_map.size(); }
+
     void emit(Event e);
 
     inline void set_ts(double s) { ts = s; }

@@ -23,15 +23,8 @@
 
 using namespace yase;
 
-/*
- TODO:
-   - Constructor to Saw should take type
-   - AntiAlias shold have the same inputs and outputs as its sub-module (doesn't assume they are called "signal")
- */
-
 int main(int argc, char * argv[]) {
 
-    // Declare Modules
     Container synth;
     Audio audio;
     Biquad filter;
@@ -44,8 +37,7 @@ int main(int argc, char * argv[]) {
               invert( [] (double u) { return -u; });
     Echo echo;
 
-    // Setup modules and connections
-    raw_saw.set_input("amplitude", 0.4);
+    saw.set_input("amplitude", 0.4);
     filter.set_input("resonance", 10);
     echo.set_input("duration", SAMPLE_RATE/2);
     echo.set_input("amplitude", 0.8);
@@ -62,12 +54,11 @@ int main(int argc, char * argv[]) {
          .add(player);
 
     player.set({ G3, C4, A3, F4, F2, F1 }, [&] (double freq) {
-      raw_saw.set_input("frequency", freq);
+      saw.set_input("frequency", freq);
       wave_envelope.trigger();
       filter_envelope.trigger();
     }, 3.0);
 
-    // Run
     synth.run(UNTIL_INTERRUPTED);
 
     return 0; 

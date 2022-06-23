@@ -160,6 +160,34 @@ namespace yase {
         }
     }    
 
+    //! Get the name of the input with the given index
+    //! \param index
+    string Module::get_input_name(int index) const {
+
+      for ( auto &it : input_map ) {
+          if ( it.second == index ) {
+              return it.first;
+          }
+      }
+
+      throw Exception("Module does not have an input with the requested index");
+
+    }
+
+    //! Get the name of the output with the given index
+    //! \param index
+    string Module::get_output_name(int index) const {
+
+      for ( auto &it : output_map ) {
+          if ( it.second == index ) {
+              return it.first;
+          }
+      }
+
+      throw Exception("Module does not have an output with the requested index");
+
+    }
+
     //! Emit an event. A containing synthesizer can listen for such events and respond to them.
     //! \param e The event to emit
     void Module::emit(Event e) {
