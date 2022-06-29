@@ -26,7 +26,7 @@ var NAVTREE =
 [
   [ "YASE", "index.html", [
     [ "License", "md__c_o_p_y_i_n_g.html", null ],
-    [ "Tutorial: The Basics", "md_tutorials_intro.html", null ],
+    [ "Tutorial: Yase Basics", "md_tutorials_intro.html", null ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
