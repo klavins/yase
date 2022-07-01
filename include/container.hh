@@ -79,6 +79,7 @@ namespace yase {
       Container &connect(Module &source, Module &dest); // assumes signal name is "signal"
       Container &path(Module &a, Module &b, Module &c);
       Container &path(Module &a, Module &b, Module &c, Module &d);
+      Container &path(Module &a, Module &b, Module &c, Module &d, Module &e);
 
       Container &disconnect(Module &source, string output, Module &dest, string input);
 

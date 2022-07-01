@@ -176,7 +176,6 @@ namespace yase {
 
   //! Connect the four modules into a path, assuming the outputs and inputs are called "signal"
   //! NOTE: This method has the side effect that it adds all modules container, if they are not alreaddy added
-
   //! \param a The first module
   //! \param b The second module
   //! \param c The third module
@@ -188,6 +187,22 @@ namespace yase {
       connect(c, "signal", d, "signal");
       return *this;
   }
+
+  //! Connect the four modules into a path, assuming the outputs and inputs are called "signal"
+  //! NOTE: This method has the side effect that it adds all modules container, if they are not alreaddy added
+  //! \param a The first module
+  //! \param b The second module
+  //! \param c The third module
+  //! \param d The fourth module 
+  //! \param e The fifth module 
+  //! \return A reference to the container for method chaining    
+  Container &Container::path(Module &a, Module &b, Module &c, Module &d, Module &e) {
+      connect(a, "signal", b, "signal");
+      connect(b, "signal", c, "signal");
+      connect(c, "signal", d, "signal");
+      connect(d, "signal", e, "signal");
+      return *this;
+  }  
 
   //! Equate the main input of this module to the sub-input of the sub-module. Whenever the 
   //! main module's input is updated, the sub-modules input will also be updated.

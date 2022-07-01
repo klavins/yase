@@ -44,8 +44,7 @@ int main(int argc, char * argv[]) {
     wave_envelope.set_adsr(0.8, 1.0, 0.5, 0.1);
     filter_envelope.set_adsr(2.0, 2.0, 0.0, 0.1);    
 
-    synth.path(saw, filter, gain, echo)
-         .connect(echo, invert)
+    synth.path(saw, filter, gain, echo, invert)
          .connect(echo, "signal", audio, "left")
          .connect(invert, "signal", audio, "right")
          .connect(wave_envelope, "signal", gain, "amplitude")

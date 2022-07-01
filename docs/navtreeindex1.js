@@ -21,7 +21,6 @@ var NAVTREEINDEX1 =
 "md_tutorials_intro.html#autotoc_md28":[1,4],
 "md_tutorials_intro.html#autotoc_md29":[1,5],
 "md_tutorials_intro.html#autotoc_md30":[1,6],
-"md_tutorials_intro.html#autotoc_md31":[1,7],
 "midi__input_8hh_source.html":[3,0,0,20],
 "mixer_8hh_source.html":[3,0,0,21],
 "module_8hh_source.html":[3,0,0,22],

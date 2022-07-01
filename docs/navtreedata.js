@@ -33,8 +33,7 @@ var NAVTREE =
       [ "Adding an Envelope", "md_tutorials_intro.html#autotoc_md27", null ],
       [ "Adding a Filter", "md_tutorials_intro.html#autotoc_md28", null ],
       [ "A Filter Envelope", "md_tutorials_intro.html#autotoc_md29", null ],
-      [ "Adding an Echo Effect", "md_tutorials_intro.html#autotoc_md30", null ],
-      [ "A Simple Stereo Effect", "md_tutorials_intro.html#autotoc_md31", null ]
+      [ "Adding an Echo Effect", "md_tutorials_intro.html#autotoc_md30", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
