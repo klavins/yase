@@ -33,7 +33,8 @@ var NAVTREE =
       [ "Adding an Envelope", "md_tutorials_intro.html#autotoc_md27", null ],
       [ "Adding a Filter", "md_tutorials_intro.html#autotoc_md28", null ],
       [ "A Filter Envelope", "md_tutorials_intro.html#autotoc_md29", null ],
-      [ "Adding an Echo Effect", "md_tutorials_intro.html#autotoc_md30", null ]
+      [ "Adding an Echo Effect", "md_tutorials_intro.html#autotoc_md30", null ],
+      [ "Conclusion", "md_tutorials_intro.html#autotoc_md31", null ]
     ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
@@ -58,7 +59,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "annotated.html",
-"globals_8hh.html#a9c75e3ed4f289dca9f75ac0cd3b8ac7e"
+"globals_8hh.html#a8936711f57f82d1fc75c21fa2894e1c6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

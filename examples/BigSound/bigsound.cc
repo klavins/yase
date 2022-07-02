@@ -39,6 +39,7 @@ int main(int argc, char * argv[]) {
 
     saw.set_input("amplitude", 0.4);
     filter.set_input("resonance", 10);
+    filter.set_type("hpf");
     echo.set_input("duration", SAMPLE_RATE/2);
     echo.set_input("amplitude", 0.8);
     wave_envelope.set_adsr(0.8, 1.0, 0.5, 0.1);

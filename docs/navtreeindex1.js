@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"globals_8hh.html#a8936711f57f82d1fc75c21fa2894e1c6":[3,0,0,17,1],
 "globals_8hh.html#a9c75e3ed4f289dca9f75ac0cd3b8ac7e":[3,0,0,17,0],
 "globals_8hh.html#aaade3232ef08cf18b4f3a20a0a2c6fb6":[3,0,0,17,15],
 "globals_8hh.html#ad60da9c2de104709f47c11d56d070489":[3,0,0,17,4],
@@ -21,6 +22,7 @@ var NAVTREEINDEX1 =
 "md_tutorials_intro.html#autotoc_md28":[1,4],
 "md_tutorials_intro.html#autotoc_md29":[1,5],
 "md_tutorials_intro.html#autotoc_md30":[1,6],
+"md_tutorials_intro.html#autotoc_md31":[1,7],
 "midi__input_8hh_source.html":[3,0,0,20],
 "mixer_8hh_source.html":[3,0,0,21],
 "module_8hh_source.html":[3,0,0,22],

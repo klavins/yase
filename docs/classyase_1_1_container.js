@@ -12,6 +12,7 @@ var classyase_1_1_container =
     [ "init", "classyase_1_1_container.html#a6ec281782cc6ce2dccdd9fc9f0b412e4", null ],
     [ "path", "classyase_1_1_container.html#a0c74c3e8c53f41ea1984490271ed25a0", null ],
     [ "path", "classyase_1_1_container.html#a7ddaf3575b90284fa17029596251575a", null ],
+    [ "path", "classyase_1_1_container.html#a1b3483773fe8a63b8dcf0c6f16575ab1", null ],
     [ "propagate_to", "classyase_1_1_container.html#a0284b3cc89bdf01bd712d5d2ba0f751a", null ],
     [ "run", "classyase_1_1_container.html#a80e67995f962aab6b811810fcf5b2322", null ],
     [ "run_again", "classyase_1_1_container.html#a70a86e31b16f95194452c327bf686b94", null ],
