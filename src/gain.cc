@@ -29,11 +29,10 @@ namespace yase {
     signal = add_input("signal");
     signal = add_output("signal");
     amplitude = add_input("amplitude");
+    set_input(amplitude, 1.0);
   }
 
-  void Gain::init() {
-    set_input(amplitude, 0.5);
-  }
+  void Gain::init() { }
 
   void Gain::update() {
     outputs[signal] = inputs[amplitude] * inputs[signal];      

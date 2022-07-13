@@ -40,15 +40,16 @@ int main(int argc, char * argv[]) {
     saw.set_input("amplitude", 0.4);
     filter.set_input("resonance", 10);
     filter.set_type("hpf");
+    gain.set_input("amplitude", 0.35);
     echo.set_input("duration", SAMPLE_RATE/2);
     echo.set_input("amplitude", 0.8);
     wave_envelope.set_adsr(0.8, 1.0, 0.5, 0.1);
-    filter_envelope.set_adsr(2.0, 2.0, 0.0, 0.1);    
+    filter_envelope.set_adsr(2.0, 2.0, 0.0, 0.1);
 
     synth.path(saw, filter, gain, echo, invert)
          .connect(echo, "signal", audio, "left")
          .connect(invert, "signal", audio, "right")
-         .connect(wave_envelope, "signal", gain, "amplitude")
+         .connect(wave_envelope, "signal", saw, "amplitude")
          .connect(filter_envelope, scale)
          .connect(scale, "signal", filter, "frequency")
          .add(player);

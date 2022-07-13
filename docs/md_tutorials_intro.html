@@ -235,13 +235,13 @@ Anti-Aliasing</h1>
 </div><!-- fragment --><p >Nothing else needs to change. Compiling and running this code produces a slightly less annoying sawtooth wave. But it is still a basic sawtooth wave, which not everyone likes.</p>
 <h1><a class="anchor" id="autotoc_md27"></a>
 Adding an Envelope</h1>
-<p >One reason the sound of the sawtooth is annoying is that it abrubtly starts and abruptly changes when a new note is played. Musical instruments don't do that. Notes start slowly or quickly, but not instantly. And they decay to a sustained level and ring a bit after they are released. In audio synthesis, this is accomplished with an [Envelope](), which sets an attack, decay, and release time as well as a sustain level. To add an envelope, we declare one:</p>
+<p >One reason the sound of the sawtooth is annoying is that it abrubtly starts and abruptly changes when a new note is played. Musical instruments don't do that. Notes start slowly or quickly, but not instantly. And they decay to a sustained level and ring a bit after they are released. In audio synthesis, this is accomplished with an <a href="classyase_1_1_envelope.html">Envelope</a>, which sets an attack, decay, and release time as well as a sustain level. To add an envelope, we declare one:</p>
 <div class="fragment"><div class="line">Envelope envelope;</div>
 </div><!-- fragment --><p >and set its attack, decay, sustain, and release parameters, also known as the ADSR of the envelope, in the setup phase:</p>
 <div class="fragment"><div class="line">envelope.set_adsr(0.8, 1.0, 0.5, 0.1);</div>
 </div><!-- fragment --><p >The attack of the standard envelope in Yase is linear, so 0.8 means it will take 0.8 s to get to maximum output. The decay and release are exponential. The 1.0 and 0.1 parameters mean it will take 1.0 s and 0.1 s to get to 90% decayed or released. The 0.5 is the sustain level. The note will decay to 50% volume expoentially.</p>
 <p >Next, we have to connect the envelope to the amplitude of the sawtooth, which we do in the setup phase with the statement:</p>
-<div class="fragment"><div class="line">synth.connect(envelope, <span class="stringliteral">&quot;signal&quot;</span>, gain, <span class="stringliteral">&quot;amplitude&quot;</span>);</div>
+<div class="fragment"><div class="line">synth.connect(envelope, <span class="stringliteral">&quot;signal&quot;</span>, saw, <span class="stringliteral">&quot;amplitude&quot;</span>);</div>
 </div><!-- fragment --><p >And finally, we need to make sure the envelope starts over every time we begin a new note with the <em>player</em>. This can be done using the <em>trigger</em> method of the <em>Envelope</em> class:</p>
 <div class="fragment"><div class="line">player.set({ G3, C4, A3, F4, F2, F1 }, [&amp;] (<span class="keywordtype">double</span> freq) {</div>
 <div class="line">    saw.set_input(<span class="stringliteral">&quot;frequency&quot;</span>, freq);</div>
@@ -264,7 +264,7 @@ Adding an Envelope</h1>
 <div class="line">    <span class="comment">// Setup</span></div>
 <div class="line">    synth.connect(saw, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>)</div>
 <div class="line">         .connect(saw, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;right&quot;</span>)</div>
-<div class="line">         .connect(envelope, <span class="stringliteral">&quot;signal&quot;</span>, gain, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
+<div class="line">         .connect(envelope, <span class="stringliteral">&quot;signal&quot;</span>, saw, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
 <div class="line">         .add(player);</div>
 <div class="line"> </div>
 <div class="line">    player.set({ G3, C4, A3, F4, F2, F1 }, [&amp;] (<span class="keywordtype">double</span> freq) {</div>
@@ -291,7 +291,7 @@ Adding a Filter</h1>
 <div class="fragment"><div class="line">synth.connect(saw,filter)</div>
 <div class="line">     .connect(filter, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>)</div>
 <div class="line">     .connect(filter, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;right&quot;</span>)</div>
-<div class="line">     .connect(envelope, <span class="stringliteral">&quot;signal&quot;</span>, gain, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
+<div class="line">     .connect(envelope, <span class="stringliteral">&quot;signal&quot;</span>, saw, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
 <div class="line">     .add(player);</div>
 </div><!-- fragment --><p >Note that the two argument version of the <em>connect</em> method assumes the names of the inputs and outputs are "signal". This just makes the code a bit easier to read.</p>
 <p >Next, we can set the resonance and cutoff frequency of the filter in the set up secction:</p>
@@ -317,7 +317,7 @@ Adding a Filter</h1>
 <div class="line">    synth.connect(saw,filter)</div>
 <div class="line">         .connect(filter, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>)</div>
 <div class="line">         .connect(filter, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;right&quot;</span>)</div>
-<div class="line">         .connect(envelope, <span class="stringliteral">&quot;signal&quot;</span>, gain, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
+<div class="line">         .connect(envelope, <span class="stringliteral">&quot;signal&quot;</span>, saw, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
 <div class="line">         .add(player);</div>
 <div class="line"> </div>
 <div class="line">    player.set({ G3, C4, A3, F4, F2, F1 }, [&amp;] (<span class="keywordtype">double</span> freq) {</div>
@@ -344,7 +344,7 @@ A Filter Envelope</h1>
 <div class="fragment"><div class="line">Envelope wave_envelope, filter_envelope;</div>
 </div><!-- fragment --><p >We would like to connect the "signal" output of the <em>filter_envelope</em> to the "frequency" input of the filter. But the envelope's output ranges from 0 to 1, while an interesting cutoff frequency would range from something like 500 Hz to 4000 Hz. Thus, we need to transform the output of the <em>filter_envelope</em> to that range. We can do this with a <a href="classyase_1_1_transform.html">Transform</a> module, which we declare as follows:</p>
 <div class="fragment"><div class="line">Transform scale( [] (<span class="keywordtype">double</span> u) { <span class="keywordflow">return</span> 500 + 4000*u; });</div>
-</div><!-- fragment --><p >The constructor to <em>Transform</em> rakes a function, which we specify here using a C++ lambda expression. The lambda takes an argument u, which is the input to the transform, and returns a scaled and shifted value, which will be the output to the transform. We can then connect the transform, filter_envelope, and filter like this:</p>
+</div><!-- fragment --><p >The constructor to <em>Transform</em> takes a function, which we specify here using a C++ lambda expression. The lambda takes an argument u, which is the input to the transform, and returns a scaled and shifted value, which will be the output to the transform. We can then connect the transform, filter_envelope, and filter like this:</p>
 <div class="fragment"><div class="line">synth.connect(filter_envelope, scale)</div>
 <div class="line">     .connect(scale, <span class="stringliteral">&quot;signal&quot;</span>, filter, <span class="stringliteral">&quot;frequency&quot;</span>);</div>
 </div><!-- fragment --><p >Each time a new note is played, we need to re-trigger both envelopes, which we do like this:</p>
@@ -353,7 +353,7 @@ A Filter Envelope</h1>
 <div class="line">    wave_envelope.trigger();</div>
 <div class="line">    filter_envelope.trigger();</div>
 <div class="line">}, 3.0);</div>
-</div><!-- fragment --><p >Then we'll just set up the parameters of the filter envelope, using slightly different values than the wave envelop for a nice effect.</p>
+</div><!-- fragment --><p >Then we'll just set up the parameters of the filter envelope, using slightly different values than the wave envelope for a nice effect.</p>
 <div class="fragment"><div class="line">filter_envelope.set_adsr(2.0, 2.0, 0.0, 0.1); </div>
 </div><!-- fragment --><p >Now our program looks like this:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
@@ -375,7 +375,7 @@ A Filter Envelope</h1>
 <div class="line">    synth.connect(saw,filter)</div>
 <div class="line">         .connect(filter, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>)</div>
 <div class="line">         .connect(filter, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;right&quot;</span>)</div>
-<div class="line">         .connect(wave_envelope, <span class="stringliteral">&quot;signal&quot;</span>, gain, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
+<div class="line">         .connect(wave_envelope, <span class="stringliteral">&quot;signal&quot;</span>, saw, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
 <div class="line">         .connect(filter_envelope, scale)</div>
 <div class="line">         .connect(scale, <span class="stringliteral">&quot;signal&quot;</span>, filter, <span class="stringliteral">&quot;frequency&quot;</span>)</div>
 <div class="line">         .add(player);</div>
@@ -406,6 +406,7 @@ Adding an Echo Effect</h1>
 <div class="fragment"><div class="line">Echo echo;</div>
 <div class="line">Gain gain;</div>
 <div class="line">Transform invert( [] (<span class="keywordtype">double</span> u) { <span class="keywordflow">return</span> -u; });</div>
+</div><!-- fragment --><p >Set up the gain like this </p><div class="fragment"><div class="line">gain.set_input(<span class="stringliteral">&quot;amplitude&quot;</span>, 0.35);</div>
 </div><!-- fragment --><p >Connect them like this:</p>
 <div class="fragment"><div class="line">synth.path(saw, filter, gain, echo, invert)</div>
 <div class="line">     .connect(echo, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>)</div>
@@ -451,12 +452,10 @@ Adding an Echo Effect</h1>
 <div class="line">    }, 3.0);</div>
 <div class="line"> </div>
 <div class="line">    saw.set_input(<span class="stringliteral">&quot;amplitude&quot;</span>, 0.4);</div>
-<div class="line"> </div>
 <div class="line">    filter.set_input(<span class="stringliteral">&quot;resonance&quot;</span>, 10);</div>
-<div class="line"> </div>
+<div class="line">    gain.set_input(<span class="stringliteral">&quot;amplitude&quot;</span>, 0.35);</div>
 <div class="line">    echo.set_input(<span class="stringliteral">&quot;duration&quot;</span>, <a class="code hl_define" href="globals_8hh.html#a4b76a0c2859cfd819a343a780070ee2b">SAMPLE_RATE</a>/2);</div>
 <div class="line">    echo.set_input(<span class="stringliteral">&quot;amplitude&quot;</span>, 0.8);</div>
-<div class="line"> </div>
 <div class="line">    wave_envelope.set_adsr(0.8, 1.0, 0.5, 0.1);</div>
 <div class="line">    filter_envelope.set_adsr(2.0, 2.0, 0.0, 0.1);      </div>
 <div class="line"> </div>
