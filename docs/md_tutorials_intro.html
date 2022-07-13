@@ -406,10 +406,10 @@ Adding an Echo Effect</h1>
 <div class="fragment"><div class="line">Echo echo;</div>
 <div class="line">Gain gain;</div>
 <div class="line">Transform invert( [] (<span class="keywordtype">double</span> u) { <span class="keywordflow">return</span> -u; });</div>
-</div><!-- fragment --><p >Set up the gain like this </p><div class="fragment"><div class="line">gain.set_input(<span class="stringliteral">&quot;amplitude&quot;</span>, 0.35);</div>
-</div><!-- fragment --><p >Connect them like this:</p>
-<div class="fragment"><div class="line">synth.path(saw, filter, gain, echo, invert)</div>
-<div class="line">     .connect(echo, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>)</div>
+</div><!-- fragment --><p >set up the gain like this: </p><div class="fragment"><div class="line">gain.set_input(<span class="stringliteral">&quot;amplitude&quot;</span>, 0.35);</div>
+</div><!-- fragment --><p >and connect them like this:</p>
+<div class="fragment"><div class="line">synth.path(saw, filter, echo, gain, invert)</div>
+<div class="line">     .connect(gain, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>)</div>
 <div class="line">     .connect(invert, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;right&quot;</span>);</div>
 </div><!-- fragment --><p >Then we set the paramters of the echo effect. The "duration" of the echo is an integer number of samples to store in the echo's delay buffer. For a 0.5 s delay, we use SAMPLE_RATE / 2 = 22050 samples:</p>
 <div class="fragment"><div class="line">echo.set_input(<span class="stringliteral">&quot;duration&quot;</span>, <a class="code hl_define" href="globals_8hh.html#a4b76a0c2859cfd819a343a780070ee2b">SAMPLE_RATE</a>/2);</div>
@@ -440,7 +440,7 @@ Adding an Echo Effect</h1>
 <div class="line">    synth.path(saw, filter, gain, echo, invert)</div>
 <div class="line">         .connect(echo, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>)</div>
 <div class="line">         .connect(invert, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;right&quot;</span>)</div>
-<div class="line">         .connect(wave_envelope, <span class="stringliteral">&quot;signal&quot;</span>, gain, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
+<div class="line">         .connect(wave_envelope, <span class="stringliteral">&quot;signal&quot;</span>, saw, <span class="stringliteral">&quot;amplitude&quot;</span>)</div>
 <div class="line">         .connect(filter_envelope, scale)</div>
 <div class="line">         .connect(scale, <span class="stringliteral">&quot;signal&quot;</span>, filter, <span class="stringliteral">&quot;frequency&quot;</span>)</div>
 <div class="line">         .add(player);</div>
