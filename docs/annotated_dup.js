@@ -37,6 +37,7 @@ var annotated_dup =
       [ "Sine", "classyase_1_1_sine.html", "classyase_1_1_sine" ],
       [ "Square", "classyase_1_1_square.html", "classyase_1_1_square" ],
       [ "Sum", "classyase_1_1_sum.html", "classyase_1_1_sum" ],
+      [ "TappedDelay", "classyase_1_1_tapped_delay.html", "classyase_1_1_tapped_delay" ],
       [ "Timer", "classyase_1_1_timer.html", "classyase_1_1_timer" ],
       [ "Transform", "classyase_1_1_transform.html", "classyase_1_1_transform" ],
       [ "Triangle", "classyase_1_1_triangle.html", "classyase_1_1_triangle" ],

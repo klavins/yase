@@ -37,6 +37,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "sine.hh", "sine_8hh_source.html", null ],
     [ "square.hh", "square_8hh_source.html", null ],
     [ "sum.hh", "sum_8hh_source.html", null ],
+    [ "tapped_delay.hh", "tapped__delay_8hh_source.html", null ],
     [ "timer.hh", "timer_8hh_source.html", null ],
     [ "transform.hh", "transform_8hh_source.html", null ],
     [ "triangle.hh", "triangle_8hh_source.html", null ],

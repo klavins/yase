@@ -43,6 +43,7 @@ var hierarchy =
       [ "yase::Sampler", "classyase_1_1_sampler.html", null ],
       [ "yase::Sequencer", "classyase_1_1_sequencer.html", null ],
       [ "yase::Sum", "classyase_1_1_sum.html", null ],
+      [ "yase::TappedDelay", "classyase_1_1_tapped_delay.html", null ],
       [ "yase::Timer", "classyase_1_1_timer.html", null ],
       [ "yase::Transform", "classyase_1_1_transform.html", null ]
     ] ],

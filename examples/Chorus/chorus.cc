@@ -24,93 +24,6 @@
 
 using namespace yase;
 
-class TappedDelay : public Module {
-
-  public:
-
-  TappedDelay(double duration) : Module(), duration(duration), buffer_index(0) {
-    duration_in_samples = ceil(duration * SAMPLE_RATE);
-    buffer = new double[duration_in_samples];
-    signal = add_input("signal");
-  }
-
-  // Here you would do something like
-  //   auto tap = add_tap();
-  //   synth.connect(lfo, "signal", tapped_delay, tap);
-  //   synth.connect(tapped_delay, tap, audio, "left");
-  string add_tap() {
-    int index = inputs.size();
-    string tap_name = "tap_" + std::to_string(index);
-    add_input(tap_name);
-    add_output(tap_name);
-    return tap_name;
-  }
-
-  void init() {
-    for(int i=0;i<duration_in_samples;i++) {
-      buffer[i] = 0.0;
-    }
-  }
-
-  void update() {
-    add_sample(inputs[signal]);
-    for ( int i=0; i<inputs.size()-1; i++ ) {
-      outputs[i] = get_value(tap_position(i));
-    }
-  }
-
-  double tap_position(int i) {
-    return inputs[i+1];
-  }
-
-  /*
-
-              + ----- buffer_index
-              |
-              V
-    . . . * * . . . . . . . . . . 
-  
-  */
-  void add_sample(double u) {
-    buffer[buffer_index] = u;
-    buffer_index++;
-    if ( buffer_index > duration_in_samples ) {
-      buffer_index = 0;
-    }
-  }
-
-  int fix(int n) {
-    int m = n;
-    while ( m < 0 ) {
-      m += duration_in_samples;
-    }
-    while ( m >= duration_in_samples ) {
-      m -= duration_in_samples;
-    }
-    return m;    
-  }
-
-  double get_value(double position) {
-    int a = fix(buffer_index + floor(position * SAMPLE_RATE)),
-        b = fix(buffer_index + ceil(position * SAMPLE_RATE ));
-    double A = ( a - buffer_index ) / SAMPLE_RATE;
-    return (buffer[b] - buffer[a])*(position-A) + buffer[a];
-  }
-
-  ~TappedDelay() {
-    delete[] buffer;
-  }
-
-  private:
-
-  double duration;
-  int duration_in_samples;
-  int signal;
-  double * buffer;
-  int buffer_index;
-
-};
-
 int main(int argc, char * argv[]) {
 
     double C = 0.001,    // tap center (seconds)
@@ -162,7 +75,6 @@ int main(int argc, char * argv[]) {
 
     synth.run(UNTIL_INTERRUPTED);
 
-    DEBUG
     return 0; 
 
 }

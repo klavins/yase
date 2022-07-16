@@ -80,6 +80,7 @@
 
 // Effects
 #include "delay.hh"
+#include "tapped_delay.hh"
 #include "fadable_delay.hh"
 #include "echo.hh"
 
