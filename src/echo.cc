@@ -32,10 +32,6 @@ namespace yase {
     amplitude = add_input("amplitude");
     duration = add_input("duration");
 
-    add(sum);
-    add(delay);
-    add(gain);
-
     equate_input("signal", sum, "signal_0");
     equate_input("duration", delay, "duration");
     equate_input("amplitude", gain, "amplitude");

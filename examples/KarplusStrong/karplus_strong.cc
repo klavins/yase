@@ -74,7 +74,7 @@ int main(int argc, char * argv[]) {
     player.set({ G4, C5, A4, F4, D4, G4, E4, C4 }, [&] (double freq) {
       string.set_input("frequency", freq);
       string.pluck();
-    }, 1.0);    
+    }, 1.0); 
 
     synth.connect(string,"signal",audio,"right")
          .connect(string,"signal",delay,"signal")

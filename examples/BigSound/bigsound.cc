@@ -33,7 +33,7 @@ int main(int argc, char * argv[]) {
     Envelope wave_envelope, filter_envelope;
     Player player;
     Gain gain;
-    Transform scale( [] (double u) { return 500 + 4000*u; }),
+    Transform scale( [] (double u) { return 1000 + 4000*u; }),
               invert( [] (double u) { return -u; });
     Echo echo;
 

@@ -23,6 +23,7 @@
 
 namespace yase {
 
+    const double REST = -1.0;
     const double C0 = 16.35;
     const double CS0 = 17.32;
     const double D0 = 18.35;
