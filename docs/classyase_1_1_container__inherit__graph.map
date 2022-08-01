@@ -1,8 +1,8 @@
 <map id="yase::Container" name="yase::Container">
-<area shape="rect" id="node1" title="A module and event manager that can contain other modules." alt="" coords="122,80,238,107"/>
+<area shape="rect" id="node1" title="A module and event manager that can contain other modules." alt="" coords="123,80,237,107"/>
 <area shape="rect" id="node4" href="$classyase_1_1_controls.html" title="Use a Controls object to connect MIDI knobs and faders to Module inputs." alt="" coords="5,155,112,181"/>
 <area shape="rect" id="node5" href="$classyase_1_1_echo.html" title="An echo module incorporating a fadable delay in a feedback configuration." alt="" coords="136,155,224,181"/>
-<area shape="rect" id="node6" href="$classyase_1_1_fadable_delay.html" title="A time modulatable delay." alt="" coords="249,155,389,181"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="56,5,157,32"/>
-<area shape="rect" id="node3" href="$classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="181,5,325,32"/>
+<area shape="rect" id="node6" href="$classyase_1_1_fadable_delay.html" title="A time modulatable delay." alt="" coords="248,155,387,181"/>
+<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="58,5,158,32"/>
+<area shape="rect" id="node3" href="$classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="182,5,325,32"/>
 </map>

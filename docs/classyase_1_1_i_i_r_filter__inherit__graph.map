@@ -1,6 +1,6 @@
 <map id="yase::IIRFilter" name="yase::IIRFilter">
-<area shape="rect" id="node1" title="This module implements an Infinite Impulse Response (IIR) filter." alt="" coords="69,80,173,107"/>
+<area shape="rect" id="node1" title="This module implements an Infinite Impulse Response (IIR) filter." alt="" coords="69,80,174,107"/>
 <area shape="rect" id="node3" href="$classyase_1_1_biquad.html" title="Standard Biquad filters adapated from https://www.w3.org/TR/audio&#45;eq&#45;cookbook/." alt="" coords="5,155,104,181"/>
 <area shape="rect" id="node4" href="$classyase_1_1_resonator.html" title=" " alt="" coords="129,155,247,181"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="71,5,172,32"/>
+<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="71,5,171,32"/>
 </map>

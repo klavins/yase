@@ -1,5 +1,5 @@
 <map id="yase::Wavetable" name="yase::Wavetable">
-<area shape="rect" id="node1" title="A wavetable oscillator." alt="" coords="5,155,125,181"/>
-<area shape="rect" id="node2" href="$classyase_1_1_oscillator.html" title=" " alt="" coords="9,80,122,107"/>
-<area shape="rect" id="node3" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,116,32"/>
+<area shape="rect" id="node1" title="A wavetable oscillator." alt="" coords="5,155,124,181"/>
+<area shape="rect" id="node2" href="$classyase_1_1_oscillator.html" title=" " alt="" coords="8,80,121,107"/>
+<area shape="rect" id="node3" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,115,32"/>
 </map>

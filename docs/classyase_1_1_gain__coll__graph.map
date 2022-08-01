@@ -1,4 +1,4 @@
 <map id="yase::Gain" name="yase::Gain">
-<area shape="rect" id="node1" title="Amplifies (or attenuates) its input signal to get the output signal." alt="" coords="13,80,99,107"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,107,32"/>
+<area shape="rect" id="node1" title="Amplifies (or attenuates) its input signal to get the output signal." alt="" coords="13,80,98,107"/>
+<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 </map>

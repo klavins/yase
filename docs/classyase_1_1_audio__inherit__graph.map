@@ -1,4 +1,4 @@
 <map id="yase::Audio" name="yase::Audio">
-<area shape="rect" id="node1" title="A module wrapper for a stereo PortAudio interface (http://www.portaudio.com/)." alt="" coords="10,80,102,107"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,107,32"/>
+<area shape="rect" id="node1" title="A module wrapper for a stereo PortAudio interface (http://www.portaudio.com/)." alt="" coords="10,80,101,107"/>
+<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 </map>

@@ -1,4 +1,4 @@
 <map id="yase::Envelope" name="yase::Envelope">
-<area shape="rect" id="node1" title="An ADSR envelope." alt="" coords="5,80,119,107"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="11,5,113,32"/>
+<area shape="rect" id="node1" title="An ADSR envelope." alt="" coords="5,80,117,107"/>
+<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="11,5,111,32"/>
 </map>

@@ -1,5 +1,5 @@
 <map id="yase::Clock" name="yase::Clock">
-<area shape="rect" id="node1" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="17,155,107,181"/>
+<area shape="rect" id="node1" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="16,155,108,181"/>
 <area shape="rect" id="node2" href="$classyase_1_1_oscillator.html" title=" " alt="" coords="5,80,119,107"/>
-<area shape="rect" id="node3" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="11,5,113,32"/>
+<area shape="rect" id="node3" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="12,5,112,32"/>
 </map>

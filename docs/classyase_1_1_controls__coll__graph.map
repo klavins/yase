@@ -1,6 +1,6 @@
 <map id="yase::Controls" name="yase::Controls">
-<area shape="rect" id="node1" title="Use a Controls object to connect MIDI knobs and faders to Module inputs." alt="" coords="76,155,183,181"/>
-<area shape="rect" id="node2" href="$classyase_1_1_container.html" title="A module and event manager that can contain other modules." alt="" coords="71,80,187,107"/>
-<area shape="rect" id="node3" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,107,32"/>
-<area shape="rect" id="node4" href="$classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="131,5,275,32"/>
+<area shape="rect" id="node1" title="Use a Controls object to connect MIDI knobs and faders to Module inputs." alt="" coords="74,155,181,181"/>
+<area shape="rect" id="node2" href="$classyase_1_1_container.html" title="A module and event manager that can contain other modules." alt="" coords="70,80,185,107"/>
+<area shape="rect" id="node3" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
+<area shape="rect" id="node4" href="$classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="129,5,272,32"/>
 </map>

@@ -1,12 +1,12 @@
 <map id="yase::Oscillator" name="yase::Oscillator">
-<area shape="rect" id="node1" title=" " alt="" coords="155,183,268,209"/>
-<area shape="rect" id="node3" href="$classyase_1_1_clock.html" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="331,5,421,32"/>
-<area shape="rect" id="node4" href="$classyase_1_1_noise.html" title=" " alt="" coords="330,56,422,83"/>
-<area shape="rect" id="node5" href="$classyase_1_1_osc_group.html" title=" " alt="" coords="317,107,435,133"/>
-<area shape="rect" id="node6" href="$classyase_1_1_saw.html" title=" " alt="" coords="334,157,418,184"/>
-<area shape="rect" id="node7" href="$classyase_1_1_sine.html" title=" " alt="" coords="334,208,418,235"/>
-<area shape="rect" id="node8" href="$classyase_1_1_square.html" title=" " alt="" coords="326,259,426,285"/>
-<area shape="rect" id="node9" href="$classyase_1_1_triangle.html" title=" " alt="" coords="323,309,429,336"/>
-<area shape="rect" id="node10" href="$classyase_1_1_wavetable.html" title="A wavetable oscillator." alt="" coords="316,360,436,387"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,183,107,209"/>
+<area shape="rect" id="node1" title=" " alt="" coords="153,183,267,209"/>
+<area shape="rect" id="node3" href="$classyase_1_1_clock.html" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="328,5,420,32"/>
+<area shape="rect" id="node4" href="$classyase_1_1_noise.html" title=" " alt="" coords="328,56,420,83"/>
+<area shape="rect" id="node5" href="$classyase_1_1_osc_group.html" title=" " alt="" coords="315,107,433,133"/>
+<area shape="rect" id="node6" href="$classyase_1_1_saw.html" title=" " alt="" coords="332,157,416,184"/>
+<area shape="rect" id="node7" href="$classyase_1_1_sine.html" title=" " alt="" coords="332,208,416,235"/>
+<area shape="rect" id="node8" href="$classyase_1_1_square.html" title=" " alt="" coords="325,259,423,285"/>
+<area shape="rect" id="node9" href="$classyase_1_1_triangle.html" title=" " alt="" coords="322,309,426,336"/>
+<area shape="rect" id="node10" href="$classyase_1_1_wavetable.html" title="A wavetable oscillator." alt="" coords="315,360,433,387"/>
+<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,183,105,209"/>
 </map>
