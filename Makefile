@@ -28,7 +28,7 @@ example: $(TARGETDIR)/$(TARGET)
 $(EXAMPLE_DIRS):
 	$(MAKE) -C $@ $(MAKECMDGOALS)
 
-docs: docs/index.html
+docs: docs/index.html tutorials/intro.md
 
 docs/index.html: $(SOURCES) README.md docs.config examples/*/*.cc
 	$(DGEN) $(DGENCONFIG)

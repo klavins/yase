@@ -26,6 +26,16 @@ var NAVTREE =
 [
   [ "YASE", "index.html", [
     [ "License", "md__c_o_p_y_i_n_g.html", null ],
+    [ "Tutorial: Yase Basics", "md_tutorials_intro.html", [
+      [ "A Sawtooth Wave", "md_tutorials_intro.html#autotoc_md24", null ],
+      [ "Defining a Melody", "md_tutorials_intro.html#autotoc_md25", null ],
+      [ "Anti-Aliasing", "md_tutorials_intro.html#autotoc_md26", null ],
+      [ "Adding an Envelope", "md_tutorials_intro.html#autotoc_md27", null ],
+      [ "Adding a Filter", "md_tutorials_intro.html#autotoc_md28", null ],
+      [ "A Filter Envelope", "md_tutorials_intro.html#autotoc_md29", null ],
+      [ "Adding an Echo Effect", "md_tutorials_intro.html#autotoc_md30", null ],
+      [ "Next Steps", "md_tutorials_intro.html#autotoc_md31", null ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
