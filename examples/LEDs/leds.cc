@@ -23,7 +23,7 @@
 #include <vector>
 #include "yase.hh"
 
-#include "../../rtmidi/RtMidi.h"
+#include "RtMidi.h"
 
 using namespace yase;
 
