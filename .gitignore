@@ -1,8 +1,10 @@
 doxygen_sqlite3.db
+defs.mk
 bin/
 test/bin
 test/build
 examples/bin
+projects/
 build/
 tmp/
 temp/
