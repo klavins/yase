@@ -59,6 +59,7 @@ namespace yase {
     }
 
     fftw_complex * FFT::get() {
+      n = 0;
       return out;
     }
 

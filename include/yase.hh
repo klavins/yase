@@ -34,6 +34,7 @@
 #include "buttons.hh"
 #include "controls.hh"
 #include "midi_input.hh"
+#include "midi_output.hh"
 #include "fader.hh"
 
 // Connectivity

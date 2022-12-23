@@ -1,5 +1,5 @@
 // 
-// YASE FFT Module Header
+// YASE MidiOutput Header
 // 
 // Copyright (C) 2022 Eric Klavins
 // This file is part of YASE
@@ -18,35 +18,24 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
-#ifndef YASE_FFT_H
-#define YASE_FFT_H
+#ifndef YASE_MIDIOUTPUT_H
+#define YASE_MIDIOUTPUT_H
 
 #include "yase.hh"
-#include <fftw3.h>
 
 namespace yase {
 
-    class FFT : public Module {
+    class MidiOutput {
 
     public:
 
-      FFT(int size);
-      ~FFT();
-      void init();
-      void update();
-      void ascii();
-      void html();
-      std::string json();
-
-      fftw_complex * get();
+      MidiOutput(std::string device_name);
+      void send(uint8_t status, uint8_t data1, uint8_t data2 );
 
     private:
 
-      double * in;
-      fftw_complex *out;
-      fftw_plan plan;
-      int size, n;
-      int signal, ready;
+      RtMidiOut * mo;
+      std::vector<unsigned char> msg;
 
     };
 

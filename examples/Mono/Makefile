@@ -9,7 +9,7 @@ EX_BUILDDIR    := .
 EX_TARGETDIR   := ./bin
 
 #Flags, Libraries and Includes
-INC         := $(INCDIR) 
+INC         := $(INCDIR)
 
 #Files
 SOURCES     := $(wildcard $(EX_SRCDIR)/*.cc) 

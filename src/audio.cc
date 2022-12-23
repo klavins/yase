@@ -28,6 +28,8 @@ namespace yase {
     num_output_channels(num_output_channels),
     num_input_channels(num_input_channels) {
 
+      std::cout << "Audio module requesting " << num_input_channels << " input channel(s)\n";      
+
       left = add_input("left");
       right = add_input("right");
 
@@ -40,6 +42,7 @@ namespace yase {
       }
 
       for ( int i=0; i<num_input_channels; i++ ) {
+          std::cout << "Audio module allocating audio input: " << "line_in" + std::to_string(i) << "\n";
           int j = add_output("line_in" + std::to_string(i));
       }
 
