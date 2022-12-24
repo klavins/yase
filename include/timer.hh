@@ -46,6 +46,7 @@ namespace yase {
       Timer();
       void set(float t, function<void()> f);
       void reset();
+      void reset(float t);
       void init();
       void update();
 

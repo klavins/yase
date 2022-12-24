@@ -46,6 +46,11 @@ namespace yase {
     active = true;
   }
 
+  void Timer::reset(float t) {
+    duration = t;
+    reset();
+  }  
+
   void Timer::init() {
 
   }
