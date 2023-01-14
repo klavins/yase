@@ -78,6 +78,7 @@ Once all the prerequisites are installed, get the code and compile it
 ```bash
 git clone https://github.com/klavins/yase.git
 cd yase
+cp defs.mk.template defs.mk
 make
 ```
 
