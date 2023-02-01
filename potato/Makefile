@@ -1,4 +1,4 @@
-include defs.mk
+include potato_defs.mk
 
 SOURCES     := module.cc container.cc sine.cc oscillator.cc event_manager.cc biquad.cc saw.cc anti_alias.cc envelope.cc player.cc gain.cc transform.cc echo.cc iir_filter.cc delay.cc fadable_delay.cc sum.cc
 
