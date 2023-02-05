@@ -8,7 +8,7 @@ SRCEXT      := cc
 TARGET      := libyase.a
 
 #The Directories, Source, Includes, Objects, Binary and Resources
-ROOT_DIR    := /home/klavins/yase
+ROOT_DIR    := /home/klavins/Code/yase
 SRCDIR      := $(ROOT_DIR)/src
 BUILDDIR    := $(ROOT_DIR)/potato/build
 TARGETDIR   := $(ROOT_DIR)/potato/lib

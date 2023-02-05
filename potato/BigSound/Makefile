@@ -1,4 +1,4 @@
-include ../defs.mk
+include ../potato_defs.mk
 
 #The Target Binary Program
 EX_TARGET      :=  big_sound

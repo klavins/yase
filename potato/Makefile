@@ -10,9 +10,11 @@ potato_audio.o: potato_audio.cc potato_audio.hh
 	$(CC) $(CFLAGS) $(INCDIR) -c -fPIC -o $(BUILDDIR)/potato_audio.o potato_audio.cc
 
 $(TARGETDIR)/$(TARGET): $(OBJECTS) potato_audio.o
+	mkdir -p lib
 	ar rvs $@ $(OBJECTS) build/potato_audio.o
 
 #Compile
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT)
+	mkdir -p build
 	$(CC) $(CFLAGS) $(INCDIR) -c -fPIC -o $@ $<
 
