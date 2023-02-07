@@ -21,6 +21,7 @@
 #ifndef YASE_EVENTMANAGER_H
 #define YASE_EVENTMANAGER_H
 
+#include <functional>
 #include <algorithm>
 #include <map>
 #include "module.hh"
