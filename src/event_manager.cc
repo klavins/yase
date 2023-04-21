@@ -46,7 +46,7 @@ namespace yase {
         }
     });
     return *this; 
-  }  
+  }
 
   //! Process all events that have been emitted by the provided list of Modules, and deactiviating them.
   //! \param modules A vector of Modules

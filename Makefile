@@ -43,7 +43,7 @@ wc:
 
 #Link
 $(TARGETDIR)/$(TARGET): $(OBJECTS) 
-	ar rvs $@ $(OBJECTS) $(SYNOBJECTS)
+	/usr/bin/ar rvs $@ $(OBJECTS) $(SYNOBJECTS)
 	
 #Compile
 $(BUILDDIR)/%.o: $(SRCDIR)/%.$(SRCEXT) 

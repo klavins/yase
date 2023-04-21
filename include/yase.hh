@@ -54,6 +54,7 @@
 
 // Events
 #include "event.hh"
+#include "monitor.hh"
 
 // Audio
 #ifndef POTATO
