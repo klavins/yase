@@ -8,8 +8,10 @@ var searchData=
   ['midi_5fkeyup_5',['MIDI_KEYUP',['../globals_8hh.html#a08cda5a590269ffe4dbb20f2cbd26d9b',1,'globals.hh']]],
   ['midi_5fmod_6',['MIDI_MOD',['../globals_8hh.html#a2ee0efce1eafae42618360d096ac4815',1,'globals.hh']]],
   ['midiinput_7',['MidiInput',['../classyase_1_1_midi_input.html#ac5fd6f0cac2171e2de34dab29e157b7e',1,'yase::MidiInput::MidiInput()'],['../classyase_1_1_midi_input.html',1,'yase::MidiInput']]],
-  ['mixer_8',['Mixer',['../classyase_1_1_mixer.html',1,'yase']]],
-  ['module_9',['Module',['../classyase_1_1_module.html',1,'yase']]],
-  ['momentary_10',['momentary',['../classyase_1_1_buttons.html#a9eee17122c898a2868435ca40ebaca5c',1,'yase::Buttons']]],
-  ['mutex_11',['mutex',['../classyase_1_1_buttons.html#abc42df6c76770ee09294ba0a7e14eb25',1,'yase::Buttons']]]
+  ['midioutput_8',['MidiOutput',['../classyase_1_1_midi_output.html',1,'yase']]],
+  ['mixer_9',['Mixer',['../classyase_1_1_mixer.html',1,'yase']]],
+  ['module_10',['Module',['../classyase_1_1_module.html',1,'yase']]],
+  ['momentary_11',['momentary',['../classyase_1_1_buttons.html#a9eee17122c898a2868435ca40ebaca5c',1,'yase::Buttons']]],
+  ['monitor_12',['Monitor',['../classyase_1_1_monitor.html',1,'yase']]],
+  ['mutex_13',['mutex',['../classyase_1_1_buttons.html#abc42df6c76770ee09294ba0a7e14eb25',1,'yase::Buttons']]]
 ];

@@ -10,6 +10,7 @@ var hierarchy =
         [ "yase::FadableDelay", "classyase_1_1_fadable_delay.html", null ]
       ] ]
     ] ],
+    [ "yase::MidiOutput", "classyase_1_1_midi_output.html", null ],
     [ "yase::Module", "classyase_1_1_module.html", [
       [ "yase::AntiAlias", "classyase_1_1_anti_alias.html", null ],
       [ "yase::Audio", "classyase_1_1_audio.html", null ],
@@ -27,6 +28,7 @@ var hierarchy =
       [ "yase::Impulse", "classyase_1_1_impulse.html", null ],
       [ "yase::MidiInput", "classyase_1_1_midi_input.html", null ],
       [ "yase::Mixer", "classyase_1_1_mixer.html", null ],
+      [ "yase::Monitor", "classyase_1_1_monitor.html", null ],
       [ "yase::Noop", "classyase_1_1_noop.html", null ],
       [ "yase::Oscillator", "classyase_1_1_oscillator.html", [
         [ "yase::Clock", "classyase_1_1_clock.html", null ],
