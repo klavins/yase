@@ -75,6 +75,7 @@ namespace yase {
   }
 
   void Biquad::init() {
+    std::cout << "Initializing biquad filter with " << inputs[frequency] << ", " << inputs[resonance] << "\n";
     prev_freq = -1; // force coefficient update
     prev_res = -1;  // in first call to update()
   }
@@ -96,12 +97,19 @@ namespace yase {
   //! changes.
   void Biquad::recalculate() {
 
+    // std::cout << "Recalculating biquad filter parameters from " << inputs[frequency] << ", " << inputs[resonance] << "\n";
+    // std::cout << "  Active: " << (active ? "yes" : "no") << "\n";
+
     double f0 = inputs[frequency] + inputs[offset],
-            Q = inputs[resonance],                 
+            Q = inputs[resonance] > 0 ? inputs[resonance] : 1,                 
            w0 = 2 * M_PI * f0 * ts;
+
+    std::cout << "  Params: " << cosw << ", " << alpha << " ==> ";  
 
     cosw = cos(w0);
     alpha = sin(w0) / ( 2 * Q );
+
+    // std::cout << cosw << ", " << alpha << "\n";  
 
     prev_freq = inputs[frequency];
     prev_res = inputs[resonance];    
