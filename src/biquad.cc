@@ -104,7 +104,7 @@ namespace yase {
             Q = inputs[resonance] > 0 ? inputs[resonance] : 1,                 
            w0 = 2 * M_PI * f0 * ts;
 
-    std::cout << "  Params: " << cosw << ", " << alpha << " ==> ";  
+    // std::cout << "  Params: " << cosw << ", " << alpha << " ==> ";  
 
     cosw = cos(w0);
     alpha = sin(w0) / ( 2 * Q );
