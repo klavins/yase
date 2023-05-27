@@ -78,6 +78,7 @@
 
 // Envelopes
 #include "envelope.hh"
+#include "exp_decay.hh"
 
 // Filters
 #include "iir_filter.hh"

@@ -19,26 +19,43 @@
 // 
 
 #include "yase.hh"
-#include "../potato_audio.hh"
 
 using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Sine sine1, sine2;
-    PotatoAudio audio;
+    Saw raw_osc("raw");
+    AntiAlias osc(raw_osc);
+    Gain gain;
+    Audio audio;
+    Envelope env;
+    Biquad filter;
+    Timer timer;
+    Transform freq_scale( [] (double u) { return 5000; });
+    Transform res_scale ( [] (double u) { return 10.0; });
+    Transform invert ( [] (double u) { return -u; });
     Container synth;
 
-    DEBUG
-    sine1.set_input("frequency", 440);
-    sine2.set_input("frequency", 441);
-    DEBUG
-    synth.connect(sine1,"signal",audio,"left")
-         .connect(sine2,"signal",audio,"right");
-    DEBUG
+    osc.set_input("frequency", 55);
+    gain.set_input("amplitude", 0.25);
+
+    synth.connect(freq_scale, "signal", filter, "frequency")
+         .connect(res_scale,  "signal", filter, "resonance")
+         .path(osc, filter, gain, invert)
+         .connect(env, "signal", osc, "amplitude")
+         .connect(gain, "signal", audio, "left")
+         .connect(invert, "signal", audio, "right")
+         .add(timer);
+
+    env.set_adsr(0.5, 1.0, 1.0, 0.1);
+
+    timer.set(0.1, [&] {
+      env.trigger();
+    });
+
     synth.run(UNTIL_INTERRUPTED);
 
-    return 0; 
+    return 0;
 
 }
  

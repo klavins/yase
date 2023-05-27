@@ -1,5 +1,5 @@
 // 
-// YASE Example
+// YASE ExpDecay Module Implementation
 // 
 // Copyright (C) 2022 Eric Klavins
 // This file is part of YASE
@@ -18,24 +18,43 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
+#include "exp_decay.hh"
 #include "yase.hh"
 
-using namespace yase;
+namespace yase {
 
-int main(int argc, char * argv[]) {
+  ExpDecay::ExpDecay() {
 
-    Sine sine1, sine2;
-    Audio audio;
-    Container synth;
-    
-    sine1.set_input("frequency", 440);
-    sine2.set_input("frequency", 441);
+    rate = add_input("rate");
+    from = add_input("from");
+    to = add_input("to");
 
-    synth.connect(sine1,"signal",audio,"left")
-         .connect(sine2,"signal",audio,"right");
+    inputs[rate] = 1;
+    inputs[from] = 1;
+    inputs[to] = 0;
 
-    synth.run(UNTIL_INTERRUPTED);
+    signal = add_output("signal");
+    outputs[signal] = to;
 
-    return 0; 
+  }
+
+  void ExpDecay::init() {
+    value = 0.0;
+  }
+
+  void ExpDecay::trigger() {
+    value = 1.0;
+  }
+
+  void ExpDecay::update() {
+
+    //std::cout << inputs[rate] << ", " << inputs[from] << ", " <<  inputs[to] << " ==> ";
+
+    value -= TS * inputs[rate] * value;
+    outputs[signal] = inputs[from] * value + inputs[to] * (1-value);
+
+    //std::cout << outputs[signal] << "\n";
+
+  }
 
 }

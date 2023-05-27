@@ -1,5 +1,5 @@
 // 
-// YASE Example
+// YASE ExpDecay Module Header
 // 
 // Copyright (C) 2022 Eric Klavins
 // This file is part of YASE
@@ -18,24 +18,29 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
+#ifndef YASE_EXPDECAY_H
+#define YASE_EXPDECAY_H
+
 #include "yase.hh"
 
-using namespace yase;
+namespace yase {
 
-int main(int argc, char * argv[]) {
+    class ExpDecay : public Module {
 
-    Sine sine1, sine2;
-    Audio audio;
-    Container synth;
-    
-    sine1.set_input("frequency", 440);
-    sine2.set_input("frequency", 441);
+    public:
 
-    synth.connect(sine1,"signal",audio,"left")
-         .connect(sine2,"signal",audio,"right");
+      ExpDecay();
+      void trigger();
+      void init();
+      void update();
 
-    synth.run(UNTIL_INTERRUPTED);
+    private:
 
-    return 0; 
+      int signal, rate, from, to;
+      double value;
+
+    };
 
 }
+
+#endif

@@ -26,6 +26,8 @@ namespace yase {
   Transform::Transform(function<double(const double u)> f) : f(f) {
     signal = add_input("signal");
     signal = add_output("signal");
+    inputs[signal] = 0;
+    update(); // force outputs to take on a computed value
   }
 
   void Transform::init() {

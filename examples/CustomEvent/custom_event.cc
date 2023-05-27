@@ -49,7 +49,7 @@ int main(int argc, char * argv[]) {
     sine2.set_input("frequency", A4+1);
 
     monitor.listen(
-    [&] () {                  // Condition to check
+     [&] () {                  // Condition to check
         c = wgetch(w); 
         return c != ERR;
      }, 
