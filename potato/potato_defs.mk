@@ -18,7 +18,7 @@ EXAMPLE_DIRS := $(wildcard $(ROOT_DIR)/examples/*)
 # Directories where include files are
 INCDIR      := -I $(ROOT_DIR)/include \
                -I /usr/include/nlohmann \
-	       -I /usr/include/rtmidi
+	           -I /usr/include/rtmidi
 
 # Libraries for executables
 LIBDIR      := -L $(ROOT_DIR)/potato/lib
