@@ -75,7 +75,7 @@ namespace yase {
   }
 
   void Biquad::init() {
-    std::cout << "Initializing biquad filter with " << inputs[frequency] << ", " << inputs[resonance] << "\n";
+    // std::cout << "Initializing biquad filter with " << inputs[frequency] << ", " << inputs[resonance] << "\n";
     prev_freq = -1; // force coefficient update
     prev_res = -1;  // in first call to update()
   }
