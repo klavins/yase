@@ -1,24 +1,38 @@
-#Flags, Libraries and Includes
 include ../../defs.mk
 
+#The Target Binary Program
+EX_TARGET      := analog_drum
+
+#The Directories, Source, Includes, Objects, Binary and Resources
+EX_SRCDIR      := .
+EX_BUILDDIR    := .
+EX_TARGETDIR   := ./bin
+
+#Flags, Libraries and Includes
+INC         := $(INCDIR) 
+
 #Files
-TARGETDIR	 := ./bin
-SOURCES      := $(wildcard *.cc)
-TARGETS		 := $(patsubst %.cc,%,$(wildcard *.cc))
-FULL_TARGETS := $(addprefix $(TARGETDIR)/, $(TARGETS))
+SOURCES     := $(wildcard $(EX_SRCDIR)/*.cc) 
+OBJECTS     := $(patsubst %.cc, $(EX_BUILDDIR)/%.o, $(notdir $(SOURCES)))
 
-#Default Make
-all: dirs $(FULL_TARGETS)
+#Defauilt Make
+all: directories $(EX_TARGETDIR)/$(EX_TARGET) 
 
-dirs: $(TARGETDIR)
-	@mkdir -p $(TARGETDIR)
+#Remake
+remake: cleaner all
+
+#Make the Directories
+directories:
+	@mkdir -p $(EX_TARGETDIR)
 
 #Clean only Objects
 clean:
-	@$(RM) -rf $(TARGETDIR)
+	@$(RM) -rf $(EX_BUILDDIR)/*.o $(EX_TARGETDIR)/$(EX_TARGET)
 
-# Compile
-$(TARGETDIR)/%: %.cc ../../lib/libyase.a
-	$(CC) $(CFLAGS) $(INCDIR) $< $(LIBDIR) $(LIBS) -o $@
-
-.PHONY: directories remake clean cleaner $(BUILDDIR) $(TARGETDIR)
+#Link
+$(EX_TARGETDIR)/$(EX_TARGET): $(OBJECTS) ../../lib/libyase.a
+	$(CC) $(LIBS) $(LIBDIR) $(OBJECTS) -o $@
+	
+#Compile
+$(EX_BUILDDIR)/%.o: $(EX_SRCDIR)/%.$(SRCEXT) 
+	$(CC) $(CFLAGS) $(INC) -c -fPIC -o $@ $<

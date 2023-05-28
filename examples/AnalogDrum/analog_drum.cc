@@ -19,64 +19,153 @@
 // 
 
 #include "yase.hh"
+#include "drum.hh"
+#include "voice.hh"
+
+#define __ -1
 
 using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Square raw_osc;
-    AntiAlias osc(raw_osc);
-    Gain gain;
+    Drum kick, snare;
+    Saw bass_oscillator("raw");
+    Triangle lead_oscillator;
+    Voice bass(bass_oscillator), lead(lead_oscillator);
     Audio audio;
-
-    Biquad filter;
-    Transform filter_freq( [] (double u) { return 200; });  // 100 to 10000 
-    Transform filter_res ( [] (double u) { return 10; });   // 1 to 15
-
-    ExpDecay freq;
-    Transform freq_rate ( [] (double u) { return 10; });     // 0.1 to 20
-    Transform freq_from ( [] (double u) { return 50; });     // 40 to 100
-    Transform freq_to   ( [] (double u) { return 55; });     // 40 to 100
-
-    ExpDecay amp;
-    amp.set_input("rate", 1);
-    amp.set_input("from", 1);
-    amp.set_input("to", 0);    
-    Transform amp_rate( [] (double u) { return 10; });       // 0.1 to 20
-
-    Timer timer;
     Container synth;
-
-    gain.set_input("amplitude", 0.5);
-
-    synth.connect(filter_freq, "signal", filter, "frequency")
-         .connect(filter_res,  "signal", filter, "resonance")
-
-         .connect(freq_rate, "signal", freq, "rate")
-         .connect(freq_from, "signal", freq, "from")
-         .connect(freq_to,   "signal", freq, "to")
-
-         .connect(amp_rate,  "signal", amp, "rate")
-
-         .connect(freq, "signal", osc, "frequency")
-         .connect(amp,  "signal", osc, "amplitude")
-
-         .path(osc, filter, gain)
-         .connect(gain, "signal", audio, "left")
-         .connect(gain, "signal", audio, "right")
-
-         .add(timer);
-
-    DEBUG
-
-    timer.set(1, [&]() {
-        DEBUG
-        freq.trigger();
-        amp.trigger();
-        timer.reset();
+    Player kick_player, snare_player, bass_player, lead_player;
+    Mixer mixer_left(4), mixer_right(4);
+    Transform invert([](double u) { return -u; });
+    Timer timer;
+   
+    kick.configure({
+      {"cutoff", 2000},
+      {"resonance", 1},
+      {"decay_rate", 40},
+      {"decay_from",60},
+      {"decay_to", 30},
+      {"attack", 0.001},
+      {"sustain", 0.001},
+      {"decay", 0.15},
+      {"release", 0.01},
+      {"osc_mix", 1},
+      {"noise_mix", 0.0},
+      {"modulation_gain", 0.05}
     });
 
-    DEBUG
+    snare.configure({
+      {"cutoff", 5000},
+      {"resonance", 2},
+      {"decay_rate", 300},
+      {"decay_from", 500},
+      {"decay_to", 180},
+      {"attack", 0.001},
+      {"sustain", 0.0},
+      {"decay", 0.14},
+      {"release", 0.01},
+      {"osc_mix", 0.5},
+      {"noise_mix", 0.2},
+      {"modulation_gain", 0.1}
+    });
+
+    bass.configure({
+        {"amplitude", 4},
+        {"cutoff", 300},
+        {"resonance", 0.1},
+        {"attack", 0.004},
+        {"decay", 0.4},
+        {"sustain", 0.2},                
+        {"release", 0.1},
+        {"echo_duration", 0.8*SAMPLE_RATE},
+        {"echo_amplitude", 0.1}        
+    });
+
+    lead.configure({
+        {"cutoff", 2000},
+        {"resonance", 10},      
+        {"attack", 0.2},
+        {"decay", 0.01},        
+        {"sustain", 0},
+        {"release", 0.001},
+        {"echo_duration", 0.6 * SAMPLE_RATE},
+        {"echo_amplitude", 0.75}
+    });
+
+    synth.connect(kick, "signal", mixer_left, "signal_0")
+         .connect(kick, "signal", mixer_right, "signal_0")
+
+         .connect(snare, "signal", mixer_left, "signal_1")
+         .connect(snare, "signal", mixer_right, "signal_1")   
+
+         .connect(bass, "signal", mixer_left, "signal_2") 
+         .connect(bass, "signal", mixer_right, "signal_2")   
+
+         .connect(lead, "signal", mixer_left, "signal_3")
+         .connect(lead, invert)
+         .connect(invert, "signal", mixer_right, "signal_3")   
+
+         .connect(mixer_left, "signal", audio, "left")
+         .connect(mixer_right, "signal", audio, "right")
+         
+         .add(kick_player)
+         .add(snare_player)
+         .add(bass_player)
+         .add(lead_player);
+
+    mixer_left.set_input("gain_0", 1.5);
+    mixer_right.set_input("gain_0", 0.5);
+
+    mixer_left.set_input("gain_1", 0.5);
+    mixer_right.set_input("gain_1", 1.5);    
+
+    kick_player.set  ({ 
+      1,0,0,1,0,1,0,0,
+      2,1,0,0,1,0,0,0
+    }, [&] (double vol) {
+        if ( vol > 0 ) {
+          kick.set_input("amplitude", 4*vol);
+          kick.trigger();
+        }
+    }, 0.2);
+
+    snare_player.set({ 
+      0,0,1,0,0,0,1,0,
+      0,0,2,1,0,0,1,0  
+    }, [&] (double vol) {
+      if ( vol > 0 ) {
+        snare.set_input("amplitude", 0.5*vol);
+        snare.trigger();
+      }
+    }, 0.2);    
+
+    bass_player.set({ 
+      A1, __, __, __, G2, A2, __, __,
+      A1, __, __, C3, __, A2, __, __,
+      A1, __, __, __, G2, A2, __, __,
+      A1, A2, __, C3, __, A2, __, G1
+    }, [&] (double f) {
+      if ( f > 0 ) {
+        bass.set_input("frequency", f);
+        bass.trigger();
+      } else {
+        bass.release();
+      }
+    }, 0.2);
+
+    lead_player.set({ 
+       A4, A5, __, __, C4, __, __, __,  
+       G4, B5, __, __, __, __, __, __,    
+       F4, __, D3, __, __, __, __, __, 
+       C4, __, B3, __, G3, __, __, __, 
+    }, [&] (double f) {
+      if ( f > 0 ) {
+        lead.set_input("frequency", f);
+        lead.trigger();
+      } else {
+        lead.release();
+      }
+    }, 0.8);    
 
     synth.run(UNTIL_INTERRUPTED);
 
