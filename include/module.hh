@@ -72,6 +72,8 @@ namespace yase {
     void copy_inputs(const Module &source);
     void copy_outputs(Module &destination) const;
 
+    void configure(std::vector<std::tuple<string,double>> assignments); // do a bunch of set_inputs
+
     inline int num_inputs() const { return input_map.size(); }
     inline int num_outputs() const { return output_map.size(); }
 

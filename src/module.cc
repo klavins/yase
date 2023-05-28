@@ -96,6 +96,14 @@ namespace yase {
         inputs[index] = value;
     }  
 
+
+   void Module::configure(std::vector<std::tuple<string,double>> assignments) {
+      for(auto [key,value] : assignments) {
+        set_input(key,value);
+      }
+      return;
+   }
+
     //! Get the value of the output refered to the index parameter. Slower than using the index
     //! of the output.
     //! \param name The name of the input   
