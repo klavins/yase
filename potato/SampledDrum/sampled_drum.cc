@@ -29,13 +29,13 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Sample kick("./samples/kick_03.wav"),
-           snare("./samples/snare.wav");
+    Sample kick("./sounds/kick_03.wav"),
+           snare("./sounds/snare.wav");
 
     Saw bass_oscillator("raw");
     Voice bass(bass_oscillator);
 
-    Wavetable lead("./samples/lead.wav");
+    Wavetable lead("./sounds/lead.wav");
     Envelope lead_env;
     Echo echo;
 
