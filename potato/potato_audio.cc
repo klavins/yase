@@ -28,18 +28,20 @@ namespace yase {
 
     }
 
+    n = 0;
+
   }
 
   void PotatoAudio::init() { }
 
   void PotatoAudio::update() {
 
-    buffer[n++] = inputs[left];
-    buffer[n++] = inputs[right];
-    if ( n >= POTATO_BUFFER_SIZE ) {
-        snd_pcm_writei(handle, buffer, 1000);
-        n = 0;
-    }
+     buffer[n++] = inputs[left];
+     buffer[n++] = inputs[right];
+     if ( n >= POTATO_BUFFER_SIZE ) {
+         snd_pcm_writei(handle, buffer, POTATO_NUM_SAMPLES);
+         n = 0;
+     }
 
   }
 

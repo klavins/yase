@@ -1,7 +1,7 @@
 include ../potato_defs.mk
 
 #The Target Binary Program
-EX_TARGET      :=  knobs
+EX_TARGET      :=  analog_drums
 
 #The Directories, Source, Includes, Objects, Binary and Resources
 EX_SRCDIR      := .

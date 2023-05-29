@@ -5,7 +5,8 @@
 #include <alsa/pcm.h>
 #include "module.hh"
 
-#define POTATO_BUFFER_SIZE 2000
+#define POTATO_NUM_SAMPLES 5000
+#define POTATO_BUFFER_SIZE 10000
 
 namespace yase {
 
@@ -24,7 +25,7 @@ namespace yase {
       snd_pcm_t * handle;
 
       float buffer[POTATO_BUFFER_SIZE];
-      int n;
+      int n, k;
 
     };
 
