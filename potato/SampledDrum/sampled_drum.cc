@@ -49,8 +49,8 @@ int main(int argc, char * argv[]) {
     IO io;
     Transform bass_cutoff    ( [] (double u) { return (1-u)*100 + u*2000; } );
     Transform bass_resonance ( [] (double u) { return (1-u)*0.1 + u*10; } );
-    Transform bass_sustain   ( [] (double u) { return (1-u)*0.0 + u; } );
-    Transform bass_release   ( [] (double u) { return (1-u)*0.0 + u; } );
+    Transform bass_sustain   ( [] (double u) { return (1-u)*0.001 + u; } );
+    Transform bass_release   ( [] (double u) { return (1-u)*0.001 + u; } );
 
     bass.configure({
         {"amplitude", 4},
@@ -171,6 +171,18 @@ int main(int argc, char * argv[]) {
         io.set_led(3,false);
       }
     }, 0.8);
+
+    timer.set(0.1, [&]() {
+        std::cout << "\r" << (int) ( 255 * io.get_output("knob_0") )
+                  << "\t" << (int) ( 255 * io.get_output("knob_1") )
+                  << "\t" << (int) ( 255 * io.get_output("knob_2") )
+                  << "\t" << (int) ( 255 * io.get_output("knob_3") )
+                  << "                  "
+        << std::flush;
+        timer.reset();
+    });
+
+    synth.add(timer);
 
     synth.run(UNTIL_INTERRUPTED);
 
