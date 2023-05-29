@@ -8,7 +8,7 @@ SRCEXT      := cc
 TARGET      := libyase.a
 
 #The Directories, Source, Includes, Objects, Binary and Resources
-ROOT_DIR    := /home/klavins//yase
+ROOT_DIR    := /home/klavins/yase
 SRCDIR      := $(ROOT_DIR)/src
 BUILDDIR    := $(ROOT_DIR)/potato/build
 TARGETDIR   := $(ROOT_DIR)/potato/lib
@@ -18,7 +18,8 @@ EXAMPLE_DIRS := $(wildcard $(ROOT_DIR)/examples/*)
 # Directories where include files are
 INCDIR      := -I $(ROOT_DIR)/include \
                -I /usr/include/nlohmann \
-	           -I /usr/include/rtmidi
+               -I /usr/include/rtmidi \
+               -I $(ROOT_DIR)/potato/third-party/AudioFile
 
 # Libraries for executables
 LIBDIR      := -L $(ROOT_DIR)/potato/lib
