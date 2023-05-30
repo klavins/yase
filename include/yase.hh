@@ -59,8 +59,8 @@
 // Audio
 #ifndef POTATO
   #include "audio.hh"
-  #include "sample.hh"
 #endif
+#include "sample.hh"
 
 // Oscillators
 #include "oscillator.hh"
@@ -71,9 +71,7 @@
 #include "square.hh"
 #include "osc_group.hh"
 #include "clock.hh"
-#ifndef POTATO
-  #include "wavetable.hh"
-#endif
+#include "wavetable.hh"
 #include "impulse.hh"
 
 // Envelopes
