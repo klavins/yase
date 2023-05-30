@@ -65,7 +65,7 @@ int main(int argc, char * argv[]) {
       {"decay", 0.14},
       {"release", 0.01},
       {"osc_mix", 0.5},
-      {"noise_mix", 0.2},
+      {"noise_mix", 0.1},
       {"modulation_gain", 0.1}
     });
 
@@ -87,7 +87,7 @@ int main(int argc, char * argv[]) {
         {"attack", 0.2},
         {"decay", 0.01},        
         {"sustain", 0},
-        {"release", 0.001},
+        {"release", 0.11},
         {"echo_duration", 0.6 * SAMPLE_RATE},
         {"echo_amplitude", 0.75}
     });
@@ -154,10 +154,10 @@ int main(int argc, char * argv[]) {
     }, 0.2);
 
     lead_player.set({ 
-       A4, A5, __, __, C4, __, __, __,  
-       G4, B5, __, __, __, __, __, __,    
-       F4, __, D3, __, __, __, __, __, 
-       C4, __, B3, __, G3, __, __, __, 
+       A4, A5, __, __, C4, __, E4, __,  
+       G4, G5, __, __, B5, __, __, __,    
+       F4, F5, __, __, A4, __, C5, __, 
+       E5, __, D5, __, C5, __, B4, __
     }, [&] (double f) {
       if ( f > 0 ) {
         lead.set_input("frequency", f);
