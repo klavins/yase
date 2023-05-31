@@ -7,7 +7,8 @@ var hierarchy =
       [ "yase::Container", "classyase_1_1_container.html", [
         [ "yase::Controls", "classyase_1_1_controls.html", null ],
         [ "yase::Echo", "classyase_1_1_echo.html", null ],
-        [ "yase::FadableDelay", "classyase_1_1_fadable_delay.html", null ]
+        [ "yase::FadableDelay", "classyase_1_1_fadable_delay.html", null ],
+        [ "yase::Mix", "classyase_1_1_mix.html", null ]
       ] ]
     ] ],
     [ "yase::MidiOutput", "classyase_1_1_midi_output.html", null ],
@@ -18,6 +19,7 @@ var hierarchy =
       [ "yase::Container", "classyase_1_1_container.html", null ],
       [ "yase::Delay", "classyase_1_1_delay.html", null ],
       [ "yase::Envelope", "classyase_1_1_envelope.html", null ],
+      [ "yase::ExpDecay", "classyase_1_1_exp_decay.html", null ],
       [ "yase::FFT", "classyase_1_1_f_f_t.html", null ],
       [ "yase::Fader", "classyase_1_1_fader.html", null ],
       [ "yase::Gain", "classyase_1_1_gain.html", null ],

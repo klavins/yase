@@ -41,6 +41,7 @@
 #include "gain.hh"
 #include "sum.hh"
 #include "mixer.hh"
+#include "mix.hh"
 
 // Utility
 #include "noop.hh"

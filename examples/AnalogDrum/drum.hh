@@ -44,21 +44,6 @@ namespace yase {
       ExpDecay freq;
       Envelope amp;
       Gain gain, mgain;
-      
-      int ampitude,
-          cutoff, 
-          resonance, 
-          decay_rate,
-          decay_from,
-          decay_to,
-          attack,
-          sustain,
-          decay,
-          release,
-          osc_mix,
-          noise_mix,
-          mod_gain,
-          signal;
 
     };
 

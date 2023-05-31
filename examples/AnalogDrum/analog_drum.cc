@@ -35,23 +35,22 @@ int main(int argc, char * argv[]) {
     Audio audio;
     Container synth;
     Player kick_player, snare_player, bass_player, lead_player;
-    Mixer mixer_left(4), mixer_right(4);
     Transform invert([](double u) { return -u; });
     Timer timer;
    
     kick.configure({
-      {"cutoff", 2000},
-      {"resonance", 1},
-      {"decay_rate", 40},
-      {"decay_from",60},
-      {"decay_to", 30},
+      {"cutoff", 20000},
+      {"resonance", 10},
+      {"decay_rate", 300},
+      {"decay_from",80},
+      {"decay_to", 55},
       {"attack", 0.001},
-      {"sustain", 0.001},
-      {"decay", 0.15},
+      {"sustain", 0.01},
+      {"decay", 0.1},
       {"release", 0.01},
       {"osc_mix", 1},
       {"noise_mix", 0.0},
-      {"modulation_gain", 0.05}
+      {"modulation_gain", 0.1}
     });
 
     snare.configure({
@@ -71,18 +70,18 @@ int main(int argc, char * argv[]) {
 
     bass.configure({
         {"amplitude", 4},
-        {"cutoff", 300},
+        {"cutoff", 400},
         {"resonance", 0.1},
         {"attack", 0.004},
-        {"decay", 0.4},
+        {"decay", 0.3},
         {"sustain", 0.2},                
-        {"release", 0.1},
-        {"echo_duration", 0.8*SAMPLE_RATE},
+        {"release", 0.02},
+        {"echo_duration", 0.2*SAMPLE_RATE},
         {"echo_amplitude", 0.1}        
     });
 
     lead.configure({
-        {"cutoff", 2000},
+        {"cutoff", 4000},
         {"resonance", 10},      
         {"attack", 0.2},
         {"decay", 0.01},        
@@ -92,39 +91,29 @@ int main(int argc, char * argv[]) {
         {"echo_amplitude", 0.75}
     });
 
-    synth.connect(kick, "signal", mixer_left, "signal_0")
-         .connect(kick, "signal", mixer_right, "signal_0")
+    Mix mix({
+      {kick,   "signal", 1.75, 0.25},
+      {snare,  "signal", 1.00, 1.00},
+      {bass,   "signal", 0.25, 0.25}
+    });
 
-         .connect(snare, "signal", mixer_left, "signal_1")
-         .connect(snare, "signal", mixer_right, "signal_1")   
+    mix.connect(lead, invert);
+    mix.extend(lead, "signal", 1.0, invert, "signal", 1.0);
 
-         .connect(bass, "signal", mixer_left, "signal_2") 
-         .connect(bass, "signal", mixer_right, "signal_2")   
-
-         .connect(lead, "signal", mixer_left, "signal_3")
-         .connect(lead, invert)
-         .connect(invert, "signal", mixer_right, "signal_3")   
-
-         .connect(mixer_left, "signal", audio, "left")
-         .connect(mixer_right, "signal", audio, "right")
-         
+    synth.add(mix)       
          .add(kick_player)
          .add(snare_player)
          .add(bass_player)
-         .add(lead_player);
-
-    mixer_left.set_input("gain_0", 1.5);
-    mixer_right.set_input("gain_0", 0.5);
-
-    mixer_left.set_input("gain_1", 0.5);
-    mixer_right.set_input("gain_1", 1.5);    
+         .add(lead_player)
+         .connect(mix, "left", audio, "left")
+         .connect(mix, "right", audio, "right");
 
     kick_player.set  ({ 
-      1,0,0,1,0,1,0,0,
-      2,1,0,0,1,0,0,0
+      2,0,0,0,2,0,0,0,
+      2,0,0,1,2,0,0,0
     }, [&] (double vol) {
         if ( vol > 0 ) {
-          kick.set_input("amplitude", 4*vol);
+          kick.set_input("amplitude", 1.5*vol);
           kick.trigger();
         }
     }, 0.2);

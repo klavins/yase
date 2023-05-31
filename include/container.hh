@@ -85,7 +85,9 @@ namespace yase {
 
       // I/O Identifications
       Container &equate_input(string input, Module &sub_module, string sub_input);
+      Container &attach_inputs(std::vector<std::tuple<string,Module&,string>> attachments);
       Container &equate_output(string output, Module &sub_module, string sub_output);
+      Container &attach_outputs(std::vector<std::tuple<string,Module&,string>> attachments);
 
       // Multithreading interface
       Container &set_thread_number(int n);

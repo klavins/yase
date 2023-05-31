@@ -27,36 +27,23 @@ namespace yase {
 
   Drum::Drum() :  osc(raw_osc), mixer(2) {
 
-      ampitude = add_input("amplitude");
-      cutoff = add_input("cutoff");
-      resonance = add_input("resonance");
-      decay_rate = add_input("decay_rate");
-      decay_from = add_input("decay_from");
-      decay_to = add_input("decay_to");
-      attack = add_input("attack");
-      sustain = add_input("sustain");
-      decay = add_input("decay");                  
-      release = add_input("release");
-      osc_mix = add_input("osc_mix");
-      noise_mix = add_input("noise_mix");
-      mod_gain = add_input("modulation_gain");
+      attach_inputs({
+        {"amplitude",  gain, "amplitude"},
+        {"cutoff",     filter, "frequency"},
+        {"resonance",  filter, "resonance"},
+        {"decay_rate", freq, "rate"},
+        {"decay_from", freq, "from"},
+        {"decay_to",   freq, "to"},
+        {"attack",     amp, "attack"},
+        {"sustain",    amp, "sustain"},
+        {"decay",      amp, "decay"},
+        {"release",    amp, "release"},
+        {"osc_mix",    mixer, "gain_0"},
+        {"noise_mix",  mixer, "gain_1"},
+        {"modulation_gain", mgain, "amplitude"},
+      });
 
-      equate_input("amplitude",  gain, "amplitude");
-      equate_input("cutoff",     filter, "frequency");
-      equate_input("resonance",  filter, "resonance");
-      equate_input("decay_rate", freq, "rate");
-      equate_input("decay_from", freq, "from");
-      equate_input("decay_to",   freq, "to");
-      equate_input("attack",     amp, "attack");
-      equate_input("sustain",    amp, "sustain");
-      equate_input("decay",      amp, "decay");                  
-      equate_input("release",    amp, "release");
-      equate_input("osc_mix",    mixer, "gain_0");
-      equate_input("noise_mix",  mixer, "gain_1");
-      equate_input("modulation_gain", mgain, "amplitude");
-
-      signal = add_output("signal");
-      equate_output("signal", gain, "signal");
+      attach_outputs({{"signal", gain, "signal"}});
 
       connect(osc, "signal", mixer, "signal_0");
       connect(noise, "signal", mixer, "signal_1");
@@ -83,7 +70,6 @@ namespace yase {
         {"noise_mix", 0.0},
         {"modulation_gain", 1}
       });
-
 
   }
 

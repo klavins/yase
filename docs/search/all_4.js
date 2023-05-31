@@ -10,5 +10,6 @@ var searchData=
   ['event_7',['Event',['../classyase_1_1_event.html',1,'yase']]],
   ['eventmanager_8',['EventManager',['../classyase_1_1_event_manager.html#ae632b39f1d4a64c1d196e288a043993c',1,'yase::EventManager::EventManager()'],['../classyase_1_1_event_manager.html',1,'yase::EventManager']]],
   ['exception_9',['Exception',['../classyase_1_1_exception.html',1,'yase']]],
-  ['exponential_10',['exponential',['../classyase_1_1_controls.html#ad050c0b2db3929f748598a88b185f234',1,'yase::Controls::exponential()'],['../classyase_1_1_fader.html#ae4b2517b5075eb9e0eb165c3544dfaab',1,'yase::Fader::exponential()']]]
+  ['expdecay_10',['ExpDecay',['../classyase_1_1_exp_decay.html',1,'yase']]],
+  ['exponential_11',['exponential',['../classyase_1_1_controls.html#ad050c0b2db3929f748598a88b185f234',1,'yase::Controls::exponential()'],['../classyase_1_1_fader.html#ae4b2517b5075eb9e0eb165c3544dfaab',1,'yase::Fader::exponential()']]]
 ];

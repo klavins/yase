@@ -9,9 +9,10 @@ var searchData=
   ['midi_5fmod_6',['MIDI_MOD',['../globals_8hh.html#a2ee0efce1eafae42618360d096ac4815',1,'globals.hh']]],
   ['midiinput_7',['MidiInput',['../classyase_1_1_midi_input.html#ac5fd6f0cac2171e2de34dab29e157b7e',1,'yase::MidiInput::MidiInput()'],['../classyase_1_1_midi_input.html',1,'yase::MidiInput']]],
   ['midioutput_8',['MidiOutput',['../classyase_1_1_midi_output.html',1,'yase']]],
-  ['mixer_9',['Mixer',['../classyase_1_1_mixer.html',1,'yase']]],
-  ['module_10',['Module',['../classyase_1_1_module.html',1,'yase']]],
-  ['momentary_11',['momentary',['../classyase_1_1_buttons.html#a9eee17122c898a2868435ca40ebaca5c',1,'yase::Buttons']]],
-  ['monitor_12',['Monitor',['../classyase_1_1_monitor.html',1,'yase']]],
-  ['mutex_13',['mutex',['../classyase_1_1_buttons.html#abc42df6c76770ee09294ba0a7e14eb25',1,'yase::Buttons']]]
+  ['mix_9',['Mix',['../classyase_1_1_mix.html#a220f2644bcebbab3f05e650cf85550bb',1,'yase::Mix::Mix()'],['../classyase_1_1_mix.html',1,'yase::Mix']]],
+  ['mixer_10',['Mixer',['../classyase_1_1_mixer.html',1,'yase']]],
+  ['module_11',['Module',['../classyase_1_1_module.html',1,'yase']]],
+  ['momentary_12',['momentary',['../classyase_1_1_buttons.html#a9eee17122c898a2868435ca40ebaca5c',1,'yase::Buttons']]],
+  ['monitor_13',['Monitor',['../classyase_1_1_monitor.html',1,'yase']]],
+  ['mutex_14',['mutex',['../classyase_1_1_buttons.html#abc42df6c76770ee09294ba0a7e14eb25',1,'yase::Buttons']]]
 ];

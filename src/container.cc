@@ -223,6 +223,35 @@ namespace yase {
 
   }
 
+
+  //! Attach the inputs this module to the inputs of sub-modules. Calls add_input and 
+  //! equate_input on each tuple 
+  //! \param attachements A vector of tuples of the form {{string,Module&,string}, ...}
+  Container &Container::attach_inputs(std::vector<std::tuple<string,Module&,string>> attachments) {
+
+    for(auto [container_input, module, module_input] : attachments) {
+      add_input(container_input);
+      equate_input(container_input, module, module_input);
+    }
+
+    return *this;
+
+  }
+
+  //! Attach outputs of this module to the outputs of sub-modules. Calls add_input and 
+  //! equate_input on each tuple 
+  //! \param attachements A vector of tuples of the form {{string,Module&,string}, ...}
+   Container &Container::attach_outputs(std::vector<std::tuple<string,Module&,string>> attachments) {
+
+    for(auto [container_output, module, module_output] : attachments) {
+      add_output(container_output);
+      equate_output(container_output, module, module_output);
+    }
+
+    return *this;
+
+  }  
+
   //! Equate the main output of this module to the sub-output of the sub-module. After the 
   //! sub-module has been updated, it's output will by copied to the main module output.
   //! \param output A string identifying the main output

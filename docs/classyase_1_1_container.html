@@ -144,12 +144,13 @@ $(document).ready(function(){initNavTree('classyase_1_1_container.html',''); ini
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_container__inherit__graph.png" border="0" usemap="#ayase_1_1_container_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_container_inherit__map" id="ayase_1_1_container_inherit__map">
-<area shape="rect" title="A module and event manager that can contain other modules." alt="" coords="123,80,237,107"/>
+<area shape="rect" title="A module and event manager that can contain other modules." alt="" coords="191,80,305,107"/>
 <area shape="rect" href="classyase_1_1_controls.html" title="Use a Controls object to connect MIDI knobs and faders to Module inputs." alt="" coords="5,155,112,181"/>
 <area shape="rect" href="classyase_1_1_echo.html" title="An echo module incorporating a fadable delay in a feedback configuration." alt="" coords="136,155,224,181"/>
 <area shape="rect" href="classyase_1_1_fadable_delay.html" title="A time modulatable delay." alt="" coords="248,155,387,181"/>
-<area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="58,5,158,32"/>
-<area shape="rect" href="classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="182,5,325,32"/>
+<area shape="rect" href="classyase_1_1_mix.html" title=" " alt="" coords="411,155,490,181"/>
+<area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="126,5,226,32"/>
+<area shape="rect" href="classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="250,5,393,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <div id="dynsection-1" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
@@ -208,7 +209,6 @@ $(document).ready(function(){initNavTree('classyase_1_1_container.html',''); ini
 <div class="line">    <span class="keywordflow">return</span> 0; </div>
 <div class="line"> </div>
 <div class="line">}</div>
-<div class="line"> </div>
 <div class="ttc" id="aglobals_8hh_html_a6949631d06a570d1c3f014ac82285d47"><div class="ttname"><a href="globals_8hh.html#a6949631d06a570d1c3f014ac82285d47">UNTIL_INTERRUPTED</a></div><div class="ttdeci">#define UNTIL_INTERRUPTED</div><div class="ttdoc">Use as in Synthesizer::run(UNTIL_INTERUPTED)</div><div class="ttdef"><b>Definition:</b> globals.hh:27</div></div>
 </div><!-- fragment --> </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
@@ -243,8 +243,12 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aefb72017b50bf2680f3c82b52734332f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0b84d3d893bfcb4eaff165cd3e07c7b7"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_container.html#a0b84d3d893bfcb4eaff165cd3e07c7b7">equate_input</a> (string input, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;sub_module, string sub_input)</td></tr>
 <tr class="separator:a0b84d3d893bfcb4eaff165cd3e07c7b7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa4ac439d2175086a931e2d9328b0149f"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_container.html#aa4ac439d2175086a931e2d9328b0149f">attach_inputs</a> (std::vector&lt; std::tuple&lt; string, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;, string &gt; &gt; attachments)</td></tr>
+<tr class="separator:aa4ac439d2175086a931e2d9328b0149f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9a191c35b4e05e2a1b6d4e35a9b32fe9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_container.html#a9a191c35b4e05e2a1b6d4e35a9b32fe9">equate_output</a> (string output, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;sub_module, string sub_output)</td></tr>
 <tr class="separator:a9a191c35b4e05e2a1b6d4e35a9b32fe9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae1282b7acb4960c7cabf8c26ddaa6c07"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_container.html#ae1282b7acb4960c7cabf8c26ddaa6c07">attach_outputs</a> (std::vector&lt; std::tuple&lt; string, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;, string &gt; &gt; attachments)</td></tr>
+<tr class="separator:ae1282b7acb4960c7cabf8c26ddaa6c07"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa96781a9cf9711309c9c959d3a289094"><td class="memItemLeft" align="right" valign="top"><a id="aa96781a9cf9711309c9c959d3a289094" name="aa96781a9cf9711309c9c959d3a289094"></a>
 <a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>set_thread_number</b> (int n)</td></tr>
 <tr class="memdesc:aa96781a9cf9711309c9c959d3a289094"><td class="mdescLeft">&#160;</td><td class="mdescRight">EXPERIMENTAL. <br /></td></tr>
@@ -296,6 +300,9 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>thread_loop</b> (int 
 <tr class="separator:a4a3275763cfe947a85500f4fa164e1a6 inherit pub_methods_classyase_1_1_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adb74447d12446d5ac1b25d9b6354610a inherit pub_methods_classyase_1_1_module"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_module.html#adb74447d12446d5ac1b25d9b6354610a">copy_outputs</a> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;destination) const</td></tr>
 <tr class="separator:adb74447d12446d5ac1b25d9b6354610a inherit pub_methods_classyase_1_1_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8dc603083d65e9cf1ea2a8339ba9476 inherit pub_methods_classyase_1_1_module"><td class="memItemLeft" align="right" valign="top"><a id="ac8dc603083d65e9cf1ea2a8339ba9476" name="ac8dc603083d65e9cf1ea2a8339ba9476"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>configure</b> (std::vector&lt; std::tuple&lt; string, double &gt; &gt; assignments)</td></tr>
+<tr class="separator:ac8dc603083d65e9cf1ea2a8339ba9476 inherit pub_methods_classyase_1_1_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aa65601020b3afdf9d21b24e18e84b8f3 inherit pub_methods_classyase_1_1_module"><td class="memItemLeft" align="right" valign="top"><a id="aa65601020b3afdf9d21b24e18e84b8f3" name="aa65601020b3afdf9d21b24e18e84b8f3"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>num_inputs</b> () const</td></tr>
 <tr class="separator:aa65601020b3afdf9d21b24e18e84b8f3 inherit pub_methods_classyase_1_1_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -373,6 +380,54 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
   </dd>
 </dl>
 <dl class="section return"><dt>Returns</dt><dd>A reference to the container for method chaining </dd></dl>
+
+</div>
+</div>
+<a id="aa4ac439d2175086a931e2d9328b0149f" name="aa4ac439d2175086a931e2d9328b0149f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa4ac439d2175086a931e2d9328b0149f">&#9670;&nbsp;</a></span>attach_inputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classyase_1_1_container.html">Container</a> &amp; yase::Container::attach_inputs </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::tuple&lt; string, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;, string &gt; &gt;&#160;</td>
+          <td class="paramname"><em>attachments</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Attach the inputs this module to the inputs of sub-modules. Calls add_input and equate_input on each tuple </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attachements</td><td>A vector of tuples of the form {{string,<a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a>&amp;,string}, ...} </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
+<a id="ae1282b7acb4960c7cabf8c26ddaa6c07" name="ae1282b7acb4960c7cabf8c26ddaa6c07"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae1282b7acb4960c7cabf8c26ddaa6c07">&#9670;&nbsp;</a></span>attach_outputs()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classyase_1_1_container.html">Container</a> &amp; yase::Container::attach_outputs </td>
+          <td>(</td>
+          <td class="paramtype">std::vector&lt; std::tuple&lt; string, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;, string &gt; &gt;&#160;</td>
+          <td class="paramname"><em>attachments</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Attach outputs of this module to the outputs of sub-modules. Calls add_input and equate_input on each tuple </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">attachements</td><td>A vector of tuples of the form {{string,<a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a>&amp;,string}, ...} </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>
@@ -675,7 +730,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 
 <p>Implements <a class="el" href="classyase_1_1_module.html#a2ca37c6b62f762d82e3b58f6a3ecc3c4">yase::Module</a>.</p>
 
-<p>Reimplemented in <a class="el" href="classyase_1_1_controls.html#a5ec38d5087fcff9bf2813ae7556f1733">yase::Controls</a>, <a class="el" href="classyase_1_1_echo.html#ac31eea701f687b007c9bd1ee2ff8553e">yase::Echo</a>, and <a class="el" href="classyase_1_1_fadable_delay.html#a4cc7a43199822aa049c2f2c7aad0849b">yase::FadableDelay</a>.</p>
+<p>Reimplemented in <a class="el" href="classyase_1_1_controls.html#a5ec38d5087fcff9bf2813ae7556f1733">yase::Controls</a>, <a class="el" href="classyase_1_1_echo.html#ac31eea701f687b007c9bd1ee2ff8553e">yase::Echo</a>, <a class="el" href="classyase_1_1_fadable_delay.html#a4cc7a43199822aa049c2f2c7aad0849b">yase::FadableDelay</a>, and <a class="el" href="classyase_1_1_mix.html#ab5d01eae8706daa7bc40047a4016b94c">yase::Mix</a>.</p>
 
 </div>
 </div>
@@ -988,7 +1043,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 
 <p>Implements <a class="el" href="classyase_1_1_module.html#abdade0533cdf32967d0eb1bca09f61b1">yase::Module</a>.</p>
 
-<p>Reimplemented in <a class="el" href="classyase_1_1_controls.html#aa390cf974372d54d7a37d3a04fc6977d">yase::Controls</a>, <a class="el" href="classyase_1_1_echo.html#a2b3febe4bf40171ce825c6e94524a2fe">yase::Echo</a>, and <a class="el" href="classyase_1_1_fadable_delay.html#a18b4e4085d395079f301757686132ce7">yase::FadableDelay</a>.</p>
+<p>Reimplemented in <a class="el" href="classyase_1_1_controls.html#aa390cf974372d54d7a37d3a04fc6977d">yase::Controls</a>, <a class="el" href="classyase_1_1_echo.html#a2b3febe4bf40171ce825c6e94524a2fe">yase::Echo</a>, <a class="el" href="classyase_1_1_fadable_delay.html#a18b4e4085d395079f301757686132ce7">yase::FadableDelay</a>, and <a class="el" href="classyase_1_1_mix.html#aeee39f5d2e08bd15e13ac43dc809c422">yase::Mix</a>.</p>
 
 </div>
 </div>

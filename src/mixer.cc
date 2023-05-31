@@ -44,6 +44,12 @@ namespace yase {
 
   }
 
+  void Mixer::extend() {
+    add_input("signal_" + std::to_string(n));
+    add_input("gain_" + std::to_string(n));
+    n++;
+  }
+
   void Mixer::init() {}
 
   void Mixer::update() {
