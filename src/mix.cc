@@ -42,7 +42,7 @@ namespace yase {
 
     attach_outputs({
       {"left", mix_left, "signal"},
-      {"right", mix_left, "signal"}
+      {"right", mix_right, "signal"}
     });
 
   }
