@@ -146,8 +146,8 @@ namespace yase {
         frame = 0;
       }
 
-      output_buffer[frame * num_output_channels + 0] = (float) inputs[left];
-      output_buffer[frame * num_output_channels + 1] = (float) inputs[right];
+      output_buffer[frame * num_output_channels + 0] = (float) inputs[right];
+      output_buffer[frame * num_output_channels + 1] = (float) inputs[left];
 
       for ( int i=2; i<num_output_channels; i++ ) {
           output_buffer[frame * num_output_channels + i] = (float) inputs[i];

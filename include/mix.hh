@@ -35,9 +35,6 @@ namespace yase {
       //! add, "signal_name" is the name of the signal coming out of the module,
       //! and the two numbers are the amplitudes for the left and right channels. 
       Mix(std::vector<std::tuple<Module&, string, double, double>> connections);
-      
-      Mix &extend(Module& left_module, string left_signal, double left_gain,
-                   Module& right_module, string right_signal, double right_gain);
 
       void init();
       void update();

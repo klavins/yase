@@ -39,7 +39,7 @@ namespace yase {
       void set_amplitude_input(int i, double value); 
       double get_amplitude_input(int i);
       void extend();
-      inline int size () { return n; }
+      inline int size() { return n; }
 
     private:
 

@@ -69,7 +69,7 @@ int main(int argc, char * argv[]) {
     });
 
     bass.configure({
-        {"amplitude", 4},
+        {"amplitude", 2},
         {"cutoff", 400},
         {"resonance", 0.1},
         {"attack", 0.004},
@@ -92,13 +92,18 @@ int main(int argc, char * argv[]) {
     });
 
     Mix mix({
-      {kick,   "signal", 1.75, 0.25},
-      {snare,  "signal", 1.00, 1.00},
-      {bass,   "signal", 0.25, 0.25}
+      {kick,   "signal", 0, 2},
+      {snare,  "signal", 2, 0},
+      {bass,   "signal", 1, 1},
+      {lead,   "signal", 1, 0},
+      {invert, "signal", 0, 1}
     });
 
-    mix.connect(lead, invert);
-    mix.extend(lead, "signal", 1.0, invert, "signal", 1.0);
+    mix.connect(lead,invert); // it would be hard for the user
+                              // to know not to add this to synth
+                              // instead of mix. Maybe a better way of doing
+                              // this would be to make a container with a left
+                              // and right output for lead add that to the mix.
 
     synth.add(mix)       
          .add(kick_player)
@@ -110,7 +115,7 @@ int main(int argc, char * argv[]) {
 
     kick_player.set  ({ 
       2,0,0,0,2,0,0,0,
-      2,0,0,1,2,0,0,0
+      2,0,0,0,2,0,0,1
     }, [&] (double vol) {
         if ( vol > 0 ) {
           kick.set_input("amplitude", 1.5*vol);

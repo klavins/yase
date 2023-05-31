@@ -47,23 +47,6 @@ namespace yase {
 
   }
 
-  Mix &Mix::extend(Module& left_module, string left_signal, double left_gain,
-                   Module& right_module, string right_signal, double right_gain ) {
-
-      mix_left.extend();
-      mix_right.extend();
-
-      int n = mix_left.size();
-
-      connect(left_module, left_signal, mix_left, "signal_" + std::to_string(n-1));
-      connect(right_module, right_signal, mix_right, "signal_" + std::to_string(n-1));
-      mix_left.set_input("gain_"+std::to_string(n-1), left_gain);
-      mix_right.set_input("gain_"+std::to_string(n-1), right_gain);    
-
-      return *this;
-
-  }
-
   void Mix::init() {
     Container::init();
   }
