@@ -34,6 +34,7 @@
 #include "event.hh"
 #include "fader.hh"
 #include "buttons.hh"
+#include "auto_load.hh"
 
 namespace yase {
 
@@ -75,6 +76,7 @@ namespace yase {
       // Connectivity
       Container &connect(Module &source, string output, Module &dest, string input);
       Container &connect(Module &source, string output, Module &dest, int input);
+      Container &connect(AutoLoad& loader, string category, Module& module);
 
       Container &connect(Module &source, Module &dest); // assumes signal name is "signal"
       Container &path(Module &a, Module &b, Module &c);

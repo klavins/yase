@@ -1,0 +1,56 @@
+{
+
+    "kick": {
+        "cutoff": 20000,
+        "resonance": 10,
+        "decay_rate": 100,
+        "decay_from": 200,
+        "decay_to": 25,
+        "attack": 0.001,
+        "sustain": 0.01,
+        "decay": 0.2,
+        "release": 0.001,
+        "osc_mix": 1,
+        "noise_mix": 0.0,
+        "modulation_gain": 0.04
+    }, 
+
+    "snare": {
+        "cutoff": 6000,
+        "resonance": 2,
+        "decay_rate": 300,
+        "decay_from": 500,
+        "decay_to": 180,
+        "attack": 0.005,
+        "sustain": 0.0,
+        "decay": 0.2,
+        "release": 0.1,
+        "osc_mix": 0.5,
+        "noise_mix": 0.1,
+        "modulation_gain": 0.25
+    }, 
+
+    "bass": {
+        "amplitude": 1,
+        "cutoff": 400,
+        "resonance": 0.1,
+        "attack": 0.004,
+        "decay": 0.3,
+        "sustain": 0.2,                
+        "release": 0.02,
+        "echo_duration": 8280,
+        "echo_amplitude": 0.1        
+    },
+
+    "lead": {
+        "cutoff": 4000,
+        "resonance": 10,      
+        "attack": 0.1,
+        "decay": 0.01,        
+        "sustain": 0.1,
+        "release": 0.11,
+        "echo_duration": 26460,
+        "echo_amplitude": 0.75
+    }
+
+}

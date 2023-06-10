@@ -15,6 +15,7 @@ var hierarchy =
     [ "yase::Module", "classyase_1_1_module.html", [
       [ "yase::AntiAlias", "classyase_1_1_anti_alias.html", null ],
       [ "yase::Audio", "classyase_1_1_audio.html", null ],
+      [ "yase::AutoLoad", "classyase_1_1_auto_load.html", null ],
       [ "yase::Buttons", "classyase_1_1_buttons.html", null ],
       [ "yase::Container", "classyase_1_1_container.html", null ],
       [ "yase::Delay", "classyase_1_1_delay.html", null ],

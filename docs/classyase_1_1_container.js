@@ -5,6 +5,7 @@ var classyase_1_1_container =
     [ "add_if_new", "classyase_1_1_container.html#a74b53207c0f845f9b26719527669b6af", null ],
     [ "attach_inputs", "classyase_1_1_container.html#aa4ac439d2175086a931e2d9328b0149f", null ],
     [ "attach_outputs", "classyase_1_1_container.html#ae1282b7acb4960c7cabf8c26ddaa6c07", null ],
+    [ "connect", "classyase_1_1_container.html#ad8ea79d50db477f2ce31cff29f55a4a6", null ],
     [ "connect", "classyase_1_1_container.html#afb7d03a57ab717ad511f43c3796eece8", null ],
     [ "connect", "classyase_1_1_container.html#a0dd3bc6916ebbbd3fff48384384ce111", null ],
     [ "connect", "classyase_1_1_container.html#a1117bfdda93679fe009f3d47d2c43ffd", null ],

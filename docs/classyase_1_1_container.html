@@ -231,6 +231,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:a1117bfdda93679fe009f3d47d2c43ffd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0dd3bc6916ebbbd3fff48384384ce111"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_container.html#a0dd3bc6916ebbbd3fff48384384ce111">connect</a> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;source, string output, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;dest, int input)</td></tr>
 <tr class="separator:a0dd3bc6916ebbbd3fff48384384ce111"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad8ea79d50db477f2ce31cff29f55a4a6"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_container.html#ad8ea79d50db477f2ce31cff29f55a4a6">connect</a> (<a class="el" href="classyase_1_1_auto_load.html">AutoLoad</a> &amp;loader, string category, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;module)</td></tr>
+<tr class="separator:ad8ea79d50db477f2ce31cff29f55a4a6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afb7d03a57ab717ad511f43c3796eece8"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_container.html#afb7d03a57ab717ad511f43c3796eece8">connect</a> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;source, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;dest)</td></tr>
 <tr class="separator:afb7d03a57ab717ad511f43c3796eece8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0c74c3e8c53f41ea1984490271ed25a0"><td class="memItemLeft" align="right" valign="top"><a class="el" href="classyase_1_1_container.html">Container</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_container.html#a0c74c3e8c53f41ea1984490271ed25a0">path</a> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;a, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;b, <a class="el" href="classyase_1_1_module.html">Module</a> &amp;c)</td></tr>
@@ -431,8 +433,50 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 
 </div>
 </div>
+<a id="ad8ea79d50db477f2ce31cff29f55a4a6" name="ad8ea79d50db477f2ce31cff29f55a4a6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad8ea79d50db477f2ce31cff29f55a4a6">&#9670;&nbsp;</a></span>connect() <span class="overload">[1/4]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classyase_1_1_container.html">Container</a> &amp; yase::Container::connect </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classyase_1_1_auto_load.html">AutoLoad</a> &amp;&#160;</td>
+          <td class="paramname"><em>loader</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>category</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classyase_1_1_module.html">Module</a> &amp;&#160;</td>
+          <td class="paramname"><em>module</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Connect a parameter autoloader to the inputs of the given module. The autoloader should be used with a *.json file that has an object called "category" in it that in turn has keys with the same names as module. The values associated with the keys the keys should be numbers and will be connected to the modules inputs. Once configured, the user can edit the *.json file, save the changes, and the inputs to the module will be changed. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">loader</td><td>an <a class="el" href="classyase_1_1_auto_load.html">AutoLoad</a> object </td></tr>
+    <tr><td class="paramname">string</td><td>the name of the category in the *.json file to use </td></tr>
+    <tr><td class="paramname">module</td><td>The module to connect </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="afb7d03a57ab717ad511f43c3796eece8" name="afb7d03a57ab717ad511f43c3796eece8"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afb7d03a57ab717ad511f43c3796eece8">&#9670;&nbsp;</a></span>connect() <span class="overload">[1/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#afb7d03a57ab717ad511f43c3796eece8">&#9670;&nbsp;</a></span>connect() <span class="overload">[2/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -469,7 +513,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 </div>
 </div>
 <a id="a0dd3bc6916ebbbd3fff48384384ce111" name="a0dd3bc6916ebbbd3fff48384384ce111"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0dd3bc6916ebbbd3fff48384384ce111">&#9670;&nbsp;</a></span>connect() <span class="overload">[2/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a0dd3bc6916ebbbd3fff48384384ce111">&#9670;&nbsp;</a></span>connect() <span class="overload">[3/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -520,7 +564,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 </div>
 </div>
 <a id="a1117bfdda93679fe009f3d47d2c43ffd" name="a1117bfdda93679fe009f3d47d2c43ffd"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1117bfdda93679fe009f3d47d2c43ffd">&#9670;&nbsp;</a></span>connect() <span class="overload">[3/3]</span></h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1117bfdda93679fe009f3d47d2c43ffd">&#9670;&nbsp;</a></span>connect() <span class="overload">[4/4]</span></h2>
 
 <div class="memitem">
 <div class="memproto">

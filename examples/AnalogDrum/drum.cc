@@ -25,7 +25,9 @@
 
 namespace yase {
 
-  Drum::Drum() :  osc(raw_osc), mixer(2) {
+  Drum::Drum() : osc(raw_osc), mixer(2) {
+
+      //raw_osc.set_type("raw");
 
       attach_inputs({
         {"amplitude",  gain, "amplitude"},

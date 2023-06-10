@@ -153,6 +153,30 @@ namespace yase {
 
   }
 
+  //! Connect a parameter autoloader to the inputs of the given module. The autoloader
+  //! should be used with a *.json file that has an object called "category" in it that 
+  //! in turn has keys with the same names as module. The values associated with the keys
+  //! the keys should be numbers and will be connected to the modules inputs. Once
+  //! configured, the user can edit the *.json file, save the changes, and the inputs
+  //! to the module will be changed.
+  //! \param loader an AutoLoad object
+  //! \param string the name of the category in the *.json file to use
+  //! \param module The module to connect
+  Container &Container::connect(AutoLoad& loader, string category, Module& module) {
+
+      for (int i=0; i<module.num_inputs(); i++) {
+        string input_name = module.get_input_name(i),
+               output_name = category + ":" + input_name;
+        if ( loader.provides(category, input_name) ) {
+          loader.associate(category, input_name, module);
+          connect(loader, output_name, module, input_name);
+        } else {
+          cout << output_name << " not provided by auto-loader. Hope that's ok.\n";
+        }
+      }
+      return *this;
+  }
+
   //! Connect the two modules, assuming the output and input are called "signal"
   //! NOTE: This method has the side effect that it adds both source and dest to the container, if they are not alreaddy added
   //! \param source The source module

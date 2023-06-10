@@ -37,76 +37,23 @@ int main(int argc, char * argv[]) {
     Player kick_player, snare_player, bass_player, lead_player;
     Transform invert([](double u) { return -u; });
     Timer timer;
-   
-    kick.configure({
-      {"cutoff", 20000},
-      {"resonance", 10},
-      {"decay_rate", 300},
-      {"decay_from",80},
-      {"decay_to", 55},
-      {"attack", 0.001},
-      {"sustain", 0.01},
-      {"decay", 0.1},
-      {"release", 0.01},
-      {"osc_mix", 1},
-      {"noise_mix", 0.0},
-      {"modulation_gain", 0.1}
-    });
-
-    snare.configure({
-      {"cutoff", 5000},
-      {"resonance", 2},
-      {"decay_rate", 300},
-      {"decay_from", 500},
-      {"decay_to", 180},
-      {"attack", 0.001},
-      {"sustain", 0.0},
-      {"decay", 0.14},
-      {"release", 0.01},
-      {"osc_mix", 0.5},
-      {"noise_mix", 0.1},
-      {"modulation_gain", 0.1}
-    });
-
-    bass.configure({
-        {"amplitude", 2},
-        {"cutoff", 400},
-        {"resonance", 0.1},
-        {"attack", 0.004},
-        {"decay", 0.3},
-        {"sustain", 0.2},                
-        {"release", 0.02},
-        {"echo_duration", 0.2*SAMPLE_RATE},
-        {"echo_amplitude", 0.1}        
-    });
-
-    lead.configure({
-        {"cutoff", 4000},
-        {"resonance", 10},      
-        {"attack", 0.2},
-        {"decay", 0.01},        
-        {"sustain", 0},
-        {"release", 0.11},
-        {"echo_duration", 0.6 * SAMPLE_RATE},
-        {"echo_amplitude", 0.75}
-    });
-
+    AutoLoad parameters("parameters.json");
+  
     Mix mix({
-      {kick,   "signal", 0, 2},
-      {snare,  "signal", 2, 0},
-      {bass,   "signal", 1, 1},
-      {lead,   "signal", 1, 0},
-      {invert, "signal", 0, 1}
+      {kick,   "signal", 1.25, 0.75},
+      {snare,  "signal", 0.75, 1.25},
+      {bass,   "signal", 1.25, 0.75},
+      {lead,   "signal", 1.00, 0.00},
+      {invert, "signal", 0.00, 1.00}
     });
 
-    mix.connect(lead,invert); // it would be hard for the user
-                              // to know not to add this to synth
-                              // instead of mix. Maybe a better way of doing
-                              // this would be to make a container with a left
-                              // and right output for lead add that to the mix.
+    mix.connect(lead,invert)  
+       .connect(parameters, "kick", kick)
+       .connect(parameters, "snare", snare)
+       .connect(parameters, "bass", bass)
+       .connect(parameters, "lead", lead);
 
-    synth.add(mix)       
-         .add(kick_player)
+    synth.add(kick_player)
          .add(snare_player)
          .add(bass_player)
          .add(lead_player)
@@ -118,7 +65,7 @@ int main(int argc, char * argv[]) {
       2,0,0,0,2,0,0,1
     }, [&] (double vol) {
         if ( vol > 0 ) {
-          kick.set_input("amplitude", 1.5*vol);
+          kick.set_input("amplitude", 1*vol);
           kick.trigger();
         }
     }, 0.2);

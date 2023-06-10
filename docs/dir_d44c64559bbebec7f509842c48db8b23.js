@@ -2,6 +2,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
 [
     [ "anti_alias.hh", "anti__alias_8hh_source.html", null ],
     [ "audio.hh", "audio_8hh_source.html", null ],
+    [ "auto_load.hh", "auto__load_8hh_source.html", null ],
     [ "biquad.hh", "biquad_8hh_source.html", null ],
     [ "buttons.hh", "buttons_8hh_source.html", null ],
     [ "clock.hh", "clock_8hh_source.html", null ],

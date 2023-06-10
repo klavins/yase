@@ -9,5 +9,6 @@ var searchData=
   ['antialias_6',['AntiAlias',['../classyase_1_1_anti_alias.html',1,'yase']]],
   ['attach_5finputs_7',['attach_inputs',['../classyase_1_1_container.html#aa4ac439d2175086a931e2d9328b0149f',1,'yase::Container']]],
   ['attach_5foutputs_8',['attach_outputs',['../classyase_1_1_container.html#ae1282b7acb4960c7cabf8c26ddaa6c07',1,'yase::Container']]],
-  ['audio_9',['Audio',['../classyase_1_1_audio.html',1,'yase']]]
+  ['audio_9',['Audio',['../classyase_1_1_audio.html',1,'yase']]],
+  ['autoload_10',['AutoLoad',['../classyase_1_1_auto_load.html',1,'yase']]]
 ];

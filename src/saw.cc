@@ -82,7 +82,8 @@ namespace yase {
   void Saw::additive() {
     outputs[signal] = 0;
     int n = 1;
-    while ( inputs[frequency] * n < SAMPLE_RATE / 2 ) {
+    double f = inputs[frequency] > 0 ? inputs[frequency] : 1;
+    while ( f * n < SAMPLE_RATE / 2 ) {
       outputs[signal] += sin(n*2*M_PI*phase + inputs[modulation])/n;
       n++;
     }

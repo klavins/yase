@@ -3,6 +3,7 @@ var annotated_dup =
     [ "yase", null, [
       [ "AntiAlias", "classyase_1_1_anti_alias.html", "classyase_1_1_anti_alias" ],
       [ "Audio", "classyase_1_1_audio.html", "classyase_1_1_audio" ],
+      [ "AutoLoad", "classyase_1_1_auto_load.html", "classyase_1_1_auto_load" ],
       [ "Biquad", "classyase_1_1_biquad.html", "classyase_1_1_biquad" ],
       [ "BUTTON_STATE", "structyase_1_1_b_u_t_t_o_n___s_t_a_t_e.html", null ],
       [ "Buttons", "classyase_1_1_buttons.html", "classyase_1_1_buttons" ],

@@ -52,6 +52,7 @@
 #include "fft.hh"
 #include "anti_alias.hh"
 #include "pitches.hh"
+#include "auto_load.hh"
 
 // Events
 #include "event.hh"

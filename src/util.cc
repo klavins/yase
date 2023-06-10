@@ -26,8 +26,10 @@ namespace yase {
   json get_config ( string file_name ) {
 
     json config;
-    std::ifstream config_stream(file_name);
-    config_stream >> config;     
+    std::ifstream config_stream;
+    config_stream.open(file_name);
+    config_stream >> config;  
+    config_stream.close();
     return config;
 
   }
