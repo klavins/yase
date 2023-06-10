@@ -28,6 +28,7 @@
 namespace yase {
 
     //! A parameter auto-loader that continually reloads a *.json file.
+    
     //! Here is an example:
     //! \include AutoLoad/auto.cc
     //! The file parameters.json contains

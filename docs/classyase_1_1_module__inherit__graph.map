@@ -2,7 +2,7 @@
 <area shape="rect" id="node1" title="An abstract base class for modules." alt="" coords="5,639,105,665"/>
 <area shape="rect" id="node2" href="$classyase_1_1_anti_alias.html" title=" " alt="" coords="165,5,276,32"/>
 <area shape="rect" id="node3" href="$classyase_1_1_audio.html" title="A module wrapper for a stereo PortAudio interface (http://www.portaudio.com/)." alt="" coords="175,56,266,83"/>
-<area shape="rect" id="node4" href="$classyase_1_1_auto_load.html" title=" " alt="" coords="164,107,277,133"/>
+<area shape="rect" id="node4" href="$classyase_1_1_auto_load.html" title="A parameter auto&#45;loader that continually reloads a *.json file." alt="" coords="164,107,277,133"/>
 <area shape="rect" id="node5" href="$classyase_1_1_buttons.html" title="A class for managing MIDI buttons." alt="" coords="169,157,272,184"/>
 <area shape="rect" id="node6" href="$classyase_1_1_container.html" title="A module and event manager that can contain other modules." alt="" coords="163,208,278,235"/>
 <area shape="rect" id="node11" href="$classyase_1_1_delay.html" title="A pure digital delay using a doubled ended queue." alt="" coords="175,259,267,285"/>
