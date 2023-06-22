@@ -27,7 +27,9 @@
 
 namespace yase {
 
-    //! A general purpose sequencers. Sequences can be built in two ways.
+    //! A general purpose sequencers. 
+    
+    //! Sequences can be built in two ways.
     //! 1. You can insert MIDI events or rests using to build up an arbitrary sequence. 
     //! 2. You can allocate a sequence of a given size, and set events for each step.
     //! A sequencer requires a Clock input. 

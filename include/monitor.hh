@@ -27,12 +27,13 @@ namespace yase {
 
 
     //! Monitor some condition and run a function whenever it is true
+
     //! For example
     //! \code
     //! Monitor monitor();
     //! monitor.listen([&]() { return false; }, [&] () { std::cout << "This never prints\n"; });
     //! \endcode
-    //! See the example in examples/CustomEvents for a complete example.
+    //! See the example in [examples/CustomEvents](https://klavins.github.io/yase/examples/CustomEvents) for a complete example.
     class Monitor : public Module {
 
     public:

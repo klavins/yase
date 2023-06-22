@@ -26,6 +26,20 @@
 
 namespace yase {
 
+    //! A sawtooth wave oscillator
+
+    //! This module produces a sawtooth wave output and has all the inputs that
+    //! an Oscillator has. The update method is either 
+    //! - "raw", which should be wrapped with an AntiAlias Module;
+    //! - "additive", which sums up sine waves according to the fourier expansion of a sawtooth wave. This is computationally expensive but very nice; or
+    //! - "ptr1", which approximated a square wave with a rounded shape using a standard algorithm from the literature [TODO: find the paper for this and cite it]
+    //! \param[input] frequency The frequency
+    //! \param[input] amplitude The amplitude
+    //! \param[input] modulation A modulation input that modules that rate of the square wave
+    //! \param[input] tuning This input has units in Cents. It tunes the input frequency of the oscillator.
+    //! \param[input] harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic
+    //! \param[output] signal The output of the oscillator    
+
     class Saw : public Oscillator {
 
     typedef void (Saw::*UpdateFunction)(); 

@@ -23,7 +23,8 @@
 
 namespace yase {
 
-
+    //! Construct an FFT module with the given size.
+    //! \param size The number of samples to transform
     FFT::FFT(int size) : size(size), n(0) {
 
         signal = add_input("signal");
@@ -58,11 +59,14 @@ namespace yase {
 
     }
 
+    //! Get the FFT data. 
+    //! This method has the side effect of resetting the FFT so that it starts over.
     fftw_complex * FFT::get() {
       n = 0;
       return out;
     }
 
+    //! Print the FFT data to stdout
     void FFT::ascii() {
         for ( int i=0; i<size/2+1; i++ ) {
             double a = out[i][0], b = out[i][1], m = sqrt(a*a+b*b) / size;
@@ -75,6 +79,7 @@ namespace yase {
         }
     }
 
+    //! Print the FFT data as a json object to stdout
     std::string FFT::json() {
 
         string result = "[";
@@ -98,6 +103,7 @@ namespace yase {
 
     }
 
+    //! Print a nice plot of the FFT to stdout that can be viewed with a web browser. 
     void FFT::html() {
 
         std::cout <<  R""""(

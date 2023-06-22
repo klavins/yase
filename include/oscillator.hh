@@ -25,6 +25,20 @@
 
 namespace yase {
 
+    //! An abstract base class from which oscillators like Sine, Saw, and Triangle are derived
+
+    //! This module provides methods and I/O that most oscillators need. It also updates
+    //! a basic phasor in the protected variable `phase` which can be used by derived classes
+    //! to build more complex signal outputs. 
+    //! For a simple example see [include/square.hh](https://klavins.github.io/yase/include/square.hh)
+    //! and [include/square.hh](https://klavins.github.io/yase/src/square.cc) which define a raw square wave oscillator.
+    //! \param[input] frequency The frequency of the phasor
+    //! \param[input] amplitude The amplitude of the oscillator (derived classes should scale their outputs by inputs[amplitude], it is not done automatically)
+    //! \param[input] modulation A modulation input that modules that rate of the phasor
+    //! \param[input] tuning This input has units in Cents. It tunes the input frequency of the oscillator.
+    //! \param[input] harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic
+    //! \param[output] signal The output of the oscillator
+
     class Oscillator : public Module {
 
     public:

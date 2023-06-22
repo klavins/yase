@@ -26,6 +26,11 @@
 
 namespace yase {
 
+    //! A noise source
+
+    //! Outputs normally distributed random numbers with mean 0 and standard deviation 1 .
+    //! \param[out] signal The noise
+
     class Noise : public Oscillator {
 
     public:

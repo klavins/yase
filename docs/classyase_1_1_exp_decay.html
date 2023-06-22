@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_exp_decay.html',''); ini
   <div class="headertitle"><div class="title">yase::ExpDecay Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="exp__decay_8hh_source.html">exp_decay.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::ExpDecay:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,7 +144,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_exp_decay.html',''); ini
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_exp_decay__inherit__graph.png" border="0" usemap="#ayase_1_1_exp_decay_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_exp_decay_inherit__map" id="ayase_1_1_exp_decay_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,124,107"/>
+<area shape="rect" title="An exponentially decaying envelope." alt="" coords="5,80,124,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,115,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -153,15 +155,29 @@ $(document).ready(function(){initNavTree('classyase_1_1_exp_decay.html',''); ini
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_exp_decay__coll__graph.png" border="0" usemap="#ayase_1_1_exp_decay_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_exp_decay_coll__map" id="ayase_1_1_exp_decay_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,124,107"/>
+<area shape="rect" title="An exponentially decaying envelope." alt="" coords="5,80,124,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,115,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >An exponentially decaying envelope. </p>
+<p >This module produces an output named "signal" that exponentially decays from the input "from" to the input "to" according to the equations </p><div class="fragment"><div class="line">x = exp(-kt)</div>
+<div class="line">y = u_from * x + u_to * ( 1 - x )</div>
+</div><!-- fragment --><p> Calling the method <a class="el" href="classyase_1_1_exp_decay.html#a01928f06bceb743d7eef678b1a348c41" title="Reset the envelope to output the value specified by the input &quot;from&quot;.">trigger()</a> resets the envelope. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">rate</td><td>The decay rate </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">from</td><td>The starting value </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">to</td><td>The ending value (in the limit as t gies to infinity) </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">signal</td><td>The output signal </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a01928f06bceb743d7eef678b1a348c41"><td class="memItemLeft" align="right" valign="top"><a id="a01928f06bceb743d7eef678b1a348c41" name="a01928f06bceb743d7eef678b1a348c41"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>trigger</b> ()</td></tr>
+<tr class="memdesc:a01928f06bceb743d7eef678b1a348c41"><td class="mdescLeft">&#160;</td><td class="mdescRight">Reset the envelope to output the value specified by the input "from". <br /></td></tr>
 <tr class="separator:a01928f06bceb743d7eef678b1a348c41"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8d038b7cd43d605c29f2c2b04e30c8fd"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_exp_decay.html#a8d038b7cd43d605c29f2c2b04e30c8fd">init</a> ()</td></tr>
 <tr class="separator:a8d038b7cd43d605c29f2c2b04e30c8fd"><td class="memSeparator" colspan="2">&#160;</td></tr>

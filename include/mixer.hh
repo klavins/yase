@@ -27,6 +27,14 @@
 
 namespace yase {
 
+    //! A mixer
+
+    //! Take n input signals and output the wieghted sum of the signals
+    //! using the "gain_*" inputs. 
+    //! \param[in] signal_i The ith signal
+    //! \param[in] gain_i The ith gain
+    //! \param[out] signal The output
+
     class Mixer : public Module {
 
     public:

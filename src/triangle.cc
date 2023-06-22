@@ -36,6 +36,8 @@ namespace yase {
     outputs[signal] *= inputs[amplitude];
   }    
 
+  //! Set the type of the oscillator to either "raw", "additive" or "ptr1". 
+  //! \param name The method to use
   void Triangle::set_type(std::string name) {
 
     if ( name == "raw" )  {

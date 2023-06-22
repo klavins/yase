@@ -26,6 +26,15 @@
 
 namespace yase {
 
+    //! Compute an Fast Fourier Transform
+
+    //! The Module can be used to compute a Fast Fourier Transform on its input.
+    //! The resulting transform is available as a vector of fftw_complex numbers.
+    //! See the documentation for the library fftw3. The data can also be printed
+    //! to stdout using the ascii(), html(), or json() methods. 
+    //! See the example in [examples/FFT](https://klavins.github.io/yase/examples/FFT)  for a demonstration. 
+    //! \param[input] signal The input signal
+    //! \param[output] ready 0 when the FFT is still collecting data, and 1 otherwise
     class FFT : public Module {
 
     public:

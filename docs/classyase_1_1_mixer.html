@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_mixer.html',''); initRes
   <div class="headertitle"><div class="title">yase::Mixer Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="mixer_8hh_source.html">mixer.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::Mixer:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,7 +144,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_mixer.html',''); initRes
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_mixer__inherit__graph.png" border="0" usemap="#ayase_1_1_mixer_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_mixer_inherit__map" id="ayase_1_1_mixer_inherit__map">
-<area shape="rect" title=" " alt="" coords="10,80,101,107"/>
+<area shape="rect" title="A mixer." alt="" coords="10,80,101,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -153,15 +155,25 @@ $(document).ready(function(){initNavTree('classyase_1_1_mixer.html',''); initRes
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_mixer__coll__graph.png" border="0" usemap="#ayase_1_1_mixer_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_mixer_coll__map" id="ayase_1_1_mixer_coll__map">
-<area shape="rect" title=" " alt="" coords="10,80,101,107"/>
+<area shape="rect" title="A mixer." alt="" coords="10,80,101,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A mixer. </p>
+<p >Take n input signals and output the wieghted sum of the signals using the "gain_*" inputs. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">signal_i</td><td>The ith signal </td></tr>
+    <tr><td class="paramdir">[in]</td><td class="paramname">gain_i</td><td>The ith gain </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">signal</td><td>The output </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a39b560947efa865cb89d2a5200902bd6"><td class="memItemLeft" align="right" valign="top"><a id="a39b560947efa865cb89d2a5200902bd6" name="a39b560947efa865cb89d2a5200902bd6"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Mixer</b> (int n)</td></tr>
+<tr class="memitem:a39b560947efa865cb89d2a5200902bd6"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_mixer.html#a39b560947efa865cb89d2a5200902bd6">Mixer</a> (int n)</td></tr>
+<tr class="memdesc:a39b560947efa865cb89d2a5200902bd6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Construct a new mixer.  <a href="classyase_1_1_mixer.html#a39b560947efa865cb89d2a5200902bd6">More...</a><br /></td></tr>
 <tr class="separator:a39b560947efa865cb89d2a5200902bd6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0512c7052d6d6b12805a01acddd7598e"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_mixer.html#a0512c7052d6d6b12805a01acddd7598e">init</a> ()</td></tr>
 <tr class="separator:a0512c7052d6d6b12805a01acddd7598e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -170,11 +182,9 @@ Public Member Functions</h2></td></tr>
 <tr class="memitem:a2e036c2c76ed0da8b20340c3a1186d32"><td class="memItemLeft" align="right" valign="top"><a id="a2e036c2c76ed0da8b20340c3a1186d32" name="a2e036c2c76ed0da8b20340c3a1186d32"></a>
 int&#160;</td><td class="memItemRight" valign="bottom"><b>amplitude_index</b> (int i)</td></tr>
 <tr class="separator:a2e036c2c76ed0da8b20340c3a1186d32"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad1227adbd6ba4ada3b5e19e4e4ecf97f"><td class="memItemLeft" align="right" valign="top"><a id="ad1227adbd6ba4ada3b5e19e4e4ecf97f" name="ad1227adbd6ba4ada3b5e19e4e4ecf97f"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_amplitude_input</b> (int i, double value)</td></tr>
+<tr class="memitem:ad1227adbd6ba4ada3b5e19e4e4ecf97f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_mixer.html#ad1227adbd6ba4ada3b5e19e4e4ecf97f">set_amplitude_input</a> (int i, double value)</td></tr>
 <tr class="separator:ad1227adbd6ba4ada3b5e19e4e4ecf97f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a84d2190b6260c1d0c266a15a7b75ef5c"><td class="memItemLeft" align="right" valign="top"><a id="a84d2190b6260c1d0c266a15a7b75ef5c" name="a84d2190b6260c1d0c266a15a7b75ef5c"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><b>get_amplitude_input</b> (int i)</td></tr>
+<tr class="memitem:a84d2190b6260c1d0c266a15a7b75ef5c"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_mixer.html#a84d2190b6260c1d0c266a15a7b75ef5c">get_amplitude_input</a> (int i)</td></tr>
 <tr class="separator:a84d2190b6260c1d0c266a15a7b75ef5c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1ddf6d3fb5998db829042ab0ca5bbb11"><td class="memItemLeft" align="right" valign="top"><a id="a1ddf6d3fb5998db829042ab0ca5bbb11" name="a1ddf6d3fb5998db829042ab0ca5bbb11"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>extend</b> ()</td></tr>
@@ -231,7 +241,58 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ts</b> (double s)
 double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td></tr>
 <tr class="separator:a889126afdb841a203907486c8faa3a9d inherit pub_methods_classyase_1_1_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a39b560947efa865cb89d2a5200902bd6" name="a39b560947efa865cb89d2a5200902bd6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a39b560947efa865cb89d2a5200902bd6">&#9670;&nbsp;</a></span>Mixer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">yase::Mixer::Mixer </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Construct a new mixer. </p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>The number of signals to mix </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="a84d2190b6260c1d0c266a15a7b75ef5c" name="a84d2190b6260c1d0c266a15a7b75ef5c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a84d2190b6260c1d0c266a15a7b75ef5c">&#9670;&nbsp;</a></span>get_amplitude_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double yase::Mixer::get_amplitude_input </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >The integer index of the gain input for the signal input i. If there are n inputs to the module, then "gain_i" is signal number n+i. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>The index of the input </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <a id="a0512c7052d6d6b12805a01acddd7598e" name="a0512c7052d6d6b12805a01acddd7598e"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a0512c7052d6d6b12805a01acddd7598e">&#9670;&nbsp;</a></span>init()</h2>
 
@@ -257,6 +318,41 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 <p >This method should be overridden by derived classes. It will usually be called once, after all modules and connections objects have been added to a synthesizer, but before the synthesizer starts running. </p>
 
 <p>Implements <a class="el" href="classyase_1_1_module.html#a2ca37c6b62f762d82e3b58f6a3ecc3c4">yase::Module</a>.</p>
+
+</div>
+</div>
+<a id="ad1227adbd6ba4ada3b5e19e4e4ecf97f" name="ad1227adbd6ba4ada3b5e19e4e4ecf97f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1227adbd6ba4ada3b5e19e4e4ecf97f">&#9670;&nbsp;</a></span>set_amplitude_input()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void yase::Mixer::set_amplitude_input </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&#160;</td>
+          <td class="paramname"><em>value</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Set the gain of input i to value. This method is faster than set_input("gain_i"), which should only be used during setup. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">i</td><td>The index of the input </td></tr>
+    <tr><td class="paramname">value</td><td>The value to set the gain to </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

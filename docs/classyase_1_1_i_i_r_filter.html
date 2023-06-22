@@ -162,7 +162,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_i_i_r_filter.html',''); 
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >This module implements an Infinite <a class="el" href="classyase_1_1_impulse.html">Impulse</a> Response (IIR) filter. </p>
+<div class="textblock"><p >This module implements an Infinite <a class="el" href="classyase_1_1_impulse.html" title="An impulse.">Impulse</a> Response (IIR) filter. </p>
 <p >The IIR operates according to the difference equation </p><pre class="fragment">  a[0]*y[n] + a[1]*y[n-1] + ... + a[p]*y[n-p] = b[0]*u[n] + b[1]*u[n-1] + ... + b[q]*u[n-q].
 </pre><p> The input is u[n] and the output is y[n]. Previous values of u and y are remembered by the module. There are two constructors. One takes integers p and q, specifying the feedforward and feedback orders respectively. A later call to set_coefficients is needed in this case. The other constructor takes a list of the coefficients directly.</p>
 <p >For example, a simple averaging filter (which is actually a FIR filter) can be constructed with </p><pre class="fragment">  IIRFilter filter({2},{1,1});

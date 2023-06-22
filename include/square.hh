@@ -25,6 +25,17 @@
 
 namespace yase {
 
+    //! A raw square wave oscillator
+
+    //! This module produces a raw square wave output and has all the inputs that
+    //! an Oscillator has. This Module is usually wrapped with an AntiAlias Module.
+    //! \param[input] frequency The frequency
+    //! \param[input] amplitude The amplitude
+    //! \param[input] modulation A modulation input that modules that rate of the square wave
+    //! \param[input] tuning This input has units in Cents. It tunes the input frequency of the oscillator.
+    //! \param[input] harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic
+    //! \param[output] signal The output of the oscillator    
+
     class Square : public Oscillator {
 
     public:

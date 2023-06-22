@@ -24,6 +24,9 @@
 
 namespace yase {
 
+  //! Construct a new mixer
+
+  //! \param n The number of signals to mix
   Mixer::Mixer(int n) : n(n) {
 
     // Note: the order in which the inputs below are added matters, because
@@ -53,10 +56,18 @@ namespace yase {
     outputs[signal] *= inputs[output_gain];
   }    
 
+  //! The integer index of the gain input for the signal input i. 
+  //! If there are n inputs to the module, then "gain_i" is signal 
+  //! number n+i. 
+  //! \param i The index of the input
   double Mixer::get_amplitude_input(int i) {
     return get_input(i+n);
   }  
 
+  //! Set the gain of input i to value. This method is faster than
+  //! set_input("gain_i"), which should only be used during setup.
+  //! \param i The index of the input
+  //! \param value The value to set the gain to
   void Mixer::set_amplitude_input(int i, double value) {
     set_input(i+n, value);
   }

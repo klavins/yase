@@ -25,6 +25,17 @@
 
 namespace yase {
 
+    //! A sine wave oscillator
+
+    //! This module produces a since wave output and has all the inputs that
+    //! an Oscillator has. The update method is either 
+    //! \param[input] frequency The frequency
+    //! \param[input] amplitude The amplitude
+    //! \param[input] modulation A modulation input that modules that rate of the square wave
+    //! \param[input] tuning This input has units in Cents. It tunes the input frequency of the oscillator.
+    //! \param[input] harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic
+    //! \param[output] signal The output of the oscillator      
+
     class Sine : public Oscillator {
 
     public:

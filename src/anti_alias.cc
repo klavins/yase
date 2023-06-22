@@ -23,6 +23,10 @@
 
 namespace yase {
 
+  //! Construct an anti-aliased version the Module m. All inputs of m will be available
+  //! to the resulting Module. The Module m must provide an output named "signal" which
+  //! will be availabled to the resulting anti-aliased Module.
+  //! \param m A Module to be anti-aliased
   AntiAlias::AntiAlias(Module &m) : module(&m) {
 
     m.set_ts(ts/2);

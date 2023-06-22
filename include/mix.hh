@@ -25,15 +25,19 @@
 
 namespace yase {
 
+    //! A stereo mixer and Container. 
+
+    //! This class provides a more convenient way to mix a number of signals together
+    //! to produce a left and right output that can be sent to an Audio module. Since
+    //! a Mix module is also a Container, you can use add(..) and connect(...) and 
+    //! all the other methods one might need to construct a complex example. 
+    //! \param[out] left The left signal
+    //! \param[out] right The right signal
+
     class Mix : public Container {
 
     public:
 
-      //! A stereo mixer. 
-      //! \param[in] connections -- a vector of tuples of the form
-      //! { module, "signal_name", 1.23, 3.45 } where module is the module to 
-      //! add, "signal_name" is the name of the signal coming out of the module,
-      //! and the two numbers are the amplitudes for the left and right channels. 
       Mix(std::vector<std::tuple<Module&, string, double, double>> connections);
 
       void init();

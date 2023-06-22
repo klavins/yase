@@ -25,6 +25,20 @@
 
 namespace yase {
 
+    //! An exponentially decaying envelope.
+    
+    //! This module produces an output named "signal" that exponentially decays 
+    //! from the input "from" to the input "to" 
+    //! according to the equations
+    //! \code
+    //! x = exp(-kt)
+    //! y = u_from * x + u_to * ( 1 - x )
+    //! \endcode
+    //! Calling the method trigger() resets the envelope. 
+    //! \param[in] rate The decay rate
+    //! \param[in] from The starting value
+    //! \param[in] to The ending value (in the limit as t gies to infinity)
+    //! \param[out] signal The output signal
     class ExpDecay : public Module {
 
     public:

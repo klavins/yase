@@ -35,6 +35,8 @@ namespace yase {
     CALL_MEMBER_FN(this, update_fcn);
   }
 
+  //! Set the type of the impulse.
+  //! \param type Either "square" or "random"
   void Impulse::set_type(std::string type) {
     if ( type == "random" ) {
       update_fcn = &Impulse::random;
@@ -59,10 +61,14 @@ namespace yase {
     }
   }    
 
+  //! Trigger the impulse
   void Impulse::trigger() {
     n = 0;
   }
 
+  //! Set the number of time steps for the impulse to be non-zero.
+  //! Each time step is 1 / SAMPLE_RATE seconds long. 
+  //! \param k The number of time steps
   void Impulse::set(int k) {
     length = k;
   }  

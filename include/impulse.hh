@@ -25,6 +25,14 @@
 
 namespace yase {
 
+    //! An impulse. 
+
+    //! Outputs a non-zero signal for k time steps when triggered. The default value for
+    //! k is 1. The output is either
+    //! square or random depending on whether set_type("square") or set_type("random")
+    //! has been called. The default is square. 
+    //! \param[out] signal The output.
+
     class Impulse : public Module {
 
     typedef void (Impulse::*UpdateFunction)(); 

@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_oscillator.html',''); in
   <div class="headertitle"><div class="title">yase::Oscillator Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="oscillator_8hh_source.html">oscillator.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::Oscillator:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,14 +144,14 @@ $(document).ready(function(){initNavTree('classyase_1_1_oscillator.html',''); in
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_oscillator__inherit__graph.png" border="0" usemap="#ayase_1_1_oscillator_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_oscillator_inherit__map" id="ayase_1_1_oscillator_inherit__map">
-<area shape="rect" title=" " alt="" coords="153,183,267,209"/>
+<area shape="rect" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="153,183,267,209"/>
 <area shape="rect" href="classyase_1_1_clock.html" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="328,5,420,32"/>
-<area shape="rect" href="classyase_1_1_noise.html" title=" " alt="" coords="328,56,420,83"/>
+<area shape="rect" href="classyase_1_1_noise.html" title="A noise source." alt="" coords="328,56,420,83"/>
 <area shape="rect" href="classyase_1_1_osc_group.html" title=" " alt="" coords="315,107,433,133"/>
-<area shape="rect" href="classyase_1_1_saw.html" title=" " alt="" coords="332,157,416,184"/>
-<area shape="rect" href="classyase_1_1_sine.html" title=" " alt="" coords="332,208,416,235"/>
-<area shape="rect" href="classyase_1_1_square.html" title=" " alt="" coords="325,259,423,285"/>
-<area shape="rect" href="classyase_1_1_triangle.html" title=" " alt="" coords="322,309,426,336"/>
+<area shape="rect" href="classyase_1_1_saw.html" title="A sawtooth wave oscillator." alt="" coords="332,157,416,184"/>
+<area shape="rect" href="classyase_1_1_sine.html" title="A sine wave oscillator." alt="" coords="332,208,416,235"/>
+<area shape="rect" href="classyase_1_1_square.html" title="A raw square wave oscillator." alt="" coords="325,259,423,285"/>
+<area shape="rect" href="classyase_1_1_triangle.html" title="A triangle wave oscillator." alt="" coords="322,309,426,336"/>
 <area shape="rect" href="classyase_1_1_wavetable.html" title="A wavetable oscillator." alt="" coords="315,360,433,387"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,183,105,209"/>
 </map>
@@ -161,11 +163,24 @@ $(document).ready(function(){initNavTree('classyase_1_1_oscillator.html',''); in
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_oscillator__coll__graph.png" border="0" usemap="#ayase_1_1_oscillator_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_oscillator_coll__map" id="ayase_1_1_oscillator_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,119,107"/>
+<area shape="rect" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="5,80,119,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="12,5,112,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >An abstract base class from which oscillators like <a class="el" href="classyase_1_1_sine.html" title="A sine wave oscillator.">Sine</a>, <a class="el" href="classyase_1_1_saw.html" title="A sawtooth wave oscillator.">Saw</a>, and <a class="el" href="classyase_1_1_triangle.html" title="A triangle wave oscillator.">Triangle</a> are derived. </p>
+<p >This module provides methods and I/O that most oscillators need. It also updates a basic phasor in the protected variable <code>phase</code> which can be used by derived classes to build more complex signal outputs. For a simple example see <a href="https://klavins.github.io/yase/include/square.hh">include/square.hh</a> and <a href="https://klavins.github.io/yase/src/square.cc">include/square.hh</a> which define a raw square wave oscillator. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[input]</td><td>frequency The frequency of the phasor </td></tr>
+    <tr><td class="paramname">[input]</td><td>amplitude The amplitude of the oscillator (derived classes should scale their outputs by inputs[amplitude], it is not done automatically) </td></tr>
+    <tr><td class="paramname">[input]</td><td>modulation A modulation input that modules that rate of the phasor </td></tr>
+    <tr><td class="paramname">[input]</td><td>tuning This input has units in Cents. It tunes the input frequency of the oscillator. </td></tr>
+    <tr><td class="paramname">[input]</td><td>harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic </td></tr>
+    <tr><td class="paramname">[output]</td><td>signal The output of the oscillator </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:aacae3288ae7d57f27103c177b101a1b4"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_oscillator.html#aacae3288ae7d57f27103c177b101a1b4">init</a> ()</td></tr>

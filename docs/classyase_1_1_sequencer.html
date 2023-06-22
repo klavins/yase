@@ -144,7 +144,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_sequencer.html',''); ini
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_sequencer__inherit__graph.png" border="0" usemap="#ayase_1_1_sequencer_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_sequencer_inherit__map" id="ayase_1_1_sequencer_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,125,107"/>
+<area shape="rect" title="A general purpose sequencers." alt="" coords="5,80,125,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,115,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -155,12 +155,13 @@ $(document).ready(function(){initNavTree('classyase_1_1_sequencer.html',''); ini
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_sequencer__coll__graph.png" border="0" usemap="#ayase_1_1_sequencer_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_sequencer_coll__map" id="ayase_1_1_sequencer_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,125,107"/>
+<area shape="rect" title="A general purpose sequencers." alt="" coords="5,80,125,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,115,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
-<div class="textblock"><p >A general purpose sequencers. Sequences can be built in two ways.</p><ol type="1">
+<div class="textblock"><p >A general purpose sequencers. </p>
+<p >Sequences can be built in two ways.</p><ol type="1">
 <li>You can insert MIDI events or rests using to build up an arbitrary sequence.</li>
 <li>You can allocate a sequence of a given size, and set events for each step. A sequencer requires a <a class="el" href="classyase_1_1_clock.html" title="A raw (aliasing) square wave alternating between -1 and 1.">Clock</a> input.</li>
 </ol>
@@ -409,7 +410,7 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
         </tr>
       </table>
 </div><div class="memdoc">
-<p >Respond to a keydown <a class="el" href="classyase_1_1_event.html" title="Contains MIDI event information.">Event</a> by adding the event to the end of a sequence. Requires the sequencer to be in "recordning" mode via a previous call to the <a class="el" href="classyase_1_1_sequencer.html">Sequencer</a> method <a class="el" href="classyase_1_1_sequencer.html#aeb5c932aa7d73b3ccd3365b858bf7a1a" title="Put the sequencer into record mode so it will respond to calls to keydown()">record()</a> </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Respond to a keydown <a class="el" href="classyase_1_1_event.html" title="Contains MIDI event information.">Event</a> by adding the event to the end of a sequence. Requires the sequencer to be in "recordning" mode via a previous call to the <a class="el" href="classyase_1_1_sequencer.html" title="A general purpose sequencers.">Sequencer</a> method <a class="el" href="classyase_1_1_sequencer.html#aeb5c932aa7d73b3ccd3365b858bf7a1a" title="Put the sequencer into record mode so it will respond to calls to keydown()">record()</a> </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">e</td><td>A MIDI_KEYDOWN <a class="el" href="classyase_1_1_event.html" title="Contains MIDI event information.">Event</a>, perhaps emitted by a Midi module and routed by a <a class="el" href="classyase_1_1_container.html" title="A module and event manager that can contain other modules.">Container</a> listen handler </td></tr>
   </table>

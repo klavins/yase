@@ -24,6 +24,9 @@
 
 namespace yase {
 
+  //! Construct a Sum Module with n inputs
+  //! \param n The number of inputs
+
   Sum::Sum(int n) : size(n) {
 
     for (int i=0; i<size; i++ ) {

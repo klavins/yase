@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_triangle.html',''); init
   <div class="headertitle"><div class="title">yase::Triangle Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="triangle_8hh_source.html">triangle.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::Triangle:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,8 +144,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_triangle.html',''); init
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_triangle__inherit__graph.png" border="0" usemap="#ayase_1_1_triangle_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_triangle_inherit__map" id="ayase_1_1_triangle_inherit__map">
-<area shape="rect" title=" " alt="" coords="10,155,114,181"/>
-<area shape="rect" href="classyase_1_1_oscillator.html" title=" " alt="" coords="5,80,119,107"/>
+<area shape="rect" title="A triangle wave oscillator." alt="" coords="10,155,114,181"/>
+<area shape="rect" href="classyase_1_1_oscillator.html" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="5,80,119,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="12,5,112,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -154,20 +156,38 @@ $(document).ready(function(){initNavTree('classyase_1_1_triangle.html',''); init
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_triangle__coll__graph.png" border="0" usemap="#ayase_1_1_triangle_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_triangle_coll__map" id="ayase_1_1_triangle_coll__map">
-<area shape="rect" title=" " alt="" coords="10,155,114,181"/>
-<area shape="rect" href="classyase_1_1_oscillator.html" title=" " alt="" coords="5,80,119,107"/>
+<area shape="rect" title="A triangle wave oscillator." alt="" coords="10,155,114,181"/>
+<area shape="rect" href="classyase_1_1_oscillator.html" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="5,80,119,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="12,5,112,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A triangle wave oscillator. </p>
+<p >This module produces a triangle wave output and has all the inputs that an <a class="el" href="classyase_1_1_oscillator.html" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived.">Oscillator</a> has. The update method is either</p><ul>
+<li>"raw", which should be wrapped with an <a class="el" href="classyase_1_1_anti_alias.html" title="An anti-aliasing filter.">AntiAlias</a> <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a>;</li>
+<li>"additive", which sums up sine waves according to the fourier expansion of a triangle wave. This is computationally expensive but very nice; or</li>
+<li>"ptr1", which approximated a square wave with a rounded shape using a standard algorithm from the literature [TODO: find the paper for this and cite it] <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[input]</td><td>frequency The frequency </td></tr>
+    <tr><td class="paramname">[input]</td><td>amplitude The amplitude </td></tr>
+    <tr><td class="paramname">[input]</td><td>modulation A modulation input that modules that rate of the square wave </td></tr>
+    <tr><td class="paramname">[input]</td><td>tuning This input has units in Cents. It tunes the input frequency of the oscillator. </td></tr>
+    <tr><td class="paramname">[input]</td><td>harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic </td></tr>
+    <tr><td class="paramname">[output]</td><td>signal The output of the oscillator <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ul>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:af1097aa0fd790546365cc28621d3b200"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_triangle.html#af1097aa0fd790546365cc28621d3b200">init</a> ()</td></tr>
 <tr class="separator:af1097aa0fd790546365cc28621d3b200"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a7872a44603b7517121e394efe1c4d5cb"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_triangle.html#a7872a44603b7517121e394efe1c4d5cb">update</a> ()</td></tr>
 <tr class="separator:a7872a44603b7517121e394efe1c4d5cb"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af90ba06e868b387e0d139cf6d615b8b0"><td class="memItemLeft" align="right" valign="top"><a id="af90ba06e868b387e0d139cf6d615b8b0" name="af90ba06e868b387e0d139cf6d615b8b0"></a>
-void&#160;</td><td class="memItemRight" valign="bottom"><b>set_type</b> (std::string name)</td></tr>
+<tr class="memitem:af90ba06e868b387e0d139cf6d615b8b0"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_triangle.html#af90ba06e868b387e0d139cf6d615b8b0">set_type</a> (std::string name)</td></tr>
 <tr class="separator:af90ba06e868b387e0d139cf6d615b8b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classyase_1_1_module"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classyase_1_1_module')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classyase_1_1_module.html">yase::Module</a></td></tr>
 <tr class="memitem:a90d2321c9ae006808e00621c9f0e108f inherit pub_methods_classyase_1_1_module"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_module.html#a90d2321c9ae006808e00621c9f0e108f">add_input</a> (string name)</td></tr>
@@ -244,6 +264,30 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
 <p >This method should be overridden by derived classes. It will usually be called once, after all modules and connections objects have been added to a synthesizer, but before the synthesizer starts running. </p>
 
 <p>Reimplemented from <a class="el" href="classyase_1_1_oscillator.html#aacae3288ae7d57f27103c177b101a1b4">yase::Oscillator</a>.</p>
+
+</div>
+</div>
+<a id="af90ba06e868b387e0d139cf6d615b8b0" name="af90ba06e868b387e0d139cf6d615b8b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af90ba06e868b387e0d139cf6d615b8b0">&#9670;&nbsp;</a></span>set_type()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void yase::Triangle::set_type </td>
+          <td>(</td>
+          <td class="paramtype">std::string&#160;</td>
+          <td class="paramname"><em>name</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Set the type of the oscillator to either "raw", "additive" or "ptr1". </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">name</td><td>The method to use </td></tr>
+  </table>
+  </dd>
+</dl>
 
 </div>
 </div>

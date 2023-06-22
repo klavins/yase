@@ -1,8 +1,9 @@
 var searchData=
 [
-  ['path_0',['path',['../classyase_1_1_container.html#a0c74c3e8c53f41ea1984490271ed25a0',1,'yase::Container::path(Module &amp;a, Module &amp;b, Module &amp;c)'],['../classyase_1_1_container.html#a7ddaf3575b90284fa17029596251575a',1,'yase::Container::path(Module &amp;a, Module &amp;b, Module &amp;c, Module &amp;d)'],['../classyase_1_1_container.html#a1b3483773fe8a63b8dcf0c6f16575ab1',1,'yase::Container::path(Module &amp;a, Module &amp;b, Module &amp;c, Module &amp;d, Module &amp;e)']]],
-  ['play_1',['play',['../classyase_1_1_sequencer.html#abad5f9f07f1787c177d31c4ed2c24f00',1,'yase::Sequencer']]],
-  ['port_2',['port',['../classyase_1_1_midi_input.html#a9ac1971a6612e35089b4aab68af6728c',1,'yase::MidiInput']]],
-  ['process_5fevents_3',['process_events',['../classyase_1_1_event_manager.html#abe9186302d43969bba25a3970223c069',1,'yase::EventManager']]],
-  ['propagate_5fto_4',['propagate_to',['../classyase_1_1_container.html#a0284b3cc89bdf01bd712d5d2ba0f751a',1,'yase::Container']]]
+  ['map_0',['map',['../classyase_1_1_controls.html#a489c872d5f1e788559a92e6adca55ebd',1,'yase::Controls::map(Fader &amp;fader, int midi_id)'],['../classyase_1_1_controls.html#a0735d8b9fc2c210c981c114014129c4a',1,'yase::Controls::map(Module &amp;module, string name, double min, double max, int midi_id)'],['../classyase_1_1_controls.html#a4dd8e2dbc4f8e00121f27c4f71498e8b',1,'yase::Controls::map(Module &amp;module, int index, double min, double max, int midi_id)'],['../classyase_1_1_controls.html#ad42ae73cabd4d44d18f1c29813ae028e',1,'yase::Controls::map(Module &amp;module, string name, json spec)']]],
+  ['midiinput_1',['MidiInput',['../classyase_1_1_midi_input.html#ac5fd6f0cac2171e2de34dab29e157b7e',1,'yase::MidiInput']]],
+  ['mix_2',['Mix',['../classyase_1_1_mix.html#a220f2644bcebbab3f05e650cf85550bb',1,'yase::Mix']]],
+  ['mixer_3',['Mixer',['../classyase_1_1_mixer.html#a39b560947efa865cb89d2a5200902bd6',1,'yase::Mixer']]],
+  ['momentary_4',['momentary',['../classyase_1_1_buttons.html#a9eee17122c898a2868435ca40ebaca5c',1,'yase::Buttons']]],
+  ['mutex_5',['mutex',['../classyase_1_1_buttons.html#abc42df6c76770ee09294ba0a7e14eb25',1,'yase::Buttons']]]
 ];

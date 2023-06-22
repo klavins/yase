@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_saw.html',''); initResiz
   <div class="headertitle"><div class="title">yase::Saw Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="saw_8hh_source.html">saw.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::Saw:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,8 +144,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_saw.html',''); initResiz
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_saw__inherit__graph.png" border="0" usemap="#ayase_1_1_saw_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_saw_inherit__map" id="ayase_1_1_saw_inherit__map">
-<area shape="rect" title=" " alt="" coords="20,155,104,181"/>
-<area shape="rect" href="classyase_1_1_oscillator.html" title=" " alt="" coords="5,80,119,107"/>
+<area shape="rect" title="A sawtooth wave oscillator." alt="" coords="20,155,104,181"/>
+<area shape="rect" href="classyase_1_1_oscillator.html" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="5,80,119,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="12,5,112,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -154,12 +156,31 @@ $(document).ready(function(){initNavTree('classyase_1_1_saw.html',''); initResiz
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_saw__coll__graph.png" border="0" usemap="#ayase_1_1_saw_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_saw_coll__map" id="ayase_1_1_saw_coll__map">
-<area shape="rect" title=" " alt="" coords="20,155,104,181"/>
-<area shape="rect" href="classyase_1_1_oscillator.html" title=" " alt="" coords="5,80,119,107"/>
+<area shape="rect" title="A sawtooth wave oscillator." alt="" coords="20,155,104,181"/>
+<area shape="rect" href="classyase_1_1_oscillator.html" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="5,80,119,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="12,5,112,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A sawtooth wave oscillator. </p>
+<p >This module produces a sawtooth wave output and has all the inputs that an <a class="el" href="classyase_1_1_oscillator.html" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived.">Oscillator</a> has. The update method is either</p><ul>
+<li>"raw", which should be wrapped with an <a class="el" href="classyase_1_1_anti_alias.html" title="An anti-aliasing filter.">AntiAlias</a> <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a>;</li>
+<li>"additive", which sums up sine waves according to the fourier expansion of a sawtooth wave. This is computationally expensive but very nice; or</li>
+<li>"ptr1", which approximated a square wave with a rounded shape using a standard algorithm from the literature [TODO: find the paper for this and cite it] <dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[input]</td><td>frequency The frequency </td></tr>
+    <tr><td class="paramname">[input]</td><td>amplitude The amplitude </td></tr>
+    <tr><td class="paramname">[input]</td><td>modulation A modulation input that modules that rate of the square wave </td></tr>
+    <tr><td class="paramname">[input]</td><td>tuning This input has units in Cents. It tunes the input frequency of the oscillator. </td></tr>
+    <tr><td class="paramname">[input]</td><td>harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic </td></tr>
+    <tr><td class="paramname">[output]</td><td>signal The output of the oscillator <br  />
+ </td></tr>
+  </table>
+  </dd>
+</dl>
+</li>
+</ul>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a2276b684cd61826faa518500f9f8b430"><td class="memItemLeft" align="right" valign="top"><a id="a2276b684cd61826faa518500f9f8b430" name="a2276b684cd61826faa518500f9f8b430"></a>

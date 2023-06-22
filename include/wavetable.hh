@@ -38,7 +38,7 @@ namespace yase {
     //! (1-64*w) * 9 + 64*w*10
     //!
     //! Example wavetables of the correct format can be found in the
-    //! `wavetables` directory.
+    //! [wavetables](https://klavins.github.io/yase/wavetables) directory.
     //!
     //! \param[in] morph A value in the interval [0,1]
     //! \param[in] amplitude

@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_mix.html',''); initResiz
   <div class="headertitle"><div class="title">yase::Mix Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="mix_8hh_source.html">mix.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::Mix:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,7 +144,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_mix.html',''); initResiz
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_mix__inherit__graph.png" border="0" usemap="#ayase_1_1_mix_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_mix_inherit__map" id="ayase_1_1_mix_inherit__map">
-<area shape="rect" title=" " alt="" coords="88,155,167,181"/>
+<area shape="rect" title="A stereo mixer and Container." alt="" coords="88,155,167,181"/>
 <area shape="rect" href="classyase_1_1_container.html" title="A module and event manager that can contain other modules." alt="" coords="70,80,185,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 <area shape="rect" href="classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="129,5,272,32"/>
@@ -155,13 +157,22 @@ $(document).ready(function(){initNavTree('classyase_1_1_mix.html',''); initResiz
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_mix__coll__graph.png" border="0" usemap="#ayase_1_1_mix_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_mix_coll__map" id="ayase_1_1_mix_coll__map">
-<area shape="rect" title=" " alt="" coords="88,155,167,181"/>
+<area shape="rect" title="A stereo mixer and Container." alt="" coords="88,155,167,181"/>
 <area shape="rect" href="classyase_1_1_container.html" title="A module and event manager that can contain other modules." alt="" coords="70,80,185,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 <area shape="rect" href="classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="129,5,272,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >A stereo mixer and <a class="el" href="classyase_1_1_container.html" title="A module and event manager that can contain other modules.">Container</a>. </p>
+<p >This class provides a more convenient way to mix a number of signals together to produce a left and right output that can be sent to an <a class="el" href="classyase_1_1_audio.html" title="A module wrapper for a stereo PortAudio interface (http://www.portaudio.com/).">Audio</a> module. Since a <a class="el" href="classyase_1_1_mix.html" title="A stereo mixer and Container.">Mix</a> module is also a <a class="el" href="classyase_1_1_container.html" title="A module and event manager that can contain other modules.">Container</a>, you can use add(..) and connect(...) and all the other methods one might need to construct a complex example. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[out]</td><td class="paramname">left</td><td>The left signal </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">right</td><td>The right signal </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
 <tr class="memitem:a220f2644bcebbab3f05e650cf85550bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_mix.html#a220f2644bcebbab3f05e650cf85550bb">Mix</a> (std::vector&lt; std::tuple&lt; <a class="el" href="classyase_1_1_module.html">Module</a> &amp;, string, double, double &gt; &gt; connections)</td></tr>
@@ -304,9 +315,9 @@ double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td><
         </tr>
       </table>
 </div><div class="memdoc">
-<p >A stereo mixer. </p><dl class="params"><dt>Parameters</dt><dd>
+<p >Construct a new <a class="el" href="classyase_1_1_mix.html" title="A stereo mixer and Container.">Mix</a> container. </p><dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramdir">[in]</td><td class="paramname">connections</td><td>&ndash; a vector of tuples of the form { module, "signal_name", 1.23, 3.45 } where module is the module to add, "signal_name" is the name of the signal coming out of the module, and the two numbers are the amplitudes for the left and right channels. <br  />
+    <tr><td class="paramname">connections</td><td>&ndash; a vector of tuples of the form { module, "signal_name", 1.23, 3.45 } where module is the module to add, "signal_name" is the name of the signal coming out of the module, and the two numbers are the amplitudes for the left and right channels. <br  />
  </td></tr>
   </table>
   </dd>

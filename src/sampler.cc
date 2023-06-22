@@ -24,6 +24,8 @@
 
 namespace yase {
 
+  //! Construct a Sampler Module
+  //! \param path The path to write the resulting wav file to
   Sampler::Sampler(string path) : path(path), index(0), active(false) {
 
     signal = add_input("signal");
@@ -46,6 +48,7 @@ namespace yase {
     }
   }    
 
+  //! Turn on the Sampler so that it records its input
   Sampler &Sampler::record() {
 
     active = true;
@@ -53,6 +56,7 @@ namespace yase {
 
   }
 
+  //! Turn off the Sample so that it stops recording
   Sampler &Sampler::stop() {
 
     active = false;
@@ -60,6 +64,8 @@ namespace yase {
 
   }
 
+  //! Save the recorded signal to the file specified by the `path` parameter when the 
+  //! Sampler Module was constructed. 
   Sampler &Sampler::write() {
 
     std::cout << "Recorded " << buffers.size() * BUFFER_LENGTH + index << " samples\n";

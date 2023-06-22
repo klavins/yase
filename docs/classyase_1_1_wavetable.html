@@ -145,7 +145,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_wavetable.html',''); ini
 <div class="center"><img src="classyase_1_1_wavetable__inherit__graph.png" border="0" usemap="#ayase_1_1_wavetable_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_wavetable_inherit__map" id="ayase_1_1_wavetable_inherit__map">
 <area shape="rect" title="A wavetable oscillator." alt="" coords="5,155,124,181"/>
-<area shape="rect" href="classyase_1_1_oscillator.html" title=" " alt="" coords="8,80,121,107"/>
+<area shape="rect" href="classyase_1_1_oscillator.html" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="8,80,121,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,115,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -157,7 +157,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_wavetable.html',''); ini
 <div class="center"><img src="classyase_1_1_wavetable__coll__graph.png" border="0" usemap="#ayase_1_1_wavetable_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_wavetable_coll__map" id="ayase_1_1_wavetable_coll__map">
 <area shape="rect" title="A wavetable oscillator." alt="" coords="5,155,124,181"/>
-<area shape="rect" href="classyase_1_1_oscillator.html" title=" " alt="" coords="8,80,121,107"/>
+<area shape="rect" href="classyase_1_1_oscillator.html" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="8,80,121,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,115,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -165,7 +165,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_wavetable.html',''); ini
 <div class="textblock"><p >A wavetable oscillator. </p>
 <p >The path argument to the constructor should point to a .wav file that has 64 sections of 1024 samples. Each section should be one cycle of the oscillator. You can use the morph input (in [0,1]) to choose the wave to play. The oscillator will interpolate between waves. For example, inputing w=0.1482 result in the following linear combination of waves floor(64*w) = 9 and ceiling(64*w) = 10:</p>
 <p >(1-64*w) * 9 + 64*w*10</p>
-<p >Example wavetables of the correct format can be found in the <code>wavetables</code> directory.</p>
+<p >Example wavetables of the correct format can be found in the <a href="https://klavins.github.io/yase/wavetables">wavetables</a> directory.</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramdir">[in]</td><td class="paramname">morph</td><td>A value in the interval [0,1] </td></tr>

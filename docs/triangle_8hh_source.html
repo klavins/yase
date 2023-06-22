@@ -160,33 +160,36 @@ $(document).ready(function(){initNavTree('triangle_8hh_source.html',''); initRes
 <div class="line"><a id="l00026" name="l00026"></a><span class="lineno">   26</span> </div>
 <div class="line"><a id="l00027" name="l00027"></a><span class="lineno">   27</span><span class="keyword">namespace </span>yase {</div>
 <div class="line"><a id="l00028" name="l00028"></a><span class="lineno">   28</span> </div>
-<div class="line"><a id="l00029" name="l00029"></a><span class="lineno"><a class="line" href="classyase_1_1_triangle.html">   29</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classyase_1_1_triangle.html">Triangle</a> : <span class="keyword">public</span> <a class="code hl_class" href="classyase_1_1_oscillator.html">Oscillator</a> {</div>
 <div class="line"><a id="l00030" name="l00030"></a><span class="lineno">   30</span> </div>
-<div class="line"><a id="l00031" name="l00031"></a><span class="lineno">   31</span>    <span class="keyword">typedef</span>  void (<a class="code hl_class" href="classyase_1_1_triangle.html">Triangle</a>::*UpdateFunction)(); </div>
-<div class="line"><a id="l00032" name="l00032"></a><span class="lineno">   32</span> </div>
-<div class="line"><a id="l00033" name="l00033"></a><span class="lineno">   33</span>    <span class="keyword">public</span>:</div>
-<div class="line"><a id="l00034" name="l00034"></a><span class="lineno">   34</span>      <a class="code hl_class" href="classyase_1_1_triangle.html">Triangle</a>();</div>
-<div class="line"><a id="l00035" name="l00035"></a><span class="lineno">   35</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_triangle.html#af1097aa0fd790546365cc28621d3b200">init</a>();</div>
-<div class="line"><a id="l00036" name="l00036"></a><span class="lineno">   36</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_triangle.html#a7872a44603b7517121e394efe1c4d5cb">update</a>();</div>
-<div class="line"><a id="l00037" name="l00037"></a><span class="lineno">   37</span>      <span class="keywordtype">void</span> set_type(std::string name);</div>
-<div class="line"><a id="l00038" name="l00038"></a><span class="lineno">   38</span> </div>
-<div class="line"><a id="l00039" name="l00039"></a><span class="lineno">   39</span>    <span class="keyword">private</span>:</div>
-<div class="line"><a id="l00040" name="l00040"></a><span class="lineno">   40</span> </div>
-<div class="line"><a id="l00041" name="l00041"></a><span class="lineno">   41</span>      UpdateFunction update_fcn;</div>
 <div class="line"><a id="l00042" name="l00042"></a><span class="lineno">   42</span> </div>
-<div class="line"><a id="l00043" name="l00043"></a><span class="lineno">   43</span>      <span class="keywordtype">void</span> raw();</div>
-<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span>      <span class="keywordtype">void</span> ptr1();</div>
-<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>      <span class="keywordtype">void</span> additive();</div>
+<div class="line"><a id="l00043" name="l00043"></a><span class="lineno"><a class="line" href="classyase_1_1_triangle.html">   43</a></span>    <span class="keyword">class </span><a class="code hl_class" href="classyase_1_1_triangle.html">Triangle</a> : <span class="keyword">public</span> <a class="code hl_class" href="classyase_1_1_oscillator.html">Oscillator</a> {</div>
+<div class="line"><a id="l00044" name="l00044"></a><span class="lineno">   44</span> </div>
+<div class="line"><a id="l00045" name="l00045"></a><span class="lineno">   45</span>    <span class="keyword">typedef</span>  void (<a class="code hl_class" href="classyase_1_1_triangle.html">Triangle</a>::*UpdateFunction)(); </div>
 <div class="line"><a id="l00046" name="l00046"></a><span class="lineno">   46</span> </div>
-<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    };</div>
-<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span> </div>
-<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>}</div>
-<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span> </div>
-<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span><span class="preprocessor">#endif</span></div>
-<div class="ttc" id="aclassyase_1_1_oscillator_html"><div class="ttname"><a href="classyase_1_1_oscillator.html">yase::Oscillator</a></div><div class="ttdef"><b>Definition:</b> oscillator.hh:28</div></div>
-<div class="ttc" id="aclassyase_1_1_triangle_html"><div class="ttname"><a href="classyase_1_1_triangle.html">yase::Triangle</a></div><div class="ttdef"><b>Definition:</b> triangle.hh:29</div></div>
+<div class="line"><a id="l00047" name="l00047"></a><span class="lineno">   47</span>    <span class="keyword">public</span>:</div>
+<div class="line"><a id="l00048" name="l00048"></a><span class="lineno">   48</span>      <a class="code hl_class" href="classyase_1_1_triangle.html">Triangle</a>();</div>
+<div class="line"><a id="l00049" name="l00049"></a><span class="lineno">   49</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_triangle.html#af1097aa0fd790546365cc28621d3b200">init</a>();</div>
+<div class="line"><a id="l00050" name="l00050"></a><span class="lineno">   50</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_triangle.html#a7872a44603b7517121e394efe1c4d5cb">update</a>();</div>
+<div class="line"><a id="l00051" name="l00051"></a><span class="lineno">   51</span>      <span class="keywordtype">void</span> <a class="code hl_function" href="classyase_1_1_triangle.html#af90ba06e868b387e0d139cf6d615b8b0">set_type</a>(std::string name);</div>
+<div class="line"><a id="l00052" name="l00052"></a><span class="lineno">   52</span> </div>
+<div class="line"><a id="l00053" name="l00053"></a><span class="lineno">   53</span>    <span class="keyword">private</span>:</div>
+<div class="line"><a id="l00054" name="l00054"></a><span class="lineno">   54</span> </div>
+<div class="line"><a id="l00055" name="l00055"></a><span class="lineno">   55</span>      UpdateFunction update_fcn;</div>
+<div class="line"><a id="l00056" name="l00056"></a><span class="lineno">   56</span> </div>
+<div class="line"><a id="l00057" name="l00057"></a><span class="lineno">   57</span>      <span class="keywordtype">void</span> raw();</div>
+<div class="line"><a id="l00058" name="l00058"></a><span class="lineno">   58</span>      <span class="keywordtype">void</span> ptr1();</div>
+<div class="line"><a id="l00059" name="l00059"></a><span class="lineno">   59</span>      <span class="keywordtype">void</span> additive();</div>
+<div class="line"><a id="l00060" name="l00060"></a><span class="lineno">   60</span> </div>
+<div class="line"><a id="l00061" name="l00061"></a><span class="lineno">   61</span>    };</div>
+<div class="line"><a id="l00062" name="l00062"></a><span class="lineno">   62</span> </div>
+<div class="line"><a id="l00063" name="l00063"></a><span class="lineno">   63</span>}</div>
+<div class="line"><a id="l00064" name="l00064"></a><span class="lineno">   64</span> </div>
+<div class="line"><a id="l00065" name="l00065"></a><span class="lineno">   65</span><span class="preprocessor">#endif</span></div>
+<div class="ttc" id="aclassyase_1_1_oscillator_html"><div class="ttname"><a href="classyase_1_1_oscillator.html">yase::Oscillator</a></div><div class="ttdoc">An abstract base class from which oscillators like Sine, Saw, and Triangle are derived.</div><div class="ttdef"><b>Definition:</b> oscillator.hh:42</div></div>
+<div class="ttc" id="aclassyase_1_1_triangle_html"><div class="ttname"><a href="classyase_1_1_triangle.html">yase::Triangle</a></div><div class="ttdoc">A triangle wave oscillator.</div><div class="ttdef"><b>Definition:</b> triangle.hh:43</div></div>
 <div class="ttc" id="aclassyase_1_1_triangle_html_a7872a44603b7517121e394efe1c4d5cb"><div class="ttname"><a href="classyase_1_1_triangle.html#a7872a44603b7517121e394efe1c4d5cb">yase::Triangle::update</a></div><div class="ttdeci">void update()</div><div class="ttdef"><b>Definition:</b> triangle.cc:33</div></div>
 <div class="ttc" id="aclassyase_1_1_triangle_html_af1097aa0fd790546365cc28621d3b200"><div class="ttname"><a href="classyase_1_1_triangle.html#af1097aa0fd790546365cc28621d3b200">yase::Triangle::init</a></div><div class="ttdeci">void init()</div><div class="ttdef"><b>Definition:</b> triangle.cc:29</div></div>
+<div class="ttc" id="aclassyase_1_1_triangle_html_af90ba06e868b387e0d139cf6d615b8b0"><div class="ttname"><a href="classyase_1_1_triangle.html#af90ba06e868b387e0d139cf6d615b8b0">yase::Triangle::set_type</a></div><div class="ttdeci">void set_type(std::string name)</div><div class="ttdef"><b>Definition:</b> triangle.cc:41</div></div>
 </div><!-- fragment --></div><!-- contents -->
 </div><!-- doc-content -->
 <!-- start footer part -->

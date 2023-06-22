@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_f_f_t.html',''); initRes
   <div class="headertitle"><div class="title">yase::FFT Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="fft_8hh_source.html">fft.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::FFT:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,7 +144,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_f_f_t.html',''); initRes
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_f_f_t__inherit__graph.png" border="0" usemap="#ayase_1_1_f_f_t_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_f_f_t_inherit__map" id="ayase_1_1_f_f_t_inherit__map">
-<area shape="rect" title=" " alt="" coords="14,80,97,107"/>
+<area shape="rect" title="Compute an Fast Fourier Transform." alt="" coords="14,80,97,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -153,15 +155,23 @@ $(document).ready(function(){initNavTree('classyase_1_1_f_f_t.html',''); initRes
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_f_f_t__coll__graph.png" border="0" usemap="#ayase_1_1_f_f_t_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_f_f_t_coll__map" id="ayase_1_1_f_f_t_coll__map">
-<area shape="rect" title=" " alt="" coords="14,80,97,107"/>
+<area shape="rect" title="Compute an Fast Fourier Transform." alt="" coords="14,80,97,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Compute an Fast Fourier <a class="el" href="classyase_1_1_transform.html" title="Transform an input signal with a stateless, user-defined function.">Transform</a>. </p>
+<p >The <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a> can be used to compute a Fast Fourier <a class="el" href="classyase_1_1_transform.html" title="Transform an input signal with a stateless, user-defined function.">Transform</a> on its input. The resulting transform is available as a vector of fftw_complex numbers. See the documentation for the library fftw3. The data can also be printed to stdout using the <a class="el" href="classyase_1_1_f_f_t.html#aca328d95c9daa8f3370107d101c8240d" title="Print the FFT data to stdout.">ascii()</a>, <a class="el" href="classyase_1_1_f_f_t.html#a9d2fa9e083f74cccf01b6e65959c3c3e" title="Print a nice plot of the FFT to stdout that can be viewed with a web browser.">html()</a>, or <a class="el" href="classyase_1_1_f_f_t.html#adc8e3bd748501692091095a71be9497e" title="Print the FFT data as a json object to stdout.">json()</a> methods. See the example in <a href="https://klavins.github.io/yase/examples/FFT">examples/FFT</a> for a demonstration. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">[input]</td><td>signal The input signal </td></tr>
+    <tr><td class="paramname">[output]</td><td>ready 0 when the <a class="el" href="classyase_1_1_f_f_t.html" title="Compute an Fast Fourier Transform.">FFT</a> is still collecting data, and 1 otherwise </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a4588cc4367fd7792d346b5c341213f1c"><td class="memItemLeft" align="right" valign="top"><a id="a4588cc4367fd7792d346b5c341213f1c" name="a4588cc4367fd7792d346b5c341213f1c"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>FFT</b> (int size)</td></tr>
+<tr class="memitem:a4588cc4367fd7792d346b5c341213f1c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_f_f_t.html#a4588cc4367fd7792d346b5c341213f1c">FFT</a> (int size)</td></tr>
 <tr class="separator:a4588cc4367fd7792d346b5c341213f1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a672350c0b8973d04f99834ad4beffeaf"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_f_f_t.html#a672350c0b8973d04f99834ad4beffeaf">init</a> ()</td></tr>
 <tr class="separator:a672350c0b8973d04f99834ad4beffeaf"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -169,15 +179,17 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:aec46d2e087f6fc39da9b4a6e26a711a0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aca328d95c9daa8f3370107d101c8240d"><td class="memItemLeft" align="right" valign="top"><a id="aca328d95c9daa8f3370107d101c8240d" name="aca328d95c9daa8f3370107d101c8240d"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>ascii</b> ()</td></tr>
+<tr class="memdesc:aca328d95c9daa8f3370107d101c8240d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the <a class="el" href="classyase_1_1_f_f_t.html" title="Compute an Fast Fourier Transform.">FFT</a> data to stdout. <br /></td></tr>
 <tr class="separator:aca328d95c9daa8f3370107d101c8240d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a9d2fa9e083f74cccf01b6e65959c3c3e"><td class="memItemLeft" align="right" valign="top"><a id="a9d2fa9e083f74cccf01b6e65959c3c3e" name="a9d2fa9e083f74cccf01b6e65959c3c3e"></a>
 void&#160;</td><td class="memItemRight" valign="bottom"><b>html</b> ()</td></tr>
+<tr class="memdesc:a9d2fa9e083f74cccf01b6e65959c3c3e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print a nice plot of the <a class="el" href="classyase_1_1_f_f_t.html" title="Compute an Fast Fourier Transform.">FFT</a> to stdout that can be viewed with a web browser. <br /></td></tr>
 <tr class="separator:a9d2fa9e083f74cccf01b6e65959c3c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adc8e3bd748501692091095a71be9497e"><td class="memItemLeft" align="right" valign="top"><a id="adc8e3bd748501692091095a71be9497e" name="adc8e3bd748501692091095a71be9497e"></a>
 std::string&#160;</td><td class="memItemRight" valign="bottom"><b>json</b> ()</td></tr>
+<tr class="memdesc:adc8e3bd748501692091095a71be9497e"><td class="mdescLeft">&#160;</td><td class="mdescRight">Print the <a class="el" href="classyase_1_1_f_f_t.html" title="Compute an Fast Fourier Transform.">FFT</a> data as a json object to stdout. <br /></td></tr>
 <tr class="separator:adc8e3bd748501692091095a71be9497e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aaa544bddd3cfaed46e014d48bf95ea38"><td class="memItemLeft" align="right" valign="top"><a id="aaa544bddd3cfaed46e014d48bf95ea38" name="aaa544bddd3cfaed46e014d48bf95ea38"></a>
-fftw_complex *&#160;</td><td class="memItemRight" valign="bottom"><b>get</b> ()</td></tr>
+<tr class="memitem:aaa544bddd3cfaed46e014d48bf95ea38"><td class="memItemLeft" align="right" valign="top">fftw_complex *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_f_f_t.html#aaa544bddd3cfaed46e014d48bf95ea38">get</a> ()</td></tr>
 <tr class="separator:aaa544bddd3cfaed46e014d48bf95ea38"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_methods_classyase_1_1_module"><td colspan="2" onclick="javascript:toggleInherit('pub_methods_classyase_1_1_module')"><img src="closed.png" alt="-"/>&#160;Public Member Functions inherited from <a class="el" href="classyase_1_1_module.html">yase::Module</a></td></tr>
 <tr class="memitem:a90d2321c9ae006808e00621c9f0e108f inherit pub_methods_classyase_1_1_module"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_module.html#a90d2321c9ae006808e00621c9f0e108f">add_input</a> (string name)</td></tr>
@@ -228,7 +240,50 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ts</b> (double s)
 double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td></tr>
 <tr class="separator:a889126afdb841a203907486c8faa3a9d inherit pub_methods_classyase_1_1_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a4588cc4367fd7792d346b5c341213f1c" name="a4588cc4367fd7792d346b5c341213f1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4588cc4367fd7792d346b5c341213f1c">&#9670;&nbsp;</a></span>FFT()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">yase::FFT::FFT </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>size</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Construct an <a class="el" href="classyase_1_1_f_f_t.html" title="Compute an Fast Fourier Transform.">FFT</a> module with the given size. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">size</td><td>The number of samples to transform </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
+<a id="aaa544bddd3cfaed46e014d48bf95ea38" name="aaa544bddd3cfaed46e014d48bf95ea38"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aaa544bddd3cfaed46e014d48bf95ea38">&#9670;&nbsp;</a></span>get()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">fftw_complex * yase::FFT::get </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Get the <a class="el" href="classyase_1_1_f_f_t.html" title="Compute an Fast Fourier Transform.">FFT</a> data. This method has the side effect of resetting the <a class="el" href="classyase_1_1_f_f_t.html" title="Compute an Fast Fourier Transform.">FFT</a> so that it starts over. </p>
+
+</div>
+</div>
 <a id="a672350c0b8973d04f99834ad4beffeaf" name="a672350c0b8973d04f99834ad4beffeaf"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a672350c0b8973d04f99834ad4beffeaf">&#9670;&nbsp;</a></span>init()</h2>
 

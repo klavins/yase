@@ -1,7 +1,7 @@
 <div class='showy' style='text-align: center;'>
   <h1 class='github-only'>Yet Another Synthesizer Engine</h1>
   <img class='github-only' src="yase-logo.png" height=100px>
-  <p>YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sounds sources.</p>
+  <p>YASE is a modular digital audio synthesis and processing library designed specifically to teach digital audio synthesis. You can use it to make sounds, sequences, and effects. You can connect MIDI devices and sound sources.</p>
   <a href="http://klavinslab.org/yase" class='github-only'>http://klavinslab.org/yase</a>
   <br class='github-only'>
 </div>
@@ -26,7 +26,7 @@ More information about YASE can be found at
 
 <h2>Example</h2>
 
-Here's an example of a basic YASE program that makes a neat sound. There are more examples in the `/examples` directory of this repository. 
+Here's an example of a basic YASE program that makes a neat sound. There are more examples in the [examples](https://github.com/klavins/yase/examnples) directory of this repository. 
 
 ```cpp
 #include "yase.hh"

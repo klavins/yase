@@ -4,7 +4,7 @@ Tutorial: Yase Basics
 A Sawtooth Wave
 ===
 
-In this tutorial, we will synthesize a patch to illustrate several basic features of yase including oscillators, filters, envelopes, and ani-aliasing. We will build up complexity incrementally starting from a sawtooth wave. Our starting point is to include the Yase library, open the *yase* namespace (so we do not have to prepend Yase class names with yase::), and write a *main* function that does nothing for now. 
+In this tutorial, we will synthesize a patch to illustrate several basic features of yase including oscillators, filters, envelopes, and anti-aliasing. We will build up complexity incrementally starting from a sawtooth wave. Our starting point is to include the Yase library, open the *yase* namespace (so we do not have to prepend Yase class names with yase::), and write a *main* function that does nothing for now. 
 
 ```cpp 
 #include "yase.hh"
@@ -35,7 +35,7 @@ synth.connect(saw, "signal", audio, "left")
      .connect(saw, "signal", audio, "right");
 ```
 
-Specifcally, these connect the "signal" output of the *saw* module to the "left" and "right" inputs of the *audio* module. Later, each time the *synth* module is updated, it will first copy the output of the *saw* module to the inputs of the audio module, and then call the update methods of the *saw* and *audio* modules. Note the we are using the strings "signal", "left", and "right" to refer to the inputs and outpus of these modules. That may seem ill-advised in what is supposed to be fast C++ code, since string methods are typically slow. But they are only used in the setup phase. Internally, Yase translates these names to integer indices that are used during execution, so everything is as fast as can be. 
+Specifcally, these connect the "signal" output of the *saw* module to the "left" and "right" inputs of the *audio* module. Later, each time the *synth* module is updated, it will first copy the output of the *saw* module to the inputs of the audio module, and then call the update methods of the *saw* and *audio* modules. Note the we are using the strings "signal", "left", and "right" to refer to the inputs and outputs of these modules. That may seem ill-advised in what is supposed to be fast C++ code, since string methods are typically slow. But they are only used in the setup phase. Internally, Yase translates these names to integer indices that are used during execution, so everything is as fast as can be. 
 
 Note: Many *Container* methods, like *connect* return a reference to the container so that you can "method chain". The above is the same as writing
 
@@ -148,7 +148,7 @@ Compiling and running the resulting code should now play the melody over and ove
 Anti-Aliasing
 ===
 
-The raw sawtooth waveform we are using does not sound great. One reason is that sampling it at 44100 Hz produces artifacts due to aliasing. These can be heard as a faint buzz. There are a variety of ways to fix this in Yase. One is to build the sawtooth wave from sine waves. Another is to soften the waveform. These each have their pros and cons. Here, we'll wrap an [AntiAlias](classyase_1_1_anti_alias.html) module around the sawtooth module. It samples the sawtooth at twice the normal sample rate, so 88200 Hz, and then applies a low pass filter to cutt off frequencies lower than 22050 Hz. The module then downsamples back to 44100 Hz. Thus, frequencies that would have reflected off of the 22050 Nyquist sampling rate to produce a buzz are now significantly attenuated. The result is a noticable improvement. Using this module is a sample as replacing the *saw* declartion with
+The raw sawtooth waveform we are using does not sound great. One reason is that sampling it at 44100 Hz produces artifacts due to aliasing. These can be heard as a faint buzz. There are a variety of ways to fix this in Yase. One is to build the sawtooth wave from sine waves. Another is to soften the waveform. These each have their pros and cons. Here, we'll wrap an [AntiAlias](classyase_1_1_anti_alias.html) module around the sawtooth module. It samples the sawtooth at twice the normal sample rate, so 88200 Hz, and then applies a low pass filter to cut off frequencies lower than 22050 Hz. The module then downsamples back to 44100 Hz. Thus, frequencies that would have reflected off of the 22050 Nyquist sampling rate to produce a buzz are now significantly attenuated. The result is a noticable improvement. Using this module is as simple as replacing the *saw* declartion with
 
 ```cpp
 Saw raw("raw");
@@ -418,7 +418,7 @@ synth.path(saw, filter, echo, gain, invert)
      .connect(invert, "signal", audio, "right");
 ```
 
-Then we set the paramters of the echo effect. The "duration" of the echo is an integer number of samples to store in the echo's delay buffer. For a 0.5 s delay, we use SAMPLE_RATE / 2 = 22050 samples:
+Then we set the parameters of the echo effect. The "duration" of the echo is an integer number of samples to store in the echo's delay buffer. For a 0.5 s delay, we use SAMPLE_RATE / 2 = 22050 samples:
 
 ```cpp
 echo.set_input("duration", SAMPLE_RATE/2);

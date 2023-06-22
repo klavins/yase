@@ -26,6 +26,7 @@
 namespace yase {
 
     //! Transform an input signal with a stateless, user-defined function
+    
     //! For example
     //! \code
     //! Transform invert( [] (double u) { return -u; });

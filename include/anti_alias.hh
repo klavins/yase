@@ -26,6 +26,28 @@
 
 namespace yase {
 
+    //! An anti-aliasing filter. 
+
+    //! This module wraps around other modules duplicating their inputs and providing
+    //! a single output named "signal". The module works by running at twice the normal
+    //! sample rate and using a biquad filter to filter out frequencies lower than
+    //! half the sample rate. For example, to use it with a raw sawtooth oscillator,
+    //! which is notorious for producing aliased frequencies, you would do
+    //! \code
+    //! Saw raw_saw("raw");
+    //! AntiAlias saw(raw_saw);
+    //! Container container;
+    //! Audio audio;
+    //! container.connect(saw, "signal", audio, "left");
+    //! \endcode
+    //! Note that you should add the AntiAlias Module to whatever container you 
+    //! you building and not the underlying module. If you add both, you're 
+    //! underlying module will be updated twice per timestep. 
+    //!
+    //! \param[in] * all parameters of underlying module
+    //! \param[out] signal the anti-aliased output of the underlying module
+    //!
+
     class AntiAlias : public Module {
 
     public:

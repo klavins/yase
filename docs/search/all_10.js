@@ -1,12 +1,13 @@
 var searchData=
 [
-  ['tappeddelay_0',['TappedDelay',['../classyase_1_1_tapped_delay.html',1,'yase']]],
-  ['thread_5floop_1',['thread_loop',['../classyase_1_1_container.html#a60c30aba1947a928c3b4ad831cdb5582',1,'yase::Container']]],
-  ['timer_2',['Timer',['../classyase_1_1_timer.html',1,'yase']]],
-  ['toggle_3',['toggle',['../classyase_1_1_biquad.html#a3114bff8fbec79f02c4392186dfc6852',1,'yase::Biquad::toggle()'],['../classyase_1_1_buttons.html#a472e4ff32f35103befc49db903ed21ee',1,'yase::Buttons::toggle()']]],
-  ['transform_4',['Transform',['../classyase_1_1_transform.html',1,'yase']]],
-  ['triangle_5',['Triangle',['../classyase_1_1_triangle.html',1,'yase']]],
-  ['trigger_6',['trigger',['../classyase_1_1_sample.html#ac2b6ed3757bc7234b48cc1bab9b1f197',1,'yase::Sample']]],
-  ['ts_7',['TS',['../globals_8hh.html#aaade3232ef08cf18b4f3a20a0a2c6fb6',1,'globals.hh']]],
-  ['tutorial_3a_20yase_20basics_8',['Tutorial: Yase Basics',['../md_tutorials_intro.html',1,'']]]
+  ['randomize_0',['randomize',['../classyase_1_1_controls.html#a4f96987ae47aa1e315b75e164dcb10e6',1,'yase::Controls::randomize()'],['../classyase_1_1_fader.html#a1b0efcb646eee5c1c7f6ff3d172a18ff',1,'yase::Fader::randomize()']]],
+  ['recalculate_1',['recalculate',['../classyase_1_1_biquad.html#a0f58586996be81ec95dc85a6387e134a',1,'yase::Biquad']]],
+  ['record_2',['record',['../classyase_1_1_sampler.html#a50ce13a78fb30d3bc76189052ee4056c',1,'yase::Sampler::record()'],['../classyase_1_1_sequencer.html#aeb5c932aa7d73b3ccd3365b858bf7a1a',1,'yase::Sequencer::record()']]],
+  ['reset_3',['reset',['../classyase_1_1_sequencer.html#a953b192418a7293414f6c61dc9a72f25',1,'yase::Sequencer::reset()'],['../classyase_1_1_timer.html#ac965c5ae03d1576881bbeda70e0236aa',1,'yase::Timer::reset()']]],
+  ['resonator_4',['Resonator',['../classyase_1_1_resonator.html',1,'yase']]],
+  ['respond_5fto_5',['respond_to',['../classyase_1_1_event_manager.html#aa1faee02f12480fe232a62268ebf3a82',1,'yase::EventManager']]],
+  ['rest_6',['rest',['../classyase_1_1_sequencer.html#ae4346cd4b52068776feacc25f7b154ed',1,'yase::Sequencer']]],
+  ['run_7',['run',['../classyase_1_1_container.html#a80e67995f962aab6b811810fcf5b2322',1,'yase::Container']]],
+  ['run_5fagain_8',['run_again',['../classyase_1_1_container.html#a70a86e31b16f95194452c327bf686b94',1,'yase::Container']]],
+  ['run_5fthreaded_9',['run_threaded',['../classyase_1_1_container.html#a7eb061589d2ae1a4f2b3ba61e780381a',1,'yase::Container']]]
 ];

@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_anti_alias.html',''); in
   <div class="headertitle"><div class="title">yase::AntiAlias Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="anti__alias_8hh_source.html">anti_alias.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::AntiAlias:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,7 +144,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_anti_alias.html',''); in
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_anti_alias__inherit__graph.png" border="0" usemap="#ayase_1_1_anti_alias_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_anti_alias_inherit__map" id="ayase_1_1_anti_alias_inherit__map">
-<area shape="rect" title=" " alt="" coords="5,80,116,107"/>
+<area shape="rect" title="An anti&#45;aliasing filter." alt="" coords="5,80,116,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="11,5,111,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -153,15 +155,30 @@ $(document).ready(function(){initNavTree('classyase_1_1_anti_alias.html',''); in
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_anti_alias__coll__graph.png" border="0" usemap="#ayase_1_1_anti_alias_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_anti_alias_coll__map" id="ayase_1_1_anti_alias_coll__map">
-<area shape="rect" title=" " alt="" coords="5,80,116,107"/>
+<area shape="rect" title="An anti&#45;aliasing filter." alt="" coords="5,80,116,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="11,5,111,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >An anti-aliasing filter. </p>
+<p >This module wraps around other modules duplicating their inputs and providing a single output named "signal". The module works by running at twice the normal sample rate and using a biquad filter to filter out frequencies lower than half the sample rate. For example, to use it with a raw sawtooth oscillator, which is notorious for producing aliased frequencies, you would do </p><div class="fragment"><div class="line">Saw raw_saw(<span class="stringliteral">&quot;raw&quot;</span>);</div>
+<div class="line"><a class="code hl_function" href="classyase_1_1_anti_alias.html#a2a04398c0b50b868a3182bcc70171ac0">AntiAlias</a> saw(raw_saw);</div>
+<div class="line">Container container;</div>
+<div class="line">Audio audio;</div>
+<div class="line">container.connect(saw, <span class="stringliteral">&quot;signal&quot;</span>, audio, <span class="stringliteral">&quot;left&quot;</span>);</div>
+<div class="ttc" id="aclassyase_1_1_anti_alias_html_a2a04398c0b50b868a3182bcc70171ac0"><div class="ttname"><a href="classyase_1_1_anti_alias.html#a2a04398c0b50b868a3182bcc70171ac0">yase::AntiAlias::AntiAlias</a></div><div class="ttdeci">AntiAlias(Module &amp;m)</div><div class="ttdef"><b>Definition:</b> anti_alias.cc:30</div></div>
+</div><!-- fragment --><p> Note that you should add the <a class="el" href="classyase_1_1_anti_alias.html" title="An anti-aliasing filter.">AntiAlias</a> <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a> to whatever container you you building and not the underlying module. If you add both, you're underlying module will be updated twice per timestep.</p>
+<dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">*</td><td>all parameters of underlying module </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">signal</td><td>the anti-aliased output of the underlying module </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:a2a04398c0b50b868a3182bcc70171ac0"><td class="memItemLeft" align="right" valign="top"><a id="a2a04398c0b50b868a3182bcc70171ac0" name="a2a04398c0b50b868a3182bcc70171ac0"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>AntiAlias</b> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;m)</td></tr>
+<tr class="memitem:a2a04398c0b50b868a3182bcc70171ac0"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_anti_alias.html#a2a04398c0b50b868a3182bcc70171ac0">AntiAlias</a> (<a class="el" href="classyase_1_1_module.html">Module</a> &amp;m)</td></tr>
 <tr class="separator:a2a04398c0b50b868a3182bcc70171ac0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ace8398a5ef330298fd68619dd098d90b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_anti_alias.html#ace8398a5ef330298fd68619dd098d90b">init</a> ()</td></tr>
 <tr class="separator:ace8398a5ef330298fd68619dd098d90b"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -219,6 +236,31 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ts</b> (double s)
 double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td></tr>
 <tr class="separator:a889126afdb841a203907486c8faa3a9d inherit pub_methods_classyase_1_1_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="a2a04398c0b50b868a3182bcc70171ac0" name="a2a04398c0b50b868a3182bcc70171ac0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2a04398c0b50b868a3182bcc70171ac0">&#9670;&nbsp;</a></span>AntiAlias()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">yase::AntiAlias::AntiAlias </td>
+          <td>(</td>
+          <td class="paramtype"><a class="el" href="classyase_1_1_module.html">Module</a> &amp;&#160;</td>
+          <td class="paramname"><em>m</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Construct an anti-aliased version the <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a> m. All inputs of m will be available to the resulting <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a>. The <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a> m must provide an output named "signal" which will be availabled to the resulting anti-aliased <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a>. </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">m</td><td>A <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a> to be anti-aliased </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="ace8398a5ef330298fd68619dd098d90b" name="ace8398a5ef330298fd68619dd098d90b"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#ace8398a5ef330298fd68619dd098d90b">&#9670;&nbsp;</a></span>init()</h2>

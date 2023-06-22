@@ -42,6 +42,7 @@ namespace yase {
     value = 0.0;
   }
 
+  //! Reset the envelope to output the value specified by the input "from"
   void ExpDecay::trigger() {
     value = 1.0;
   }

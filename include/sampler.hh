@@ -25,6 +25,33 @@
 
 namespace yase {
 
+    //! Record a sample
+
+    //! Record a sample and save it to a file as a wav. 
+    //! For example, here is how you can use it to record something from
+    //! your Audio input. 
+    //! \code
+    //! int main(int argc, char * argv[]) {
+    //!
+    //!    Audio audio(2,1);
+    //!    Sampler sampler(argv[1]);
+    //!    Container container;
+    //!        
+    //!    container.add(sampler)
+    //!             .add(audio)
+    //!             .connect(audio, "line_in0", sampler, "signal");
+    //!        
+    //!    sampler.record();
+    //!    container.run(UNTIL_INTERRUPTED);
+    //!
+    //!    sampler.stop()
+    //!           .write();
+    //!
+    //!    return 0; 
+    //!
+    //! }
+    //! \endcode
+    //! \param[in] signal The signal to record
     class Sampler : public Module {
 
     public:

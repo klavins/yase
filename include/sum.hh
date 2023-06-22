@@ -25,6 +25,11 @@
 
 namespace yase {
 
+    //! Summing Module
+
+    //! Sums its n inputs to produce a single output
+    //! \param[in] signal_i The ith signal
+    //! \param[out] signal The sum of the n input signals
     class Sum : public Module {
 
     public:

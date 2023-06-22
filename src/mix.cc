@@ -23,6 +23,12 @@
 
 namespace yase {
 
+  //! Construct a new Mix container. 
+  //! \param connections -- a vector of tuples of the form
+  //! { module, "signal_name", 1.23, 3.45 } where module is the module to 
+  //! add, "signal_name" is the name of the signal coming out of the module,
+  //! and the two numbers are the amplitudes for the left and right channels.     
+
   Mix::Mix(std::vector<std::tuple<Module&, string, double, double>> connections) 
      : Container(), 
        mix_left(connections.size()),

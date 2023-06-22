@@ -135,6 +135,8 @@ $(document).ready(function(){initNavTree('classyase_1_1_sum.html',''); initResiz
   <div class="headertitle"><div class="title">yase::Sum Class Reference</div></div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="sum_8hh_source.html">sum.hh</a>&gt;</code></p>
 <div id="dynsection-0" onclick="return toggleVisibility(this)" class="dynheader closed" style="cursor:pointer;">
   <img id="dynsection-0-trigger" src="closed.png" alt="+"/> Inheritance diagram for yase::Sum:</div>
 <div id="dynsection-0-summary" class="dynsummary" style="display:block;">
@@ -142,7 +144,7 @@ $(document).ready(function(){initNavTree('classyase_1_1_sum.html',''); initResiz
 <div id="dynsection-0-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_sum__inherit__graph.png" border="0" usemap="#ayase_1_1_sum_inherit__map" alt="Inheritance graph"/></div>
 <map name="ayase_1_1_sum_inherit__map" id="ayase_1_1_sum_inherit__map">
-<area shape="rect" title=" " alt="" coords="13,80,98,107"/>
+<area shape="rect" title="Summing Module." alt="" coords="13,80,98,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
@@ -153,15 +155,23 @@ $(document).ready(function(){initNavTree('classyase_1_1_sum.html',''); initResiz
 <div id="dynsection-1-content" class="dyncontent" style="display:none;">
 <div class="center"><img src="classyase_1_1_sum__coll__graph.png" border="0" usemap="#ayase_1_1_sum_coll__map" alt="Collaboration graph"/></div>
 <map name="ayase_1_1_sum_coll__map" id="ayase_1_1_sum_coll__map">
-<area shape="rect" title=" " alt="" coords="13,80,98,107"/>
+<area shape="rect" title="Summing Module." alt="" coords="13,80,98,107"/>
 <area shape="rect" href="classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
 </map>
 <center><span class="legend">[<a target="top" href="graph_legend.html">legend</a>]</span></center></div>
-<table class="memberdecls">
+<a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
+<div class="textblock"><p >Summing <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a>. </p>
+<p >Sums its n inputs to produce a single output </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramdir">[in]</td><td class="paramname">signal_i</td><td>The ith signal </td></tr>
+    <tr><td class="paramdir">[out]</td><td class="paramname">signal</td><td>The sum of the n input signals </td></tr>
+  </table>
+  </dd>
+</dl>
+</div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a id="pub-methods" name="pub-methods"></a>
 Public Member Functions</h2></td></tr>
-<tr class="memitem:aa9b073baa2ca11d2057f981a10fd752e"><td class="memItemLeft" align="right" valign="top"><a id="aa9b073baa2ca11d2057f981a10fd752e" name="aa9b073baa2ca11d2057f981a10fd752e"></a>
-&#160;</td><td class="memItemRight" valign="bottom"><b>Sum</b> (int n)</td></tr>
+<tr class="memitem:aa9b073baa2ca11d2057f981a10fd752e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_sum.html#aa9b073baa2ca11d2057f981a10fd752e">Sum</a> (int n)</td></tr>
 <tr class="separator:aa9b073baa2ca11d2057f981a10fd752e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aadc5b58930326b3fd9ab5ebd0d448531"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classyase_1_1_sum.html#aadc5b58930326b3fd9ab5ebd0d448531">init</a> ()</td></tr>
 <tr class="separator:aadc5b58930326b3fd9ab5ebd0d448531"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -216,6 +226,31 @@ void&#160;</td><td class="memItemRight" valign="bottom"><b>set_ts</b> (double s)
 double&#160;</td><td class="memItemRight" valign="bottom"><b>get_ts</b> ()</td></tr>
 <tr class="separator:a889126afdb841a203907486c8faa3a9d inherit pub_methods_classyase_1_1_module"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
+<h2 class="groupheader">Constructor &amp; Destructor Documentation</h2>
+<a id="aa9b073baa2ca11d2057f981a10fd752e" name="aa9b073baa2ca11d2057f981a10fd752e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa9b073baa2ca11d2057f981a10fd752e">&#9670;&nbsp;</a></span>Sum()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">yase::Sum::Sum </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>n</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p >Construct a <a class="el" href="classyase_1_1_sum.html" title="Summing Module.">Sum</a> <a class="el" href="classyase_1_1_module.html" title="An abstract base class for modules.">Module</a> with n inputs </p><dl class="params"><dt>Parameters</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>The number of inputs </td></tr>
+  </table>
+  </dd>
+</dl>
+
+</div>
+</div>
 <h2 class="groupheader">Member Function Documentation</h2>
 <a id="aadc5b58930326b3fd9ab5ebd0d448531" name="aadc5b58930326b3fd9ab5ebd0d448531"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aadc5b58930326b3fd9ab5ebd0d448531">&#9670;&nbsp;</a></span>init()</h2>
