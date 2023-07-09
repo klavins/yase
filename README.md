@@ -66,6 +66,7 @@ To date, Yase has been developed on MacOS 11.6.1. The following are required:
 - Google Test: which can be installed with 'brew install googletest'
 - Niels Lohman's JSON library, which can be installed with `brew install nlohmann-json`
 - FFTW, which can be installed with `brew install fftw`
+- AudioFile, which can be installed with `brew --prefix adamstark-audiofile`
 - To make the docs, you'll need doxygen and graphviz: `brew install doxygen graphviz`
 
 On some Macs things are installed in strange places. Doing the following helps the linker work right.

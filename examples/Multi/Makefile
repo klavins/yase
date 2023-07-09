@@ -31,7 +31,7 @@ clean:
 
 #Link
 $(EX_TARGETDIR)/$(EX_TARGET): $(OBJECTS)
-	$(CC) $(LIBS) $(LIBDIR) $(OBJECTS) -o $@
+	$(CC) $(CFLAGS) $(LIBS) $(LIBDIR) $(OBJECTS) -o $@
 	
 #Compile
 $(EX_BUILDDIR)/%.o: $(EX_SRCDIR)/%.$(SRCEXT) 
