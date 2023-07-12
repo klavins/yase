@@ -50,7 +50,7 @@ void sighandler(int sig) {
 namespace yase {
 
   Container::Container() {
-
+      interuppted = false;
   }
 
   //! Adds a module to the container. When the container is run, the module will
@@ -380,6 +380,10 @@ namespace yase {
     for(int i=0; !interuppted && ( num_steps < 0 || i < num_steps ); i++ ) {
       update();
     }    
+  }
+
+  void Container::stop() {
+     interuppted = true;
   }
 
   //////////////////////////////////////////////////////////////////////////////////////////////

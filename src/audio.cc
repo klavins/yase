@@ -26,7 +26,8 @@ namespace yase {
 
   Audio::Audio(int num_output_channels, int num_input_channels) : 
     num_output_channels(num_output_channels),
-    num_input_channels(num_input_channels) {
+    num_input_channels(num_input_channels),
+    initialized(false) {
 
       std::cout << "Audio module requesting " << num_input_channels << " input channel(s)\n";      
 
@@ -53,80 +54,86 @@ namespace yase {
 
   void Audio::init() {
 
-    err = Pa_Initialize();
+    if ( !initialized ) {
 
-    // SET UP AUDIO OUTPUTS
-    outputParameters.device = Pa_GetDefaultOutputDevice();
-    outputParameters.channelCount = num_output_channels;
-    outputParameters.sampleFormat = PA_SAMPLE_TYPE;
-    outputParameters.suggestedLatency = 0.00;
-    outputParameters.hostApiSpecificStreamInfo = NULL;
+      initialized = true;
 
-    const PaDeviceInfo * info = Pa_GetDeviceInfo(outputParameters.device);
+      err = Pa_Initialize();
 
-    std::cout << "\nUsing Audio Device '" << info->name << "'\n";
-    std::cout << "  - Inputs: " << info->maxInputChannels << "\n";
-    std::cout << "  - Outputs: " << info->maxOutputChannels << "\n";
-    std::cout << "  - Outputs requested: " << num_output_channels << "\n";    
-    std::cout << "  - Inputs requested: " << num_input_channels << "\n\n";       
+      // SET UP AUDIO OUTPUTS
+      outputParameters.device = Pa_GetDefaultOutputDevice();
+      outputParameters.channelCount = num_output_channels;
+      outputParameters.sampleFormat = PA_SAMPLE_TYPE;
+      outputParameters.suggestedLatency = 0.00;
+      outputParameters.hostApiSpecificStreamInfo = NULL;
 
-    if ( num_output_channels > info->maxOutputChannels ) {
-        throw Exception(
-          "Audio device has fewer output channels (" + 
-          std::to_string(info->maxOutputChannels) + 
-          ") than requested (" +
-          std::to_string(num_output_channels) + 
-          ")"
-        );
-    }    
+      const PaDeviceInfo * info = Pa_GetDeviceInfo(outputParameters.device);
 
-    // SET UP AUDIO INPUTS
+      std::cout << "\nUsing Audio Device '" << info->name << "'\n";
+      std::cout << "  - Inputs: " << info->maxInputChannels << "\n";
+      std::cout << "  - Outputs: " << info->maxOutputChannels << "\n";
+      std::cout << "  - Outputs requested: " << num_output_channels << "\n";    
+      std::cout << "  - Inputs requested: " << num_input_channels << "\n\n";       
 
-    if ( num_input_channels > 0 ) {
-      inputParameters.device = Pa_GetDefaultOutputDevice();
-      inputParameters.channelCount = num_input_channels;
-      inputParameters.sampleFormat = PA_SAMPLE_TYPE;
-      inputParameters.suggestedLatency = 0.00;
-      inputParameters.hostApiSpecificStreamInfo = NULL;
-
-      if ( num_input_channels > info->maxInputChannels ) {
+      if ( num_output_channels > info->maxOutputChannels ) {
           throw Exception(
-            "Audio device has fewer input channels (" + 
-            std::to_string(info->maxInputChannels) + 
+            "Audio device has fewer output channels (" + 
+            std::to_string(info->maxOutputChannels) + 
             ") than requested (" +
-            std::to_string(num_input_channels) + 
+            std::to_string(num_output_channels) + 
             ")"
           );
+      }    
+
+      // SET UP AUDIO INPUTS
+
+      if ( num_input_channels > 0 ) {
+        inputParameters.device = Pa_GetDefaultOutputDevice();
+        inputParameters.channelCount = num_input_channels;
+        inputParameters.sampleFormat = PA_SAMPLE_TYPE;
+        inputParameters.suggestedLatency = 0.00;
+        inputParameters.hostApiSpecificStreamInfo = NULL;
+
+        if ( num_input_channels > info->maxInputChannels ) {
+            throw Exception(
+              "Audio device has fewer input channels (" + 
+              std::to_string(info->maxInputChannels) + 
+              ") than requested (" +
+              std::to_string(num_input_channels) + 
+              ")"
+            );
+        }
       }
+
+      err = Pa_OpenStream(
+                &stream,
+                num_input_channels > 0 ? &inputParameters : NULL,
+                &outputParameters,
+                SAMPLE_RATE,
+                FRAMES_PER_BUFFER,
+                paClipOff,
+                NULL,
+                NULL);
+
+      if ( err != paNoError ) {
+          throw Exception(
+            "Failed to open audio stream with error: " + 
+            std::string(Pa_GetErrorText(err))
+          );
+      }    
+
+      err = Pa_StartStream( stream );
+
+      if ( err != paNoError ) {
+          throw Exception(
+            "Failed to start audio stream with error: " + 
+            std::string(Pa_GetErrorText(err))
+          );
+      }
+
+      frame = 0;
+
     }
-
-    err = Pa_OpenStream(
-              &stream,
-              num_input_channels > 0 ? &inputParameters : NULL,
-              &outputParameters,
-              SAMPLE_RATE,
-              FRAMES_PER_BUFFER,
-              paClipOff,
-              NULL,
-              NULL);
-
-    if ( err != paNoError ) {
-        throw Exception(
-          "Failed to open audio stream with error: " + 
-          std::string(Pa_GetErrorText(err))
-        );
-    }    
-
-    err = Pa_StartStream( stream );
-
-    if ( err != paNoError ) {
-        throw Exception(
-          "Failed to start audio stream with error: " + 
-          std::string(Pa_GetErrorText(err))
-        );
-    }
-
-    frame = 0;
 
   }
 

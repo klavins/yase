@@ -64,6 +64,8 @@ namespace yase {
 
       float * output_buffer, * input_buffer;
 
+      bool initialized;
+
     };
 
 }
