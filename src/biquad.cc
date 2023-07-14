@@ -100,7 +100,9 @@ namespace yase {
     // std::cout << "Recalculating biquad filter parameters from " << inputs[frequency] << ", " << inputs[resonance] << "\n";
     // std::cout << "  Active: " << (active ? "yes" : "no") << "\n";
 
-    double f0 = inputs[frequency] + inputs[offset],
+    double range_checked_frequency = inputs[frequency] > 1 ? inputs[frequency] : 1;
+
+    double f0 = range_checked_frequency + inputs[offset],
             Q = inputs[resonance] > 0 ? inputs[resonance] : 1,                 
            w0 = 2 * M_PI * f0 * ts;
 
