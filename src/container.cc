@@ -329,6 +329,18 @@ namespace yase {
 
   }
 
+  //! Test whether the in put to module is connected to another module
+  //! \param source The module
+  //! \param output The name of the input to the module  
+  bool Container::connected(Module * module, string input_name) {
+    for ( auto& wire : wires ) {
+      if ( &DEST(wire) == module && DEST(wire).get_input_name(INPUT(wire)) == input_name ) {
+        return true;
+      }
+    }
+    return false;
+  }
+
   void Container::update() {
 
     // WIRES

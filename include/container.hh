@@ -86,6 +86,8 @@ namespace yase {
 
       Container &disconnect(Module &source, string output, Module &dest, string input);
 
+      bool connected(Module * module, string input_name); // test whether the in put to module is connected to another module
+
       // I/O Identifications
       Container &equate_input(string input, Module &sub_module, string sub_input);
       Container &attach_inputs(std::vector<std::tuple<string,Module&,string>> attachments);
