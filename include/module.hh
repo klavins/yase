@@ -44,6 +44,7 @@ namespace yase {
     public:
 
     Module();
+    virtual ~Module() = default;
 
     //! This method should be overridden by derived
     //! classes. It will usually be called once, after all modules and
