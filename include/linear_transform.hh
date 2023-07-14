@@ -1,5 +1,5 @@
 // 
-// YASE Gain Module Implementation
+// YASE Gain Module Header
 // 
 // Copyright (C) 2022 Eric Klavins
 // This file is part of YASE
@@ -18,23 +18,29 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
-#include "gain.hh"
-#include "yase.hh"
+#ifndef YASE_LINEAR_TRANSFORM_H
+#define YASE_LINEAR_TRANSFORM_H
+
+#include "module.hh"
 
 namespace yase {
 
-  Gain::Gain() {
-    signal = add_input("signal");
-    signal = add_output("signal");
-    amplitude = add_input("amplitude");
-    set_input(amplitude, 1.0);
-  }
+    class LinearTransform : public Module {
 
-  void Gain::init() { }
+    public:
 
-  void Gain::update() {
-    outputs[signal] = inputs[amplitude] * inputs[signal];      
-  }    
+      LinearTransform();
+      void init();
+      void update();
+
+    private:
+
+      int signal,
+          offset,
+          gain;
+
+    };
 
 }
 
+#endif

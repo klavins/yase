@@ -23,17 +23,21 @@
 
 namespace yase {
 
-  Gain::Gain() {
+  int q = 0;
+
+  LinearTransform::LinearTransform() {
     signal = add_input("signal");
     signal = add_output("signal");
-    amplitude = add_input("amplitude");
-    set_input(amplitude, 1.0);
+    offset = add_input("offset");
+    gain = add_input("gain");
+    set_input(offset, 0.0);
+    set_input(gain, 1.0);
   }
 
-  void Gain::init() { }
+  void LinearTransform::init() { }
 
-  void Gain::update() {
-    outputs[signal] = inputs[amplitude] * inputs[signal];      
+  void LinearTransform::update() {
+    outputs[signal] = inputs[gain] * inputs[signal] + inputs[offset];
   }    
 
 }

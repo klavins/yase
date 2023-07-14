@@ -111,7 +111,7 @@ namespace yase {
                 &outputParameters,
                 SAMPLE_RATE,
                 FRAMES_PER_BUFFER,
-                paClipOff,
+                paNoFlag, // paClipOff,
                 NULL,
                 NULL);
 

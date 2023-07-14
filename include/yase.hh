@@ -48,6 +48,7 @@
 #include "timer.hh"
 #include "player.hh"
 #include "transform.hh"
+#include "linear_transform.hh"
 #include "sampler.hh"
 #include "fft.hh"
 #include "anti_alias.hh"
