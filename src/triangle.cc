@@ -53,8 +53,9 @@ namespace yase {
   }    
 
   void Triangle::raw() {
-
-  }    
+      double y = phase < 0.5 ? phase : 1.0 - phase;
+      outputs[signal] = 4.0*y - 1.0;  
+  }
 
   void Triangle::ptr1() {
 
@@ -74,4 +75,3 @@ namespace yase {
   }    
 
 }
-

@@ -25,7 +25,7 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Saw raw, aliased, additive;
+    Triangle raw, aliased, additive;
     AntiAlias anti_aliased(aliased);
 
     raw.set_type("raw");

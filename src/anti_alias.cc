@@ -53,7 +53,9 @@ namespace yase {
 
   }
 
-  void AntiAlias::init() {}
+  void AntiAlias::init() {
+    module->init();
+  }
 
   void AntiAlias::set(double frequency, double resonance) {
     lowpass.set_input("frequency", frequency);
