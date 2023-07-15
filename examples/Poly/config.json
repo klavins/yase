@@ -1,8 +1,7 @@
 {
 
     "keyboard": "Arturia KeyStep 32",
-    "controller": "MIDI Mix",
-
+    
     "osc1": {
         "morph": 16,
         "tuning": 17,

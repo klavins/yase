@@ -63,11 +63,12 @@ namespace yase {
       // i/o indices
       int signal, 
           a,d,s,r, 
-          velocity;
+          velocity,
+          external_trigger;
 
       UpdateFunction update_fcn;
 
-      double amplitude;
+      double amplitude, trigger_memory;
 
       void off();
       void attack();

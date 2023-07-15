@@ -48,6 +48,7 @@ namespace yase {
     r = add_input("release");
 
     velocity = add_input("velocity");
+    external_trigger = add_input("trigger");
 
     // Defaults
     set_input(a, 0.005);     // duration of attack
@@ -57,7 +58,7 @@ namespace yase {
 
     set_input(velocity, 1);  // sometimes envelopes have no inputs so
     set_input(signal,1);     // we need defaults or we'll get no signal
-
+    set_input(external_trigger,0);
     amplitude = 0;
 
     update_fcn = &Envelope::off;
@@ -84,7 +85,9 @@ namespace yase {
     set_input("release", rr);    
   }
 
-  void Envelope::init() {}
+  void Envelope::init() {
+      trigger_memory = 0.0;
+  }
 
   void Envelope::trigger() {
     update_fcn = &Envelope::attack;
@@ -95,8 +98,20 @@ namespace yase {
   }  
 
   void Envelope::update() {
+
+    if ( trigger_memory == 0.0 && inputs[external_trigger] != 0.0 ) {
+        DEBUG
+        trigger_memory = 1.0;
+        trigger();
+    } else if ( trigger_memory == 1.0 && inputs[external_trigger] == 0.0 ) {
+        DEBUG
+        trigger_memory = 0.0;
+        release();
+    }
+
     CALL_MEMBER_FN(this, update_fcn);
     OUTPUT = VELOCITY * amplitude * INPUT;
+
   }     
 
   void Envelope::off() {

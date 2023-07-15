@@ -35,6 +35,7 @@
 #include "controls.hh"
 #include "midi_input.hh"
 #include "midi_output.hh"
+#include "midi_to_analog.hh"
 #include "fader.hh"
 
 // Connectivity
