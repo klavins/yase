@@ -22,56 +22,21 @@
 
 namespace yase {
 
-  Triangle::Triangle() : Oscillator() {
-    update_fcn = &Triangle::additive;
-  }
-
-  void Triangle::init() {
-    Oscillator::init();
-  }
-
   void Triangle::update() {
-    Oscillator::update();
-    CALL_MEMBER_FN(this, update_fcn);
-    outputs[signal] *= inputs[amplitude];
-  }    
 
-  //! Set the type of the oscillator to either "raw", "additive" or "ptr1". 
-  //! \param name The method to use
-  void Triangle::set_type(std::string name) {
+      Oscillator::update();
 
-    if ( name == "raw" )  {
-      update_fcn = &Triangle::raw;
-    } else if ( name == "additive" ) {
-      update_fcn = &Triangle::additive;
-    } else if ( name == "ptr1" ) {
-      update_fcn = &Triangle::ptr1;
-    } else {
-      update_fcn = &Triangle::ptr1;
-    }
+      double a = phase + inputs[modulation];
+      while ( a < 0.0 ) {
+        a += 1.0;
+      }
+      while ( a > 1.0 ) {
+        a -= 1.0;
+      }
 
-  }    
+      double y = a < 0.5 ? a : 1.0 - a;
+      outputs[signal] = inputs[amplitude] * ( 4.0*y - 1.0 );
 
-  void Triangle::raw() {
-      double y = phase < 0.5 ? phase : 1.0 - phase;
-      outputs[signal] = 4.0*y - 1.0;  
   }
-
-  void Triangle::ptr1() {
-
-  }    
-
-  void Triangle::additive() {
-   
-    outputs[signal] = 0;
-    int n = 1;
-    double f = inputs[frequency] > 0 ? inputs[frequency] : 1;
-    while ( n * f < SAMPLE_RATE / 2 ) {
-      outputs[signal] += sin(n*2*M_PI*phase + inputs[modulation])/(n*n);
-      n += 2;
-    }
-    outputs[signal] *= 8/(M_PI*M_PI);
-
-  }    
 
 }

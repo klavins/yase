@@ -1,5 +1,5 @@
 // 
-// YASE Square Module Implementation
+// YASE Saw Module Implementation
 // 
 // Copyright (C) 2022 Eric Klavins
 // This file is part of YASE
@@ -18,28 +18,28 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
+#include <math.h>
 #include "yase.hh"
 
 namespace yase {
 
-  void Square::update() {
+  //! Construct a sawtooth oscillator. The default is to set the type to "additive".
+  AdditiveSaw::AdditiveSaw() : Oscillator() {}  
 
-    Oscillator::update();
-
-    double a = phase + inputs[modulation];
-    while ( a < 0.0 ) {
-      a += 1.0;
-    }
-    while ( a > 1.0 ) {
-      a -= 1.0;
-    }    
-    
-    if ( a < 0.5 ) {
-        outputs[signal] = inputs[amplitude];
-    } else {
-        outputs[signal] = -inputs[amplitude];
-    }
-
+  void AdditiveSaw::init() {
+    Oscillator::init();
   }
 
-}
+  void AdditiveSaw::update() {
+    Oscillator::update();
+    outputs[signal] = 0;
+    int n = 1;
+    double f = inputs[frequency] > 0 ? inputs[frequency] : 1;
+    while ( f * n < SAMPLE_RATE / 2 ) {
+      outputs[signal] += sin(n*2*M_PI*phase + inputs[modulation])/n;
+      n++;
+    }
+    outputs[signal] *= inputs[amplitude];
+  }
+
+};

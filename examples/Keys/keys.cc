@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
     Container synth;
     Buttons buttons(config["controller"]);     
     Controls controls;
-    Saw osc;
+    AdditiveSaw osc;
     Sine lfo;
     Audio audio;
     MidiInput midi_keyboard(config["keyboard"]),
@@ -40,7 +40,6 @@ int main(int argc, char * argv[]) {
     Gain gain;
 
     filter.set_type("lpf");   
-    osc.set_type("additive");
 
     synth.add(osc)     
          .add(audio)
@@ -93,12 +92,6 @@ int main(int argc, char * argv[]) {
              .map(gain, "amplitude", 0, 0.25, 62)
              .map(filter, "frequency", 1000, 6000, 56)
              .map(filter, "resonance", 0.1, 20, 60);
-
-     buttons.mutex({1, 4, 7}, {
-          [&] (const Event &e) { osc.set_type("raw");      },
-          [&] (const Event &e) { osc.set_type("ptr1");     },
-          [&] (const Event &e) { osc.set_type("additive"); }
-     });
 
      buttons.mutex({3, 6, 9}, {
           [&] (const Event &e) { filter.set_type("lpf");   },

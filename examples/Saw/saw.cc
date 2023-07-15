@@ -25,12 +25,10 @@ using namespace yase;
 
 int main(int argc, char * argv[]) {
 
-    Triangle raw, aliased, additive;
+    Saw raw, aliased;
+    AdditiveSaw additive;
     AntiAlias anti_aliased(aliased);
 
-    raw.set_type("raw");
-    aliased.set_type("raw");
-    additive.set_type("additive");
     additive.set_input("amplitude", 0.7);
 
     Audio audio;

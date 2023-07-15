@@ -1,5 +1,5 @@
 // 
-// YASE Triangle Wave Header
+// YASE Square Module Header
 // 
 // Copyright (C) 2022 Eric Klavins
 // This file is part of YASE
@@ -18,29 +18,29 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
-#ifndef YASE_TRIANGLE_H
-#define YASE_TRIANGLE_H
+#ifndef YASE_ADDITIVE_SQUARE_H
+#define YASE_ADDITIVE_SQUARE_H
 
-#include <string.h>
 #include "yase.hh"
 
 namespace yase {
 
-    //! A triangle wave oscillator
+    //! A raw square wave oscillator
 
-    //! This module produces a triangle  wave output and has all the inputs that
-    //! an Oscillator has. It should be wrapped with an AntiAlias Module.
+    //! This module produces a raw square wave output and has all the inputs that
+    //! an Oscillator has. This Module is usually wrapped with an AntiAlias Module.
     //! \param[input] frequency The frequency
     //! \param[input] amplitude The amplitude
     //! \param[input] modulation A modulation input that modules that rate of the square wave
     //! \param[input] tuning This input has units in Cents. It tunes the input frequency of the oscillator.
     //! \param[input] harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic
-    //! \param[output] signal The output of the oscillator      
+    //! \param[output] signal The output of the oscillator    
 
-    class Triangle : public Oscillator {
+    class AdditiveSquare : public Oscillator {
 
     public:
-        void update();
+
+      void update();
 
     };
 

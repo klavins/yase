@@ -28,7 +28,7 @@ int main(int argc, char * argv[]) {
     Container synth;
     Audio audio;
     Biquad filter;
-    Saw raw_saw("raw");
+    Saw raw_saw;
     AntiAlias saw(raw_saw);
     Envelope wave_envelope, filter_envelope;
     Player player;

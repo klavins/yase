@@ -30,7 +30,7 @@ int main(int argc, char * argv[]) {
     Sample kick("./samples/kick_03.wav"),
            snare("./samples/snare.wav");
 
-    Saw bass_oscillator("raw");
+    Saw bass_oscillator;
     Voice bass(bass_oscillator);
 
     Wavetable lead("./samples/lead.wav");

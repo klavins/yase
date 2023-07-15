@@ -20,26 +20,21 @@
 
 #include "yase.hh"
 
-namespace yase {
+namespace yase { 
 
-  void Square::update() {
+  void AdditiveSquare::update() {
 
     Oscillator::update();
 
-    double a = phase + inputs[modulation];
-    while ( a < 0.0 ) {
-      a += 1.0;
+    outputs[signal] = 0;
+    int n = 1;
+    while ( n * inputs[frequency] < 0.5 * SAMPLE_RATE ) {
+      outputs[signal] += sin(n*2*M_PI*phase  + inputs[modulation])/n;
+      n += 2;
     }
-    while ( a > 1.0 ) {
-      a -= 1.0;
-    }    
+    outputs[signal] *= inputs[amplitude] * 4 / M_PI;
     
-    if ( a < 0.5 ) {
-        outputs[signal] = inputs[amplitude];
-    } else {
-        outputs[signal] = -inputs[amplitude];
-    }
-
-  }
+  }    
 
 }
+

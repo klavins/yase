@@ -18,8 +18,8 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
-#ifndef YASE_TRIANGLE_H
-#define YASE_TRIANGLE_H
+#ifndef YASE_ADDITIVE_TRIANGLE_H
+#define YASE_ADDITIVE_TRIANGLE_H
 
 #include <string.h>
 #include "yase.hh"
@@ -29,7 +29,7 @@ namespace yase {
     //! A triangle wave oscillator
 
     //! This module produces a triangle  wave output and has all the inputs that
-    //! an Oscillator has. It should be wrapped with an AntiAlias Module.
+    //! an Oscillator has. It sums up sine waves according to the fourier expansion of a triangle wave. This is computationally expensive but very nice; or
     //! \param[input] frequency The frequency
     //! \param[input] amplitude The amplitude
     //! \param[input] modulation A modulation input that modules that rate of the square wave
@@ -37,9 +37,10 @@ namespace yase {
     //! \param[input] harmonic The harmonic of the oscillator. The actual frequency will be frequency * 2^harmonic
     //! \param[output] signal The output of the oscillator      
 
-    class Triangle : public Oscillator {
+    class AdditiveTriangle : public Oscillator {
 
     public:
+
         void update();
 
     };

@@ -28,13 +28,11 @@ using namespace yase;
 int main(int argc, char * argv[]) {
 
     Sine sine;
-    Saw add;
+    AdditiveSaw add;
     Triangle tri;
     Square square;
     Noise noise;
     Controls controls;
-
-    add.set_type("additive");
 
     vector<Oscillator *> oscillators = { 
         &sine,

@@ -29,7 +29,7 @@ using namespace yase;
 int main(int argc, char * argv[]) {
 
     Drum kick, snare;
-    Saw bass_oscillator("raw");
+    Saw bass_oscillator;
     Triangle lead_oscillator;
     Voice bass(bass_oscillator), lead(lead_oscillator);
     Audio audio;

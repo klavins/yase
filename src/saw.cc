@@ -23,70 +23,16 @@
 
 namespace yase {
 
-  //! Construct a sawtooth oscillator. The default is to set the type to "additive".
-  Saw::Saw() : Oscillator() {
-    update_fcn = &Saw::additive;
-  }  
-
-  //! Construct a sawtooth oscillator with the desired type.
-  //! \param type Either "raw", "additive", or "ptr1". 
-  Saw::Saw(std::string type) : Saw() {
-    set_type(type);
-  }
-
-  void Saw::init() {
-    Oscillator::init();
-  }
-
   void Saw::update() {
-    Oscillator::update();
-    CALL_MEMBER_FN(this, update_fcn);
-    outputs[signal] *= inputs[amplitude];
-  }    
-
-  //! Set the type of the oscillator to the desired type.
-  //! \param name Either "raw", "additive", or "ptr1". 
-  void Saw::set_type(std::string name) {
-
-    if ( name == "raw" )  {
-      update_fcn = &Saw::raw;
-    } else if ( name == "additive" ) {
-      update_fcn = &Saw::additive;
-    } else if ( name == "ptr1" ) {
-      update_fcn = &Saw::ptr1;
-    } else {
-      update_fcn = &Saw::ptr1;
-    }
-
-  }    
-
-  void Saw::raw() {
-      outputs[signal] = inputs[amplitude] * ( 2 * phase - 1 );
-  }    
-
-  void Saw::ptr1() {
-    double h = 1,
-           P0 = SAMPLE_RATE/inputs[frequency],  // 44100 / 440 = 100
-           T0 = 1/P0,                           // 0.1
-           cdc = T0,                            // 0.1
-           DC = 1 + cdc,                        // 1.1
-           a1 = 2 - 2*h*P0,                     // 2 - 2*100 = -198
-           a0 = 2*h - DC;                       // 1 
-    if ( phase >= T0 ) {
-        outputs[signal] = 2*phase - DC;
-    } else {
-        outputs[signal] = a1*phase + a0;
-    }
-  }    
-
-  void Saw::additive() {
-    outputs[signal] = 0;
-    int n = 1;
-    double f = inputs[frequency] > 0 ? inputs[frequency] : 1;
-    while ( f * n < SAMPLE_RATE / 2 ) {
-      outputs[signal] += sin(n*2*M_PI*phase + inputs[modulation])/n;
-      n++;
-    }
+      Oscillator::update();
+      double a = phase + inputs[modulation];
+      while ( a < 0.0 ) {
+        a += 1.0;
+      }
+      while ( a > 1.0 ) {
+        a -= 1.0;
+      }          
+      outputs[signal] = inputs[amplitude] * ( 2 * a - 1 );
   }    
 
 }

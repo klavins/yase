@@ -37,8 +37,6 @@ int main(int argc, char * argv[]) {
     AntiAlias aa_osc(osc);
     FFT fft(cycles*SAMPLE_RATE / freq);
     Timer timer;
-    
-    osc.set_type("raw");
 
     player.set({ G4, C5, A4, F4, D4, G4, E4, C4, G5, C6, A5, F5, A5, B5, C6 }, [&] (double freq) {
       osc.set_input("frequency", freq);

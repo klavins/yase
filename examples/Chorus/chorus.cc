@@ -32,7 +32,7 @@ int main(int argc, char * argv[]) {
     
     Container synth;
     Audio audio;
-    Saw raw_saw("raw");
+    Saw raw_saw;
     Sine lfo;
     Transform scale([&](double u) { return A*u + C; });
     AntiAlias saw(raw_saw);

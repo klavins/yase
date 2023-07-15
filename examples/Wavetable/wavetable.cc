@@ -35,7 +35,6 @@ int main(int argc, char * argv[]) {
 
     wt.set_input("frequency", 110);
     lfo.set_input("frequency", 0.5);
-    lfo.set_type("raw");
 
     double dt = 0.5;
 
