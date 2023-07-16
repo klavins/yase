@@ -99,12 +99,10 @@ namespace yase {
 
   void Envelope::update() {
 
-    if ( trigger_memory == 0.0 && inputs[external_trigger] != 0.0 ) {
-        DEBUG
+    if ( trigger_memory == 0.0 && inputs[external_trigger] > 0.9 ) {
         trigger_memory = 1.0;
         trigger();
-    } else if ( trigger_memory == 1.0 && inputs[external_trigger] == 0.0 ) {
-        DEBUG
+    } else if ( trigger_memory == 1.0 && inputs[external_trigger] < 0.1 ) {
         trigger_memory = 0.0;
         release();
     }

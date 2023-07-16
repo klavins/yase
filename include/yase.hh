@@ -95,5 +95,6 @@
 #include "tapped_delay.hh"
 #include "fadable_delay.hh"
 #include "echo.hh"
+#include "sample_and_hold.hh"
 
 #endif
