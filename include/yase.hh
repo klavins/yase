@@ -27,6 +27,7 @@
 #include "module.hh"
 #include "container.hh"
 #include "sequencer.hh"
+#include "simple_sequencer.hh"
 #include "util.hh"
 
 // Controllers
