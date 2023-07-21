@@ -29,13 +29,17 @@ namespace yase {
 
     public:
 
-      SimpleSequencer();
+      SimpleSequencer(int n);
       void init();
       void update();
 
     private:
 
-      int step, trigger, trigger_state, signal;
+      int step, 
+          trigger,
+          trigger_state, 
+          signal,
+          num_steps;
 
     };
 

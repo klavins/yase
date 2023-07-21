@@ -26,19 +26,19 @@ int main(int argc, char * argv[]) {
 
     Sine sine;
     Square square;
-    SimpleSequencer seq;
+    SimpleSequencer seq(8);
     Envelope env;
     Audio audio;
     Container synth;
     
-    seq.set_input("frequency_0", C2);
-    seq.set_input("frequency_1", D2);
-    seq.set_input("frequency_2", E2);
-    seq.set_input("frequency_3", F2);
-    seq.set_input("frequency_4", G2);
-    seq.set_input("frequency_5", A2);
-    seq.set_input("frequency_6", B2);
-    seq.set_input("frequency_7", C3);    
+    seq.set_input("v_0", C2);
+    seq.set_input("v_1", D2);
+    seq.set_input("v_2", E2);
+    seq.set_input("v_3", F2);
+    seq.set_input("v_4", G2);
+    seq.set_input("v_5", A2);
+    seq.set_input("v_6", B2);
+    seq.set_input("v_7", C3);    
 
     square.set_input("frequency", 10);
 

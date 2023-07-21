@@ -23,10 +23,10 @@
 
 namespace yase {
 
-  SimpleSequencer::SimpleSequencer() {
+  SimpleSequencer::SimpleSequencer(int n) : num_steps(n) {
 
-    for (int i=0; i<8; i++) {
-      add_input("frequency_" + std::to_string(i));
+    for (int i=0; i<num_steps; i++) {
+      add_input("v_" + std::to_string(i));
     }
 
     trigger = add_input("trigger");
@@ -45,7 +45,7 @@ namespace yase {
 
     if ( trigger_state == 0 && inputs[trigger] > 0.9 ) {
       trigger_state = 1;
-      step = (step + 1)%8;
+      step = (step + 1)%num_steps;
 
     } else if ( trigger_state == 1 && inputs[trigger] < 0.1 ) {
       trigger_state = 0;
