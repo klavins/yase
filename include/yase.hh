@@ -79,6 +79,7 @@
 #include "additive_square.hh"
 #include "osc_group.hh"
 #include "clock.hh"
+#include "multi_clock.hh"
 #include "wavetable.hh"
 #include "impulse.hh"
 
