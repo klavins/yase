@@ -56,6 +56,7 @@
 #include "anti_alias.hh"
 #include "pitches.hh"
 #include "auto_load.hh"
+#include "buffer.hh"
 
 // Events
 #include "event.hh"
