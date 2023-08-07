@@ -1,4 +1,5 @@
 <map id="yase::TappedDelay" name="yase::TappedDelay">
-<area shape="rect" id="node1" title="A linearly interpolated, tappable digital delay using a circular buffer." alt="" coords="5,80,140,107"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="23,5,123,32"/>
+<area shape="rect" id="Node000001" title="A linearly interpolated, tappable digital delay using a circular buffer." alt="" coords="5,79,139,105"/>
+<area shape="rect" id="Node000002" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="22,5,122,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="75,46,75,79,69,79,69,46"/>
 </map>

@@ -1,5 +1,7 @@
 <map id="yase::Buttons" name="yase::Buttons">
-<area shape="rect" id="node1" title="A class for managing MIDI buttons." alt="" coords="97,80,200,107"/>
-<area shape="rect" id="node2" href="$classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="5,5,148,32"/>
-<area shape="rect" id="node3" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="172,5,272,32"/>
+<area shape="rect" id="Node000001" title="A class for managing MIDI buttons." alt="" coords="97,79,199,105"/>
+<area shape="rect" id="Node000002" href="$classyase_1_1_event_manager.html" title="A class that keeps track of event listeners." alt="" coords="5,5,147,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="100,39,138,77,134,80,96,43"/>
+<area shape="rect" id="Node000003" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="170,5,270,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="200,43,162,80,158,77,196,39"/>
 </map>

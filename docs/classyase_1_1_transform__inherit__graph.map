@@ -1,4 +1,5 @@
 <map id="yase::Transform" name="yase::Transform">
-<area shape="rect" id="node1" title="Transform an input signal with a stateless, user&#45;defined function." alt="" coords="5,80,123,107"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="14,5,114,32"/>
+<area shape="rect" id="Node000001" title="Transform an input signal with a stateless, user&#45;defined function." alt="" coords="5,79,122,105"/>
+<area shape="rect" id="Node000002" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="14,5,113,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="66,46,66,79,61,79,61,46"/>
 </map>

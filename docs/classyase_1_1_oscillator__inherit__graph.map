@@ -1,12 +1,29 @@
 <map id="yase::Oscillator" name="yase::Oscillator">
-<area shape="rect" id="node1" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="153,183,267,209"/>
-<area shape="rect" id="node3" href="$classyase_1_1_clock.html" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="328,5,420,32"/>
-<area shape="rect" id="node4" href="$classyase_1_1_noise.html" title="A noise source." alt="" coords="328,56,420,83"/>
-<area shape="rect" id="node5" href="$classyase_1_1_osc_group.html" title=" " alt="" coords="315,107,433,133"/>
-<area shape="rect" id="node6" href="$classyase_1_1_saw.html" title="A sawtooth wave oscillator." alt="" coords="332,157,416,184"/>
-<area shape="rect" id="node7" href="$classyase_1_1_sine.html" title="A sine wave oscillator." alt="" coords="332,208,416,235"/>
-<area shape="rect" id="node8" href="$classyase_1_1_square.html" title="A raw square wave oscillator." alt="" coords="325,259,423,285"/>
-<area shape="rect" id="node9" href="$classyase_1_1_triangle.html" title="A triangle wave oscillator." alt="" coords="322,309,426,336"/>
-<area shape="rect" id="node10" href="$classyase_1_1_wavetable.html" title="A wavetable oscillator." alt="" coords="315,360,433,387"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,183,105,209"/>
+<area shape="rect" id="Node000001" title="An abstract base class from which oscillators like Sine, Saw, and Triangle are derived." alt="" coords="153,277,265,303"/>
+<area shape="rect" id="Node000003" href="$classyase_1_1_additive_saw.html" title="A sawtooth wave oscillator." alt="" coords="323,5,453,31"/>
+<area shape="poly" id="edge2_Node000001_Node000003" title=" " alt="" coords="211,262,221,215,239,155,269,94,288,65,311,40,327,29,330,34,315,44,292,69,273,97,244,157,226,216,216,264"/>
+<area shape="rect" id="Node000004" href="$classyase_1_1_additive_square.html" title="A raw square wave oscillator." alt="" coords="316,55,461,80"/>
+<area shape="poly" id="edge3_Node000001_Node000004" title=" " alt="" coords="214,262,227,224,247,177,275,130,311,89,328,79,331,83,315,94,279,133,251,180,232,226,220,264"/>
+<area shape="rect" id="Node000005" href="$classyase_1_1_additive_triangle.html" title="A triangle wave oscillator." alt="" coords="313,104,463,130"/>
+<area shape="poly" id="edge4_Node000001_Node000005" title=" " alt="" coords="219,262,255,201,281,167,311,139,330,128,333,133,315,143,284,171,259,203,224,265"/>
+<area shape="rect" id="Node000006" href="$classyase_1_1_clock.html" title="A raw (aliasing) square wave alternating between &#45;1 and 1." alt="" coords="343,153,434,179"/>
+<area shape="poly" id="edge5_Node000001_Node000006" title=" " alt="" coords="228,264,264,225,312,188,341,175,343,180,314,192,268,229,232,267"/>
+<area shape="rect" id="Node000007" href="$classyase_1_1_jenny.html" title="A Jenny oscillator." alt="" coords="342,203,434,228"/>
+<area shape="poly" id="edge6_Node000001_Node000007" title=" " alt="" coords="246,268,312,237,341,226,343,231,314,242,248,273"/>
+<area shape="rect" id="Node000008" href="$classyase_1_1_noise.html" title="A noise source." alt="" coords="343,252,434,278"/>
+<area shape="poly" id="edge7_Node000001_Node000008" title=" " alt="" coords="279,278,342,269,343,274,280,283"/>
+<area shape="rect" id="Node000009" href="$classyase_1_1_osc_group.html" title=" " alt="" coords="330,301,446,327"/>
+<area shape="poly" id="edge8_Node000001_Node000009" title=" " alt="" coords="280,297,330,304,329,309,279,302"/>
+<area shape="rect" id="Node000010" href="$classyase_1_1_saw.html" title="A sawtooth wave oscillator." alt="" coords="347,351,430,376"/>
+<area shape="poly" id="edge9_Node000001_Node000010" title=" " alt="" coords="250,308,314,337,347,349,345,354,312,342,247,313"/>
+<area shape="rect" id="Node000011" href="$classyase_1_1_sine.html" title="A sine wave oscillator." alt="" coords="347,400,430,426"/>
+<area shape="poly" id="edge10_Node000001_Node000011" title=" " alt="" coords="232,313,268,351,314,387,347,401,345,406,312,391,265,355,228,317"/>
+<area shape="rect" id="Node000012" href="$classyase_1_1_square.html" title="A raw square wave oscillator." alt="" coords="339,449,437,475"/>
+<area shape="poly" id="edge11_Node000001_Node000012" title=" " alt="" coords="224,315,259,376,285,408,315,436,340,449,337,454,311,440,281,412,255,379,219,318"/>
+<area shape="rect" id="Node000013" href="$classyase_1_1_triangle.html" title="A triangle wave oscillator." alt="" coords="337,499,440,524"/>
+<area shape="poly" id="edge12_Node000001_Node000013" title=" " alt="" coords="220,316,232,354,252,400,279,446,315,485,337,498,335,503,311,490,275,449,247,402,227,356,215,318"/>
+<area shape="rect" id="Node000014" href="$classyase_1_1_wavetable.html" title="A wavetable oscillator." alt="" coords="329,548,447,574"/>
+<area shape="poly" id="edge13_Node000001_Node000014" title=" " alt="" coords="217,317,227,364,245,423,274,483,292,511,315,535,330,545,327,550,311,539,288,514,269,486,240,425,221,366,211,318"/>
+<area shape="rect" id="Node000002" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,277,105,303"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="119,288,152,288,152,293,119,293"/>
 </map>

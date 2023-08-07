@@ -59,11 +59,11 @@ One thing to notice about modules is that their inputs and outputs are named by 
 <h2>Building</h2>
 
 To date, Yase has been developed on MacOS 11.6.1. The following are required:
-- 'git', 'g++', and 'make', part of the MacOS Development Tools.
+- `git`, `g++`, and `make`, part of the MacOS Development Tools.
 - Brew, for installing things: https://brew.sh/
-- PortAudio, which can be installed with 'brew install portaudio'
-- RtMidi:, which can be installed with 'brew install rtmidi'
-- Google Test: which can be installed with 'brew install googletest'
+- PortAudio, which can be installed with `brew install portaudio``
+- RtMidi:, which can be installed with `brew install rtmidi`
+- Google Test: which can be installed with `brew install googletest``
 - Niels Lohman's JSON library, which can be installed with `brew install nlohmann-json`
 - FFTW, which can be installed with `brew install fftw`
 - AudioFile, which can be installed with `brew --prefix adamstark-audiofile`

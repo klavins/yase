@@ -1,4 +1,5 @@
 <map id="yase::Noop" name="yase::Noop">
-<area shape="rect" id="node1" title="A module that does almost nothing." alt="" coords="11,80,100,107"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,32"/>
+<area shape="rect" id="Node000001" title="A module that does almost nothing." alt="" coords="11,79,99,105"/>
+<area shape="rect" id="Node000002" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="5,5,105,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="58,46,58,79,52,79,52,46"/>
 </map>

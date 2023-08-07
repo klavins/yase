@@ -1,4 +1,5 @@
 <map id="yase::ExpDecay" name="yase::ExpDecay">
-<area shape="rect" id="node1" title="An exponentially decaying envelope." alt="" coords="5,80,124,107"/>
-<area shape="rect" id="node2" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,115,32"/>
+<area shape="rect" id="Node000001" title="An exponentially decaying envelope." alt="" coords="5,79,124,105"/>
+<area shape="rect" id="Node000002" href="$classyase_1_1_module.html" title="An abstract base class for modules." alt="" coords="15,5,114,31"/>
+<area shape="poly" id="edge1_Node000001_Node000002" title=" " alt="" coords="67,46,67,79,62,79,62,46"/>
 </map>
