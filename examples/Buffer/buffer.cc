@@ -24,7 +24,7 @@
 #include <unistd.h>
 #include "ring_buffer.hh"
 
-RingBuffer<double> rb(100);
+yase::RingBuffer<double> rb(100);
 
 void read_stuff() {
     usleep(1);

@@ -7,8 +7,8 @@ var searchData=
   ['resonator_4',['Resonator',['../classyase_1_1_resonator.html',1,'yase']]],
   ['respond_5fto_5',['respond_to',['../classyase_1_1_event_manager.html#aa1faee02f12480fe232a62268ebf3a82',1,'yase::EventManager']]],
   ['rest_6',['rest',['../classyase_1_1_sequencer.html#ae4346cd4b52068776feacc25f7b154ed',1,'yase::Sequencer']]],
-  ['ringbuffer_7',['RingBuffer',['../class_ring_buffer.html',1,'']]],
-  ['ringbuffer_3c_20elementtype_20_3e_8',['RingBuffer&lt; ElementType &gt;',['../class_ring_buffer.html',1,'']]],
+  ['ringbuffer_7',['RingBuffer',['../classyase_1_1_ring_buffer.html',1,'yase']]],
+  ['ringbuffer_3c_20elementtype_20_3e_8',['RingBuffer&lt; ElementType &gt;',['../classyase_1_1_ring_buffer.html',1,'yase']]],
   ['run_9',['run',['../classyase_1_1_container.html#a80e67995f962aab6b811810fcf5b2322',1,'yase::Container']]],
   ['run_5fagain_10',['run_again',['../classyase_1_1_container.html#a70a86e31b16f95194452c327bf686b94',1,'yase::Container']]],
   ['run_5fthreaded_11',['run_threaded',['../classyase_1_1_container.html#a7eb061589d2ae1a4f2b3ba61e780381a',1,'yase::Container']]]

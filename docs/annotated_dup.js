@@ -1,6 +1,6 @@
 var annotated_dup =
 [
-    [ "yase", null, [
+    [ "yase", "namespaceyase.html", [
       [ "AdditiveSaw", "classyase_1_1_additive_saw.html", "classyase_1_1_additive_saw" ],
       [ "AdditiveSquare", "classyase_1_1_additive_square.html", "classyase_1_1_additive_square" ],
       [ "AdditiveTriangle", "classyase_1_1_additive_triangle.html", "classyase_1_1_additive_triangle" ],
@@ -43,6 +43,7 @@ var annotated_dup =
       [ "Oscillator", "classyase_1_1_oscillator.html", "classyase_1_1_oscillator" ],
       [ "Player", "classyase_1_1_player.html", "classyase_1_1_player" ],
       [ "Resonator", "classyase_1_1_resonator.html", "classyase_1_1_resonator" ],
+      [ "RingBuffer", "classyase_1_1_ring_buffer.html", null ],
       [ "Sample", "classyase_1_1_sample.html", "classyase_1_1_sample" ],
       [ "SampleAndHold", "classyase_1_1_sample_and_hold.html", "classyase_1_1_sample_and_hold" ],
       [ "Sampler", "classyase_1_1_sampler.html", "classyase_1_1_sampler" ],
@@ -57,6 +58,5 @@ var annotated_dup =
       [ "Transform", "classyase_1_1_transform.html", "classyase_1_1_transform" ],
       [ "Triangle", "classyase_1_1_triangle.html", "classyase_1_1_triangle" ],
       [ "Wavetable", "classyase_1_1_wavetable.html", "classyase_1_1_wavetable" ]
-    ] ],
-    [ "RingBuffer", "class_ring_buffer.html", null ]
+    ] ]
 ];

@@ -159,7 +159,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <p>Here's an example of a basic YASE program that makes a neat sound. There are more examples in the <a href="https://github.com/klavins/yase/examnples">examples</a> directory of this repository.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>yase;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceyase.html">yase</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line"> </div>
@@ -185,6 +185,7 @@ $(document).ready(function(){initNavTree('index.html',''); initResizable(); });
 <div class="ttc" id="aclassyase_1_1_module_html_afe7c00f891cb7bb6fd9e8e37d1c1a76f"><div class="ttname"><a href="classyase_1_1_module.html#afe7c00f891cb7bb6fd9e8e37d1c1a76f">yase::Module::set_input</a></div><div class="ttdeci">void set_input(string name, double value)</div><div class="ttdef"><b>Definition</b> module.cc:83</div></div>
 <div class="ttc" id="aclassyase_1_1_sine_html"><div class="ttname"><a href="classyase_1_1_sine.html">yase::Sine</a></div><div class="ttdoc">A sine wave oscillator.</div><div class="ttdef"><b>Definition</b> sine.hh:39</div></div>
 <div class="ttc" id="aglobals_8hh_html_a6949631d06a570d1c3f014ac82285d47"><div class="ttname"><a href="globals_8hh.html#a6949631d06a570d1c3f014ac82285d47">UNTIL_INTERRUPTED</a></div><div class="ttdeci">#define UNTIL_INTERRUPTED</div><div class="ttdoc">Use as in Synthesizer::run(UNTIL_INTERUPTED)</div><div class="ttdef"><b>Definition</b> globals.hh:27</div></div>
+<div class="ttc" id="anamespaceyase_html"><div class="ttname"><a href="namespaceyase.html">yase</a></div><div class="ttdef"><b>Definition</b> additive_saw.cc:24</div></div>
 </div><!-- fragment --><p>The first three lines of the main function declare some modules: two sine wave sources, an audio interface, and a container to put everything into. The next block sets the frequency inputs of the two sine waves to be 440 Hz and 441 Hz respectively. The <code>connect</code> statements connect the output signals of the sine waves to the left and right inputs of the audio interface. Finally, the <code>run</code> statement runs the program until the user presses <code>Ctrl-C</code>. The result is a pleasing sound. Try it!</p>
 <p>One thing to notice about modules is that their inputs and outputs are named by strings during set up. This makes working with I/O easy and straightforward. When you make your own modules, you can add as many inputs and outputs as you would like with whatever names make sense for your use case. If you use the wrong name, YASE gives you an easy to understand error message. Once all the connections are made and the container (named <code>synth</code> in this case) is run, YASE uses integer indices to the I/O so there is no string matching at run time. These two <em>setup</em> and <em>run</em> phases are common to all YASE programs.</p>
 <h2>Building</h2>

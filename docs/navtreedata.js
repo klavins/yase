@@ -36,6 +36,9 @@ var NAVTREE =
       [ "Adding an Echo Effect", "md_tutorials_2intro.html#autotoc_md30", null ],
       [ "Next Steps", "md_tutorials_2intro.html#autotoc_md31", null ]
     ] ],
+    [ "Namespaces", "namespaces.html", [
+      [ "Namespace List", "namespaces.html", "namespaces_dup" ]
+    ] ],
     [ "Classes", "annotated.html", [
       [ "Class List", "annotated.html", "annotated_dup" ],
       [ "Class Index", "classes.html", null ],
@@ -59,7 +62,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "additive__saw_8hh_source.html",
-"classyase_1_1_sequencer.html#a70475520238b01cc745a6a887059b003"
+"classyase_1_1_fadable_delay.html",
+"classyase_1_1_sequencer.html#ae4346cd4b52068776feacc25f7b154ed"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

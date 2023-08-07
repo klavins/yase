@@ -62,8 +62,8 @@ var hierarchy =
       [ "yase::Timer", "classyase_1_1_timer.html", null ],
       [ "yase::Transform", "classyase_1_1_transform.html", null ]
     ] ],
-    [ "RingBuffer< DataType >", "class_ring_buffer.html", null ],
-    [ "RingBuffer< ElementType >", "class_ring_buffer.html", null ],
+    [ "yase::RingBuffer< DataType >", "classyase_1_1_ring_buffer.html", null ],
+    [ "yase::RingBuffer< ElementType >", "classyase_1_1_ring_buffer.html", null ],
     [ "std::runtime_error", null, [
       [ "yase::Exception", "classyase_1_1_exception.html", null ]
     ] ]

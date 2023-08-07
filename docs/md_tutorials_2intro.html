@@ -141,11 +141,12 @@ A Sawtooth Wave</h1>
 <p>In this tutorial, we will synthesize a patch to illustrate several basic features of yase including oscillators, filters, envelopes, and anti-aliasing. We will build up complexity incrementally starting from a sawtooth wave. Our starting point is to include the Yase library, open the <em>yase</em> namespace (so we do not have to prepend Yase class names with yase::), and write a <em>main</em> function that does nothing for now.</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>yase;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceyase.html">yase</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line">    <span class="keywordflow">return</span> 0; </div>
 <div class="line">}</div>
+<div class="ttc" id="anamespaceyase_html"><div class="ttname"><a href="namespaceyase.html">yase</a></div><div class="ttdef"><b>Definition</b> additive_saw.cc:24</div></div>
 </div><!-- fragment --><p>At this point you should be able to compile and run the above code, but it will not do anything. Next we will fill in the <em>main</em> function. Many Yase main functions are divided into three into three sections: declarations, setup, and execution, which we describe in turn.</p>
 <p><b>Declarations:</b> First, we declare three Modules that are enough to give us a basic sound.</p>
 <div class="fragment"><div class="line"><a class="code hl_class" href="classyase_1_1_container.html">Container</a> synth;</div>
@@ -172,7 +173,7 @@ A Sawtooth Wave</h1>
 <p>The entire program now looks like this:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>yase;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceyase.html">yase</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line"> </div>
@@ -212,7 +213,7 @@ Defining a Melody</h1>
 </div><!-- fragment --><p>The <em>set</em> method takes three arguments. The first is a vector of frequencies. Here, we are using Yase's names for notes, like <em>yase::G3</em> which we can just write as G3 since we have the yase name space open. The third argument is the duration of each note in seconds. And the second argument is a callback method that defines what to do each time the note changes. This argument is a C++ <em>lambda</em>, which is a way of specifying a function without naming it. The player will call the callback every three seconds cycling through the frequencies. You can see in the body of the callback the single line that changes the frequency of the sawtooth wave. The entire program is now</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>yase;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceyase.html">yase</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line"> </div>
@@ -265,7 +266,7 @@ Adding an Envelope</h1>
 </div><!-- fragment --><p>The entire example is now</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>yase;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceyase.html">yase</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line"> </div>
@@ -318,7 +319,7 @@ Adding a Filter</h1>
 <p>The entire program now looks like this:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>yase;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceyase.html">yase</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line"> </div>
@@ -376,7 +377,7 @@ A Filter Envelope</h1>
 </div><!-- fragment --><p>Now our program looks like this:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>yase;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceyase.html">yase</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line"> </div>
@@ -440,7 +441,7 @@ Adding an Echo Effect</h1>
 </div><!-- fragment --><p>The final program is now:</p>
 <div class="fragment"><div class="line"><span class="preprocessor">#include &quot;yase.hh&quot;</span></div>
 <div class="line"> </div>
-<div class="line"><span class="keyword">using namespace </span>yase;</div>
+<div class="line"><span class="keyword">using namespace </span><a class="code hl_namespace" href="namespaceyase.html">yase</a>;</div>
 <div class="line"> </div>
 <div class="line"><span class="keywordtype">int</span> main(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span> * argv[]) {</div>
 <div class="line"> </div>
