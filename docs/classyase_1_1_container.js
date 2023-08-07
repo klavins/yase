@@ -9,6 +9,7 @@ var classyase_1_1_container =
     [ "connect", "classyase_1_1_container.html#afb7d03a57ab717ad511f43c3796eece8", null ],
     [ "connect", "classyase_1_1_container.html#a0dd3bc6916ebbbd3fff48384384ce111", null ],
     [ "connect", "classyase_1_1_container.html#a1117bfdda93679fe009f3d47d2c43ffd", null ],
+    [ "connected", "classyase_1_1_container.html#a5b3d0c1a2769f241c927bb68c337cccd", null ],
     [ "disconnect", "classyase_1_1_container.html#aefb72017b50bf2680f3c82b52734332f", null ],
     [ "equate_input", "classyase_1_1_container.html#a0b84d3d893bfcb4eaff165cd3e07c7b7", null ],
     [ "equate_output", "classyase_1_1_container.html#a9a191c35b4e05e2a1b6d4e35a9b32fe9", null ],

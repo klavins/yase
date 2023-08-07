@@ -27,7 +27,7 @@ namespace yase {
 
     //! A sine wave oscillator
 
-    //! This module produces a since wave output and has all the inputs that
+    //! This module produces a sine wave output and has all the inputs that
     //! an Oscillator has. The update method is either 
     //! \param[input] frequency The frequency
     //! \param[input] amplitude The amplitude

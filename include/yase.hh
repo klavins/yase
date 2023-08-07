@@ -83,6 +83,7 @@
 #include "multi_clock.hh"
 #include "wavetable.hh"
 #include "impulse.hh"
+#include "jenny.hh"
 
 // Envelopes
 #include "envelope.hh"

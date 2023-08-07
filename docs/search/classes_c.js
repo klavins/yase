@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['resonator_0',['Resonator',['../classyase_1_1_resonator.html',1,'yase']]]
+  ['oscgroup_0',['OscGroup',['../classyase_1_1_osc_group.html',1,'yase']]],
+  ['oscillator_1',['Oscillator',['../classyase_1_1_oscillator.html',1,'yase']]]
 ];

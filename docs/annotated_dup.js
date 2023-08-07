@@ -1,10 +1,14 @@
 var annotated_dup =
 [
     [ "yase", null, [
+      [ "AdditiveSaw", "classyase_1_1_additive_saw.html", "classyase_1_1_additive_saw" ],
+      [ "AdditiveSquare", "classyase_1_1_additive_square.html", "classyase_1_1_additive_square" ],
+      [ "AdditiveTriangle", "classyase_1_1_additive_triangle.html", "classyase_1_1_additive_triangle" ],
       [ "AntiAlias", "classyase_1_1_anti_alias.html", "classyase_1_1_anti_alias" ],
       [ "Audio", "classyase_1_1_audio.html", "classyase_1_1_audio" ],
       [ "AutoLoad", "classyase_1_1_auto_load.html", "classyase_1_1_auto_load" ],
       [ "Biquad", "classyase_1_1_biquad.html", "classyase_1_1_biquad" ],
+      [ "Buffer", "classyase_1_1_buffer.html", "classyase_1_1_buffer" ],
       [ "BUTTON_STATE", "structyase_1_1_b_u_t_t_o_n___s_t_a_t_e.html", null ],
       [ "Buttons", "classyase_1_1_buttons.html", "classyase_1_1_buttons" ],
       [ "Clock", "classyase_1_1_clock.html", "classyase_1_1_clock" ],
@@ -23,12 +27,16 @@ var annotated_dup =
       [ "Gain", "classyase_1_1_gain.html", "classyase_1_1_gain" ],
       [ "IIRFilter", "classyase_1_1_i_i_r_filter.html", "classyase_1_1_i_i_r_filter" ],
       [ "Impulse", "classyase_1_1_impulse.html", "classyase_1_1_impulse" ],
+      [ "Jenny", "classyase_1_1_jenny.html", "classyase_1_1_jenny" ],
+      [ "LinearTransform", "classyase_1_1_linear_transform.html", "classyase_1_1_linear_transform" ],
       [ "MidiInput", "classyase_1_1_midi_input.html", "classyase_1_1_midi_input" ],
       [ "MidiOutput", "classyase_1_1_midi_output.html", null ],
+      [ "MidiToAnalog", "classyase_1_1_midi_to_analog.html", "classyase_1_1_midi_to_analog" ],
       [ "Mix", "classyase_1_1_mix.html", "classyase_1_1_mix" ],
       [ "Mixer", "classyase_1_1_mixer.html", "classyase_1_1_mixer" ],
       [ "Module", "classyase_1_1_module.html", "classyase_1_1_module" ],
       [ "Monitor", "classyase_1_1_monitor.html", "classyase_1_1_monitor" ],
+      [ "MultiClock", "classyase_1_1_multi_clock.html", "classyase_1_1_multi_clock" ],
       [ "Noise", "classyase_1_1_noise.html", "classyase_1_1_noise" ],
       [ "Noop", "classyase_1_1_noop.html", "classyase_1_1_noop" ],
       [ "OscGroup", "classyase_1_1_osc_group.html", "classyase_1_1_osc_group" ],
@@ -36,9 +44,11 @@ var annotated_dup =
       [ "Player", "classyase_1_1_player.html", "classyase_1_1_player" ],
       [ "Resonator", "classyase_1_1_resonator.html", "classyase_1_1_resonator" ],
       [ "Sample", "classyase_1_1_sample.html", "classyase_1_1_sample" ],
+      [ "SampleAndHold", "classyase_1_1_sample_and_hold.html", "classyase_1_1_sample_and_hold" ],
       [ "Sampler", "classyase_1_1_sampler.html", "classyase_1_1_sampler" ],
       [ "Saw", "classyase_1_1_saw.html", "classyase_1_1_saw" ],
       [ "Sequencer", "classyase_1_1_sequencer.html", "classyase_1_1_sequencer" ],
+      [ "SimpleSequencer", "classyase_1_1_simple_sequencer.html", "classyase_1_1_simple_sequencer" ],
       [ "Sine", "classyase_1_1_sine.html", "classyase_1_1_sine" ],
       [ "Square", "classyase_1_1_square.html", "classyase_1_1_square" ],
       [ "Sum", "classyase_1_1_sum.html", "classyase_1_1_sum" ],
@@ -47,5 +57,6 @@ var annotated_dup =
       [ "Transform", "classyase_1_1_transform.html", "classyase_1_1_transform" ],
       [ "Triangle", "classyase_1_1_triangle.html", "classyase_1_1_triangle" ],
       [ "Wavetable", "classyase_1_1_wavetable.html", "classyase_1_1_wavetable" ]
-    ] ]
+    ] ],
+    [ "RingBuffer", "class_ring_buffer.html", null ]
 ];

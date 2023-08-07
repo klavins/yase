@@ -1,7 +1,6 @@
 var searchData=
 [
-  ['tappeddelay_0',['TappedDelay',['../classyase_1_1_tapped_delay.html',1,'yase']]],
-  ['timer_1',['Timer',['../classyase_1_1_timer.html',1,'yase']]],
-  ['transform_2',['Transform',['../classyase_1_1_transform.html',1,'yase']]],
-  ['triangle_3',['Triangle',['../classyase_1_1_triangle.html',1,'yase']]]
+  ['resonator_0',['Resonator',['../classyase_1_1_resonator.html',1,'yase']]],
+  ['ringbuffer_1',['RingBuffer',['../class_ring_buffer.html',1,'']]],
+  ['ringbuffer_3c_20elementtype_20_3e_2',['RingBuffer&lt; ElementType &gt;',['../class_ring_buffer.html',1,'']]]
 ];
