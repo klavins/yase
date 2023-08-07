@@ -40,7 +40,6 @@ public:
         int itemsLeftToRead = totalItemsToRead;
 
         if (m_readIndex + itemsLeftToRead >= m_capacity)  {
-            std::cout << "read wrap " << readableItemCount << ", " << m_readIndex << ", " << itemsLeftToRead << std::endl;
             int itemsAvailableUntilEnd = m_capacity - m_readIndex;
             memcpy(pData, m_spBuffer.get() + m_readIndex, itemsAvailableUntilEnd * sizeof(DataType));
             m_readIndex = 0;
@@ -68,7 +67,6 @@ public:
         int itemsLeftToWrite = totalItemsToWrite;
 
         if ((m_writeIndex + itemsLeftToWrite) >= m_capacity) {
-            std::cout << "write wrap" << std::endl;
             int itemsAvailableUntilEnd = m_capacity - m_writeIndex;
             memcpy(m_spBuffer.get() + m_writeIndex, pData, itemsAvailableUntilEnd * sizeof(DataType));
             m_writeIndex = 0;
