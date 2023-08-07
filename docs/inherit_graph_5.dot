@@ -5,5 +5,5 @@ digraph "Graphical Class Hierarchy"
   edge [fontname=Helvetica,fontsize=10,labelfontname=Helvetica,labelfontsize=10];
   node [fontname=Helvetica,fontsize=10,shape=box,height=0.2,width=0.4];
   rankdir="LR";
-  Node0 [id="Node000000",label="yase::RingBuffer\< DataType \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classyase_1_1_ring_buffer.html",tooltip="A Ring Oscillator."];
+  Node0 [id="Node000000",label="yase::RingBuffer\< DataType \>",height=0.2,width=0.4,color="grey40", fillcolor="white", style="filled",URL="$classyase_1_1_ring_buffer.html",tooltip="A Ring Buffer for multi-threaded communications."];
 }

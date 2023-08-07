@@ -10,12 +10,11 @@
 
 namespace yase {
 
-    //! A Ring Oscillator
+    //! A Ring Buffer for multi-threaded communications
 
-    //!  A simple ring buffer class. This is thread-safe so long as only a
-    //!  single producer and a single consumer are clients. This code was initially written by
-    //!  Shane Kirk and posted at http://shanekirk.com/category/programming/cc/. Minor modifications
-    //!  and a bug fix were made by Eric Klavins, August 2023. 
+    //!  This code was taken from a post by Shane Kirk 
+    //!  http://shanekirk.com/category/programming/cc/. Minor modifications
+    //!  and a bug-fix were made by Eric Klavins, August 2023. 
 
     template<typename DataType> class RingBuffer {
     public:
