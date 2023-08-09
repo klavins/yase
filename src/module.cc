@@ -59,6 +59,9 @@ namespace yase {
                                        // in fact, it inserts an element if
                                        // one doesn't exist!
         } else {
+            for (const auto& [name, _] : input_map) {
+                std::cout << name << std::endl;
+            }
             throw Exception("Tried to access a non-existant input '" + name + "' in get_input_index.");
         }
     }

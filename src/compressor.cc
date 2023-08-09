@@ -56,7 +56,7 @@ namespace yase {
              b = inputs[decay],
              k = inputs[boost];
 
-      xG = 20 * log10(fabs(inputs[signal])+0.01);
+      xG = 20 * log10(fabs(inputs[signal])+0.0001);
 
       if ( 2 * ( xG - T) < -W ) {
         yG = xG;
@@ -71,7 +71,7 @@ namespace yase {
       if ( xL > yL ) {
         yL = a* yL + (1-a)*xL;
       } else {
-        yL = b * yL;
+        yL = b * yL + (1-b)*xL;
       }
 
       c = pow(10,-yL/20);

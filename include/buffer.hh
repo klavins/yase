@@ -16,7 +16,7 @@
 // 
 // You should have received a copy of the GNU General Public License along
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
-// 
+//
 
 #ifndef YASE_BUFFER_H
 #define YASE_BUFFER_H
@@ -26,23 +26,50 @@
 
 namespace yase {
 
-    class Buffer : public Module {
+    template<int n> class Buffer : public Module {
 
     public:
 
-      typedef tuple<long int, double> ElementType;
+      typedef tuple<long int, array<double, n>> ElementType;
 
-      Buffer(int size);
-      void init();
-      void update();
-      int get_buffered_output(ElementType * result, int max);
+      Buffer(int size) : ring_buffer(size) {
+
+        for ( int i=0; i<n; i++ ) {
+          add_input("signal_" + std::to_string(i));
+        }
+
+      }
+
+      Buffer(int size, std::array<string,3> input_names) : ring_buffer(size) {
+
+        for ( int i=0; i<n; i++ ) {
+          add_input(input_names[i]);
+        }
+
+      }      
+
+      void init() {
+        count = 0;
+      }
+
+      void update() {
+        std::get<0>(data) = count++;
+        for ( int i=0; i<n; i++ ) {
+            std::get<1>(data)[i] = inputs[i];
+        }
+        ring_buffer.write(&data, 1);        
+      }
+
+      int get_buffered_output(ElementType * result, int max) {
+        return ring_buffer.read(result, max);
+      }
 
     private:
 
       int size, signal;
       unsigned long int count;
       RingBuffer<ElementType> ring_buffer;
-      tuple<long int, double> data;
+      ElementType data;
 
     };
 
