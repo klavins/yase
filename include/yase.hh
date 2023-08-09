@@ -100,5 +100,6 @@
 #include "fadable_delay.hh"
 #include "echo.hh"
 #include "sample_and_hold.hh"
+#include "compressor.hh"
 
 #endif
