@@ -6,10 +6,11 @@ var searchData=
   ['clear_5fleds_3',['clear_leds',['../classyase_1_1_buttons.html#af57fee48b3dad51ead08eefe832d6560',1,'yase::Buttons']]],
   ['clock_4',['Clock',['../classyase_1_1_clock.html',1,'yase']]],
   ['code_5',['code',['../classyase_1_1_event.html#a350e21c741f7d8dbea47adc280a82f49',1,'yase::Event']]],
-  ['connect_6',['connect',['../classyase_1_1_container.html#a1117bfdda93679fe009f3d47d2c43ffd',1,'yase::Container::connect(Module &amp;source, string output, Module &amp;dest, string input)'],['../classyase_1_1_container.html#a0dd3bc6916ebbbd3fff48384384ce111',1,'yase::Container::connect(Module &amp;source, string output, Module &amp;dest, int input)'],['../classyase_1_1_container.html#ad8ea79d50db477f2ce31cff29f55a4a6',1,'yase::Container::connect(AutoLoad &amp;loader, string category, Module &amp;module)'],['../classyase_1_1_container.html#afb7d03a57ab717ad511f43c3796eece8',1,'yase::Container::connect(Module &amp;source, Module &amp;dest)']]],
-  ['connected_7',['connected',['../classyase_1_1_container.html#a5b3d0c1a2769f241c927bb68c337cccd',1,'yase::Container']]],
-  ['container_8',['Container',['../classyase_1_1_container.html',1,'yase']]],
-  ['controls_9',['Controls',['../classyase_1_1_controls.html',1,'yase']]],
-  ['copy_5finputs_10',['copy_inputs',['../classyase_1_1_module.html#a4a3275763cfe947a85500f4fa164e1a6',1,'yase::Module']]],
-  ['copy_5foutputs_11',['copy_outputs',['../classyase_1_1_module.html#adb74447d12446d5ac1b25d9b6354610a',1,'yase::Module']]]
+  ['compressor_6',['Compressor',['../classyase_1_1_compressor.html',1,'yase']]],
+  ['connect_7',['connect',['../classyase_1_1_container.html#a1117bfdda93679fe009f3d47d2c43ffd',1,'yase::Container::connect(Module &amp;source, string output, Module &amp;dest, string input)'],['../classyase_1_1_container.html#a0dd3bc6916ebbbd3fff48384384ce111',1,'yase::Container::connect(Module &amp;source, string output, Module &amp;dest, int input)'],['../classyase_1_1_container.html#ad8ea79d50db477f2ce31cff29f55a4a6',1,'yase::Container::connect(AutoLoad &amp;loader, string category, Module &amp;module)'],['../classyase_1_1_container.html#afb7d03a57ab717ad511f43c3796eece8',1,'yase::Container::connect(Module &amp;source, Module &amp;dest)']]],
+  ['connected_8',['connected',['../classyase_1_1_container.html#a5b3d0c1a2769f241c927bb68c337cccd',1,'yase::Container']]],
+  ['container_9',['Container',['../classyase_1_1_container.html',1,'yase']]],
+  ['controls_10',['Controls',['../classyase_1_1_controls.html',1,'yase']]],
+  ['copy_5finputs_11',['copy_inputs',['../classyase_1_1_module.html#a4a3275763cfe947a85500f4fa164e1a6',1,'yase::Module']]],
+  ['copy_5foutputs_12',['copy_outputs',['../classyase_1_1_module.html#adb74447d12446d5ac1b25d9b6354610a',1,'yase::Module']]]
 ];

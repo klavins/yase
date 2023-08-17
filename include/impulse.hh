@@ -33,14 +33,17 @@ namespace yase {
     //! has been called. The default is square. 
     //! \param[out] signal The output.
 
-    class Impulse : public Module {
+    class Impulse : public Triggerable {
 
     typedef void (Impulse::*UpdateFunction)(); 
 
     public:
 
       Impulse();
+
       void trigger();
+      void release() {}
+
       void set(int k);
       void init();
       void update();
@@ -48,7 +51,7 @@ namespace yase {
 
     private:
 
-      int length, n, signal; 
+      int length, n, signal;
       UpdateFunction update_fcn;   
       void square();
       void random();

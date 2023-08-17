@@ -11,6 +11,7 @@ var namespaceyase =
     [ "BUTTON_STATE", "structyase_1_1_b_u_t_t_o_n___s_t_a_t_e.html", null ],
     [ "Buttons", "classyase_1_1_buttons.html", "classyase_1_1_buttons" ],
     [ "Clock", "classyase_1_1_clock.html", "classyase_1_1_clock" ],
+    [ "Compressor", "classyase_1_1_compressor.html", "classyase_1_1_compressor" ],
     [ "Container", "classyase_1_1_container.html", "classyase_1_1_container" ],
     [ "Controls", "classyase_1_1_controls.html", "classyase_1_1_controls" ],
     [ "Delay", "classyase_1_1_delay.html", "classyase_1_1_delay" ],
@@ -56,5 +57,6 @@ var namespaceyase =
     [ "Timer", "classyase_1_1_timer.html", "classyase_1_1_timer" ],
     [ "Transform", "classyase_1_1_transform.html", "classyase_1_1_transform" ],
     [ "Triangle", "classyase_1_1_triangle.html", "classyase_1_1_triangle" ],
+    [ "Triggerable", "classyase_1_1_triggerable.html", "classyase_1_1_triggerable" ],
     [ "Wavetable", "classyase_1_1_wavetable.html", "classyase_1_1_wavetable" ]
 ];

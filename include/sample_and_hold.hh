@@ -25,18 +25,19 @@
 
 namespace yase {
 
-    class SampleAndHold : public Module {
+    class SampleAndHold : public Triggerable {
 
     public:
 
       SampleAndHold();
       void init();
       void update();
+      void trigger();
+      void release();
 
     private:
 
-      int signal, trigger;
-      double trigger_state;
+      int signal;
 
     };
 

@@ -10,6 +10,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "buffer.hh", "buffer_8hh_source.html", null ],
     [ "buttons.hh", "buttons_8hh_source.html", null ],
     [ "clock.hh", "clock_8hh_source.html", null ],
+    [ "compressor.hh", "compressor_8hh_source.html", null ],
     [ "container.hh", "container_8hh_source.html", null ],
     [ "controls.hh", "controls_8hh_source.html", null ],
     [ "delay.hh", "delay_8hh_source.html", null ],
@@ -57,6 +58,7 @@ var dir_d44c64559bbebec7f509842c48db8b23 =
     [ "timer.hh", "timer_8hh_source.html", null ],
     [ "transform.hh", "transform_8hh_source.html", null ],
     [ "triangle.hh", "triangle_8hh_source.html", null ],
+    [ "triggerable.hh", "triggerable_8hh_source.html", null ],
     [ "util.hh", "util_8hh_source.html", null ],
     [ "wavetable.hh", "wavetable_8hh_source.html", null ],
     [ "yase.hh", "yase_8hh_source.html", null ]

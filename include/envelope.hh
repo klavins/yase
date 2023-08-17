@@ -47,7 +47,7 @@ namespace yase {
     //! \param[in] release
     //! \param[in] signal
     //! \param[out] signal
-    class Envelope : public Module {
+    class Envelope : public Triggerable {
 
     public:
 
@@ -63,12 +63,11 @@ namespace yase {
       // i/o indices
       int signal, 
           a,d,s,r, 
-          velocity,
-          external_trigger;
+          velocity;
 
       UpdateFunction update_fcn;
 
-      double amplitude, trigger_memory;
+      double amplitude;
 
       void off();
       void attack();

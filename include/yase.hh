@@ -25,6 +25,7 @@
 #include "globals.hh"
 #include "exception.hh"
 #include "module.hh"
+#include "triggerable.hh"
 #include "container.hh"
 #include "sequencer.hh"
 #include "simple_sequencer.hh"

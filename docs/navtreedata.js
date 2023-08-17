@@ -62,8 +62,8 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 "additive__saw_8hh_source.html",
-"classyase_1_1_fadable_delay.html",
-"classyase_1_1_sequencer.html#ae4346cd4b52068776feacc25f7b154ed"
+"classyase_1_1_f_f_t.html#aca328d95c9daa8f3370107d101c8240d",
+"classyase_1_1_sequencer.html#a953b192418a7293414f6c61dc9a72f25"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

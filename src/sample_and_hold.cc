@@ -18,30 +18,29 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
-#include "sample_and_hold.hh"
 #include "yase.hh"
 
 namespace yase {
 
-  SampleAndHold::SampleAndHold() {
+  SampleAndHold::SampleAndHold() : Triggerable() {
     signal = add_input("signal");
     signal = add_output("signal");
-    trigger = add_input("trigger");
   }
 
   void SampleAndHold::init() {
-      trigger_state = 0;
+      Triggerable::init();
       inputs[signal] = 0;
   }
 
   void SampleAndHold::update() {
-      if (trigger_state == 0 && inputs[trigger] > 0.9 ) {
-        trigger_state = 1;
-        outputs[signal] = inputs[signal];
-      } else if ( trigger_state == 1 && inputs[trigger] < 0.1 ) {
-        trigger_state = 0;
-      }
+      Triggerable::update();
   }    
+
+  void SampleAndHold::trigger() {
+    outputs[signal] = inputs[signal];
+  }
+
+  void SampleAndHold::release() {}
 
 }
 

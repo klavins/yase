@@ -24,14 +24,17 @@
 
 namespace yase {
 
-  Impulse::Impulse() : length(1) {
+  Impulse::Impulse() : length(1), Triggerable() {
     signal = add_output("signal");
     update_fcn = &Impulse::square;
   }
 
-  void Impulse::init() {}
+  void Impulse::init() {
+    Triggerable::init();
+  }
 
   void Impulse::update() {
+    Triggerable::update();
     CALL_MEMBER_FN(this, update_fcn);
   }
 
