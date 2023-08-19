@@ -1,5 +1,5 @@
 // 
-// YASE Delay Module Header
+// YASE Saturate Module Header
 // 
 // Copyright (C) 2022 Eric Klavins
 // This file is part of YASE
@@ -18,44 +18,24 @@
 // with YASE. If not, see <https://www.gnu.org/licenses/>.
 // 
 
-#ifndef YASE_DELAY_H
-#define YASE_DELAY_H
+#ifndef YASE_SATURATE_H
+#define YASE_SATURATE_H
 
-#include "triggerable.hh"
-#include <deque>
-
-using namespace std;
+#include "yase.hh"
 
 namespace yase {
 
-    //! A pure digital delay using a doubled ended queue. 
-    
-    //! This module is good for a fixed delay.
-    //! If you want a modulatable delay, use FadeDelay, which has a "duration" input.
-    //! 
-    //! \param[in] signal
-    //! \param[out] signal
-    //!     
-    class Delay : public Triggerable {
+    class Saturate : public Module {
 
     public:
 
-      Delay(int duration);
-      Delay();
+      Saturate();
       void init();
       void update();
-      void clear();
-
-      void set(int new_duration);
-      bool is_full();
-
-      void trigger();
-      void release() {}
 
     private:
 
-      deque<double> buffer;
-      int in_signal, out_signal, duration, frequency;
+      int signal, scale;
 
     };
 

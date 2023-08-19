@@ -64,7 +64,7 @@ namespace yase {
 
     private:
 
-      int current, signal, duration; // indices
+      int current, signal, in_signal, duration; // indices
       int current_duration; 
       STATE state;
       Delay delays[2];

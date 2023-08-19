@@ -22,8 +22,8 @@
 #include "envelope.hh"
 #include "yase.hh"
 
-#define OUTPUT outputs[signal]
-#define INPUT inputs[signal]
+#define OUTPUT outputs[out_signal]
+#define INPUT inputs[in_signal]
 #define A inputs[a]
 #define D inputs[d]
 #define S inputs[s]
@@ -39,8 +39,8 @@ namespace yase {
     // Exponential decay
     //
 
-    signal = add_input("signal");
-    signal = add_output("signal"); // should both be 0
+    in_signal = add_input("signal");
+    out_signal = add_output("signal"); // should both be 0
 
     a = add_input("attack");
     d = add_input("decay");
@@ -56,7 +56,7 @@ namespace yase {
     set_input(r, 0.005);     // duration of release
 
     set_input(velocity, 1);  // sometimes envelopes have no inputs so
-    set_input(signal,1);     // we need defaults or we'll get no signal
+    set_input(in_signal,1);     // we need defaults or we'll get no signal
     amplitude = 0;
 
     update_fcn = &Envelope::off;

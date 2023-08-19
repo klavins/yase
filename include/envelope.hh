@@ -61,7 +61,7 @@ namespace yase {
     private:
 
       // i/o indices
-      int signal, 
+      int in_signal, out_signal,
           a,d,s,r, 
           velocity;
 

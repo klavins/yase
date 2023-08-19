@@ -34,8 +34,8 @@ namespace yase {
     //! For example,
     //! \code
     //! TappedDelay delay(1.0); // Store 1 second of signal
-    //! auto tap = add_tap();
-    //! delay.set_input(tap, 0.5);
+    //! auto [position,tap] = add_tap();
+    //! delay.set_input(position, 0.5);
     //! \endcode
     //! Later, you can connect things to the delay as in
     //! \code
@@ -45,10 +45,10 @@ namespace yase {
     //! Since this is a linearly interpolated delay, the tap position can be 
     //! smoothly moved around. So you can also do something like
     //! \code
-    //! container.connect(lfo, "signal", delay, tap);
+    //! container.connect(lfo, "signal", delay, position);
     //! \endcode
     //! to get neat effects. 
-    //! \param[in] signal, tap_0, tap_1, ...
+    //! \param[in] signal, position_0, position_1, ...
     //! \param[out] tap_0, tap_1, ...
     //! 
 
@@ -60,7 +60,7 @@ namespace yase {
       ~TappedDelay();
       void init();
       void update();
-      string add_tap();
+      tuple<string,string> add_tap();
 
     private:
 
@@ -68,12 +68,12 @@ namespace yase {
       int duration_in_samples;
       int signal;
       double * buffer;
-      int buffer_index;    
+      int buffer_index;
 
       double tap_position(int i);
       void add_sample(double u);
       int fix(int n);
-      double get_value(double position);    
+      double get_value(double position);
 
     };
 

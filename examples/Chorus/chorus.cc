@@ -42,8 +42,8 @@ int main(int argc, char * argv[]) {
     Gain gain;
     Sum sum;
 
-    auto tap = delay.add_tap();
-    delay.set_input(tap, C);
+    auto [position,tap] = delay.add_tap();
+    delay.set_input(position, C);
 
     lfo.set_input("frequency", F);
 
@@ -59,7 +59,7 @@ int main(int argc, char * argv[]) {
          .connect(gain, "signal", audio, "right")
          .connect(wave_envelope, "signal", saw, "amplitude")
          .connect(lfo, scale)
-         .connect(scale, "signal", delay, tap)
+         .connect(scale, "signal", delay, position)
          .add(player);
 
     player.set({ C2,  REST, C2,  REST, AS1, REST, AS1, REST, 

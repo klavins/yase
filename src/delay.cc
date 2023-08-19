@@ -25,10 +25,12 @@ namespace yase {
 
   //! Construct a new delay with the given duration (in steps)
   //! \param duration The number of steps
-  Delay::Delay(int duration) : duration(duration) {
+  Delay::Delay(int duration) : Triggerable(), duration(duration) {
 
-    signal = add_input("signal");
-    signal = add_output("signal");
+    in_signal = add_input("signal");
+    frequency = add_input("frequency");
+    out_signal = add_output("signal");
+    /* trigger(); */
 
   }
 
@@ -53,6 +55,15 @@ namespace yase {
     buffer.clear();
   }
 
+  void Delay::trigger() {
+      
+      if ( inputs[frequency] > 0 ) {          
+          set(SAMPLE_RATE/inputs[frequency]);
+          clear();
+      }
+      
+  }
+
   //! Check if the buffer is full
   //! \return True if the buffer size equals the duration
   bool Delay::is_full() {
@@ -60,15 +71,17 @@ namespace yase {
   }
 
   void Delay::init() {
-
+   Triggerable::init(); 
   }
 
   void Delay::update() {
 
-    buffer.push_front(inputs[signal]);
+    Triggerable::update();
+
+    buffer.push_front(inputs[in_signal]);
 
     if ( buffer.size() > duration) {
-        outputs[signal] = buffer.back();
+        outputs[out_signal] = buffer.back();
         buffer.pop_back();
     }
 

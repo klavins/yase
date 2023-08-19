@@ -36,12 +36,13 @@ namespace yase {
   //! delay.set_input(tap, 0.5);
   //! \endcode
   //! \return The name of the tap
-  string TappedDelay::add_tap() {
+  tuple<string,string> TappedDelay::add_tap() {
     int index = inputs.size();
-    string tap_name = "tap_" + std::to_string(index);
-    add_input(tap_name);
+    string pos_name = "position_" + std::to_string(index),
+           tap_name = "tap_" + std::to_string(index);
+    add_input(pos_name);
     add_output(tap_name);
-    return tap_name;
+    return { pos_name, tap_name };
   }
 
   void TappedDelay::init() {
@@ -80,11 +81,22 @@ namespace yase {
     return m;    
   }
 
+  // double TappedDelay::get_value(double position) {
+  //   int a = fix(buffer_index + floor(position * SAMPLE_RATE)),
+  //       b = fix(buffer_index + ceil(position * SAMPLE_RATE ));
+  //   double A = ( a - buffer_index ) / SAMPLE_RATE;
+  //   return (buffer[b] - buffer[a])*(position-A) + buffer[a];
+  // }
+
   double TappedDelay::get_value(double position) {
-    int a = fix(buffer_index + floor(position * SAMPLE_RATE)),
-        b = fix(buffer_index + ceil(position * SAMPLE_RATE ));
-    double A = ( a - buffer_index ) / SAMPLE_RATE;
-    return (buffer[b] - buffer[a])*(position-A) + buffer[a];
+    double p = position * SAMPLE_RATE;
+    int a = buffer_index - ceil(p),
+        b = buffer_index - floor(p);
+    a = fix(a);
+    b = fix(b);        
+    double delta_t = (ceil(p)-p)/SAMPLE_RATE;
+
+    return (buffer[b]-buffer[a])*delta_t + buffer[a];
   }
 
   TappedDelay::~TappedDelay() {
@@ -92,4 +104,3 @@ namespace yase {
   }  
 
 }
-

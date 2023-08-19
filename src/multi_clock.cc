@@ -48,7 +48,7 @@ namespace yase {
     }
     for ( int i=0; i<9; i++ ) {
       phases[i] = fmod ( phase * denominators[i], 1.0 );
-      outputs[clock[i]] = phases[i] <= inputs[df[i]] ? 1.0 : 0.0;    
+      outputs[clock[i]] = phases[i] <= inputs[df[i]] ? 1.0 : -1.0;    
     }
   }
 

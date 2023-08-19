@@ -94,6 +94,7 @@
 #include "iir_filter.hh"
 #include "biquad.hh"
 #include "resonator.hh"
+#include "saturate.hh"
 
 // Effects
 #include "delay.hh"

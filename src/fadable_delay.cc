@@ -35,6 +35,8 @@ namespace yase {
     signal = add_output("signal");
     duration = add_input("duration");
 
+    in_signal = delays[0].get_input_index("signal");
+
     current_duration = SAMPLE_RATE;
     current = 0;
 
@@ -68,8 +70,8 @@ namespace yase {
       state = NORMAL;
     }
     
-    delays[0].set_input(signal,inputs[signal]);
-    delays[1].set_input(signal,inputs[signal]);
+    delays[0].set_input(in_signal,inputs[signal]);
+    delays[1].set_input(in_signal,inputs[signal]);
     Container::update();
     outputs[signal] = fade * delays[current].get_output(signal) 
                     + (1-fade) * delays[1-current].get_output(signal);
